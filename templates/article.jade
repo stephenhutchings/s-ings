@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  article.article
+    include author
+    h1= page.title
+    p.date= moment(page.metadata.date).format("MMMM, Do YYYY")
+
+    section.content!= typogr(page.html).typogrify()
+
+    a(href=contents.thinking.index.url) &larr; Thinking
+
+

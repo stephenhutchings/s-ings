@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  include author
+
+  - var articles = locals._.chain(env.helpers.getArticles(contents)).groupBy(function(item) {
+  -   return item.date.getFullYear()
+  - }).value()
+  - var map = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  section#articles
+    ul
+      - var years = _.chain(articles).keys().reverse().value();
+
+      each year, i in years
+
+        li.year
+          .year-label= year
+
+          - var yearArticles = _.groupBy(articles[year], function(item) { return map[item.date.getMonth()] })
+          - var months = Object.keys(yearArticles);
+
+          ul
+            each month, i in months
+              - var articles = yearArticles[month]
+              li.month
+                .month-label= month
+                each article, i in articles
+                  a.article-link(href=article.url)= article.title
+
+                  != article.intro

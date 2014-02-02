@@ -1,0 +1,36 @@
+{
+  "template": "projects.jade",
+  "title": "Projects",
+  "projects": [
+    {
+      "url": "http://typicons.com/",
+      "img": "/projects/typicons.png",
+      "name": "Typicons",
+      "desc": "Typicons are free-to-use vector icons embedded in a webfont for easy use in your user interfaces, whether it be on the web or in a native application."
+    },
+    {
+      "url": "https://github.com/stephenhutchings/zepto.iostap",
+      "img": "",
+      "name": "zepto.iostap",
+      "desc": "A micro-library for iOS-like tap events in the browser."
+    },
+    {
+      "url": "https://github.com/stephenhutchings/zepto.ticker",
+      "img": "",
+      "name": "zepto.ticker",
+      "desc": "A performant on-the-fly typing plugin for Zepto."
+    },
+    {
+      "url": "https://github.com/stephenhutchings/zepto.revolver",
+      "img": "",
+      "name": "zepto.revolver",
+      "desc": "A do-it-all carousel that's simple, flexible and lightweight."
+    },
+    {
+      "url": "https://github.com/stephenhutchings/after-brunch",
+      "img": "",
+      "name": "after-brunch",
+      "desc": "Want to run something on the command line everytime brunch compiles? Easy."
+    }
+  ]
+}
