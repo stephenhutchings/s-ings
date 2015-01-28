@@ -1,0 +1,40 @@
+---
+title: Not satisfied? Have something after brunch
+author: Stephen Hutchings
+date: August 21, 2013
+template: article.jade
+---
+
+#### Introducing after-brunch
+
+For a new project at Creative Licence, we have been using the awesome [Brunch][1]. Brunch is an assembler for HTML5 applications, which means that all the work watching, compiling, optimizing and concatenating source files is handled for you. It also has a fantastic plugin ecosystem, so it supports a diverse range of languages and project architectures.
+
+---
+
+We are also trialling the use of a live styleguide for this project, and in order to keep this in sync with the project's development, it's necessary to update the styleguide after every Brunch compile.
+
+Instead of creating a plugin for a tool with no API - which could have been a huge headache - we created a tiny CLI wrapper plugin for Brunch that will run command line processes after the compile event. It boils down to an array of commands that you store in your Brunch `config.json`.
+
+### Using after-brunch
+
+To use after-brunch, add `"after-brunch": "x.y.z"` to the `package.json` of your brunch app.
+
+You could also just `npm install after-brunch --save`.
+
+Then in your config.coffee just add any commands to the `afterBrunch` array in the config's plugins object. For example, you might want to use [styledocco][3] to create a live styleguide for your projects stylesheets.
+
+```coffeescript
+exports.config =
+  plugins:
+    afterBrunch: [
+      "styledocco -n "My Project" css"
+    ]
+```
+
+### Check it out
+
+You can check out and contribute to after-brunch on [GitHub][3].
+
+[1]: http://brunch.io
+[2]: https://github.com/Creative-Licence-Digital/after-brunch
+[3]: http://jacobrask.github.io/styledocco/

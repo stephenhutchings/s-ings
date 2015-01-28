@@ -3,7 +3,7 @@ module.exports = (env, callback) ->
   # helper that returns a list of articles found in *contents*
   # note that each article is assumed to have its own directory in the articles directory
   getArticles = (contents) ->
-    articles = contents.thinking._.directories.map (item) -> item.index
+    articles = contents.writing._.directories.map (item) -> item.index
     articles.sort (a, b) -> b.date - a.date
     return articles
 

@@ -1,0 +1,19 @@
+#container
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -72px
+
+  &:after
+    content: ""
+    display: block
+    height: 72px
+
+  @media (max-width: 768px)
+    margin-bottom: -96px
+
+    &:after
+      height: 96px
+
+#content
+  padding-top: 88px

@@ -2,8 +2,12 @@ extends layout
 
 block content
   section#projects
-    for project in locals.page.metadata.projects
-      a.project(href=project.url)
-        .img(style="background-image:url(#{project.img})")
-        h3.name=project.name
-        p.desc=project.desc
+    for row, i in locals.page.metadata.projects
+      .row
+        .content-wrap
+          for project in row
+            a.project-link(href=project.url class=project.size)
+              img.project-img(src=project.img)
+              .project-desc
+                h2= project.name
+                p!= typogr(project.desc).typogrify()

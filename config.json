@@ -3,10 +3,9 @@
     "url": "http://localhost:8080",
     "name": "s{...}ings",
     "owner": "Stephen Hutchings",
-    "description": "I’m a user interface developer and designer from Sydney, crafting experiences for web and native apps. I work at Creative Licence and in my spare time I make things, ride my bike and do the crossword.",
+    "description": "Designer and builder of well-crafted digital interfaces, interactions and experiences.",
     "navigation": {
       "About": "/",
-      "Thinking": "/thinking/",
       "Projects": "/projects/"
     }
   },
@@ -14,11 +13,14 @@
     "./plugins/paginator.coffee",
     "./node_modules/wintersmith-coffee/",
     "./node_modules/wintersmith-sass/",
-    "./node_modules/wintersmith-jsbundler/"
+    "./node_modules/wintersmith-browserify/",
+    "./node_modules/wintersmith-livereload/"
   ],
-  "jsbundler": {
-    "sourceMap": true,
-    "minify": true
+  "browserify": {
+    "transforms": [
+      "caching-coffeeify",
+      "../uglifyify"
+    ]
   },
   "require": {
     "moment": "moment",
@@ -31,5 +33,9 @@
   "markdown": {
     "smartLists": true,
     "smartypants": true
-  }
+  },
+  "ignore": [
+    "**/.DS_Store",
+    "**/_*.sass"
+  ]
 }

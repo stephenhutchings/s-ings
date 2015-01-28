@@ -1,0 +1,77 @@
+// About
+
+#about
+  font-size: 24px
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 16em
+  margin: -8em 0 0 -8em
+  max-width: 100%
+  padding: 0
+  text-rendering: geometricPrecision
+
+#about-name
+  font-size: 2.5em
+  line-height: 1em
+  margin: 0
+
+  #about-name-em,
+  #about-name-me
+    display: block
+
+  #about-name-em
+    font: 0.4em/1em $serif
+    margin-bottom: 0.5em
+
+#about-colo
+  font: 0.85em/1.4em $serif
+  padding: 0
+  margin-top: 1.5em
+
+  p
+    margin: 0
+
+// Transition
+#about-name-me .char,
+#about-name-em,
+#about-colo
+  opacity: 0
+  +transition(all 1600ms $bounce)
+
+  .no-js &,
+  .ready.about &
+    opacity: 1
+    +transform(translate3d(0, 0, 0))
+
+#about-name-me .char
+  display: inline-block
+  +transform(translate3d(0, 300%, 0))
+
+  @for $i from 0 through 17
+    &.char-#{$i}
+      +transition-delay($i * 30ms)
+
+
+#about-colo
+  +transform(translate3d(0, 0, 0) rotateX(2deg) scale(0.95))
+  +transition(all 1200ms 800ms)
+
+// Tablet
+@media (max-width: 768px)
+  #about
+    font-size: 20px
+    width: 14em
+    padding: 1em
+
+@media screen and (max-width: 400px), (max-height: 600px)
+  #about
+    position: static
+    margin: 20px auto
+
+.about
+  #title
+    display: none
+
+  #content
+    position: static

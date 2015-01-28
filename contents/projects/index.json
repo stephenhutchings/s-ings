@@ -2,35 +2,65 @@
   "template": "projects.jade",
   "title": "Projects",
   "projects": [
-    {
+    [{
+      "color": {"fg": "#fff", "bg": "#322F2D"},
+      "url": "http://swatchapp.com",
+      "img": "/img/projects/swatch.jpg",
+      "name": "Swatch. Find your true colors.",
+      "desc": "Swatch is an iPad® and iPhone® app made for professionals by professionals. Whether you are a graphic designer, web developer, interior decorator, ready to paint your house or just interested in the creative use of colour, Swatch is for you."
+    }],
+    [{
+      "color": {"fg": "", "bg": "#B9BDC6"},
+      "url": "",
+      "img": "/img/projects/msf.jpg",
+      "name": "Médecins Sans Frontières",
+      "desc": "Working with global charity MSF, this microsite successfully helped to promote current issues and drive donations from a younger demographic. It's templated design empowered content managers to periodically refresh the site's content with minimal overhead."
+    }],
+    [{
+      "color": {"fg": "", "bg": ""},
       "url": "http://typicons.com/",
-      "img": "/projects/typicons.png",
+      "img": "/img/projects/typicons.png",
       "name": "Typicons",
-      "desc": "Typicons are free-to-use vector icons embedded in a webfont for easy use in your user interfaces, whether it be on the web or in a native application."
-    },
-    {
+      "desc": "Typicons are free-to-use vector icons embedded in a webfont for easy use in user interfaces, whether it be on the web or in a native application. They were developed at the start of the font icon revolution to fill a void that had existed and still enjoy a high level of popularity."
+    }],
+    [{
+      "color": {"fg": "", "bg": ""},
+      "url": "http://creative-licence-digital.github.io/backbone.viewstack/demo/public/",
+      "img": "/img/projects/viewstack.png",
+      "name": "backbone.viewstack.js",
+      "desc": "Seamless management of a view's stacking, pushing and popping for Backbone single-page applications. Transitions, alerts and history are built in. View the demo."
+    }],
+    [{
+      "color": {"fg": "", "bg": ""},
       "url": "https://github.com/stephenhutchings/zepto.iostap",
-      "img": "",
+      "img": "/img/projects/zepto.iostap.png",
       "name": "zepto.iostap",
-      "desc": "A micro-library for iOS-like tap events in the browser."
+      "desc": "A micro-library for \"native\" feeling tap events in the browser.",
+      "size": "small"
     },
     {
+      "color": {"fg": "", "bg": ""},
       "url": "https://github.com/stephenhutchings/zepto.ticker",
-      "img": "",
+      "img": "/img/projects/zepto.ticker.png",
       "name": "zepto.ticker",
-      "desc": "A performant on-the-fly typing plugin for Zepto."
+      "desc": "A performant on-the-fly typing plugin for Zepto.",
+      "size": "small"
     },
     {
+      "color": {"fg": "", "bg": ""},
       "url": "https://github.com/stephenhutchings/zepto.revolver",
-      "img": "",
+      "img": "/img/projects/zepto.revolver.png",
       "name": "zepto.revolver",
-      "desc": "A do-it-all carousel that's simple, flexible and lightweight."
+      "desc": "A do-it-all carousel that's simple, flexible and lightweight.",
+      "size": "small"
     },
     {
+      "color": {"fg": "", "bg": ""},
       "url": "https://github.com/stephenhutchings/after-brunch",
-      "img": "",
+      "img": "/img/projects/after-brunch.png",
       "name": "after-brunch",
-      "desc": "Want to run something on the command line everytime brunch compiles? Easy."
-    }
+      "desc": "Want to run something on the command line everytime brunch compiles? Easy.",
+      "size": "small"
+    }]
   ]
 }

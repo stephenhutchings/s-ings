@@ -1,44 +1,66 @@
+block config
+  - var bodyClass = "";
+  - var fonts = "Raleway:900|Signika:300|News+Cycle:400";
+
 doctype html
-block vars
-  - var bodyclass = null;
-html(lang='en')
+html.no-js(lang="en" class=bodyClass)
   head
     block head
-      meta(charset='utf-8')
-      meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-      meta(name='viewport', content='width=device-width')
-      title S...INGS | #{page.title}
+      script.
+        document.documentElement.className = "#{bodyClass}"
 
-      meta(name="title", content=page.title)
-      meta(name="description", content=locals.description)
+      -console.log(contents)
+        
+      meta(charset="utf-8")
+      meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+      meta(
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1"
+      )
+      
+      title s&middot;ings | #{page.title}
 
-      link(rel='alternate', href='/feed.xml', type='application/rss+xml', title=locals.description)
-      link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lora:400,400italic|Source+Sans+Pro:300,300italic')
-      link(rel='stylesheet', href='/css/main.css')
+      meta(name="title" content=page.title)
+      meta(name="description" content=locals.description)
 
-  body(class=bodyclass)
+      link(
+        rel="alternate"
+        href="/feed.xml"
+        type="application/rss+xml"
+        title=locals.description
+      )
+      
+      link(
+        href="http://fonts.googleapis.com/css?family=#{fonts}"
+        rel="stylesheet" type="text/css"
+      )
 
+      link(rel="stylesheet" href="/css/main.css")
+      link(rel="shortcut icon" href="/img/favicon.png")
+
+  body
     header#header
       block header
-        h1
-          a(href="/")= locals.name
+        h1#header-title
+          a(href="/")
+            | s
+            em &middot;
+            | ings
+      
+        nav#header-nav
+          each url, title in locals.navigation
+            - var active = page.filepath.relative.search(new RegExp(title, "i")) != -1;
+            h4: a.nav-link(class=(active ? "active" : ""), href=url)=title
 
-        div.content-wrap
-          nav
-            each url, title in locals.navigation
-              - var klass = locals.page.metadata.title == title ? "active" : "";
-              a(class=klass, href=url)=title
-          h2.description= locals.description
-
-    div#content
-      div.content-wrap
+    #container
+      #content
         block content
 
     footer#footer
-      div.content-wrap
+      .content-wrap
         block footer
-          section.about
-            img(width=40, height=40, src="/img/portrait.png")
-            !=contents.partials['colophon.md'].html
-          section.copy
-            p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+          !=contents.partials["colophon.md"].html
+
+
+    script(type="text/javascript" src="/js/script.js")
+    | !{ livereloadScript }

@@ -3,78 +3,89 @@ h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre
   padding: 0
   border: 0
 
+html,
 body
-  font-family: 'Lora', serif
-  font-size: 16px
-  line-height: 1.4em
-  text-rendering: optimizeLegibility
+  height: 100%
 
-\:focus
-  outline: none
-  border: none
-  background: white
-  +box-shadow(0 0 0 6px #fff, 0 0 2px 6px rgba(0,0,0,0.2))
+body
+  font-size: 18px
+  color: $charcoal
+  font-family: $serif
+  line-height: 1.5
+  text-rendering: optimizeLegibility
+  +experimental(text-size-adjust, 100%)
 
 .content-wrap
-  width: 680px
+  width: $total-width
   margin: 0 auto
 
-body,
-a
-  color: $charcoal
+#content,
+#title
+  +transition(opacity 300ms)
+
+.loading
+
+  #content,
+  #title
+    opacity: 0
+
+  #footer
+    display: none
 
 a
+  color: darken($gold, 10)
   text-decoration: none
 
-a:hover
-  color: $tan
-  text-decoration: underline
+  &:hover
+    color: $gold
+
+  &:focus
+    outline: none
+    text-decoration: underline
 
 p
   margin-bottom: 1.52em
 
-pre
-  font-size: 0.9em
-  overflow: auto
-  background: #fff
-  border: 1px solid $grey
-  border-radius: 0.25em
-  margin-bottom: 1.8em
-  padding: 1em
+h1
+  font-family: $sans-serif
 
 h1,
-h2,
-h3,
-h4
+h2
   text-rendering: geometricPrecision
-  font-weight: 400
+
+h2, h3, h4
+  font-family: $sans-serif
+  margin-bottom: 0.33em
 
 h1
-  font-size: 2em
+  font-size: 32px
   margin-bottom: 1em
 
 h2
-  font-size: 1.2em
+  font-size: 24px
   line-height: 1.43
-  margin-bottom: 1.35em
 
 h3
-  font-size: 18px
-  margin-bottom: 8px
+  font-size: 16px
+  font-family: $title
+  font-weight: normal
+
+h4
+  font-size: 13px
 
 ol, ul
-  margin: 0 1.4em 1.4em 4em
+  margin: 0 1.4em 1.4em 2em
 
 li
   margin-bottom: 0.5em
+  line-height: 1.2em
 
 blockquote
   margin: 1.2em 3em
   padding-left: 1em
-  font-style: italic
+  font-family: $serif
 
 hr
   border: 0
-  border-top: 1px solid $border-color
   height: 0
   margin: 12px 0

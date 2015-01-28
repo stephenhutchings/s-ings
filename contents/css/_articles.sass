@@ -1,41 +1,60 @@
-// Archive
+// Thinking
 
-#articles
-  text-align: center
-  max-width: 480px
+#thinking
+  display: none
+  padding: 36px 0
   margin: auto
+
+  .article-year
+    +clearfix()
+
+  .article-month
+    margin-bottom: 3em
+    +clearfix()
+
+  .article
+    float: right
+    width: $total-width - 196px
+    padding-left: 32px
+    border-left: 4px solid $steel
+    padding-bottom: 24px
+    min-height: 48px
+
+    &:last-child
+      padding-bottom: 0
+
+    p:last-child
+      margin-bottom: 0
 
   .article-link
     display: block
     text-decoration: none
     margin: 0 0 8px
-    color: black
-    // font-size: 21px
 
-  .year-label,
-  .month-label
-    width: 200px
-    margin: auto
+  .article-label
+    width: 128px
+    padding-right: 32px
+    text-align: right
+    float: left
+    clear: both
 
-  .year-label
-    font-size: 12px
+  .article-label-year
+    font-size: 11px
 
-  .month-label
-    padding: 0 0 16px
-    margin-bottom: 16px
-    border-bottom: 1px solid $border-color
+  .article-label-month
+    font-size: 13px
 
-  .year
-    margin-bottom: 48px
+  h4
+    text-transform: uppercase
 
-  .month
-    margin-bottom: 24px
+#article-description
+  clear: both
+  padding: 24px
+  +clearfix()
 
-  ul
-    list-style: none
-    margin: 0
+#article-title,
+#article-date
+  text-align: center
 
-  ul li
-    margin: 0
-
-
+#article-title
+  margin-bottom: 8px

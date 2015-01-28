@@ -1,13 +1,15 @@
 extends layout
 
+block description
+  h1#article-title= page.title
+  #article-date!= moment(page.metadata.date).format("MMMM D, YYYY")
+
 block content
-  article.article
-    include author
-    h1= page.title
-    p.date= moment(page.metadata.date).format("MMMM, Do YYYY")
+  article.article.content-wrap
 
-    section.content!= typogr(page.html).typogrify()
+    section.content
+      != typogr(page.html).typogrify()
 
-    a(href=contents.thinking.index.url) &larr; Thinking
+    a(href=contents.writing.index.url) &larr; Thinking
 
 
