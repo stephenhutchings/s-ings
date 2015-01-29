@@ -19,19 +19,6 @@ body
   width: $total-width
   margin: 0 auto
 
-#content,
-#title
-  +transition(opacity 300ms)
-
-.loading
-
-  #content,
-  #title
-    opacity: 0
-
-  #footer
-    display: none
-
 a
   color: darken($gold, 10)
   text-decoration: none
@@ -46,15 +33,13 @@ a
 p
   margin-bottom: 1.52em
 
-h1
+h1, h2, h3, h4
   font-family: $sans-serif
 
-h1,
-h2
+h1, h2
   text-rendering: geometricPrecision
 
 h2, h3, h4
-  font-family: $sans-serif
   margin-bottom: 0.33em
 
 h1

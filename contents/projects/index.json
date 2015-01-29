@@ -11,7 +11,6 @@
     }],
     [{
       "color": {"fg": "", "bg": "#B9BDC6"},
-      "url": "",
       "img": "/img/projects/msf.jpg",
       "name": "Médecins Sans Frontières",
       "desc": "Working with global charity MSF, this microsite successfully helped to promote current issues and drive donations from a younger demographic. It's templated design empowered content managers to periodically refresh the site's content with minimal overhead."

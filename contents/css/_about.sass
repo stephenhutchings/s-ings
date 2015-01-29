@@ -42,19 +42,18 @@
   .no-js &,
   .ready.about &
     opacity: 1
-    +transform(translate3d(0, 0, 0))
+    +transform(translate3d(0, 0, 0) scale(1))
 
 #about-name-me .char
   display: inline-block
-  +transform(translate3d(0, 300%, 0))
+  +transform(translate3d(0, 300%, 0) scale(1))
 
   @for $i from 0 through 17
     &.char-#{$i}
       +transition-delay($i * 30ms)
 
-
 #about-colo
-  +transform(translate3d(0, 0, 0) rotateX(2deg) scale(0.95))
+  +transform(translate3d(0, 0, 0) scale(0.95))
   +transition(all 1200ms 800ms)
 
 // Tablet
@@ -68,10 +67,3 @@
   #about
     position: static
     margin: 20px auto
-
-.about
-  #title
-    display: none
-
-  #content
-    position: static

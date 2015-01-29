@@ -7,20 +7,15 @@ module.exports =
 
     isIE = window.navigator.userAgent.indexOf("MSIE ") isnt -1
 
-
-    $(".project-link")
-     .on("mouseenter", ->
-      $html.addClass("hover")
-    ).on("mouseleave", ->
-      $html.removeClass("hover")
-    )
+    $html
+     .on("mouseenter", ".project-link", -> $html.addClass("hover"))
+     .on("mouseleave", ".project-link", -> $html.removeClass("hover"))
 
     unless isIE
-      # Ajaxify vars
-      currentURL = document.location.href
-      currentClass = $("html").attr("class")
-      selector = "#container"
-      request = null
+      currentURL =    document.location.href
+      currentClass =  $html.attr("class")
+      selector =      "#container"
+      request =       null
 
       $html.addClass("ready")
 
@@ -70,7 +65,7 @@ module.exports =
         )
 
       ajaxifyContent = ->
-        cacheState($("html").get(0).outerHTML, document.title)
+        cacheState($html.get(0).outerHTML, document.title)
 
         window.onpopstate = (e) ->
           if e.state
