@@ -14,17 +14,23 @@
 
     .row
       display: block
-      padding: 1em
+      padding: 0 1em
+
+      &:last-child
+        .project-link
+          border-bottom-color: $steel
+
+          &:last-child
+            border-bottom-color: transparent
 
       .project-link
         width: auto
         float: none
         margin: 0 1em
-        padding: 0 0 1em
+        padding: 2em 0
 
         &:hover
-          border-color: transparent
-          border-bottom-color: darken($steel, 10)
+          border-color: transparent transparent darken($steel, 10) !important
 
       .project-desc
         padding-top: 2em
@@ -36,7 +42,7 @@
       .small
         .project-img
           max-width: 160px
-          margin: 1em auto
+          margin: auto
 
   #thinking
     .article,

@@ -1,5 +1,8 @@
 extends layout
 
+block append config
+  - bodyClass = "projects";
+
 block content
   section#projects
     for row, i in locals.page.metadata.projects
