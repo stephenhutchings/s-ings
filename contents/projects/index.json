@@ -2,12 +2,29 @@
   "template": "projects.jade",
   "title": "Projects",
   "projects": [
+    [
+    {
+      "color": {"fg": "", "bg": ""},
+      "url": "http://stephenhutchings.github.io/visible-grid/demo/",
+      "img": "/img/projects/visible-grid.png",
+      "name": "visible-grid",
+      "desc": "A bookmarklet making it easier to develop and design beautiful web applications by making your grid system visible while you work.",
+      "size": "medium"
+    },
+    {
+      "color": {"fg": "", "bg": ""},
+      "url": "https://github.com/stephenhutchings/written",
+      "img": "/img/projects/written.png",
+      "name": "written",
+      "desc": "Written is a set of utilities for manipulating text, with a focus on providing typographic tools rather than pure string manipulation.",
+      "size": "medium"
+    }],
     [{
       "color": {"fg": "#fff", "bg": "#322F2D"},
       "url": "http://swatchapp.com",
       "img": "/img/projects/swatch.jpg",
       "name": "Swatch. Find your true colors.",
-      "desc": "Swatch is an iPad® and iPhone® app made for professionals by professionals. Whether you are a graphic designer, web developer, interior decorator, ready to paint your house or just interested in the creative use of colour, Swatch is for you."
+      "desc": "Swatch is an iPad® and iPhone® app made for professionals. Whether you are a graphic designer, web developer, interior decorator, ready to paint your house or just interested in the creative use of colour, Swatch is for you."
     }],
     [{
       "color": {"fg": "", "bg": "#B9BDC6"},

@@ -13,10 +13,11 @@ html.no-js(lang="en")
         content="width=device-width, user-scalable=no, initial-scale=1"
       )
       
-      title s&middot;ings | #{page.title}
+      title !{page.title} - Stephen Hutchings, Sydney based front-end design and development
 
       meta(name="title" content=page.title)
       meta(name="description" content=locals.description)
+      meta(name="keywords" content=locals.keywords.join(" "))
 
       link(
         rel="alternate"

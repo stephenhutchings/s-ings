@@ -7,7 +7,21 @@
     "navigation": {
       "About": "/",
       "Projects": "/projects/"
-    }
+    },
+    "keywords": [
+      "stephen",
+      "hutchings",
+      "web",
+      "design",
+      "development",
+      "front-end",
+      "s-ings",
+      "projects",
+      "javascript",
+      "js",
+      "code",
+      "typicons"
+    ]
   },
   "plugins": [
     "./plugins/paginator.coffee",
