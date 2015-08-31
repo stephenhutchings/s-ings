@@ -1,0 +1,15 @@
+name: Typicons
+date: 06 Jul 2014
+size: col-md
+desc: >
+  Typicons are free-to-use vector  icons embedded in a webfont for easy use in any&nbsp;UI, whether it be on the web&nbsp;or in a native app.
+urls:
+  -
+    text: GitHub
+    link: https://github.com/stephenhutchings/typicons.font
+  -
+    text: Website
+    link: http://typicons.com/
+imgs:
+  cover:  /img/projects/typicons/cover.png
+  reveal: /img/projects/typicons/reveal.png

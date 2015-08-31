@@ -1,0 +1,68 @@
+extends ../../partials/project
+
+block project
+  :markdown
+    Typicons were developed at the start of the font icon revolution to fill a 
+    void that had existed and still enjoy a high level of popularity.
+    The set of icons are available on Github, with everything included from 
+    the source files in SVG format to the minifed CSS. 
+
+    ![Typicons](/img/projects/typicons/typicons.png)
+
+    #### How to Use Typicons
+
+    Typicons are dead simple to use. Here is how...
+
+    #### Install with bower
+
+    The easiest way to install Typicons is with bower. This will give you the 
+    minified CSS, the combined font files (SVG, WOFF, TTF, EOT) and a demo 
+    page showing how to include the font.
+
+    ```
+    $ bower install typicons
+    ```
+
+    #### Setting up
+
+    The first step is to include typicons.min.css in your the head of your 
+    HTML. Make sure you change the path to point to the file on your server.
+
+    ```html
+    <link rel="stylesheet" href="path/to/typicons.min.css" />
+    ```
+
+    The CSS file uses the @font-face rule to point to several font files, 
+    providing a the best possible cross-bwroser solution.
+
+    ```css
+    @font-face {
+      font-family: "typicons";
+      src: url("path/to/typicons.eot");
+      src: url("path/to/typicons.eot?#iefix") format("embedded-opentype"),
+           url("path/to/typicons.woff") format("woff"),
+           url("path/to/typicons.ttf") format("truetype"),
+           url("path/to/typicons.svg#typicons") format("svg");
+      font-weight: normal;
+      font-style: normal;
+    }
+    ```
+    Again, ensure that the path to the files matches the setup on your server. 
+    Typicons uses Fontspring’s bulletproof @font-face CSS for including fonts 
+    on your website.
+
+    Now your ready to include any icons you want on your site. Just add a span or i tag with the appropriate class name.
+
+    ```html
+    <span class="typcn typcn-arrow-left"></span>
+    ```
+
+    That’s it! Remember to include both the typcn and typcn-class-name 
+    classes. I prefer this over the `[class^="typcn-"], [class*=" typcn-"]` 
+    method simply because the selector performs better on low performance 
+    devices.
+
+    There is one caveat, though. Typicons is on the larger side, weighing in 
+    at about 80kb (unzipped). I would strongly suggest reading the "Making 
+    Typicons" article or checking out the resources in order to make a custom 
+    build of Typicons.

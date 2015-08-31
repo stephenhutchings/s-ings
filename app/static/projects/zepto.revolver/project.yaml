@@ -1,0 +1,15 @@
+name: "zepto.&shy;revolver"
+date: Mar 1 2014
+size: col-sm
+desc: >
+  A do-it-all carousel that’s simple, flexible and lightweight.
+urls:
+  -
+    text: Demo
+    link: http://stephenhutchings.github.io/zepto.revolver/demo/
+  -
+    text: GitHub
+    link: https://github.com/stephenhutchings/zepto.revolver
+imgs:
+  cover:  /img/projects/revolver/cover.png
+  reveal: /img/projects/revolver/reveal.png

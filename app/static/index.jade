@@ -1,0 +1,26 @@
+extends partials/layout
+
+block append config
+  - page.class = "page-about";
+  - page.title = "s&middot;ings";
+
+block content
+  h1
+    em Hi, I’m 
+    | Stephen 
+    br
+    | Hutchings
+
+  hr
+
+  h2.hl-block
+    span.highlight I design and build well-crafted 
+    span.highlight digital interfaces, interactions  
+    span.highlight &amp; experiences. At work and in 
+    span.highlight my spare time I make things, 
+    span.highlight hang out &amp; do the crossword. 
+
+  p
+    a.btn(href="/me") About Me
+    | &emsp;
+    a.btn.btn-next(href="/projects") Projects

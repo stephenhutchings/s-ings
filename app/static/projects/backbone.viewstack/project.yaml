@@ -1,0 +1,14 @@
+name: "backbone.&shy;viewstack"
+date: 19 Sep 2014
+desc: >
+  Seamless management of a view’s stacking, pushing and popping for Backbone single-page apps.
+urls:
+  -
+    text: Demo
+    link: http://creative-licence-digital.github.io/backbone.viewstack/demo/public/
+  -
+    text: GitHub
+    link: http://github.com/creative-licence-digital/backbone.viewstack
+imgs:
+  cover:  /img/projects/viewstack/cover.png
+  reveal: /img/projects/viewstack/reveal.png

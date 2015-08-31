@@ -1,0 +1,16 @@
+header#header(data-view="views/header")
+  .content-wrap
+    h3.tight
+      a#logo(href="/")
+        for c in "s·ings"
+          if c == "·"
+            em.diamond= c
+          else
+            span.header-char= c
+
+
+    img#header-loader(
+      src="/img/shapes.gif"
+      title="Hello. I’m here when loading another page."
+      width=40 height=40
+    )

@@ -1,0 +1,54 @@
+#header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 10
+  padding-top: 52px
+
+  .hide-nav &
+    pointer-events: none
+
+  #logo
+    border-bottom: none
+    display: inline-block
+    margin-left: -0.5em
+    padding: 0.25em 0.5em
+    transition: all 250ms
+    color: black
+    border-radius: 20px
+
+    &:hover
+      .diamond
+        transform: translate3d(0, 0, 0) rotate(-45deg) scale(1)
+
+    .hide-nav &
+      color: transparent
+
+  .diamond
+    display: inline-block
+    background-color: black
+    transform: translate3d(0, 0, 0) rotate(45deg) scale(1)
+    overflow: hidden
+    width: 0.43em
+    height: 0.43em
+    margin: 2px 4px
+    transition: all 600ms
+
+    .hide-nav &
+      transform: translate3d(0, 0, 0) rotate(-135deg) scale(2)
+      opacity: 0
+
+#header-loader
+  opacity: 1
+  position: absolute
+  top: -4px
+  right: 12px
+  transform: translate3d(0, 0, 0)
+  @extend %transition-sm
+
+  .ready &
+    opacity: 0
+
+  &:hover
+    opacity: 1

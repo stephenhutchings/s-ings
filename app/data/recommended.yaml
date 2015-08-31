@@ -1,0 +1,42 @@
+things:
+  -
+    book:
+      - "“The Elements of Typographic Style” by Robert Bringhurst"
+      - "“Gravity’s Rainbow” by Thomas Pynchon"
+      - "“Absalom, Absalom!” by William Faulkner"
+      - "“All the Pretty Horses” by Cormac McCarthy"
+      - "“The Third Policeman” by Flann O’Brien"
+  -
+    film:
+      - "“Leviathan” by Andrey Zvyagintsev"
+      - "“Once Upon a Time in Anatolia” by Nuri Bilge Ceylan"
+      - "“Paris, Texas” by Wim Wenders"
+      - "“Enter the Void” by Gaspar Noé"
+      - "“Buffalo ’66” by Vincent Gallo"
+      - "“Blue Velvet” by David Lynch"
+      - "“The Holy Mountain” by Alejandro Jodorowsky"
+      - "“The Conversation” with Gene Hackman"
+      - "“The White Ribbon” by Michael Haneke"
+  -
+    group:
+      - "The Necks"
+      - "Bing & Ruth"
+      - "The Microphones"
+      - "OOIOO"
+      - "Pavement"
+      - "Talk Talk"
+  -
+    director:
+      - "Jim Jarmusch"
+      - "Andrei Tarkovsky"
+      - "Béla Tarr"
+      - "Yasujirō Ozu"
+      - "Gus Van Sant"
+      - "Lars Von Trier"
+
+after:
+  - Right up my alley.
+  - A favourite of mine.
+  - So good.
+  - For real.
+  - On the top of my list.

@@ -1,0 +1,8 @@
+name: Asterisms
+date: 20 Jun 2015
+size: col-sm
+desc: >
+  A chart of the stars and constellations in the  night sky.
+imgs:
+  cover:  /img/projects/asterisms/cover.png
+  reveal: /img/projects/asterisms/reveal.png

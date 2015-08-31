@@ -1,0 +1,30 @@
+extends ../partials/layout
+
+block append config
+  - page.class = "page-projects";
+  - page.title = "Projects";
+  - page.description = "Experiments, projects & tools made in the small hours";
+
+block content
+  .col-sm
+    h1 Projects
+    h2.hl-block
+      span.highlight Experiments, designs &amp; tools
+      span.highlight made in the small hours.
+    hr
+
+  .projects.col-wrap(data-view="views/projects")
+    for project in data.getProjects()
+      a.project-link(href=project.path class=project.size || "col-sm")
+        .project-imgs
+          img.project-img.project-img-reveal(src=project.imgs.reveal)
+          img.project-img.project-img-cover(src=project.imgs.cover)
+
+        .project-caption
+          h2.project-name!= project.name
+          p.project-desc
+            != typogr(project.desc || "").typogrify()
+
+          .project-open &rarr;
+          .project-close &times;
+  

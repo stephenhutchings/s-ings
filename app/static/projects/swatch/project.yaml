@@ -1,0 +1,15 @@
+name: Swatch. Find your true colours.
+date: 01 Jan 2015
+size: col-lg
+desc: >
+  Swatch is an iPad® &amp;&nbsp;iPhone® app made for professionals who work with colour.
+urls:
+  -
+    text: Website
+    link: http://swatchapp.com
+  -
+    text: App Store
+    link: "https://itunes.apple.com/us/app/swatch-app/id880457469?ls=1&mt=8"
+imgs:
+  cover:  /img/projects/swatch/cover.png
+  reveal: /img/projects/swatch/reveal.jpg

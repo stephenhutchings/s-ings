@@ -1,0 +1,82 @@
+after:
+  - " and it can only get better from here."
+  - " and that‘s OK by me."
+  - " and that‘s something we can all get behind."
+  - " and there are a million things to do."
+  - " and there is nothing to worry about."
+  - ", but you already knew that."
+  - ", don’t you know?"
+  - ". Any plans for the weekend?"
+  - ". End of story."
+  - ". Same old story."
+  - ". Who’d a thunk it?"
+  - ". Will the weather hold?"
+  - ". Where does the time go?"
+
+ergo:
+  monday:
+    - "The weeks just beginning."
+    - "It feels fresh and good."
+    - "Who knows what will happen?"
+
+  tuesday:
+    - "It’s already flying by."
+    - "I’m all about it."
+    - "I’m thinking about lunch."
+
+  wednesday:
+    - "Depends day."
+    - "Hump Day."
+    - "How do you rate it?"
+
+  thursday:
+    - Almost there.
+    - My favourite.
+    - Where did the time go?
+
+  friday:
+    - Have you finished?
+    - Winding up.
+    - Pub lunch!
+
+  saturday:
+    - Relax. It’s the weekend.
+    - Night. Fever.
+
+  sunday:
+    - Out of office reply.
+    - Day of rest.
+    - Everyone has gone home.
+    - Enjoy it while it lasts.
+    - Already?
+
+  times:
+    -
+      - in the small hours
+      - on the graveyard shift
+      - (and you should be asleep)
+      - (are you up still?)
+    -
+      - at the crack of dawn
+      - break of day
+    -
+      - in the morning
+      - and early
+    -
+      - at lunch time
+      - in the middle of the day
+    -
+      - afternoon
+      - after lunch
+    -
+      - at dusk
+      - at twilight
+      - and done for the day
+    -
+      - in the evening
+      - tonight
+    -
+      - night
+      - and it’s late
+
+

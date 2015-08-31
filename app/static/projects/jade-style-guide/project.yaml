@@ -1,0 +1,13 @@
+name: A Style Guide for Jade
+date: Mar 1 2014
+size: col-sm col-newline
+hide: true
+desc: >
+  Because it’s so much nicer when things are done right.
+urls:
+  -
+    text: GitHub
+    link: https://github.com/Creative-Licence-Digital/jade-style-guide
+imgs:
+  cover:  /img/projects/jade/cover.png
+  reveal: /img/projects/jade/reveal.png

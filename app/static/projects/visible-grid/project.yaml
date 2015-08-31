@@ -1,0 +1,15 @@
+name: visible-grid
+date: 22 Jun 2015
+size: col-sm
+desc: >
+  Design and develop better web applications by making your grid system visible while you work.
+urls:
+  -
+    text: Demo
+    link: http://stephenhutchings.github.io/visible-grid/demo/
+  -
+    text: GitHub
+    link: http://github.com/stephenhutchings/visible-grid/
+imgs:
+  cover:  /img/projects/visible-grid/cover.png
+  reveal: /img/projects/visible-grid/reveal.png

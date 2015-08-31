@@ -1,0 +1,35 @@
+extends ../partials/layout
+
+block append config
+  - page.class = "page-projects";
+  - page.title = "Projects";
+  - page.description = "Experiments, projects & tools made in the small hours";
+
+block content
+  
+  .col-wrap: .col-sm
+    h1
+      em Hi, I’m 
+      | Stephen
+      br
+      | Hutchings
+
+    h2.hl-block
+      span.highlight Nice to meet you.
+      span.highlight Let me introduce myself.
+
+    hr.tight
+
+  .col-wrap: .col-lg
+    :markdown
+      For the past five years, I’ve been working at [Creative Licence Digital][1]. There my role is two-fold, acting as both the Art Director and Front-End Lead for our teams in Sydney and New York. We build web and native applications for a range of domestic and international clients. We do all sorts of stuff there — steak timers, medical reminders, HTML5 games, huge e-commerce projects, brand identities — you name it and we've probably done it.
+
+      It’s my responsibility to ensure our design team can deliver engaging, beautiful experiences. For me, this doesn’t mean just art direction but a set of tools that helps our team work better and smarter. Whether it’s compilers that create more beautiful code, modern frameworks that help structure large projects or assemblers that take the grunt-work out of development — the web is alive with new technology and we are always ready to innovate.
+
+      While my training is in design and illustration, I have always had a keen interest in digital. I am one of those people, though, that likes to get my hands into everything. You will find a mix of projects here, from utilities for other developers to design work that fills my spare time. So have a look around, and [hit me up][2] if you want to chat.
+
+      [1]: http://www.creativelicencedigital.com
+      [2]: mailto:stephen@s-ings.com
+
+  a.btn-text.btn-prev(href="/") Back
+  a.btn-text.btn-next(href="/projects") Projects

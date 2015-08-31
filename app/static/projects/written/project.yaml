@@ -1,0 +1,16 @@
+name: written
+date: 20 Jun 2015
+url: "https://github.com/stephenhutchings/written"
+size: col-sm
+desc: >
+  Written is a set of utilities for shaping text, with a focus on providing typographic tools over pure string  manipulation.
+urls:
+  -
+    text: NPM
+    link: http://npmjs.com/package/written
+  -
+    text: GitHub
+    link: http://github.com/stephenhutchings/written/
+imgs:
+  cover:  /img/projects/written/cover.png
+  reveal: /img/projects/written/reveal.png

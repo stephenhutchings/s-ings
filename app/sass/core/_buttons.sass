@@ -1,0 +1,57 @@
+.btn
+  font-size: 20px
+  display: inline-block
+  line-height: 1
+  border: 1px solid
+  padding: 0.4em 1em 0.5em
+  border-radius: 20px
+  @extend %transition-sm
+
+  &:hover,
+  &:focus,
+  &.__active
+    background-color: #000
+    color: #fff
+    border: 1px solid
+
+.btn-text
+  border: none
+  padding: 0.3em 0.4em
+  border-radius: 3px
+  @extend %transition-sm
+
+  &:hover,
+  &.__active
+    background-color: #eee
+
+  + .btn-text
+    margin-left: 0.8em
+
+    &:before
+      content: ""
+      display: inline-block
+      position: relative
+      left: -0.8em
+      height: 1em
+      vertical-align: text-top
+      border-left: 1px solid
+      transform: rotate(16deg)
+      transform-origin: left center
+
+.btn-prev:before,
+.btn-next:after
+  content: ""
+  display: inline-block
+  width: 0.5em
+  height: 0.5em
+  transform: rotate(45deg)
+
+.btn-prev:before
+  margin-right: 0.4em
+  border-bottom: 1px solid
+  border-left: 1px solid
+
+.btn-next:after
+  margin-left: 0.4em
+  border-top: 1px solid
+  border-right: 1px solid

@@ -1,13 +1,52 @@
 {
-  "dependencies": {
-    "moment": "2.x",
-    "typogr": "0.5.x",
-    "uglifyify": "^2.5.0",
-    "underscore": "1.4.x",
-    "wintersmith-browserify": "^0.3.0",
-    "wintersmith-coffee": "~0.2.1",
-    "wintersmith-livereload": "^0.1.1",
-    "wintersmith-sass": "^0.3.0"
+  "author": "Stephen Hutchings",
+  "name": "s-ings",
+  "description": "",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": ""
   },
-  "repository": "none"
+  "engines": {
+    "node": "~0.6.25 || 0.8 || 0.9"
+  },
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "brunch test"
+  },
+  "dependencies": {
+    "auto-reload-brunch": "~1.7.3",
+    "autoprefixer-brunch": "^1.8.4",
+    "clean-css-brunch": "~1.7.1",
+    "coffee-script-brunch": "~1.7.3",
+    "css-brunch": "~1.7.0",
+    "glob": "^5.0.5",
+    "jade-static-brunch": "^1.8.1",
+    "javascript-brunch": "~1.7.1",
+    "js-yaml": "^3.2.6",
+    "lodash": "^3.2.0",
+    "marked": "^0.3.3",
+    "moment": "^2.10.3",
+    "sass-brunch": "~1.7.2",
+    "typogr": "^0.6.5",
+    "uglify-js-brunch": "~1.7.7",
+    "written": "^0.1.3",
+    "yaml-brunch": "^1.0.1"
+  },
+  "keywords": [
+    "stephen",
+    "hutchings",
+    "web",
+    "design",
+    "development",
+    "front-end",
+    "s-ings",
+    "projects",
+    "javascript",
+    "js",
+    "code",
+    "typicons"
+  ],
+  "main": "index.js",
+  "license": "BSD-2-Clause"
 }

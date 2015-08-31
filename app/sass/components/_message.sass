@@ -1,0 +1,61 @@
+#message
+  background: #333
+  color: #fff
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  height: 200px
+  cursor: hand
+  cursor: pointer
+
+  #message-content
+    height: 4.4em
+    margin-top: -0.5em
+
+  .word
+    display: inline-block
+
+  #message-author
+    transition: all 300ms
+    color: #666
+
+    &:before
+      content: "— "
+
+  .char,
+  #message-author
+    opacity: 0
+
+  .char
+    transform: translate3d(0, 24px, 0)
+
+  &.leave
+    .char
+      transform: translate3d(0, -24px, 0)
+
+  &.active
+    #message-author
+      transition-delay: 1200ms
+      opacity: 1
+
+    .char
+      opacity: 1
+      transform: translate3d(0, 0, 0)
+
+.chars
+  transform: translate3d(0, 0, 0)
+
+.char
+  opacity: 0
+  display: inline-block
+  transform: translate3d(0, 0px, 0) scale(0.8)
+  transition: all 1600ms $bounce
+
+  .no-js &,
+  .ready.page-about &
+    opacity: 1
+    transform: translate3d(0, 0, 0) scale(1)
+
+  .no-js &
+    transition: none

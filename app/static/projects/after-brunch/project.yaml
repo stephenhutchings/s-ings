@@ -1,0 +1,12 @@
+name: after-brunch
+date: Jan 18 2014
+size: col-sm
+desc: >
+  Want to run something on the command line every time brunch compiles? Easy.
+urls:
+  -
+    text: GitHub
+    link: https://github.com/stephenhutchings/after-brunch
+imgs:
+  cover:  /img/projects/after-brunch/cover.png
+  reveal: /img/projects/after-brunch/reveal.png

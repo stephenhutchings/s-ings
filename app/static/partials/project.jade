@@ -1,0 +1,25 @@
+extends layout
+
+block append config
+  - var project = data.getProject(__.directory.match(/[^\/]+$/)[0]);
+  - page.class = "page-project";
+  - page.title = project.name;
+  - page.description = project.desc;
+
+block content
+  .col-sm
+    h1.project-title!= project.name
+    h2.hl-block
+      for line in _.chunk(project.desc.split(" "), 5)
+        span.highlight!= typogr.typogrify(line.join(" "))
+
+    include project-links
+
+    hr.tight
+
+  .col-wrap
+    block project-full
+      .col-lg
+        block project
+
+  include project-links
