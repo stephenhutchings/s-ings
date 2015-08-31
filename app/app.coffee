@@ -5,6 +5,8 @@ Application =
     NiceTouch.initialize()
     hljs.initHighlightingOnLoad()
 
+    $("html").removeClass("no-js")
+
     Router  = require("lib/router")
     @router = new Router()
 

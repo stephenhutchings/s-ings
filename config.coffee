@@ -13,15 +13,11 @@ exports.config =
     autoprefixer:
       browsers: ["> 1%"]
 
-    jade:
-      baseDir: "app/templates"
-
     jadeStatic:
       baseDir: "app/static"
       formatPath: (path) ->
         path.match(/^app(\/|\\)static(\/|\\)(.+)\.jade$/)?[3]
 
-      pretty: true
       locals:
         _:        require("lodash")
         moment:   require("moment")
