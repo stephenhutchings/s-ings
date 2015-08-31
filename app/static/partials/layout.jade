@@ -1,7 +1,8 @@
 block config
   - var page = {};
   - page.description = 
-  - "Stephen Hutchings, Sydney based front-end design and development";
+  - "Hi, I’m Stephen Hutchings. I design and build well-crafted digital " +
+  - "interfaces, interactions & experiences.";
 
 doctype html
 html.no-js(lang="en")
@@ -16,11 +17,19 @@ html.no-js(lang="en")
       
       title
         != page.title
-        |  - Stephen Hutchings, Sydney based front-end design and development
+        |  - Stephen Hutchings, front-end designer and developer in Sydney
 
-      meta(name="title"        content=page.title)
-      meta(name="description"  content=page.description)
-      meta(name="keywords"     content=package.keywords.join(" "))
+      meta(name="title"       content=page.title)
+      meta(name="description" content=page.description)
+      meta(name="keywords"    content=package.keywords.join(", "))
+      meta(name="author"      content="Stephen Hutchings")
+      meta(name="copyright"   content="Stephen Hutchings 2015")
+      meta(name="robots"      content="index, follow")
+
+      meta(http-equiv="content-type" content="text/html;UTF-8")
+      meta(http-equiv="cache-control" content="cache")
+      meta(http-equiv="content-language" content="en")
+      meta(http-equiv="revisit-after" content="31 days")
 
       link(rel="stylesheet"    href="/css/app.css")
       link(rel="shortcut icon" href="/img/favicon.png")
