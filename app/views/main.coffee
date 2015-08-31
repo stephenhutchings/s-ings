@@ -14,7 +14,7 @@ class MainView extends Backbone.View
 
   navigateWithoutDelay: (e) ->
     if e.currentTarget.hash
-      $("body").scrollTo($(e.currentTarget.hash).offset().top - 48)
+      @$el.scrollTo($(e.currentTarget.hash).offset().top - 48)
       false
     else if e.currentTarget.origin is window.location.origin
       e.preventDefault()
@@ -52,7 +52,7 @@ class MainView extends Backbone.View
       view.hide?()
       delete @views[key]
 
-    $("body").scrollTo 0, =>
+    @$el.scrollTo 0, =>
       $.ajax
         url: Backbone.history.location.pathname
         type: "GET"
