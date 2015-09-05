@@ -8,8 +8,11 @@ moment    = require "moment"
 paths =
   projects: "app/static/projects"
 
+projects = false
+
+
 getProjects = ->
-  glob
+  projects or glob
     .sync("#{paths.projects}/*/")
 
     .map((m) ->
@@ -26,8 +29,12 @@ getProjects = ->
 
 getProject = (name) ->
   path = "#{paths.projects}/#{name}/"
+  data = { path: path.replace("app/static", "") }
 
-  _.extend { path: path.replace("app/static", "") },
+  if projects
+    project = _.findWhere(projects, data)
+
+  project or _.extend data,
     try
       yaml.load fs.readFileSync("#{path}project.yaml", "UTF-8")
     catch

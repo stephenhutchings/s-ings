@@ -1,0 +1,84 @@
+#crossword
+  background: #222
+  color: #fff
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  height: 280px
+  overflow: hidden
+  transform: translate3d(0, 0, 0)
+
+  hr
+    color: #ccc
+
+  .crossword-letters
+    font-size: 28px
+    text-align: center
+    text-transform: uppercase
+    margin: 32px 0 24px
+    @extend %clearfix
+
+  .crossword-letter,
+  .crossword-hyphen
+    float: left
+
+  .crossword-letter
+    width: 36px
+    height: 52px
+    line-height: 52px
+    margin: 0 4px 1px 0
+    border-bottom: 4px solid #555
+    box-sizing: border-box
+    position: relative
+    transition: all 1200ms $bounce, background-color 300ms
+    transform: translate3d(0, 0, 0)
+
+    &.disabled
+      border-bottom-color: transparent
+      background: #333
+
+    &.focus
+      background-color: #555
+
+  .crossword-input,
+  .crossword-mask
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+
+  .crossword-input
+    padding: 0
+    display: block
+    width: inherit
+    border: none
+    height: inherit
+    opacity: 0
+    text-indent: -999px
+    -webkit-appearance: none
+    @extend %cursor-hand
+
+  .crossword-mask
+    z-index: 1
+    pointer-events: none
+
+  .crossword-definition
+    transition: all 800ms $bounce
+    height: 2.56em
+    align-items: center
+    display: flex
+
+  .text-muted,
+  .text-muted :before
+    color: #777
+
+  &.success
+    .crossword-letter
+      opacity: 0
+      transform: translate3d(0, -16px, 0)
+
+    .crossword-definition
+      opacity: 0
+      transform: translate3d(0, 16px, 0)

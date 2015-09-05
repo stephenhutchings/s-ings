@@ -6,9 +6,11 @@
   padding: 0.4em 1em 0.5em
   border-radius: 20px
   @extend %transition-sm
+  @extend %cursor-hand
 
   &:hover,
   &:focus,
+  &.active,
   &.__active
     background-color: #000
     color: #fff
@@ -18,15 +20,28 @@
   border: none
   padding: 0.3em 0.4em
   border-radius: 3px
+  margin-left: -0.4em
   @extend %transition-sm
+  @extend %cursor-hand
 
   &:hover,
   &:focus,
+  &.active,
   &.__active
     background-color: #eee
 
+  &.btn-no-bg
+    background-color: transparent
+
+    &:hover,
+    &:focus,
+    &.active,
+    &.__active
+      color: #fff
+
   + .btn-text
     margin-left: 0.8em
+    padding-left: 0.4em
 
     &:before
       content: ""
@@ -39,13 +54,17 @@
       transform: rotate(16deg)
       transform-origin: left center
 
+.btn-prev
+  margin-left: 0
+
 .btn-prev:before,
 .btn-next:after
   content: ""
   display: inline-block
+  position: relative
   width: 0.5em
   height: 0.5em
-  transform: rotate(45deg)
+  transform: rotate(45deg) translateY(-0.5px)
 
 .btn-prev:before
   margin-right: 0.4em
