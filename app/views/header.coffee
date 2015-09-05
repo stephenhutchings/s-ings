@@ -4,11 +4,11 @@ class HeaderView extends Backbone.View
 
   onScroll: ->
     window.clearTimeout @timeout
-    @timeout = window.setTimeout (=> @detectDirection()), 20
+    @timeout = window.setTimeout (=> @detectDirection()), 10
 
   detectDirection: ->
     y = Math.max(window.pageYOffset, 0)
-    delta = 10
+    delta = 30
 
     if @currentState isnt (y >= delta)
       $("html").toggleClass("hide-nav", @currentState = y >= delta)

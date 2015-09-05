@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("visible-grid");
+
 block project
-  :markdown
+  :marked
     #### What is it?
     
     `visible-grid` makes it easier to develop and design beautiful web 

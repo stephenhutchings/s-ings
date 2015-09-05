@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("written");
+
 block project
-  :markdown
+  :marked
     It can be a pain formatting dynamic text. And user interfaces need to do it
     all the time. Making it look a little more human can go a long way. This 
     library collects some of the things I find myself rewriting over and over

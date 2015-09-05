@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("fire-truck");
+
 block project
-  :markdown
+  :marked
     ![Truck at 3/4 Angle][1]
     ![Truck in Profile][2]
     ![Front of the Truck][3]

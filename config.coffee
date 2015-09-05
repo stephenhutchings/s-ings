@@ -13,11 +13,8 @@ exports.config =
     autoprefixer:
       browsers: ["> 1%"]
 
-    jadeStatic:
-      baseDir: "app/static"
-      formatPath: (path) ->
-        path.match(/^app(\/|\\)static(\/|\\)(.+)\.jade$/)?[3]
-
+    jaded:
+      staticPatterns: /^app(\/|\\)static(\/|\\)(.+)\.jade$/
       locals:
         _:        require("lodash")
         moment:   require("moment")
@@ -43,6 +40,10 @@ exports.config =
     stylesheets:
       joinTo:
         "css/app.css": /\.s[ac]ss/
+
+    templates:
+      joinTo:
+        "js/app.js": /^app\/templates(\/|\\)(.+)\.jade$/
 
   framework: "backbone"
 

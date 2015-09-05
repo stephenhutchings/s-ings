@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("nice-to-meet-you");
+
 block project
-  :markdown
+  :marked
     This was conceived as a simple but fun book for children and adults, and 
     remains a work in progress. Eventually I would like to couple each page 
     with a facing page of illustrations for each name.

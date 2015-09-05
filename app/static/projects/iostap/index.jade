@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("iostap");
+
 block project
-  :markdown
+  :marked
     #### How to use it
 
     Download the source files from the build directory, or use Bower.

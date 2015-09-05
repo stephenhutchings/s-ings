@@ -1,12 +1,15 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("asterisms");
+
 block project-full
   .col-full
-    :markdown
+    :marked
       ![Asterisms - Full Size](/img/projects/asterisms/asterisms-full.png)
 
   .col-lg
-    :markdown
+    :marked
       This projection distorts the night sky into a circle, giving a 
       combined view of both the northern and sourthen skys. The 
       ecliptic path can be seen swerving through the centre of the chart, as 

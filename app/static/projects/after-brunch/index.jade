@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("after-brunch");
+
 block project
-  :markdown
+  :marked
     For a new project at Creative Licence, we have been using the awesome 
     [Brunch][1]. Brunch is an assembler for HTML5 applications, which means 
     that all the work watching, compiling, optimizing and concatenating source 

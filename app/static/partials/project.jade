@@ -1,7 +1,6 @@
 extends layout
 
 block append config
-  - var project = data.getProject(__.directory.match(/[^\/]+$/)[0]);
   - page.class = "page-project";
   - page.title = project.name;
   - page.description = project.desc;

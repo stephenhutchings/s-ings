@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("jade-style-guide");
+
 block project
-  :markdown
+  :marked
     #### No unnecessary DIVs
 
     Unspecified elements are automatically cast as a `div`, so don't waste 

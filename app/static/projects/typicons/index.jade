@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("typicons");
+
 block project
-  :markdown
+  :marked
     Typicons were developed at the start of the font icon revolution to fill a 
     void that had existed and still enjoy a high level of popularity.
     The set of icons are available on Github, with everything included from 

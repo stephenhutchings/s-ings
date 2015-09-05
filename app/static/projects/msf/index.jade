@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("msf");
+
 block project
-  :markdown
+  :marked
      Working with global charity MSF this microsite successfully helped to 
      promote current issues and drive donations from a younger demographic. 
      It’s templated design empowered content managers to periodically refresh 

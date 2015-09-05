@@ -1,7 +1,10 @@
 extends ../../partials/project
 
+block prepend config
+  - var project = data.getProject("swatch");
+
 block project
-  :markdown
+  :marked
     Swatch began as an aimless design exercise - messing around with a few 
     layout ideas without having any goal in mind. It soon developed into an 
     all-absorbing project, with a prototype and then full application 
@@ -15,29 +18,27 @@ block project
     ---
 
   .col-sm
-    :markdown
+    :marked
       ![Scan](/img/projects/swatch/scan.png)
       
       Scan an image to get it’s colours
   .col-sm
-    :markdown
+    :marked
       ![Detail](/img/projects/swatch/details.png)
       
       Dive into your chosen colour
   .col-sm
-    :markdown
+    :marked
       ![Pipette](/img/projects/swatch/pipette.png)
       
       Easily pick any colour
   .col-sm
-    :markdown
+    :marked
       ![Email](/img/projects/swatch/email.png)
 
       Email your work when your done
 
-
-  :markdown
-
+  :marked
     ---
 
     #### The Marketing
