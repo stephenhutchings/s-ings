@@ -4,8 +4,9 @@
   $.fn.scrollTo = function(position, callback){
     this.each(function(){
       var $this = $(this),
-          targetY = position || 0,
           initialY = $this.scrollTop(),
+          maxY = this.scrollHeight - $this.outerHeight(),
+          targetY = Math.min(position || 0, maxY),
           lastY = initialY,
           delta = targetY - initialY,
           speed = Math.max(800, Math.min(1200, Math.abs(initialY-targetY))),
