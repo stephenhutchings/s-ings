@@ -111,7 +111,7 @@ class CrosswordView extends Backbone.View
   checkAnswer: ->
     answer = @$(".crossword-input").map((i, el) -> el.value).toArray().join("")
 
-    if clues[0].word.replace("-", "") is answer
+    if clues[0].word.match(/[A-Z]/g).join("") is answer
       total = @score.get "total"
       bonus = Math.max(10000 + @score.timestamp - (new Date()).getTime(), 0)
 
