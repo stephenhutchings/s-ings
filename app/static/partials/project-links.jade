@@ -2,4 +2,4 @@ p.project-links
   a.btn-text.btn-prev(href="/projects") Projects
   if project.urls
     for url in project.urls
-      a.btn-text(href=url.link)= url.text
+      a.btn-text(href=url.link data-follow=url.follow)= url.text
