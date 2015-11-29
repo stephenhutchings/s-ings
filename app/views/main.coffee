@@ -16,10 +16,18 @@ class MainView extends Backbone.View
     if e.currentTarget.hash
       @$el.scrollTo($(e.currentTarget.hash).offset().top - 48)
       false
-    else if e.currentTarget.origin is window.location.origin
+
+    else if e.currentTarget.origin is window.location.origin and not
+          $(e.currentTarget).data("follow")?
+
       e.preventDefault()
       app.router.navigate(e.currentTarget.pathname, true)
       false
+
+    else
+      Backbone.history.stop()
+      window.location = e.currentTarget.href
+      true
 
   # Display the current page, calling a display method on each active view and
   # enclassing the current page to reflect the page name.
