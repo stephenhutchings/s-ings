@@ -1,0 +1,35 @@
+doctype xml
+| <?xml-stylesheet type="text/xsl" href="/css/sitemap.xsl"?>
+urlset(
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+)
+  
+  - var projects = data.getProjects();
+  - var root = "http://s-ings.com"
+
+  url
+    loc= root
+    lastmod= moment(new Date(projects[0].date)).format()
+    changefreq daily
+    priority 1.0
+
+  url
+    loc= root + "/me"
+    lastmod 2015-11-03T12:58:00+10:00
+    changefreq monthly
+    priority 0.3
+    
+  url
+    loc= root + "/projects"
+    lastmod= moment(new Date(projects[0].date)).format()
+    changefreq monthly
+    priority 0.3
+
+  for project in projects
+    url
+      loc= root + project.path
+      lastmod= moment(new Date(project.date)).format()
+      changefreq monthly
+      priority 0.2

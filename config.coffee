@@ -1,3 +1,5 @@
+fs = require("fs")
+
 exports.config =
   paths:
     public: "build"
@@ -46,4 +48,8 @@ exports.config =
         "js/app.js": /^app\/templates(\/|\\)(.+)\.jade$/
 
   framework: "backbone"
+
+  onCompile: (generatedFiles) ->
+    fs.rename "build/sitemap.xml.html", "build/sitemap.xml", (err) ->
+      console.log err if err?
 
