@@ -1,4 +1,4 @@
-name: "zepto.ios&shy;tap"
+name: "iostap"
 date: 01 Feb 2014
 size: col-sm
 desc: >
@@ -6,7 +6,9 @@ desc: >
 urls:
   -
     text: GitHub
-    link: http://github.com/stephenhutchings/zepto.iostap/
+    link: http://github.com/stephenhutchings/iostap/
 imgs:
   cover:  /img/projects/iostap/cover.png
   reveal: /img/projects/iostap/reveal.png
+tags:
+  - UI/UX

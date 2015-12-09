@@ -10,7 +10,6 @@ paths =
 
 projects = false
 
-
 getProjects = ->
   projects or glob
     .sync("#{paths.projects}/*/")

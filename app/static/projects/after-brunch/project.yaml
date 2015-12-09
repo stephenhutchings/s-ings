@@ -10,3 +10,5 @@ urls:
 imgs:
   cover:  /img/projects/after-brunch/cover.png
   reveal: /img/projects/after-brunch/reveal.png
+tags:
+  - Developer Tools

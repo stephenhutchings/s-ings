@@ -1,21 +1,25 @@
 app = require("app")
 
-klass  = ".project-link"
-muted  = "project-muted"
-active = "project-active"
-action = "project-actionable"
+klass    = ".project-link"
+muted    = "project-muted"
+active   = "project-active"
+action   = "project-actionable"
+disabled = "project-disabled"
 
 class ProjectsView extends Backbone.View
   events: ->
-    events  = {}
-    isTouch =
+    isTouch = "ontouchstart" of window
+    events  =
+      "iostap .project-tag-link": "filterByTag"
+      "click  .project-tag-link": "filterByTag"
 
-    if ("ontouchstart" of window)
+    if isTouch
       events["iostap"] = "activate"
       events["click"] = "preventDefault"
     else
       events["mouseleave .project-link"] = "deactivate"
       events["mouseenter .project-link"] = "activate"
+
     return events
 
   activate: (e) ->
@@ -52,6 +56,24 @@ class ProjectsView extends Backbone.View
   deactivate: (e) ->
     @$(klass)
       .removeClass([muted, active, action].join(" "))
+
+  filterByTag: (e) ->
+    e.preventDefault()
+    e.stopImmediatePropagation()
+
+    tag = e.currentTarget.hash.slice(1)
+    $el = @$(e.currentTarget).parents(".project-tag")
+    $el
+      .toggleClass("active")
+      .siblings()
+      .removeClass("active")
+
+    if $el.hasClass("active")
+      @$(klass).each (i, el) ->
+        $el = $(el)
+        $el.toggleClass disabled, not $el.data("tags").match(tag)
+    else
+      @$(klass).removeClass(disabled)
 
   preventDefault: ->
     return false

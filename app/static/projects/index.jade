@@ -4,6 +4,7 @@ block append config
   - page.class = "page-projects";
   - page.title = "Projects";
   - page.description = "Experiments, designs & tools made in the small hours";
+  - var projects = data.getProjects();
 
 block content
   .col-sm
@@ -11,22 +12,35 @@ block content
     h2.hl-block
       span.highlight Experiments, designs &amp; tools
       span.highlight made in the small hours.
+
     hr
 
-  .projects.col-wrap(data-view="views/projects")
-    for project in data.getProjects()
-      a.project-link(href=project.path class=project.size || "col-sm")
-        .project-imgs
-          img.project-img.project-img-reveal(src=project.imgs.reveal)
-          img.project-img.project-img-cover(src=project.imgs.cover)
+  .col-full(data-view="views/projects")
+    ul.project-tags
+      for tag in _.chain(projects).pluck("tags").flatten().uniq().value()
+        li.project-tag
+          a.project-tag-link(href="##{tag}" data-noscroll)= tag
 
-        .project-caption
-          h2.project-name!= project.name
-          p.project-desc
-            != typogr(project.desc || "").typogrify()
+    .projects.col-wrap
+      for project in projects
+        a.project-link(
+          href=project.path
+          class=project.size || "col-sm"
+          data-tags=project.tags.join(",")
+        )
+          .project-imgs
+            img.project-img.project-img-reveal(src=project.imgs.reveal)
+            img.project-img.project-img-cover(src=project.imgs.cover)
 
-          .project-open &rarr;
-          .project-close &times;
+          .project-caption
+            h2.project-name!= project.name
+            .project-desc
+              p!= typogr(project.desc || "").typogrify()
+              small.project-tags.text-muted
+                != project.tags.join(" &middot; ")
+
+            .project-open &rarr;
+            .project-close &times;
   
 block append scripts
   script(type="application/ld+json").

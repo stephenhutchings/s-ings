@@ -13,3 +13,6 @@ urls:
 imgs:
   cover:  /img/projects/visible-grid/cover.png
   reveal: /img/projects/visible-grid/reveal.png
+tags:
+  - Developer Tools
+  - Design

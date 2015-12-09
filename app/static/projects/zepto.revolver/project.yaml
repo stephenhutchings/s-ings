@@ -13,3 +13,5 @@ urls:
 imgs:
   cover:  /img/projects/revolver/cover.png
   reveal: /img/projects/revolver/reveal.png
+tags:
+  - UI/UX

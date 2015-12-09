@@ -1,6 +1,34 @@
 .projects
   padding-bottom: 2em
 
+.project-tags
+  list-style: none
+  padding: 0
+  margin: -2em 0 2em
+  font-size: 0.8em
+  overflow: hidden
+
+.project-tag
+  display: block
+  float: left
+  padding: 4px 6px
+  line-height: 16px
+  border-radius: 12px
+  background-color: #f3f3f3
+  color: #666
+  margin-right: 8px
+
+  a
+    border: none
+    display: block
+
+  &:hover
+    background-color: #eee
+
+  &.active
+    background-color: black
+    color: white
+
 .project-link
   display: block
   text-decoration: none
@@ -10,7 +38,7 @@
   background-color: #eee
   position: relative
   z-index: 1
-  transition: z-index 300ms
+  transition: z-index 300ms, background-color 300ms
   @extend %clearfix
 
   &.project-active,
@@ -24,6 +52,9 @@
 
     .project-desc
       transform: translate3d(0, 0px, 0)
+      opacity: 1
+
+    .project-img
       opacity: 1
 
     .project-img-cover
@@ -45,6 +76,15 @@
     &.__active
       .project-img
         transform: translate3d(0, 0, 0) scale(1.1)
+
+  &.project-disabled
+    pointer-events: none
+    background-color: transparent
+
+    .project-imgs
+      opacity: 0.3
+      -webkit-filter: saturate(0)
+      transform: translate3d(0, 0, 0) scale(0.95)
 
 .project-imgs
   margin: 0 auto
@@ -69,6 +109,7 @@
 
 .project-img-reveal
   position: absolute
+  opacity: 0
 
 .project-name
   margin: 0
@@ -78,7 +119,8 @@
   background-color: #fff
   @extend %transition-sm
 
-  .project-muted &
+  .project-muted &,
+  .project-disabled &
     color: #fff
     border-bottom-color: #eee
 

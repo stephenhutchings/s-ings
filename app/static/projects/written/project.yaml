@@ -14,3 +14,6 @@ urls:
 imgs:
   cover:  /img/projects/written/cover.png
   reveal: /img/projects/written/reveal.png
+tags:
+  - Developer Tools
+  - Typography

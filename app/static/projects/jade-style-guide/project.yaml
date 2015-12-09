@@ -11,3 +11,5 @@ urls:
 imgs:
   cover:  /img/projects/jade/cover.png
   reveal: /img/projects/jade/reveal.png
+tags:
+  - Style Guides

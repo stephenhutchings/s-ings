@@ -12,3 +12,5 @@ urls:
 imgs:
   cover:  /img/projects/viewstack/cover.png
   reveal: /img/projects/viewstack/reveal.png
+tags:
+  - UI/UX

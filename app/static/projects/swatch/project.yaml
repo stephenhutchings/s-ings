@@ -13,3 +13,5 @@ urls:
 imgs:
   cover:  /img/projects/swatch/cover.png
   reveal: /img/projects/swatch/reveal.jpg
+tags:
+  - UI/UX

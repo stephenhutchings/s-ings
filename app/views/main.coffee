@@ -14,8 +14,10 @@ class MainView extends Backbone.View
 
   navigateWithoutDelay: (e) ->
     if e.currentTarget.hash
-      @$el.scrollTo($(e.currentTarget.hash).offset().top - 48)
-      false
+      unless $(e.currentTarget).data("noscroll")?
+        @$el.scrollTo($(e.currentTarget.hash).offset().top - 48)
+        false
+      return true
 
     else if e.currentTarget.origin is window.location.origin and not
           $(e.currentTarget).data("follow")?
@@ -78,10 +80,9 @@ class MainView extends Backbone.View
 
     document.title = $resp.filter("title").html()
 
-    $outbound
-      .html(_inb.html())
-      .attr("class", _inb.attr("class"))
+    $("body").attr("class", _inb.data("class"))
 
+    $outbound.html(_inb.html())
     $outbound.get(0).offsetWidth
 
     $inbound.attr("id", "outbound")
