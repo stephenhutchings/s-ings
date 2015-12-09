@@ -1,0 +1,16 @@
+extends ../partials/layout
+
+block append config
+  - page.class = "page-chat-bot";
+  - page.title = "Want to chat?";
+  - page.description = "";
+
+block body
+  #content
+    #message(data-view="views/chat")
+      .content-wrap
+        h1#message-content
+        p#message-author.text-lg
+
+append scripts
+  script(type="text/javascript" src="/js/chat.js")

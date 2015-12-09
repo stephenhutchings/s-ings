@@ -9,7 +9,7 @@ module.exports =
       "#{today()} #{time(ergo)}#{after}"
   ]
 
-  thesaurus: _.extend require("data/itstodayand"),
+  thesaurus: _.extend require("./data/itstodayand"),
     today: ->
       (ergo) ->
         if ergo

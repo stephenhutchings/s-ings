@@ -1,5 +1,5 @@
 compliments:
-  - "0.1 * 3 = 0.30000000000000004. Trust me, I’m a computer."
+  - "0.1 * 3 = 0.300000…00000004. Trust me, I’m a computer."
   - "[object Object]. Just kidding."
   - "Everything is ticking along just fine."
   - "Have you been working out?"
@@ -35,4 +35,4 @@ compliments:
   - "You seem clever."
   - "You’ve hit rock bottom."
   - "You have some updates to install. I’m keen if you are."
-  - "I don't trust the internet."
+  - "I don’t trust the internet."

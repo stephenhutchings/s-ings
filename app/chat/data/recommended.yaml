@@ -1,0 +1,67 @@
+things:
+  -
+    book:
+      - "“Absalom, Absalom!” by William Faulkner"
+      - "“All the Pretty Horses” by Cormac McCarthy"
+      - "“Escher, Gödel and Bach” by Douglas Hofstadter"
+      - "“Gravity’s Rainbow” by Thomas Pynchon"
+      - "“One Hundred Years of Solitude” by Gabriel García Márquez"
+      - "“The Elements of Typographic Style” by Robert Bringhurst"
+      - "“The Third Policeman” by Flann O’Brien"
+      - "“Tropic of Capricorn” by Henry Miller"
+  -
+    film:
+      - "“A Zed & Two Noughts” by Peter Greenaway"
+      - "“Blue Velvet” by David Lynch"
+      - "“Buffalo ’66” by Vincent Gallo"
+      - "“Enter the Void” by Gaspar Noé"
+      - "“Fallen Angels” by Wong Kar Wei"
+      - "“Leviathan” by Andrey Zvyagintsev"
+      - "“Mister Lonely” by Harmony Korrine"
+      - "“Once Upon a Time in Anatolia” by Nuri Bilge Ceylan"
+      - "“Paris, Texas” by Wim Wenders"
+      - "“Point Blank” by John Boorman"
+      - "“Princess Mononoke” by Hayao Miyazaki"
+      - "“The Conversation” with Gene Hackman"
+      - "“The Holy Mountain” by Alejandro Jodorowsky"
+      - "“The White Ribbon” by Michael Haneke"
+  -
+    group:
+      - "Bing & Ruth"
+      - "Bitchin Bajas"
+      - "OOIOO"
+      - "Pavement"
+      - "Talk Talk"
+      - "The Drones"
+      - "The Microphones"
+      - "The Necks"
+  -
+    artist:
+      - "Burial"
+      - "Chelsea Wolfe"
+      - "Julian Lynch"
+      - "Julianna Barwick"
+      - "King Krule"
+      - "Lubomyr Melnyk"
+      - "Mark McGuire"
+  -
+    director:
+      - "Andrei Tarkovsky"
+      - "Béla Tarr"
+      - "Gus Van Sant"
+      - "Jim Jarmusch"
+      - "Lars Von Trier"
+      - "Yasujirō Ozu"
+  -
+    painter:
+      - "Cy Twombly"
+      - "Franz Kline"
+      - "Mark Rothko"
+
+after:
+  - Right up my alley.
+  - A favourite of mine.
+  - So good.
+  - For real.
+  - On the top of my list.
+  - Brilliant.

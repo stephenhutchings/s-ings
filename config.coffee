@@ -28,7 +28,8 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        "js/app.js": /^app/
+        "js/app.js": /^app\/((?!chat\/).)*$/
+        "js/chat.js": /^app\/chat/
         "js/vendor.js": (path) -> /^(vendor|bower_components)/.test(path)
 
       order:

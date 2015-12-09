@@ -11,7 +11,7 @@ block content
     h1.project-title!= project.name
     h2.hl-block
       for line in _.chunk(project.desc.split(" "), 5)
-        span.highlight!= typogr.typogrify(line.join(" "))
+        span.highlight!= typogr.typogrify(line.concat("").join(" "))
 
     include project-links
 

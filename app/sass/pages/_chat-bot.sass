@@ -1,0 +1,29 @@
+.page-chat-bot
+  color: #fff
+  overflow: hidden
+
+  #outbound,
+  #inbound
+    padding-bottom: 0
+
+#message
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: #333
+  display: flex
+  align-items: center
+
+#message-content
+  @media (max-width: 480px)
+    font-size: 28px
+
+  a
+    border-bottom-color: transparent
+    color: lighten($highlight, 8)
+    transition: border-color 300ms
+
+    &:hover
+      border-bottom-color: inherit

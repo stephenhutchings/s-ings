@@ -1,7 +1,7 @@
 after:
   - " and it can only get better from here."
-  - " and that‘s OK by me."
-  - " and that‘s something we can all get behind."
+  - " and that’s OK by me."
+  - " and that’s something we can all get behind."
   - " and there are a million things to do."
   - " and there is nothing to worry about."
   - ", but you already knew that."
@@ -12,36 +12,48 @@ after:
   - ". Who’d a thunk it?"
   - ". Will the weather hold?"
   - ". Where does the time go?"
+  - ". Why not, I suppose…"
 
 ergo:
   monday:
     - "The weeks just beginning."
     - "It feels fresh and good."
     - "Who knows what will happen?"
+    - First day of the week.
+    - It begins.
+    - It starts again.
 
   tuesday:
     - "It’s already flying by."
     - "I’m all about it."
     - "I’m thinking about lunch."
+    - Day two.
 
   wednesday:
     - "Depends day."
     - "Hump Day."
     - "How do you rate it?"
+    - "Best spelling ever!"
+    - "That’s, um, the third day of the week."
 
   thursday:
     - Almost there.
     - My favourite.
     - Where did the time go?
+    - Late night shopping.
+    - Fourth day of the week.
 
   friday:
     - Have you finished?
     - Winding up.
     - Pub lunch!
+    - Fifth day of the week.
 
   saturday:
     - Relax. It’s the weekend.
     - Night. Fever.
+    - Yep. That-er day.
+    - "Day #6"
 
   sunday:
     - Out of office reply.
@@ -49,6 +61,7 @@ ergo:
     - Everyone has gone home.
     - Enjoy it while it lasts.
     - Already?
+    - "Last day of the week, right?"
 
   times:
     -

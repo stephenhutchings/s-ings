@@ -34,25 +34,27 @@ html.no-js(lang="en")
       link(rel="stylesheet"    href="/css/app.css")
       link(rel="shortcut icon" href="/img/favicon.png")
 
-  body
+  body(class=page.class)
     #outbound
-    #inbound(class=page.class)
+    #inbound(data-class=page.class)
       block header
         include header
 
-      #content
-        .content-wrap
-          block content
-          hr
-          block footer
-            include footer
+      block body
+        #content
+          .content-wrap
+            block content
+            hr
+            block footer
+              include footer
 
-      include crossword
+        include crossword
 
     block scripts
       script(type="text/javascript" src="/js/vendor.js")
       script(type="text/javascript" src="/js/app.js")
-      script(type="text/javascript").
-        $(document).ready(function(){
-          require("app").initialize();
-        })
+    
+    script(type="text/javascript").
+      $(document).ready(function(){
+        require("app").initialize();
+      })

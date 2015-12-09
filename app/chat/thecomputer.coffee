@@ -6,4 +6,4 @@ module.exports =
     (compliment, a) -> compliment
   ]
 
-  thesaurus: require("data/thecomputer")
+  thesaurus: require("./data/thecomputer")
