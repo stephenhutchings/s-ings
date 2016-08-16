@@ -28,8 +28,9 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        "js/app.js": /^app\/((?!chat\/).)*$/
+        "js/app.js": /^app\/((?!(chat|experiments)\/).)*$/
         "js/chat.js": /^app\/chat/
+        "js/experiments.js": /^app\/experiments/
         "js/vendor.js": (path) -> /^(vendor|bower_components)/.test(path)
 
       order:
@@ -51,6 +52,12 @@ exports.config =
   framework: "backbone"
 
   onCompile: (generatedFiles) ->
-    fs.rename "build/sitemap.xml.html", "build/sitemap.xml", (err) ->
-      console.log err if err?
+    for g in generatedFiles
+      for f in g.sourceFiles
+        if f.path.match "sitemap"
+          fs.rename(
+            "#{__dirname}/build/sitemap.xml.html",
+            "#{__dirname}/build/sitemap.xml", (err) ->
+              console.log err if err?
+          )
 

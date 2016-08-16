@@ -1,0 +1,95 @@
+block vars
+  - var experiment = "the-sea", title;
+
+html
+  head
+    meta(
+      name="viewport"
+      content="width=device-width,initial-scale=1,user-scalable=no"
+    )
+  link(rel="stylesheet" href="/css/app.css")
+  block css
+    style(type="text/css").
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background: #1e222b;
+      }
+      label {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px;
+        display: block;
+        z-index: 10;
+        color: #fff;
+        opacity: 0.3;
+        transition: opacity 300ms;
+      }
+
+      label:hover {
+        opacity: 0.8;
+      }
+
+      h1, pre {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      a {
+        border-bottom: none;
+      }
+
+      canvas {
+        box-shadow: 0 1px 4px #000;
+      }
+
+      .diamond {
+        display: inline-block;
+        transform: translate3d(0, 0, 0) rotate(45deg) scale(1);
+        overflow: hidden;
+        width: 0.43em;
+        border-bottom: 0.44em solid;
+        height: 0;
+        margin: 2px 3px;
+      }
+
+  body
+
+    script(type="text/javascript" src="/js/vendor.js")
+    script(type="text/javascript" src="/js/other/stack-blur.js")
+    script(type="text/javascript" src="/js/other/canvas-fx.js")
+    script(type="text/javascript" src="/js/experiments.js")
+    label
+      h1 #{title || experiment} &middot;&nbsp;
+        a(href="/")
+          | S<span class="diamond"></span>INGS
+
+
+    script.
+      $(document).ready(function(){
+        var ready = function(){ require("experiments/#{experiment}").draw() };
+        if (window.FontFace) {
+          f = new FontFace(
+            "Texta",
+            "url(/fonts/texta-black/texta-black-webfont.woff2)"
+          )
+          f.load().then(ready);
+        } else {
+          ready()
+        }
+
+        $(document).on(
+          ("ontouchstart" in window) ? "touchend" : "click",
+          function(e){
+            if (e.target.href) {
+              return true;
+            } else {
+              document.querySelector("canvas").remove();
+              ready();
+            }
+          }
+        )
+      })

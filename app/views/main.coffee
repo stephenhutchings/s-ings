@@ -17,7 +17,6 @@ class MainView extends Backbone.View
       unless $(e.currentTarget).data("noscroll")?
         @$el.scrollTo($(e.currentTarget.hash).offset().top - 48)
         false
-      return true
 
     else if e.currentTarget.origin is window.location.origin and not
           $(e.currentTarget).data("follow")?

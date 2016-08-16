@@ -6,11 +6,11 @@
       var $this = $(this),
           initialY = $this.scrollTop(),
           maxY = this.scrollHeight - $this.outerHeight(),
-          targetY = Math.min(position || 0, maxY),
+          targetY = Math.round(Math.min(position || 0, maxY)),
           lastY = initialY,
           delta = targetY - initialY,
           speed = Math.max(800, Math.min(1200, Math.abs(initialY-targetY))),
-          start, t, y,
+          start, t, y, timeout,
           cancelScroll = function(){ abort() },
           frame = window.requestAnimationFrame ||
                   window.webkitRequestAnimationFrame ||
@@ -48,6 +48,8 @@
         lastY = y
         if (y !== targetY) {
           frame(render)
+          window.clearTimeout(timeout)
+          timeout = window.setTimeout(abort, 100)
         } else {
           abort()
         }
