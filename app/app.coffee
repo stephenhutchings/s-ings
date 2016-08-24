@@ -1,8 +1,6 @@
-NiceTouch = require("lib/touch")
-
 Application =
   initialize: ->
-    NiceTouch.initialize()
+    window.iostap.initialize()
     hljs.initHighlightingOnLoad()
 
     $("html").removeClass("no-js")
@@ -11,5 +9,6 @@ Application =
     @router = new Router()
 
     Backbone.history.start(pushState: true)
+
 
 module.exports = Application
