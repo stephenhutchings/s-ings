@@ -4,6 +4,9 @@ exports.config =
   paths:
     public: "build"
 
+  server:
+    hostname: "0.0.0.0"
+
   conventions:
     ignored: [
       /[\\/]_/
@@ -15,7 +18,7 @@ exports.config =
     autoprefixer:
       browsers: ["> 1%"]
 
-    jaded:
+    jade:
       staticPatterns: /^app(\/|\\)static(\/|\\)(.+)\.jade$/
       locals:
         _:        require("lodash")
@@ -51,13 +54,14 @@ exports.config =
 
   framework: "backbone"
 
-  onCompile: (generatedFiles) ->
-    for g in generatedFiles
-      for f in g.sourceFiles
-        if f.path.match "sitemap"
-          fs.rename(
-            "#{__dirname}/build/sitemap.xml.html",
-            "#{__dirname}/build/sitemap.xml", (err) ->
-              console.log err if err?
-          )
+  hooks:
+    onCompile: (generatedFiles) ->
+      for g in generatedFiles
+        for f in g.sourceFiles
+          if f.path.match "sitemap"
+            fs.rename(
+              "#{__dirname}/build/sitemap.xml.html",
+              "#{__dirname}/build/sitemap.xml", (err) ->
+                console.log err if err?
+            )
 
