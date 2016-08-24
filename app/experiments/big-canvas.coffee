@@ -2,13 +2,17 @@ module.exports = (padding) ->
   canvas        = document.createElement("canvas")
   dpi           = window.devicePixelRatio or 1
   ctx           = canvas.getContext("2d")
-  canvas.width  = (window.innerWidth  - padding * 2) * dpi
-  canvas.height = (window.innerHeight - padding * 2) * dpi
+
+  document.body.appendChild canvas
+
+  maxW = parseInt(getComputedStyle(canvas).maxWidth)  or Infinity
+  maxH = parseInt(getComputedStyle(canvas).maxHeight) or Infinity
+
+  canvas.width  = Math.min(window.innerWidth  - padding * 2, maxW) * dpi
+  canvas.height = Math.min(window.innerHeight - padding * 2, maxH) * dpi
 
   canvas.style.width  = canvas.width  / dpi + "px"
   canvas.style.height = canvas.height / dpi + "px"
   canvas.style.margin = padding + "px"
-
-  document.body.appendChild canvas
 
   { canvas, ctx }

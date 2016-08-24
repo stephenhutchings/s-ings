@@ -1,28 +1,37 @@
 timeout  = null
+label = document.querySelector("label")
+html  = label.innerHTML
 
-sequence = (arr, i = 0) ->
-  name = "Process #{i + 1} of #{arr.length + i}"
+sequence = (arr, i = 0, title = "Process", resolve) ->
+  step = (resolve, reject) ->
+    name = "#{title} #{i + 1} / #{arr.length + i}"
 
-  console.time "Total" if i is 0
+    console?.time? "#{title} Total" if i is 0
+    label.innerHTML = name if title isnt "Process"
 
-  console.time name
-  res = arr.shift()?()
+    console?.time? name
+    res = arr.shift()?()
 
-  done = ->
-    console.timeEnd name
+    next = ->
+      console?.timeEnd? name
 
-    window.setTimeout (->
-      if arr.length
-        sequence(arr, ++i)
-      else
-        console.timeEnd "Total"
-    ), 10
+      window.setTimeout (->
+        if arr.length
+          sequence(arr, ++i, title, resolve)
+        else
+          console?.timeEnd? "#{title} Total"
+          resolve()
+      ), 1
 
-  if res?.constructor?.name is "Promise"
-    res.then(done)
+    if res?.constructor?.name is "Promise"
+      res.then(next)
+    else
+      next()
+
+  if i is 0
+    label.innerHTML = html if title isnt "Process"
+    new Promise(step)
   else
-    done()
-
-
+    step(resolve)
 
 module.exports = sequence

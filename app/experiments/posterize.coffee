@@ -1,6 +1,7 @@
 colors = [
   [244, 218, 190]
   [255, 255, 255]
+  # [125, 123, 132]
   [0, 24, 77]
 ]
 
@@ -15,39 +16,43 @@ distance = (c1, c2) ->
 
 cache = []
 
-process = (r, g, b, a) ->
-  unless m = cache[r]?[g]?[b]
-
-    d = 1
-
-    if _.include [r, g, b], colors
-      m = [r, g, b, a]
-
-    else
-      for c in colors
-        if d >= dx = distance(c, [r, g, b])
-          d = dx
-          m = [c...]
-
-      d = (d * d * d)
-
-      for k, i in [r, g, b]
-        diff = (k - m[i]) * 1
-        m[i] += diff * d
-
+do buildCache = ->
+  for r in [0..255]
     cache[r] = []
-    cache[r][g] = []
+    for g in [0..255]
+      cache[r][g] = []
+
+process = (r, g, b, a) ->
+  m = cache[r][g][b]
+
+  if not m
+    d = 1
+    j = [r, g, b]
+
+    for c in colors
+      if d >= dx = distance(c, j)
+        d = dx
+        m = [c...]
+
+    d = Math.pow(d, 3)
+
+    for k, i in j
+      diff = (k - m[i])
+      m[i] = Math.round(m[i] + diff * d)
+
+    cache[r]      ?= []
+    cache[r][g]   ?= []
     cache[r][g][b] = m
 
   [m..., a]
 
 module.exports = (cvs, r, c) ->
   fx = new CanvasEffects(cvs, {useWorker: false})
-  fx.noise(4)
+  fx.noise(5)
   StackBlur.canvasRGB(cvs, 0, 0, cvs.width, cvs.height, r)
 
   if c?
     colors = c
-    cache = []
+    buildCache()
 
-  fx.process process
+  fx.process(process)

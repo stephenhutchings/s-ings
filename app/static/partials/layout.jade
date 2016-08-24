@@ -16,8 +16,9 @@ html.no-js(lang="en")
       )
       
       title
-        != page.title
-        |  - Stephen Hutchings, front-end designer and developer in Sydney
+        block title
+          != page.title
+          |  - Stephen Hutchings, front-end designer and developer in Sydney
 
       meta(name="title"       content=page.title)
       meta(name="description" content=page.description)
@@ -31,30 +32,32 @@ html.no-js(lang="en")
       meta(http-equiv="content-language" content="en")
       meta(http-equiv="revisit-after" content="31 days")
 
-      link(rel="stylesheet"    href="/css/app.css")
       link(rel="shortcut icon" href="/img/favicon.png")
 
+      block css
+        link(rel="stylesheet"    href="/css/app.css")
+
   body(class=page.class)
-    #outbound
-    #inbound(data-class=page.class)
-      block header
-        include header
+    block page
+      #outbound
+      #inbound(data-class=page.class)
+          block header
+            include header
 
-      block body
-        #content
-          .content-wrap
-            block content
-            hr
-            block footer
-              include footer
+          block body
+            #content
+              .content-wrap
+                block content
+                hr
+                block footer
+                  include footer
 
-        include crossword
+            include crossword
 
     block scripts
       script(type="text/javascript" src="/js/vendor.js")
-      script(type="text/javascript" src="/js/app.js")
-    
-    script(type="text/javascript").
-      $(document).ready(function(){
-        require("app").initialize();
-      })
+      script(type="text/javascript" src="/js/app.js")    
+      script(type="text/javascript").
+        $(document).ready(function(){
+          require("app").initialize();
+        })

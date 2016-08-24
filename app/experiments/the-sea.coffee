@@ -12,7 +12,7 @@ dpi   = window.webkitDevicePixelRatio or window.devicePixelRatio or 1
 scale = 1.5
 
 module.exports =
-  draw: ->
+  draw: (c) ->
     { canvas, ctx } = bigCanvas(40)
 
     canvas.width  *= scale
@@ -21,16 +21,18 @@ module.exports =
     sequence [
       => layer(ctx, @arcs(canvas))
       =>
-        margin = 20 * dpi * scale
-        { width, height, data } = badge("The  Sea", margin)
+        margin = 24 * dpi * scale
+        { width, height, data } = badge("The  Sea", margin / dpi)
         ctx.putImageData(
           data
-          canvas.width - width - margin
+          (canvas.width - width) / 2
           canvas.height - height - margin
         )
 
-      => posterize(canvas, 1.25 * dpi * scale)
-      # => resample(ctx, canvas, scale)
+      => posterize(canvas, 1.25 * dpi * 1.5)
+      => resample(ctx, canvas, scale)
+
+      c
 
     ]
 

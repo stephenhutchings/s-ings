@@ -9,13 +9,14 @@ layer     = require("experiments/layer")
 maybe       = require("experiments/brick-a-brac/maybe")
 drawWindow  = require("experiments/brick-a-brac/window")
 drawRoof    = require("experiments/brick-a-brac/roof")
-drawEscape  = require("experiments/brick-a-brac/window")
+drawEscape  = require("experiments/brick-a-brac/escape")
 drawBalcony = require("experiments/brick-a-brac/balcony")
+drawGround  = require("experiments/brick-a-brac/ground")
 
 maybe = (chance = 0.5) -> Math.random() > (1 - chance)
 
 dpi   = window.webkitDevicePixelRatio or window.devicePixelRatio or 1
-scale = 1.75
+window.scale = 2.35
 
 position = (canvas, features) ->
   w = features.floors.w * features.brick.w
@@ -25,33 +26,39 @@ position = (canvas, features) ->
   roofH -= features.roof.h unless features.roof.style
 
   x = canvas.width  - w
-  y = canvas.height - h * features.floors.amount + roofH
+  y = canvas.height - (h * features.floors.amount + features.ground.h * 3 + features.ground.baseH * features.brick.h) + roofH
   x = Math.max(x, 0) / 2
   y = Math.max(y, 0) / 2
 
   { x, y, w, h }
 
 module.exports =
-  draw: ->
+  draw: (c) ->
     { canvas, ctx } = bigCanvas(40)
-
-    canvas.width  *= scale
-    canvas.height *= scale
 
     features =
       brick:
         h: 4 * dpi
-        w:  4 * dpi * 3
+        w: 4 * dpi * 3
 
       floors:
         amount: _.random(4, 7)
-        h:  _.random(27, 34) # rows of bricks
+        h:  _.random(29, 36) # rows of bricks
         w:  _.random(24, 48) # columns of bricks
 
       border:
         amount: _.random(0, 4)
         outset: _.random(4, 12)
         height: _.random(1, 4)
+
+      ground:
+        h:       _.random(5, 40)
+        kerbH:   _.random(12, 16)
+        inset:   _.random(1, 10)
+        outset:  wobble(80, 60)
+        incline: wobble(20)
+        baseH:   _.random(4) * 2
+        baseW:   _.random(2, 8)
 
       hasEdge: maybe()
 
@@ -60,12 +67,13 @@ module.exports =
         balconyBar: maybe()
         balconyInset: maybe(0.4)
         balconyHeight: _.random(10, 14)
-        features: [
-          maybe() and _.sample ["fire-escape", "balcony"]
-          maybe() and _.sample ["fire-escape", "balcony"]
-        ]
+        balconyWidth: _.random(1, 4) * 40
+        escapeWidth: _.random(3, 4) * 40
 
-        width: _.random(1, 4) * 40
+        features: [
+          maybe() and _.sample ["escape", "balcony"]
+          maybe() and _.sample ["escape", "balcony"]
+        ]
 
       roof:
         style: maybe(0.6) and _.sample ["triangular", "square"]
@@ -73,6 +81,8 @@ module.exports =
         inset: _.random(-2, 6)
         base: _.random(1, 4)
         edged: _.random(3)
+        pipe: _.random(3)
+        aerial: maybe()
 
       windows:
         amount: _.random(1, 4)
@@ -84,6 +94,16 @@ module.exports =
         frameInset: _.sample([0, 12, 14, 16])
         grid: _.random(-1, 1)
         gridInset: _.sample([0, 12])
+
+      gutters:
+        y: _.random(12)
+        h: _.random(2)
+        rainTrap: maybe(0.7) and {
+          outset: _.random(8, 20)
+          top: _.random(16, 24)
+          bottom: _.random(16, 24)
+        }
+
 
     if features.border.amount > 2
       features.border.height = Math.min(features.border.height, 1.5)
@@ -106,7 +126,23 @@ module.exports =
 
     console.log JSON.stringify features, null, 2
 
-    sequence [
+    canvas.width  *= window.scale
+    canvas.height *= window.scale
+
+    { x, y, w, h } = position(canvas, features)
+
+    wo = w + 500
+    ho = h * features.floors.amount + 500
+    if wo > canvas.width or ho > canvas.height
+      s = Math.max(wo / canvas.width, ho / canvas.height)
+      features.brick.h /= s
+      features.brick.w /= s
+      features.roof.h  /= s
+      features.sides.balconyWidth /= s
+      features.sides.escapeWidth  /= s
+      { x, y, w, h } = position(canvas, features)
+
+    sequence([
       =>
         ctx.fillStyle   = "#f4dabe"
         ctx.beginPath()
@@ -114,24 +150,27 @@ module.exports =
         ctx.fill()
 
       =>
-        { x, y, w, h } = position(canvas, features)
-
-        for floor in [0...features.floors.amount - 1]
-          for feature, i in features.sides.features when feature
-            fw   = features.sides.width
-            fx   = if i is 0 then -fw else w
-            draw = if feature is "fire-escape" then drawEscape else drawBalcony
-            data = draw(features, {x, y, w: fw, h})
-            fy   = y + h * floor
-            fx   = x + fx
-            layer(ctx, data, fx, fy)
+        sequence _.flatten(
+          for floor in [0...features.floors.amount - 1].reverse()
+            for feature, i in features.sides.features when feature
+              do (feature, i, floor) => =>
+                fw   = features.sides["#{feature}Width"]
+                fx   = if i is 0 then -fw else w
+                draw = if feature is "escape" then drawEscape else drawBalcony
+                data = draw(features, {x, y, w: fw, h}, i, floor)
+                fy   = y + h * floor
+                fx   = x + fx
+                layer(ctx, data, fx, fy)
+        ), 0, "Features"
 
       =>
-        { x, y, w, h } = position(canvas, features)
-
-        for floor in [0...features.floors.amount]
-          data = @brick(features, floor)
-          layer(ctx, data, x + (w - data.width) / 2, y + h * floor)
+        sequence(
+          for floor in [0...features.floors.amount]
+            do (floor) => =>
+              data = @brick(features, floor)
+              layer(ctx, data, x + (w - data.width) / 2, y + h * floor)
+          , 0, "Floors"
+        )
       =>
         { x, y, w, h } = position(canvas, features)
 
@@ -139,53 +178,42 @@ module.exports =
         layer(ctx, data, x + (w - data.width) / 2, y - data.height)
 
       =>
-        { x, y, w, h } = position(canvas, features)
-        ctx.fillStyle   = "#f4dabe"
-        ctx.strokeStyle = "#00184d"
-        ctx.lineWidth = wobble(4, 2)
-        padding = wobble(80, 60)
-        incline = wobble(20)
-
-        x = x - padding
-        w = w + padding * 2
-        y = y + h * features.floors.amount + ctx.lineWidth / 2
-
-        ctx.beginPath()
-        ctx.moveTo(x,     y + incline)
-        ctx.lineTo(x + w, y - incline)
-        ctx.lineTo(x + w, y + 8)
-        ctx.lineTo(x, y + 8)
-        ctx.fill()
-
-        ctx.beginPath()
-        ctx.moveTo(x,     y + incline)
-        ctx.lineTo(x + w, y - incline)
-        ctx.stroke()
-
-        if maybe()
-          ctx.beginPath()
-          ctx.lineWidth /= 2
-          ctx.moveTo(x + _.random(20),     y + incline + 12)
-          ctx.lineTo(x + w - _.random(20), y - incline + 12)
-          ctx.stroke()
+        fx = new CanvasEffects(canvas, {useWorker: false})
+        fx.noise(12)
+        posterize(canvas, 2)
 
       =>
-        margin = 20 * dpi * scale
-        { width, height, data } = badge "brick-a-brac", margin, (c) ->
+        ctx.strokeStyle = "rgba(255,255,255,0.3)"
+        ctx.lineWidth = 10 * dpi * window.scale
+        ctx.beginPath()
+        ctx.rect(
+          ctx.lineWidth / 2
+          ctx.lineWidth / 2
+          canvas.width - ctx.lineWidth
+          canvas.height - ctx.lineWidth
+        )
+        ctx.stroke()
+
+      =>
+        data = drawGround(features, { w })
+        layer(ctx, data, x + (w - data.width) / 2, y + h * features.floors.amount)
+
+      =>
+        margin = 24 * dpi * window.scale
+        { width, height, data } = badge "brick-a-brac", margin / dpi, (c) ->
           fx = new CanvasEffects(c, {useWorker: false})
           fx.noise(12)
-          posterize(c, 1.25 * dpi * scale)
+          posterize(c, 1.25 * dpi * window.scale)
 
         ctx.putImageData(
           data
-          canvas.width - width - margin
+          (canvas.width - width) / 2
           canvas.height - height - margin
         )
-      =>
-        fx = new CanvasEffects(canvas, {useWorker: false})
-        fx.noise(12)
-        # posterize(canvas, .5 * dpi * scale)
-    ]
+
+
+    ], 0, "Building"
+    ).then c
 
   brick: (features, floor) ->
     bw = features.brick.w
@@ -271,11 +299,19 @@ module.exports =
       w = (features.windows.w + features.windows.offsets.w[i]) * bw
       h = features.windows.h * bh
 
-      y = Math.max(y, originY + ((if features.windows.topFrame then 2 else 0) + 1) * bh)
+      y = Math.max(y, originY + ((if features.windows.topFrame then 2 else 0)) * bh) - bh
       w = Math.min(w, width - (x - originX) - bw)
 
       data = drawWindow(features.windows, { x, y, w, h })
       ctx.putImageData(data, x, y)
+
+      if features.windows.bottomFrame
+        ctx.beginPath()
+        ctx.fillStyle = "#00184d"
+        ctx.globalAlpha = 0.3
+        ctx.rect(x, y + data.height, data.width, bh)
+        ctx.fill()
+        ctx.globalAlpha = 1
 
       if lastX <= x - bw * (features.windows.offsets.grills[i] + 2)
         grills.push [x - bw * (features.windows.offsets.grills[i] + 1), y]
@@ -285,6 +321,7 @@ module.exports =
         gutters.push [x - bw * (features.windows.offsets.gutters[i] + 1), originY]
 
       lastX = x + w
+
 
     if width - bw + originX <= lastX + bw * (features.windows.offsets.grills[i + 1] + 1)
       grills.push [lastX + bw * features.windows.offsets.grills[i], y]
@@ -339,18 +376,19 @@ module.exports =
           ctx.stroke()
           ctx.globalAlpha = 1
 
-
     # Gutters
+    { outset, top, bottom } = features.gutters.rainTrap
     for [x, y] in gutters
       ctx.strokeStyle = "#00184d"
       ctx.fillStyle = "#f4dabe"
 
       gh = canvas.height
+      gw = bh * 2
       if floor is features.floors.amount - 1
         gh -= bh * _.random(1, 4)
 
       ctx.beginPath()
-      ctx.rect(x, 0, bh * 2, gh)
+      ctx.rect(x, 0, gw, gh)
       ctx.fill()
 
       ctx.beginPath()
@@ -359,9 +397,27 @@ module.exports =
       ctx.lineWidth = 4
       ctx.stroke()
 
+      if floor is 0 and features.gutters.rainTrap
+        ctx.beginPath()
+        ctx.rect(x - outset / 2, 0, gw + outset, top)
+        ctx.moveTo(x - outset / 2, top)
+        ctx.lineTo(x + gw + outset / 2, top)
+        ctx.lineTo(x + gw, top + bottom)
+        ctx.lineTo(x, top + bottom)
+        ctx.closePath()
+        ctx.fill()
+        ctx.stroke()
+
       ctx.beginPath()
-      ctx.moveTo(x + bh * 2, 0)
-      ctx.lineTo(x + bh * 2, gh)
+
+      if floor is 0 and features.gutters.rainTrap
+        ctx.moveTo(x + gw + outset / 2, 0)
+        ctx.lineTo(x + gw + outset / 2, top)
+        ctx.lineTo(x + gw, top + bottom)
+      else
+        ctx.moveTo(x + gw, 0)
+
+      ctx.lineTo(x + gw, gh)
       ctx.globalAlpha = 0.25
       ctx.lineWidth = 12
       ctx.stroke()
@@ -369,16 +425,21 @@ module.exports =
       ctx.lineWidth = 4
       ctx.stroke()
 
+      ctx.beginPath()
+      ctx.rect(x - 4, bh * features.gutters.y, gw + 8, features.gutters.h * 4)
+      ctx.fill()
+      ctx.stroke()
+
       if floor is features.floors.amount - 1
-        ctx.fillStyle = "#00184d"
         ctx.beginPath()
+        ctx.fillStyle = "#00184d"
         ctx.lineWidth = 3
         ctx.moveTo(x, gh - bh - 16)
-        ctx.lineTo(x + bh * 2, gh - bh - 16)
+        ctx.lineTo(x + gw, gh - bh - 16)
         ctx.stroke()
 
         ctx.beginPath()
-        ctx.rect(x, gh - bh - 4, bh * 2, bh + 2)
+        ctx.rect(x, gh - bh - 4, gw, bh + 2)
         ctx.fill()
 
     mask = ctx.getImageData(0, 0, canvas.width, canvas.height)

@@ -1,42 +1,43 @@
 posterize = require("experiments/posterize")
 wobble = require("experiments/wobble")
 
-module.exports = (features, dimensions) ->
+module.exports = (features, dimensions, side, floor) ->
   canvas = document.createElement("canvas")
   ctx = canvas.getContext("2d")
 
   baseH = features.border.amount * features.border.height * features.brick.h
   baseH = baseH or 40
+  suppH = _.random(20, 30)
 
   railH = features.brick.h * features.sides.balconyHeight
 
   canvas.width  = dimensions.w
-  canvas.height = dimensions.h + baseH
+  canvas.height = dimensions.h + baseH + suppH
 
   ctx.lineWidth   = wobble(3, 1)
   ctx.fillStyle   = "#f4dabe"
   ctx.strokeStyle = "#00184d"
 
   ctx.beginPath()
-  ctx.rect(0, 0, canvas.width, dimensions.height)
+  ctx.rect(0, 0, canvas.width, canvas.height)
   ctx.fill()
 
   lw = ctx.lineWidth
 
   ctx.beginPath()
   ctx.rect(lw / 2, dimensions.h, canvas.width - lw, baseH - lw)
-  ctx.moveTo(0, canvas.height - lw * 2)
-  ctx.lineTo(canvas.width, canvas.height - lw * 2)
+  ctx.moveTo(0, dimensions.h + baseH - lw)
+  ctx.lineTo(canvas.width, dimensions.h + baseH - lw)
   ctx.stroke()
 
   ctx.beginPath()
 
-  y = canvas.height - baseH - railH + features.brick.h
+  y = dimensions.h - railH + features.brick.h
   h = railH - features.brick.h * 2
 
-  switch features.sides.balconyStyle
+  switch features.sides.balconyStyle = "strokes"
     when "strokes"
-      ctx.rect(lw / 2, canvas.height - baseH - railH, canvas.width - lw, railH)
+      ctx.rect(lw / 2, dimensions.h - railH, canvas.width - lw, railH)
 
       for i in [1...(canvas.width - lw) / features.brick.h]
         ctx.moveTo(i * features.brick.h + lw / 2, y)
@@ -61,7 +62,7 @@ module.exports = (features, dimensions) ->
         ctx.rect(x, y + 8, features.brick.h * 3, 6)
         ctx.rect(x, y + h - 14, features.brick.h * 3, 6)
 
-      ctx.fillStyle   = "#00184d"
+      ctx.fillStyle = "#00184d"
       ctx.fill()
 
     when "bars"
@@ -83,33 +84,44 @@ module.exports = (features, dimensions) ->
           w, h
         )
 
-      ctx.fillStyle   = "#f4dabe"
+      ctx.fillStyle = "#f4dabe"
       ctx.stroke()
       ctx.fill()
 
   if features.sides.balconyBar
-    ctx.rect(lw / 2, canvas.height - baseH - railH - 8, canvas.width - lw, 8)
-
-  ctx.stroke()
-
-  posterize(canvas, 4)
-
-  if features.sides.balconyInset and baseH > 20
-    ctx.rect(
-      lw / 2 + 8, canvas.height - baseH + 8,
-      canvas.width - lw - 16, baseH - lw - 16
-    )
-
+    ctx.beginPath()
+    ctx.rect(lw / 2, y + h - railH - 8, canvas.width - lw, 8)
     ctx.stroke()
 
+  if baseH > 20
+    if features.sides.balconyInset
+      ctx.beginPath()
+      ctx.rect(
+        lw / 2 + 8, y + h + 16,
+        canvas.width - lw - 16, baseH - lw - 16
+      )
+      ctx.stroke()
+
+  else
+    # Support
+    ctx.lineWidth = _.random(6, 8)
     ctx.beginPath()
-    ctx.moveTo(lw / 2 + 10, canvas.height - 16)
-    ctx.lineTo(lw / 2 + 10, canvas.height - baseH + 10)
-    ctx.lineTo(canvas.width - lw - 8, canvas.height - baseH + 10)
+    ctx.moveTo(canvas.width / 2, y + h + baseH / 2 + 8)
+    ctx.lineTo((if side is 0 then canvas.width else 0), canvas.height)
+    ctx.stroke()
+
+  posterize(canvas, wobble(3, 1))
+
+  if features.sides.balconyInset and baseH > 20
+    ctx.beginPath()
+    ctx.moveTo(lw / 2 + 10, y + h + baseH - 16)
+    ctx.lineTo(lw / 2 + 10, y + h + 16)
+    ctx.lineTo(canvas.width - lw - 8, y + h + 16)
     ctx.globalAlpha = 0.3
     ctx.lineWidth = 10
     ctx.stroke()
     ctx.globalAlpha = 1
+
 
   mask = ctx.getImageData(0, 0, canvas.width, canvas.height)
   mask

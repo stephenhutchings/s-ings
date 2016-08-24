@@ -1,85 +1,70 @@
-smooth = require('experiments/smooth')
-resample = require('experiments/resample')
-shape = require('experiments/shape')
-unmask = require('experiments/threshold-to-mask')
-cvs = document.createElement('canvas')
-ctx = cvs.getContext('2d')
-cvs2 = document.createElement('canvas')
-ctx2 = cvs2.getContext('2d')
-shapes = 60
-threshold = _.random(110, 150)
-small = cvs2.width = cvs2.height = 360
-large = cvs.width = cvs.height = 720
+shape    = require("experiments/shape")
+layer    = require("experiments/layer")
+smooth   = require("experiments/smooth")
+sequence = require("experiments/sequence")
+unmask   = require("experiments/threshold-to-mask")
 
-draw = (done, last) ->
-  ctx.fillStyle = '#000'
-  ctx.beginPath()
-  ctx.rect 0, 0, large, large
-  ctx.fill()
+dpi   = window.devicePixelRatio or 1
+small = 180
+large = small * 2 * dpi
 
-  ctx.fillStyle = '#fff'
-  ctx.beginPath()
+draw = (done) ->
+  parentCanvas = document.createElement("canvas")
+  parentContext = parentCanvas.getContext("2d")
+  parentCanvas.width = parentCanvas.height = large
 
-  for i in [0...shapes]
-    rad = large * 0.333 * (i + 1) / shapes
-    dir = if i % 2 then 1 else -1
-    shape ctx, rad, dir, large
+  step = (color, size) ->
+    cvs  = document.createElement("canvas")
+    ctx  = cvs.getContext("2d")
 
-  ctx.fill()
+    shapes    = _.random(50, 70)
+    threshold = _.random(110, 150)
+    offset    = (large - size) / 2
+    cvs.width = cvs.height = size
 
-  smooth cvs, _.random(20, 60), threshold
-  smooth cvs, 12, threshold
-  StackBlur.canvasRGBA cvs, 0, 0, large, large, 2
+    ctx.fillStyle = "black"
+    ctx.beginPath()
+    ctx.rect 0, 0, size, size
+    ctx.fill()
 
-  resample ctx, cvs, 2
+    ctx.fillStyle = "white"
+    ctx.beginPath()
 
-  if last
-    resample ctx, cvs, 2, ->
-      mask = ctx.getImageData(0, 0, cvs.width, cvs.height)
-      cvs.width = cvs.height = large
-      ctx2.clearRect 0, 0, small, small
-      ctx2.putImageData last, 0, 0
-      r = _.random(220, 255)
-      g = _.random(128, 158)
-      b = 0
-      unmask mask, r, g, b
-      ctx.clearRect 0, 0, small, small
-      ctx.putImageData mask, small / 4, small / 4
-      img = new Image
+    for i in [0...shapes]
+      rad = size * 0.333 * (i + 1) / shapes
+      dir = if i % 2 then 1 else -1
+      shape ctx, rad, dir, size
 
-      img.onload = ->
-        ctx2.drawImage img, _.random(-15, 15), _.random(-15, 15)
-        done cvs2.toDataURL()
+    ctx.fill()
 
-      img.src = cvs.toDataURL()
+    smooth cvs, _.random(20, 60), threshold
+    smooth cvs, 12, threshold
+    StackBlur.canvasRGBA cvs, 0, 0, size, size, 2
 
-  else
-    data = ctx.getImageData(0, 0, small, small)
-    ctx2.putImageData data, 0, 0
-    done ctx2.getImageData(0, 0, large, large)
+    data = ctx.getImageData(0, 0, size, size)
+    unmask data, color...
 
+    layer(parentContext, data, offset, offset)
+
+  sequence [
+    -> step([255, 255, 255], large, 0)
+    -> step([ _.random(220, 255), _.random(128, 158), 0 ], small * dpi)
+    ->
+      img = new Image()
+      img.onload = -> done(this)
+      img.src = parentCanvas.toDataURL()
+      img.style.height = img.style.width = small + "px"
+  ]
 
 module.exports =
-  draw: ->
-    step = (count) ->
-      if count and count > 0
-        window.setTimeout (->
-          image = new Image
+  draw: (c) ->
+    amount =
+      Math.floor(window.innerHeight / small) *
+      Math.floor(window.innerWidth / small)
 
-          onload = ->
-            document.body.insertAdjacentElement 'afterBegin', image
-            step count - 1
-            return
-
-          draw (data) ->
-            draw ((res) ->
-              image.onload = onload
-              image.src = res
-              return
-            ), data
-            return
-          return
-        ), 1
-      return
-
-    step 500
+    sequence([
+      (for i in [0...amount]
+        -> draw (image) ->
+          document.body.insertAdjacentElement "afterBegin", image
+      )...
+    ], 0, "Frying").then(c)

@@ -1,95 +1,84 @@
-block vars
-  - var experiment = "the-sea", title;
+extends ./layout
 
-html
-  head
-    meta(
-      name="viewport"
-      content="width=device-width,initial-scale=1,user-scalable=no"
-    )
-  link(rel="stylesheet" href="/css/app.css")
-  block css
-    style(type="text/css").
-      body {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        background: #1e222b;
-      }
-      label {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 16px;
-        display: block;
-        z-index: 10;
-        color: #fff;
-        opacity: 0.3;
-        transition: opacity 300ms;
-      }
+block title
+  = page.title
+  |  - Drawing Experiments by Stephen Hutchings
 
-      label:hover {
-        opacity: 0.8;
-      }
+block append css
+  style(type="text/css").
+    body {
+      text-align: center;
+      background: #1e222b;
+      height: 100%;
+    }
 
-      h1, pre {
-        margin: 0;
-        font-size: 16px;
-      }
+    label {
+      background: #1e222b;
+      background: rgba(30, 34, 43, 0.8);
+      border-radius: 2px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      left: 50%;
+      line-height: 24px;
+      padding: 8px 0;
+      margin: -24px -100px;
+      opacity: 0;
+      position: absolute;
+      text-transform: uppercase;
+      top: 50%;
+      transition: opacity 300ms;
+      width: 200px;
+      z-index: 20;
+    }
 
-      a {
-        border-bottom: none;
-      }
+    label.show {
+      opacity: 1;
+    }
 
-      canvas {
-        box-shadow: 0 1px 4px #000;
-      }
+    h1 {
+      margin: 0;
+      font-size: 16px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      display: block;
+      z-index: 10;
+      color: #fff;
+      opacity: 0.3;
+      transition: opacity 300ms;
+      z-index: 10;
+    }
 
-      .diamond {
-        display: inline-block;
-        transform: translate3d(0, 0, 0) rotate(45deg) scale(1);
-        overflow: hidden;
-        width: 0.43em;
-        border-bottom: 0.44em solid;
-        height: 0;
-        margin: 2px 3px;
-      }
+    h1:hover {
+      opacity: 0.8;
+    }
 
-  body
+    a {
+      border-bottom: none;
+    }
 
-    script(type="text/javascript" src="/js/vendor.js")
-    script(type="text/javascript" src="/js/other/stack-blur.js")
-    script(type="text/javascript" src="/js/other/canvas-fx.js")
-    script(type="text/javascript" src="/js/experiments.js")
-    label
-      h1 #{title || experiment} &middot;&nbsp;
-        a(href="/")
-          | S<span class="diamond"></span>INGS
+    canvas {
+      box-shadow: 0 1px 4px #000;
+      max-width: 1200px;
+    }
 
+    img {
+      display: inline-block;
+    }
 
-    script.
-      $(document).ready(function(){
-        var ready = function(){ require("experiments/#{experiment}").draw() };
-        if (window.FontFace) {
-          f = new FontFace(
-            "Texta",
-            "url(/fonts/texta-black/texta-black-webfont.woff2)"
-          )
-          f.load().then(ready);
-        } else {
-          ready()
-        }
+block page
+  label Processing — Tap to regenerate
+  h1 #{page.title} &middot;&nbsp;
+    a(href="/experiments") Experiments
 
-        $(document).on(
-          ("ontouchstart" in window) ? "touchend" : "click",
-          function(e){
-            if (e.target.href) {
-              return true;
-            } else {
-              document.querySelector("canvas").remove();
-              ready();
-            }
-          }
-        )
-      })
+block scripts
+  script(type="text/javascript" src="/js/vendor.js")
+  script(type="text/javascript" src="/js/other/stack-blur.js")
+  script(type="text/javascript" src="/js/other/canvas-fx.js")
+  script(type="text/javascript" src="/js/experiments.js")
+  script.
+    require("experiments/initialize")("#{page.experiment}")
+    

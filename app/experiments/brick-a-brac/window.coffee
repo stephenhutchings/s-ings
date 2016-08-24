@@ -11,10 +11,10 @@ frame = (ctx, { x, y, w, h }, features) ->
   ctx.rect(x, y, w, h)
 
   if features.topFrame
-    ctx.rect(x, y - bh * 2, w, bh * 2)
+    ctx.rect(x, 0, w, bh * 2)
     for i in [1..Math.floor(w / (bw / 2))]
-      ctx.moveTo(x + (i * bw / 2), y - bh * 2)
-      ctx.lineTo(x + (i * bw / 2), y)
+      ctx.moveTo(x + (i * bw / 2), 0)
+      ctx.lineTo(x + (i * bw / 2), bh * 2)
 
   if features.bottomFrame
     ctx.rect(x, y + h, w, bh * 2)
@@ -23,6 +23,7 @@ frame = (ctx, { x, y, w, h }, features) ->
       ctx.lineTo(x + (i * bw / 2), y + h + bh * 2)
 
   ctx.fill()
+  ctx.stroke()
 
 inset = (ctx, { x, y, w, h }, features) ->
   ctx.rect(
@@ -58,15 +59,31 @@ divisions = (ctx, { x, y, w, h }, features) ->
       if isOpen
         openWindows.push(rect) for rect in rects
 
-    else if isOpen
-      openWindows.push rect
+    else
+      if j is Math.round((features.divisions + 1) / 2)
+        hi = features.frameInset / 2
+        hw = 8
+        hh = 4
+        hx = x + iw / 2 - hw / 2
+        hy = y - hh - hi + (ih + hi) * j
+        ctx.rect(hx, hy, hw, hh)
+
+      openWindows.push(rect) if isOpen
 
   ctx.stroke()
 
   ctx.beginPath()
+  ctx.lineWidth = 2
+
+  if hi
+    oh = if features.divisions % 2 is 0 then 0 else hi
+    ctx.moveTo x - hi, hy + hh + oh
+    ctx.lineTo x + iw + hi, hy + hh + oh
+    ctx.stroke()
+
+  ctx.beginPath()
   ctx.fillStyle = "#00184d"
   ctx.strokeStyle = "#f4dabe"
-  ctx.lineWidth = 2
 
   for rect in openWindows
     [rx, ry, rw, rh] = rect
@@ -115,12 +132,15 @@ module.exports = (features, dimensions) ->
   canvas = document.createElement("canvas")
   ctx = canvas.getContext("2d")
 
+  frames = _.compact([features.topFrame, features.bottomFrame]).length
+  frameH = (dimensions.h / features.h) * 2
+
   canvas.width = dimensions.w
-  canvas.height = dimensions.h
+  canvas.height = dimensions.h + frames * frameH
 
   dimensions.inset = features.frameInset
   dimensions.x = 0
-  dimensions.y = 0
+  dimensions.y = if features.topFrame then frameH else 0
 
   ctx.fillStyle = "#f4dabe"
   ctx.strokeStyle = "#00184d"
@@ -130,7 +150,14 @@ module.exports = (features, dimensions) ->
   inset(ctx, dimensions, features)
   divisions(ctx, dimensions, features)
 
-  posterize(canvas)
+  posterize(canvas, 2)
+
+  ctx.fillStyle = "#00184d"
+  ctx.globalAlpha = wobble(0.3, 0.2)
+  ctx.rect(0, dimensions.y, dimensions.w, frameH / 1.5)
+  ctx.rect(0, dimensions.y, frameH / 2, dimensions.h)
+  ctx.fill()
+  ctx.globalAlpha = 1
 
   gloss(ctx, dimensions, features)
 

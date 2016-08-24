@@ -65,7 +65,11 @@ module.exports = (ctx, canvas, scale, done) ->
         data2[x2 + 2] = gxB / weights
         data2[x2 + 3] = gxA / weightsAlpha
 
-    ctx.clearRect(0, 0, Math.max(W, W2), Math.max(H, H2))
-    ctx.putImageData(img2, 0, 0)
+    if done?
+      done(img2)
+    else
+      canvas.width  /= scale
+      canvas.height /= scale
 
-    done?()
+      ctx.clearRect(0, 0, Math.max(W, W2), Math.max(H, H2))
+      ctx.putImageData(img2, 0, 0)
