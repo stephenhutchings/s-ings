@@ -5,30 +5,42 @@ $inbound = $outbound = null
 class MainView extends Backbone.View
 
   events:
+    "keyup": "toggleLinkBehaviour"
+    "keydown": "toggleLinkBehaviour"
     "iostap a[href]": "navigateWithoutDelay"
-    "click a[href]": "navigateWithoutDelay"
+    "click a[href]": "preventDefault"
 
   initialize: ->
     $inbound = @$("#inbound")
     $outbound = @$("#outbound")
 
+  toggleLinkBehaviour: (e) ->
+    @disableTap = e.type is "keydown"
+
   navigateWithoutDelay: (e) ->
+    return if @disableTap
+
     if e.currentTarget.hash
       unless $(e.currentTarget).data("noscroll")?
         @$el.scrollTo($(e.currentTarget.hash).offset().top - 48)
-        false
 
-    else if e.currentTarget.origin is window.location.origin and not
-          $(e.currentTarget).data("follow")?
-
-      e.preventDefault()
+    else if @isAllowed(e.currentTarget)
+      e.preventDefault
       app.router.navigate(e.currentTarget.pathname, true)
       false
 
     else
       Backbone.history.stop()
       window.location = e.currentTarget.href
-      true
+
+  preventDefault: (e) ->
+    if not @disableTap and @isAllowed(e.currentTarget)
+      e.preventDefault()
+      false
+
+  isAllowed: (el) ->
+    el.origin is window.location.origin and
+    not $(el).data("follow")?
 
   # Display the current page, calling a display method on each active view and
   # enclassing the current page to reflect the page name.
@@ -51,8 +63,6 @@ class MainView extends Backbone.View
   # top. Remove events and call a hide method on any child view. Finish by
   # loading the new page.
   transitionViews: (params, callback) ->
-    @undelegateEvents()
-
     $inbound.removeClass("ready")
 
     for key, view of @views
@@ -65,7 +75,9 @@ class MainView extends Backbone.View
       $.ajax
         url: Backbone.history.location.pathname
         type: "GET"
-        success: (response) => @onLoad(params, response, callback)
+        success: (response) =>
+          rx = /<script[^<]+<\/script>/g
+          @onLoad(params, response.replace(rx, ""), callback)
 
   # Insert the new title and content onto the page, and create a view for any
   # new component on the page. Fail silently if view doesn't match a valid view
@@ -110,7 +122,6 @@ class MainView extends Backbone.View
   afterTransition: (callback) ->
     window.clearTimeout @transitionTimeout
     @transitionTimeout = window.setTimeout( =>
-      @delegateEvents()
       @swapContainers()
       callback?()
     , 600)
