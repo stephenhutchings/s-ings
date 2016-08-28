@@ -30,7 +30,6 @@ class MainView extends Backbone.View
       false
 
     else
-      Backbone.history.stop()
       window.location = e.currentTarget.href
 
   preventDefault: (e) ->
