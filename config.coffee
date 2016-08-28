@@ -1,4 +1,5 @@
-fs = require("fs")
+fs   = require("fs")
+data = require("./utils/data")
 
 exports.config =
   paths:
@@ -10,6 +11,7 @@ exports.config =
   conventions:
     ignored: [
       /[\\/]_/
+      "node_modules"
       /^app\/static\/partials/
       /^app\/static(\/|\\)(.+)\.yaml$/
     ]
@@ -26,7 +28,7 @@ exports.config =
         typogr:   require("typogr")
         written:  require("written")
         package:  require("./package.json")
-        data:     require("./utils/data")
+        data:     data
 
   files:
     javascripts:
@@ -46,7 +48,8 @@ exports.config =
 
     stylesheets:
       joinTo:
-        "css/app.css": /\.s[ac]ss/
+        "css/app.css": "app/sass/app.sass"
+        "css/experiments.css": "app/sass/experiments.sass"
 
     templates:
       joinTo:
@@ -56,6 +59,8 @@ exports.config =
 
   hooks:
     onCompile: (generatedFiles) ->
+      data.clearCache()
+
       for g in generatedFiles
         for f in g.sourceFiles
           if f.path.match "sitemap"

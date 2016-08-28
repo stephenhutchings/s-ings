@@ -73,7 +73,7 @@ divisions = (ctx, { x, y, w, h }, features) ->
   ctx.stroke()
 
   ctx.beginPath()
-  ctx.lineWidth = 2
+  ctx.lineWidth = features.frameInset / 6
 
   if hi
     oh = if features.divisions % 2 is 0 then 0 else hi
@@ -82,8 +82,8 @@ divisions = (ctx, { x, y, w, h }, features) ->
     ctx.stroke()
 
   ctx.beginPath()
-  ctx.fillStyle = "#00184d"
-  ctx.strokeStyle = "#f4dabe"
+  ctx.fillStyle = "#000"
+  ctx.strokeStyle = "#ddd"
 
   for rect in openWindows
     [rx, ry, rw, rh] = rect
@@ -114,7 +114,7 @@ gloss = (ctx, {x, y, w, h}, features) ->
   w -= features.frameInset * 2
   h -= features.frameInset * 2
 
-  ctx.fillStyle = "#00184d"
+  ctx.fillStyle = "#000"
   ctx.globalAlpha = 0.085
   ctx.beginPath()
   ctx.moveTo x, y
@@ -132,8 +132,10 @@ module.exports = (features, dimensions) ->
   canvas = document.createElement("canvas")
   ctx = canvas.getContext("2d")
 
+  bh = dimensions.h / features.h
+
   frames = _.compact([features.topFrame, features.bottomFrame]).length
-  frameH = (dimensions.h / features.h) * 2
+  frameH = bh * 2
 
   canvas.width = dimensions.w
   canvas.height = dimensions.h + frames * frameH
@@ -142,17 +144,17 @@ module.exports = (features, dimensions) ->
   dimensions.x = 0
   dimensions.y = if features.topFrame then frameH else 0
 
-  ctx.fillStyle = "#f4dabe"
-  ctx.strokeStyle = "#00184d"
-  ctx.lineWidth = wobble 3, 1
+  ctx.fillStyle = "#ddd"
+  ctx.strokeStyle = "#000"
+  ctx.lineWidth = wobble bh / 3, bh / 8
 
   frame(ctx, dimensions, features)
   inset(ctx, dimensions, features)
   divisions(ctx, dimensions, features)
 
-  posterize(canvas, 2)
+  posterize(canvas, bh / 4, "grayscale")
 
-  ctx.fillStyle = "#00184d"
+  ctx.fillStyle = "#000"
   ctx.globalAlpha = wobble(0.3, 0.2)
   ctx.rect(0, dimensions.y, dimensions.w, frameH / 1.5)
   ctx.rect(0, dimensions.y, frameH / 2, dimensions.h)

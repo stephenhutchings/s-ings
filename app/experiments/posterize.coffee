@@ -1,9 +1,17 @@
-colors = [
-  [244, 218, 190]
-  [255, 255, 255]
-  [0, 24, 77]
-]
+palettes =
+  default: [
+    [244, 218, 190]
+    [255, 255, 255]
+    [0, 24, 77]
+  ]
 
+  grayscale: [
+    [40, 40, 40]
+    [255, 255, 255]
+    [210, 210, 210]
+  ]
+
+colors  = palettes.default
 offsets = [0.299, 0.587, 0.114]
 
 distance = (c1, c2) ->
@@ -51,7 +59,7 @@ module.exports = (cvs, r, c) ->
   StackBlur.canvasRGB(cvs, 0, 0, cvs.width, cvs.height, r)
 
   if c?
-    colors = c
+    colors = palettes[c] or c
     buildCache()
 
   fx.process(process)

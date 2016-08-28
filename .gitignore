@@ -5,3 +5,7 @@ bower_components
 node_modules
 build
 vendor/js/ga.js
+
+utils/examples*
+_*.png
+app/assets/img/projects/console-log/originals

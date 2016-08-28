@@ -1,42 +1,43 @@
 badge     = require("experiments/badge")
-resample  = require("experiments/resample")
+bigCanvas = require("experiments/big-canvas")
+frame     = require("experiments/frame")
+layer     = require("experiments/layer")
 posterize = require("experiments/posterize")
+resample  = require("experiments/resample")
+sequence  = require("experiments/sequence")
 shape     = require("experiments/shape")
 unmask    = require("experiments/threshold-to-mask")
-bigCanvas = require("experiments/big-canvas")
-sequence  = require("experiments/sequence")
 wobble    = require("experiments/wobble")
-layer     = require("experiments/layer")
 
 dpi   = window.webkitDevicePixelRatio or window.devicePixelRatio or 1
-scale = 1.5
 
 module.exports =
-  draw: (c) ->
-    { canvas, ctx } = bigCanvas(40)
+  draw: (options, done) ->
+    { canvas, ctx } = bigCanvas(options)
+
+    scale = options.scale or 2.5
 
     canvas.width  *= scale
     canvas.height *= scale
 
     sequence [
       => layer(ctx, @arcs(canvas))
-      =>
+      -> layer(ctx, frame(canvas, scale * 20))
+      ->
         margin = 24 * dpi * scale
-        { width, height, data } = badge("The  Sea", margin / dpi)
+        { width, height, data } = badge(margin / dpi)
         ctx.putImageData(
           data
           (canvas.width - width) / 2
           canvas.height - height - margin
         )
 
-      => posterize(canvas, 1.25 * dpi * 1.5)
-      => resample(ctx, canvas, scale)
-
-      c
-
+      -> posterize(canvas, Math.pow(scale, 0.35) * dpi * 1.5, "grayscale")
+      -> resample(ctx, canvas, scale)
+      -> done canvas
     ]
 
-  arcs: ({ width, height}, radius) ->
+  arcs: ({ width, height}) ->
     inner = 1
     outer = 90 * dpi
     rings = 12
@@ -47,8 +48,8 @@ module.exports =
     canvas.width = width
     canvas.height = height
 
-    ctx.fillStyle   = "#f4dabe"
-    ctx.strokeStyle = "#00184d"
+    ctx.fillStyle   = "#ddd"
+    ctx.strokeStyle = "#000"
 
     y = row = 0
 
@@ -56,11 +57,8 @@ module.exports =
 
     while y < canvas.height + outer
       y = row * (outer * 0.33)
-      x = -outer * (row % 2)
+      x = wobble(-outer * (row % 2), 16 * dpi)
       row++
-
-      yOffset = wobble(4 * dpi)
-      xOffset = wobble(4 * dpi)
 
       while x < canvas.width + outer
         width  = wobble(outer,  6 * dpi)
@@ -94,10 +92,10 @@ module.exports =
             ctx.fill() if repeat is 0
 
             if Math.random() > 0.982
-              ctx.fillStyle = _.sample ["#00184d", "#fff"]
+              ctx.fillStyle = _.sample ["#000", "#fff"]
               ctx.fill()
             else
-              ctx.fillStyle = "#f4dabe"
+              ctx.fillStyle = "#ddd"
 
         x += width * 2
 

@@ -1,5 +1,6 @@
 badge     = require("experiments/badge")
 layer     = require("experiments/layer")
+frame     = require("experiments/frame")
 shape     = require("experiments/shape")
 smooth    = require("experiments/smooth")
 wobble    = require("experiments/wobble")
@@ -10,10 +11,12 @@ bigCanvas = require("experiments/big-canvas")
 unmask    = require("experiments/threshold-to-mask")
 
 module.exports =
-  draw: (c) ->
-    { canvas, ctx } = bigCanvas(40)
+  draw: (options, done) ->
+    console.log "Drawing..."
 
-    scale = 1.2
+    { canvas, ctx } = bigCanvas(options)
+
+    scale = options.scale or 1.25
 
     canvas.width  *= scale
     canvas.height *= scale
@@ -21,13 +24,17 @@ module.exports =
     smaller = Math.min(canvas.width, canvas.height)
     radius  = smaller * wobble(0.7, 0.2) / 2
 
-    ctx.fillStyle   = "#ddd"
+    ctx.fillStyle = "#ddd"
     ctx.beginPath()
     ctx.rect(0, 0, canvas.width, canvas.height)
     ctx.fill()
 
     features =
       radius: radius
+
+      rings: _.random(80, 160)
+      paths: _.random(32, 160)
+
       radialBase:  smaller / 400
       radialShift: smaller / 4
       limitBase:   smaller / 480
@@ -37,9 +44,10 @@ module.exports =
       radialJump:  [smaller / 120,  smaller / 40]
       innerWidth:  smaller  / 3000
       outerWidth:  [smaller / 240, smaller / 60]
+
       extrusionAngle:  Math.random() * Math.PI * 2
-      extrusionLength: Math.floor wobble radius, radius / 2
-      strokeWobble: smaller / 5
+      extrusionLength: Math.floor wobble smaller / 2.5, smaller / 5
+      scratchWobble: smaller / 5
 
     features.center =
       x: canvas.width  / 2 - Math.cos(features.extrusionAngle) * features.extrusionLength / 2 * Math.random()
@@ -49,22 +57,23 @@ module.exports =
       => layer(ctx, @rings(canvas, features))
       => layer(ctx, @cracks(canvas, features))
       => layer(ctx, @grain(canvas, features))
+      => layer(ctx, frame(canvas, Math.max(smaller / 40 - 24, 20)))
       =>
-
-      => posterize(canvas, radius / 400, [[40,40,40],[255,255,255],[220,220,220]])
-      =>
-        margin = 48 * scale
-        { width, height, data } = badge("Stumped", 24 * scale, (canvas) -> posterize(canvas, 1 * scale))
+        height = Math.max(smaller / 40 - 24, 20)
+        margin = height * 4
+        { width, height, data } = badge(height)
         ctx.putImageData(data, (canvas.width - width) / 2, canvas.height - height - margin)
+
+      => posterize(canvas, Math.pow(scale, 0.35) * radius / 360, "grayscale")
       => resample(ctx, canvas, scale)
-      c
+      -> done canvas
     ]
 
   grain: ({ width, height}, features) ->
     canvas = document.createElement("canvas")
     ctx    = canvas.getContext("2d")
 
-    radius = features.radius * 2
+    radius = features.radius
     cx = features.center.x
     cy = features.center.y
 
@@ -76,7 +85,7 @@ module.exports =
       points = []
       for i in [0..3]
         a = wobble Math.PI * 2
-        r = wobble radius
+        r = wobble radius * 2
         x = cx + r * Math.cos(a)
         y = cy + r * Math.sin(a)
         points.push x
@@ -86,21 +95,16 @@ module.exports =
 
       ctx.bezierCurveTo(points...)
 
-    ctx.fillStyle = "#666"
-    ctx.strokeStyle = "#fff"
-    ctx.lineWidth = Math.min(width, height) / 200
+    ctx.closePath()
+    ctx.fillStyle = "#808080"
     ctx.fill()
-    ctx.stroke()
-
-    StackBlur.canvasRGB(canvas, 0, 0, canvas.width, canvas.height, 20)
 
     fx = new CanvasEffects(canvas, {useWorker: false})
-    fx.noise(60)
-    fx.invert()
-    smooth(canvas, _.random(3, 8), 124)
+    fx.noise(120)
+    smooth(canvas, _.random(3, 4), _.random(190, 195))
 
     mask = ctx.getImageData(0, 0, canvas.width, canvas.height)
-    unmask mask, 0, 24, 77
+    unmask mask, 0, 0, 0, false
     mask
 
   cracks: ({ width, height }, features) ->
@@ -145,13 +149,14 @@ module.exports =
     smooth(canvas, _.random(15, 30))
 
     mask = ctx.getImageData(0, 0, width, height)
-    unmask mask, 0, 24, 77
+    unmask mask, 0, 0, 0
     mask
 
   rings: ({ width, height}, features) ->
     canvas = document.createElement("canvas")
     ctx    = canvas.getContext("2d")
-    radius = features.radius
+
+    { radius, rings, paths } = features
 
     canvas.width = width
     canvas.height = height
@@ -162,9 +167,6 @@ module.exports =
     ctx.beginPath()
     ctx.rect(0, 0, canvas.width, canvas.height)
     ctx.fill()
-
-    rings = _.random(80, 160)
-    paths = _.random(12, 120)
 
     cx = features.center.x
     cy = features.center.y
@@ -188,12 +190,15 @@ module.exports =
             isOuter = true
             style.lineWidth = _.random(features.outerWidth...)
             style.strokeStyle = "#000"
+            style.globalAlpha = wobble 0.4, 0.1
+            style.shadowBlur = radius / 40
+            style.shadowColor = "#000"
           else
             mult = Math.sin (ring / rings) * Math.PI
             style.lineWidth = wobble(features.innerWidth * 1.5 + mult * features.innerWidth * 2, features.innerWidth * (1 + mult))
             style.strokeStyle = if Math.random() < 0.082 then "#ffffff" else "#000"
             style.lineWidth *= _.random(2, 12) if style.strokeStyle is "#ffffff"
-
+            style.globalAlpha = 1
 
         rw     = wobble rw, 4
         r      = wobble rw + ring / rings * radius, 8
@@ -241,16 +246,22 @@ module.exports =
 
             [x2, y2, x3, y3, x4, y4]
 
+    # Extrusion
     theta = features.extrusionAngle
     count = features.extrusionLength
-    shift = radius / 10
+    shift = 0#radius / 10
+    scale = 0.1
 
-    { paths, style } = _.last instructions
+    { paths } = _.last instructions
+
+    w2 = canvas.width / 2
+    h2 = canvas.height / 2
 
     for i in [count..0]
+      scale = wobble 0.05, 0.05
+      s = 1 - scale * (i / count) + 0.01
       x = Math.cos(theta) * i
       y = Math.sin(theta) * i
-      s = (i / count) * 0.05
       ctx.save()
 
       if i <= 0
@@ -260,16 +271,18 @@ module.exports =
         ctx.fillStyle = "#000"
 
       ctx.beginPath()
+      ctx.translate(w2, h2)
+      ctx.scale(s, s)
+      ctx.translate(-w2, -h2)
       ctx.translate(wobble(x, shift), wobble(y, shift))
-      ctx.scale(1 - s, 1 - s)
       for path, j in paths
         ctx[if j is 0 then "moveTo" else "bezierCurveTo"](path...)
 
       ctx.fill()
       ctx.restore()
 
-    for i in [0...100]
-      ctx.lineWidth = Math.random() * (radius / 100)
+    baseScratches = (lw) ->
+      ctx.lineWidth = Math.random() * lw
       ctx.strokeStyle = "#ddd"
       ctx.beginPath()
       ctx.lineCap = "round"
@@ -279,16 +292,25 @@ module.exports =
       y2 = y1 + Math.sin(theta) * radius * 3
       ctx.moveTo(x1, y1)
       ctx.bezierCurveTo(
-        wobble(x1 + (x2 - x1) * 0.33, features.strokeWobble)
-        wobble(y1 + (y2 - y1) * 0.33, features.strokeWobble)
-        wobble(x1 + (x2 - x1) * 0.66, features.strokeWobble)
-        wobble(y1 + (y2 - y1) * 0.66, features.strokeWobble)
+        wobble(x1 + (x2 - x1) * 0.33, features.scratchWobble)
+        wobble(y1 + (y2 - y1) * 0.33, features.scratchWobble)
+        wobble(x1 + (x2 - x1) * 0.66, features.scratchWobble)
+        wobble(y1 + (y2 - y1) * 0.66, features.scratchWobble)
         x2, y2
       )
       ctx.stroke()
 
-    StackBlur.canvasRGB canvas, 0, 0, canvas.width, canvas.height, 2
+    baseScratches((radius / 60)) for i in [0...100]
+    StackBlur.canvasRGB canvas, 0, 0, canvas.width, canvas.height, radius / 50
 
+    ctx.globalAlpha = Math.random()
+    baseScratches((radius / 180)) for i in [0...100]
+    ctx.globalAlpha = 1
+    StackBlur.canvasRGB canvas, 0, 0, canvas.width, canvas.height, radius / 4000
+    fx = new CanvasEffects(canvas, {useWorker: false})
+    fx.noise(radius / 1000)
+
+    # Render each ring
     for { paths, style }, i in instructions
       ctx.beginPath()
       ctx[key] = val for key, val of style
@@ -297,6 +319,65 @@ module.exports =
 
       ctx.closePath()
       ctx.stroke()
+
+    # Small hatches perpendicular to rings
+    ctx.globalAlpha = 1
+    ctx.strokeStyle = "#000"
+    ctx.lineWidth = wobble radius / 500, radius / 1000
+    ctx.shadowBlur = 0
+
+    sj = _.random instructions.length
+    sk = _.random j, instructions.length
+    sd = radius / 150
+
+    for { paths, style }, i in instructions.slice(sj, sk)
+      ctx.beginPath()
+      sf = (.5 - Math.abs(.5 - i / (sk - sj))) * 2
+      for [x1, y1, x2, y2, x3, y3] in paths
+        t = Math.atan2(y3 - y1, x3 - x1) + Math.PI / 2
+        d = wobble(sd, sd / 4) * sf
+        t = t or 0
+
+        ctx.moveTo x1 - Math.cos(t) * d, y1 - Math.sin(t) * d
+        ctx.lineTo x1 + Math.cos(t) * d, y1 + Math.sin(t) * d
+
+        if paths < 80
+          ctx.moveTo x2 - Math.cos(t) * d, y2 - Math.sin(t) * d
+          ctx.lineTo x2 + Math.cos(t) * d, y2 + Math.sin(t) * d
+
+        if paths < 40
+          ctx.moveTo x3 - Math.cos(t) * d, y3 - Math.sin(t) * d
+          ctx.lineTo x3 + Math.cos(t) * d, y3 + Math.sin(t) * d
+
+      ctx.stroke()
+
+    # Add cracks at the circumference, using a subset of paths to sample thus
+    # avoiding unwanted symmetry
+    n = _.random(0, 5)
+    p = _.last(instructions).paths
+    from = _.random(p.length / 2, p.length - n)
+    to = p.length - from
+    [from, to] = [to, from] if to < from
+    tosample = p.slice(from, to)
+
+    for [x1, y1, x2, y2, x3, y3] in _.sample tosample, n
+      f = 1 - wobble 0.3, 0.3
+      t = Math.atan2(y3 - y1, x3 - x1)
+      d = radius / 12 * Math.random()
+      mx = cx + (x1 - cx) * f
+      my = cy + (y1 - cy) * f
+
+      ctx.beginPath()
+      ctx.moveTo x1, y1
+      ctx.lineTo wobble(mx + (x1 - mx) / 2, d / 2), wobble(my + (y1 - my) / 2, d / 2)
+      ctx.lineTo cx + (x1 - cx) * f, cy + (y1 - cy) * f
+      ctx.lineTo x1 + Math.cos(t) * d, y1 + Math.sin(t) * d
+
+
+      ctx.shadowBlur = (radius / 80) * Math.random()
+      ctx.closePath()
+      ctx.fillStyle = "#000"
+      ctx.fill()
 
     mask = ctx.getImageData(0, 0, canvas.width, canvas.height)
     mask

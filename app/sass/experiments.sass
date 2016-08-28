@@ -1,0 +1,68 @@
+body
+  text-align: center
+  background: #202226
+  height: 100%
+
+label
+  background: #202226
+  background: rgba(#202226, 0.8)
+  border-radius: 2px
+  color: #fff
+  font-size: 13px
+  font-weight: bold
+  left: 50%
+  line-height: 24px
+  padding: 8px 0
+  margin: -24px -100px
+  opacity: 0
+  position: absolute
+  text-transform: uppercase
+  top: 50%
+  transition: opacity 300ms
+  width: 200px
+  z-index: 20
+
+  em
+    font-style: normal
+    opacity: 0.7
+
+  .show &
+    opacity: 1
+
+h1
+  margin: 0
+  font-size: 16px
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  padding: 16px
+  display: block
+  z-index: 10
+  color: #fff
+  opacity: 0.3
+  transition: opacity 300ms
+  z-index: 10
+
+  &:hover
+    opacity: 0.8
+
+a
+  border-bottom: none
+
+canvas
+  box-shadow: 0 1px 4px #000
+  max-width: 1200px
+  height: auto
+  background: #fff
+  transition: -webkit-filter 800ms
+  transition: filter 800ms
+  position: absolute
+  top: 50%
+  left: 50%
+
+  .show &
+    filter: blur(2px)
+
+img
+  display: inline-block

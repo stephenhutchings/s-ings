@@ -33,6 +33,10 @@ a
   cursor: hand
   cursor: pointer
 
+  &[href*=".png"],
+  &[href*=".jpg"]
+    cursor: zoom-in
+
   &:hover,
   &:focus
     border-bottom-color: $highlight

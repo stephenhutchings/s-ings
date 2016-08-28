@@ -1,13 +1,13 @@
 timeout  = null
-label = document.querySelector("label")
-html  = label.innerHTML
+label = document?.querySelector("label")
+html  = label?.innerHTML
 
 sequence = (arr, i = 0, title = "Process", resolve) ->
   step = (resolve, reject) ->
     name = "#{title} #{i + 1} / #{arr.length + i}"
 
     console?.time? "#{title} Total" if i is 0
-    label.innerHTML = name if title isnt "Process"
+    label?.innerHTML = name if title isnt "Process"
 
     console?.time? name
     res = arr.shift()?()
@@ -29,7 +29,7 @@ sequence = (arr, i = 0, title = "Process", resolve) ->
       next()
 
   if i is 0
-    label.innerHTML = html if title isnt "Process"
+    label?.innerHTML = html if title isnt "Process"
     new Promise(step)
   else
     step(resolve)

@@ -1,0 +1,71 @@
+extends ../../partials/project
+
+block prepend config
+  - var projectPath = "console-log";
+
+
+mixin set(n, m, k)
+  .col-wrap
+    for j, i in (new Array(m - n + 1))
+      - image = (n + i).toString()
+      - while (image.length < 3) { image = "0" + image}
+      div(class=k || "col-xs")
+        a(href="/img/projects/console-log/composed/#{image}.png" data-follow)
+          img(
+            src="/img/projects/console-log/composed/#{image}.png"
+            style="margin: -10% -6.5% -2%"
+          )
+
+block project-full
+
+  .col-lg
+    :marked
+      Most computer generated artwork explores abstract, mathematical 
+      relationships and systems. While this can result in interesting effects,
+      this project has a different aim. Each illustration in the series is 
+      programmatically drawn by an algorithm, but the goal is to recreate
+      the rendering of an illustrator rather than computer. This is acheived 
+      by imitating the soft corners and sharp edges of linocut printing
+      techniques, the unintentional mistakes of the human hand and the
+      undirected wandering of natural variation. The working title 
+      “console.log” makes wry allusion to the frequent need to log
+      information in the process of constructing the drawings.
+
+  +set(1, 1, "col-md")
+  +set(2, 4)
+
+  .col-lg
+    :marked
+      The oblique projection is made of two main components, the open
+      cut circular face of the timber and the extruded solid behind. The face 
+      is made of a series of concentric rings, each constructed from a set of 
+      bezier paths, slightly varying as the extend from the center. Cracks in 
+      the timber are added as elongated simple polygons drawn radially from the
+      center. A patch of grainy texture is also added, although this may be 
+      lost in the final process.
+
+  +set(5, 8)
+
+  .col-lg
+    :marked
+      The extrusion is made of two basic components — the filled repeated outer
+      ring translated in some direction and a series of curved strokes made
+      parallel to this projection.
+
+  +set(9, 11)
+
+  .col-lg
+    :marked
+      The log is then processed using a combination of added noise, blurring
+      and color quantization. The final step partially recenters the log after
+      the extrusion.
+
+  +set(12, 15)
+
+  .col-lg
+    :marked
+      Each design is available as a limited edition print on high-quality 
+      archival A3 stock. If you’re interested in getting your hands on one of
+      these, [get in touch][1].
+
+      [1]: mailto:stephen@s-ings.com

@@ -5,17 +5,15 @@ glob      = require "glob"
 marked    = require "marked"
 moment    = require "moment"
 
-paths =
-  projects: "app/static/projects"
+root  = "./app/static"
+cache = {}
 
-projects = false
-
-getProjects = ->
-  projects or glob
-    .sync("#{paths.projects}/*/")
+getAll = (type) ->
+  cache[type] or glob
+    .sync("#{root}/**/#{type}/*/")
 
     .map((m) ->
-      getProject m.replace(paths.projects, "").replace(/\//g, "")
+      getOne type, m.replace(type, "").replace(root, "").replace(/\//g, "")
     )
 
     .sort((a, b) ->
@@ -26,20 +24,31 @@ getProjects = ->
       not m.hide
     )
 
-getProject = (name) ->
-  path = "#{paths.projects}/#{name}/"
-  data = { path: path.replace("app/static", "") }
+getOne = (type, name) ->
+  path = "#{type}/#{name}/"
+  data = { path }
 
-  if projects
-    project = _.findWhere(projects, data)
+  if cache[type]
+    result = _.findWhere(cache[type], data)
 
-  project or _.extend data,
+  result or _.extend data,
     try
-      yaml.load fs.readFileSync("#{path}project.yaml", "UTF-8")
+      file = glob.sync("#{root}/#{path}*.yaml")?[0]
+      yaml.load fs.readFileSync(file, "UTF-8")
     catch
       {}
 
+getFolders = (path) ->
+  glob
+    .sync("#{path}/*/")
+    .map((m) -> m.replace(path, "").replace(/\//g, ""))
+
+clearCache = ->
+  projects = false
+
 module.exports = {
-  getProjects
-  getProject
+  getAll
+  getOne
+  getFolders
+  clearCache
 }

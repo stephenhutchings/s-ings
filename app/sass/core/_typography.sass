@@ -25,31 +25,26 @@ h1 > em, .text-roman
   font-style: normal
 
 // Weight
-.text-bold
+h1, h3, h4, .text-bold
   font-weight: bold
 h1 > em, h2, .text-normal
   font-weight: normal
 .text-light
   font-weight: lighter
 
-// Fonts
-h1, h3, h4
-  font-weight: bold
-
 h2
   font-family: $serif
-  font-weight: normal
 
 // Size
 h1, .text-xl
   font-size: 64px
   line-height: 0.8
-h1 > em, h3, .text-lg
+h1 > em, .text-lg
   font-size: 21px
   line-height: 1.3
 h2
   font-size: 18px
-.text-sm
+h3, .text-sm
   font-size: 16px
 
 // Normalization
@@ -73,6 +68,9 @@ h3, .text-uppercase
 h2, h3, h4
   margin-top: 1.5em
   margin-bottom: 0.33em
+
+h3
+  letter-spacing: 0.03em
 
 h1
   margin-bottom: 0.5em

@@ -14,9 +14,9 @@ module.exports = (features, dimensions, side, floor) ->
   canvas.width  = dimensions.w
   canvas.height = dimensions.h + baseH + suppH
 
-  ctx.lineWidth   = wobble(3, 1)
-  ctx.fillStyle   = "#f4dabe"
-  ctx.strokeStyle = "#00184d"
+  ctx.lineWidth   = wobble(features.brick.h / 3, features.brick.h / 8)
+  ctx.fillStyle   = "#ddd"
+  ctx.strokeStyle = "#000"
 
   ctx.beginPath()
   ctx.rect(0, 0, canvas.width, canvas.height)
@@ -62,7 +62,7 @@ module.exports = (features, dimensions, side, floor) ->
         ctx.rect(x, y + 8, features.brick.h * 3, 6)
         ctx.rect(x, y + h - 14, features.brick.h * 3, 6)
 
-      ctx.fillStyle = "#00184d"
+      ctx.fillStyle = "#000"
       ctx.fill()
 
     when "bars"
@@ -84,7 +84,7 @@ module.exports = (features, dimensions, side, floor) ->
           w, h
         )
 
-      ctx.fillStyle = "#f4dabe"
+      ctx.fillStyle = "#ddd"
       ctx.stroke()
       ctx.fill()
 
@@ -104,13 +104,13 @@ module.exports = (features, dimensions, side, floor) ->
 
   else
     # Support
-    ctx.lineWidth = _.random(6, 8)
+    ctx.lineWidth = _.random(features.brick.h / 1.2, features.brick.h)
     ctx.beginPath()
     ctx.moveTo(canvas.width / 2, y + h + baseH / 2 + 8)
     ctx.lineTo((if side is 0 then canvas.width else 0), canvas.height)
     ctx.stroke()
 
-  posterize(canvas, wobble(3, 1))
+  posterize(canvas, wobble(3, 1), "grayscale")
 
   if features.sides.balconyInset and baseH > 20
     ctx.beginPath()
@@ -118,7 +118,7 @@ module.exports = (features, dimensions, side, floor) ->
     ctx.lineTo(lw / 2 + 10, y + h + 16)
     ctx.lineTo(canvas.width - lw - 8, y + h + 16)
     ctx.globalAlpha = 0.3
-    ctx.lineWidth = 10
+    ctx.lineWidth = features.brick.h * 1.2
     ctx.stroke()
     ctx.globalAlpha = 1
 

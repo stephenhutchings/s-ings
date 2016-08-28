@@ -33,13 +33,13 @@ ladder = (ctx, escape, features) ->
   if escape.floor > 0
     ctx.save()
 
-    ctx.fillStyle   = "#f4dabe"
+    ctx.fillStyle   = "#ddd"
     ctx.beginPath()
     ctx.rect(x - 16, 0, 8, escape.h)
     ctx.rect(x + w + 8, 0, 8, escape.h)
     ctx.fill()
 
-    ctx.fillStyle = "#00184d"
+    ctx.fillStyle = "#000"
     ctx.globalAlpha = 0.3
     ctx.beginPath()
     ctx.rect(x - 8, 0, w + 16, escape.h / 3)
@@ -62,7 +62,7 @@ bars = (ctx, escape, features) ->
     ctx.beginPath()
     ctx.moveTo(i * features.brick.h * 2, escape.h - escape.railH)
     ctx.lineTo(i * features.brick.h * 2, escape.h)
-    ctx.lineWidth = wobble(3, 1)
+    ctx.lineWidth = wobble(features.brick.h / 3, features.brick.h / 8)
     ctx.stroke()
 
 module.exports = (features, escape, side, floor) ->
@@ -75,20 +75,20 @@ module.exports = (features, escape, side, floor) ->
   escape.side  = side
   escape.floor = floor
 
-  lineWidth   = wobble(3, 1)
+  lineWidth   = wobble(features.brick.h / 3, features.brick.h / 8)
 
   canvas.width  = escape.w + lineWidth / 2
   canvas.height = escape.h + escape.baseH + escape.gridH
 
   ctx.lineWidth   = lineWidth
-  ctx.fillStyle   = "#f4dabe"
-  ctx.strokeStyle = "#00184d"
+  ctx.fillStyle   = "#ddd"
+  ctx.strokeStyle = "#000"
 
   ladder(ctx, escape, features)
   supports(ctx, escape, features)
   bars(ctx, escape, features)
 
-  posterize(canvas, wobble(5, 1))
+  posterize(canvas, wobble(5, 1), "grayscale")
 
   mask = ctx.getImageData(0, 0, canvas.width, canvas.height)
   mask

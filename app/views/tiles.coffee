@@ -1,31 +1,33 @@
 app = require("app")
 
-klass    = ".project-link"
-muted    = "project-muted"
-active   = "project-active"
-action   = "project-actionable"
-disabled = "project-disabled"
+klass    = ".tile-link"
+muted    = "tile-muted"
+active   = "tile-active"
+action   = "tile-actionable"
+disabled = "tile-disabled"
 
-class ProjectsView extends Backbone.View
+class TilesView extends Backbone.View
+  initialize: ->
+    @$(".tile-img-reveal").each (i, el) ->
+      el.src = $(el).data("src")
+
   events: ->
     isTouch = "ontouchstart" of window
     events  =
-      "iostap .project-tag-link": "filterByTag"
-      "click  .project-tag-link": "filterByTag"
+      "iostap .tile-tag-link": "filterByTag"
 
     if isTouch
       events["iostap"] = "activate"
-      events["click"] = "preventDefault"
     else
-      events["mouseleave .project-link"] = "deactivate"
-      events["mouseenter .project-link"] = "activate"
+      events["mouseleave .tile-link"] = "deactivate"
+      events["mouseenter .tile-link"] = "activate"
 
     return events
 
   activate: (e) ->
-    e.stopImmediatePropagation()
 
-    if @$(e.target).is(".project-close")
+    if @$(e.target).is(".tile-close")
+      e.stopImmediatePropagation()
       @deactivate()
       return
 
@@ -33,8 +35,9 @@ class ProjectsView extends Backbone.View
 
     if $link.size() > 0
       if e.type is "iostap" and $link.hasClass(active)
-        app.router.navigate($link.get(0).pathname, true)
+        return true
       else
+        e.stopImmediatePropagation()
         done = ->
           $link
             .removeClass(muted)
@@ -51,6 +54,7 @@ class ProjectsView extends Backbone.View
           done()
 
     else
+      e.stopImmediatePropagation()
       @deactivate()
 
   deactivate: (e) ->
@@ -62,7 +66,7 @@ class ProjectsView extends Backbone.View
     e.stopImmediatePropagation()
 
     tag = e.currentTarget.hash.slice(1)
-    $el = @$(e.currentTarget).parents(".project-tag")
+    $el = @$(e.currentTarget).parents(".tile-tag")
     $el
       .toggleClass("active")
       .siblings()
@@ -78,4 +82,4 @@ class ProjectsView extends Backbone.View
   preventDefault: ->
     return false
 
-module.exports = ProjectsView
+module.exports = TilesView

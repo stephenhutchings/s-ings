@@ -1,30 +1,24 @@
-smooth    = require("experiments/smooth")
+smooth    = require("./smooth")
 
-module.exports = (title, fontSize, process) ->
+module.exports = (fontSize, process) ->
   canvas = document.createElement("canvas")
   ctx    = canvas.getContext("2d")
+  font   = "900 #{fontSize}px Texta"
 
-  hairspace        = String.fromCharCode(8202)
+  hairspace        = ""#String.fromCharCode(8202)
   author           = "S    #{["I", "N", "G", "S"].join(hairspace)}"
-  ctx.font = font  = "bold #{fontSize}px Texta"
+  ctx.font         = font
 
   authorWidth      = ctx.measureText(author).width
-  titleWidth       = ctx.measureText(title).width
-  # textWidth        = Math.max authorWidth, titleWidth
-
-  scale            = authorWidth / titleWidth
-  textWidth        = authorWidth
-
   padding          = fontSize / 3
-  width            = textWidth + padding * 2
+  width            = authorWidth + padding * 2
   height           = fontSize + padding * 1.5
 
   canvas.width     = width
   canvas.height    = height
 
-  ctx.fillStyle    = "#00184d"
-  ctx.strokeStyle  = "#f4dabe"
-
+  ctx.fillStyle    = "#000"
+  ctx.strokeStyle  = "#ddd"
   ctx.textAlign    = "center"
   ctx.textBaseline = "middle"
   ctx.font         = font
@@ -38,14 +32,11 @@ module.exports = (title, fontSize, process) ->
   ctx.fill()
   ctx.stroke()
 
-  ctx.fillStyle = "#f4dabe"
+  ctx.fillStyle = "#ddd"
 
   s = fontSize / 3.0769230769
   x = padding + ctx.measureText("S").width + s + fontSize / 16
   y = height * .5
-
-  # if titleWidth > authorWidth
-  #   x -= (authorWidth - titleWidth) / 2
 
   ctx.beginPath()
   ctx.moveTo(x - s, y)
@@ -54,15 +45,7 @@ module.exports = (title, fontSize, process) ->
   ctx.lineTo(x, y - s)
   ctx.fill()
 
-  # ctx.beginPath()
-  # ctx.moveTo(0, height / 2)
-  # ctx.lineTo(width, height / 2)
-  # ctx.stroke()
-
   ctx.fillText(author, width / 2, height * .5)
-
-  ctx.font = font  = "bold #{fontSize * scale}px Texta"
-  # ctx.fillText(title,  width / 2, height * .25)
 
   if process?
     process(canvas, ctx)

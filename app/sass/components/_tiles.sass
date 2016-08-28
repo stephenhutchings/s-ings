@@ -1,0 +1,201 @@
+.tile-tags
+  list-style: none
+  padding: 0
+  margin: -2em 0 2em
+  font-size: 0.8em
+  overflow: hidden
+
+.tile-tag
+  display: block
+  float: left
+  padding: 4px 6px
+  line-height: 16px
+  border-radius: 12px
+  background-color: #f3f3f3
+  color: #666
+  margin-right: 8px
+
+  a
+    border: none
+    display: block
+
+  &:hover
+    background-color: #eee
+
+  &.active
+    background-color: black
+    color: white
+
+.tile-link
+  display: block
+  text-decoration: none
+  color: inherit
+  border: none
+  -webkit-tap-highlight-color: transparent
+  background-color: #eee
+  position: relative
+  z-index: 1
+  transition: z-index 300ms, background-color 300ms
+  @extend %clearfix
+
+  &.tile-active,
+  &:focus
+    z-index: 10
+    transition: none
+
+    .tile-name
+      border-bottom-color: #fff
+      transform: translate3d(0, 8px, 0)
+
+    .tile-desc
+      transform: translate3d(0, 0px, 0)
+      opacity: 1
+
+    .tile-img-reveal
+      opacity: 1
+      transition-duration: 300ms, 0ms
+      transition-delay: 0ms, 0ms
+
+    .tile-img-cover
+      opacity: 0
+      @extend %transition-sm
+
+    .tile-img
+      transform: translate3d(0, 0, 0) scale(1.05)
+
+  &.tile-actionable
+    .tile-close,
+    .tile-desc
+      pointer-events: all
+
+    .tile-close,
+    .tile-open
+      transform: scale(1) rotate(0) translate3d(0, 0, 0)
+      opacity: 1
+
+    &.__active
+      .tile-img
+        transform: translate3d(0, 0, 0) scale(1.1)
+
+  &.tile-disabled
+    pointer-events: none
+    background-color: transparent
+
+    .tile-imgs
+      opacity: 0.3
+      -webkit-filter: saturate(0)
+      transform: translate3d(0, 0, 0) scale(0.95)
+
+.tile-imgs
+  margin: 0 auto
+  box-sizing: border-box
+  position: relative
+  z-index: 10
+  @extend %transition-sm
+
+.tile-img
+  max-width: 100%
+  height: 160px
+  display: block
+  position: relative
+  transform-origin: bottom center
+  @extend %transition-sm
+
+  .col-lg &
+    height: 320px
+
+  @media (max-width: 680px)
+    height: auto !important
+
+.tile-img-reveal
+  position: absolute
+  opacity: 0
+  transition-duration: 300ms, 300ms
+  transition-property: transform, opacity
+  transition-delay: 0ms, 300ms
+
+.tile-name
+  margin: 0
+  border-bottom: 1px solid #eee
+  padding: 0.8em 0.1em
+  position: relative
+  background-color: #fff
+  @extend %transition-sm
+
+  .tile-muted &,
+  .tile-disabled &
+    color: #fff
+    border-bottom-color: #eee
+
+.tile-desc
+  pointer-events: none
+  padding: 0 200%
+  position: absolute
+  border-bottom: 20px solid rgba(#fff, 0.4)
+  margin: 0 -200%
+  background-clip: padding-box
+  background-color: #fff
+  transform: translate3d(0, 8px, 0)
+  opacity: 0
+  @extend %transition-sm
+
+  @media (max-width: 480px)
+    padding: 0
+
+  &:after
+    content: ""
+    display: block
+    margin: 2em 0
+    @extend hr
+
+.tile-open,
+.tile-close
+  position: absolute
+  top: 0
+  right: 0
+  font-size: 0
+  width: 40px
+  height: 40px
+  color: #fff
+  background-color: #000
+  background-color: rgba(#000, 0.8)
+  transform: scale(0.5) rotate(90deg) translate3d(0, 0, 0)
+  opacity: 0
+  z-index: 20
+  border-radius: 50%
+  background-clip: padding-box
+  border: 1px solid rgba(#fff, 0.2)
+  @extend %transition-md
+  transition-timing-function: $bounce
+
+  &:before,
+  &:after
+    content: ""
+    border: 1px solid
+    position: absolute
+    top: 50%
+    left: 50%
+
+  &:before
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1, 0.7)
+
+  &:after
+    transform: translate(-50%, -50%) rotate(45deg) scale(1, 0.7)
+
+.tile-open
+  top: 46px
+
+  &:before,
+  &:after
+    width: 10px
+    margin-left: 1px
+
+  &:before
+    margin-top: 4px
+  &:after
+    margin-top: -4px
+
+.tile-close
+  &:before,
+  &:after
+    width: 20px

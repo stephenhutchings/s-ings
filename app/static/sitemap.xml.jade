@@ -6,7 +6,7 @@ urlset(
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 )
   
-  - var projects = data.getProjects();
+  - var projects = data.getAll("projects");
   - var root = "http://s-ings.com"
 
   url
@@ -33,6 +33,12 @@ urlset(
       lastmod= moment(new Date(project.date)).format()
       changefreq monthly
       priority 0.2
+    
+  url
+    loc= root + "/experiments/"
+    lastmod 2016-08-28T12:58:00+10:00
+    changefreq monthly
+    priority 0.3
 
   url
     loc= root + "/monad/"

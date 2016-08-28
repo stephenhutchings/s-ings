@@ -57,7 +57,7 @@ draw = (done) ->
   ]
 
 module.exports =
-  draw: (c) ->
+  draw: (options, done) ->
     amount =
       Math.floor(window.innerHeight / small) *
       Math.floor(window.innerWidth / small)
@@ -67,4 +67,4 @@ module.exports =
         -> draw (image) ->
           document.body.insertAdjacentElement "afterBegin", image
       )...
-    ], 0, "Frying").then(c)
+    ], 0, "Frying").then(done)

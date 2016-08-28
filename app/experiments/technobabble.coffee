@@ -48,7 +48,7 @@ draw = (done) ->
   image.style.height = image.style.width = small + "px"
 
 module.exports =
-  draw: (c) ->
+  draw: (options, done) ->
     amount =
       Math.floor(window.innerHeight / small) *
       Math.floor(window.innerWidth / small)
@@ -58,4 +58,4 @@ module.exports =
         -> draw (image) ->
           document.body.insertAdjacentElement "afterBegin", image
 
-    , 0, "Babble").then(c)
+    , 0, "Babble").then(done)

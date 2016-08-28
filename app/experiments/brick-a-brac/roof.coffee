@@ -25,13 +25,13 @@ module.exports = (features) ->
   y = bh + ph
   w = canvas.width - x * 2
 
-  ctx.lineWidth = 2
-  ctx.strokeStyle = "#00184d"
-  ctx.fillStyle = "#f4dabe"
+  ctx.lineWidth = bh / 4
+  ctx.strokeStyle = "#000"
+  ctx.fillStyle = "#ddd"
   ctx.save()
 
   # Base Line
-  ctx.lineWidth = wobble(3, 2)
+  ctx.lineWidth = wobble(features.brick.h / 3, features.brick.h / 4)
   ctx.beginPath()
   ctx.moveTo(0, canvas.height - ctx.lineWidth / 2)
   ctx.lineTo(canvas.width, canvas.height - ctx.lineWidth / 2)
@@ -80,7 +80,7 @@ module.exports = (features) ->
     for i in [0...Math.floor(features.roof.h / bh)]
       for j in [0...Math.floor(w / tw)]
         ctx.beginPath()
-        ctx.lineWidth = wobble(3, 2)
+        ctx.lineWidth = wobble(features.brick.h / 3, features.brick.h / 4)
 
         o  = (i % 2) * tw / 2
         fx = o + x + j * tw
@@ -109,13 +109,13 @@ module.exports = (features) ->
     if features.roof.style
       py -= features.roof.h * mh * yo
       ctx.save()
-      ctx.fillStyle = "#00184d"
+      ctx.fillStyle = "#000"
       ctx.beginPath()
       ctx.arc(px + pw / 2, ph + py, pw, 0, Math.PI * 2)
       ctx.fill()
       ctx.restore()
 
-    ctx.lineWidth = wobble(4, 2)
+    ctx.lineWidth = wobble(features.brick.h / 2, features.brick.h / 4)
     ctx.beginPath()
     ctx.rect(px - 1, py, pw + 2, 4)
     ctx.rect(px - 2, py + 4, pw + 4, 8)
@@ -130,7 +130,7 @@ module.exports = (features) ->
     ah = 30
     ax = Math.max(x + w * Math.random(), aw * 2)
     ay = y + features.roof.h - ah
-    lw = wobble(4, 2)
+    lw = wobble(features.brick.h / 2, features.brick.h / 4)
     ctx.beginPath()
     # Down
     ctx.moveTo(ax, ay)
@@ -144,15 +144,15 @@ module.exports = (features) ->
       ctx.moveTo(ax + (i - 0.5) * aw - ex / 2, ay - (aw + ex) * m)
       ctx.lineTo(ax + (i + 0.5) * aw + ex / 2, ay + (aw + ex) * m)
 
-    ctx.strokeStyle = "#f4dabe"
+    ctx.strokeStyle = "#ddd"
     ctx.lineWidth = lw * 3
     ctx.stroke()
-    ctx.strokeStyle = "#00184d"
+    ctx.strokeStyle = "#000"
     ctx.lineWidth = lw
     ctx.stroke()
 
   # Base
-  ctx.lineWidth = wobble(4, 2)
+  ctx.lineWidth = wobble(features.brick.h / 2, features.brick.h / 4)
   ctx.beginPath()
   ctx.rect(
     0, y + features.roof.h,
@@ -165,12 +165,12 @@ module.exports = (features) ->
     w = bh * features.roof.edged
     for i in [0...Math.ceil(canvas.width / w)]
       ctx.beginPath()
-      ctx.lineWidth = wobble(3, 1)
+      ctx.lineWidth = wobble(features.brick.h / 3, features.brick.h / 8)
       ctx.moveTo w * i, y + features.roof.h
       ctx.lineTo w * i, canvas.height
       ctx.stroke()
 
-  posterize(canvas)
+  posterize(canvas, 0, "grayscale")
 
   mask = ctx.getImageData(0, 0, canvas.width, canvas.height)
   mask
