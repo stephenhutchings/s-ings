@@ -12,11 +12,30 @@
   #logo
     border-bottom: none
     display: inline-block
-    padding: 1em 56px 0 0
-    margin-top: -0.5em
+    padding: 0.5em 1em
+    margin: -0.5em -1em
     transition: all 250ms
     border-top: 1px solid transparent
 
+    .no-js &
+      background: rgba(#fff, 0.4)
+      padding-left: 2em
+      margin-left: -2em
+      border-radius: 4px
+      position: relative
+      background-clip: padding-box
+      overflow: hidden
+      -webkit-backdrop-filter: blur(0)
+
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        z-index: -1
+        -webkit-backdrop-filter: blur(8px)
 
     &:focus
       #inbound &
@@ -51,7 +70,8 @@
   transform: translate3d(0, 0, 0)
   @extend %transition-sm
 
-  .ready &
+  .ready &,
+  .no-js &
     opacity: 0
 
   &:hover

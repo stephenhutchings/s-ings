@@ -25,7 +25,7 @@ block content
     .projects.col-wrap
       for project in projects
         a.tile-link(
-          href=project.path
+          href="/#{project.path}"
           class=project.size || "col-sm"
           data-tags=project.tags.join(",")
         )
