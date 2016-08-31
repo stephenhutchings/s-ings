@@ -6,6 +6,6 @@ node_modules
 build
 vendor/js/ga.js
 
-utils/examples*
+renders/*
 _*.png
 app/assets/img/projects/console-log/originals
