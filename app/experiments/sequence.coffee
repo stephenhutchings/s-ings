@@ -2,6 +2,8 @@ timeout  = null
 label = document?.querySelector("label")
 html  = label?.innerHTML
 
+time = (since = 0) -> (window.performance or window.Date)?.now() - since
+
 sequence = (arr, i = 0, title = "Process", resolve) ->
   step = (resolve, reject) ->
     name = "#{title} #{i + 1} / #{arr.length + i}"
@@ -9,11 +11,11 @@ sequence = (arr, i = 0, title = "Process", resolve) ->
     console?.time? "#{title} Total" if i is 0
     label?.innerHTML = name if title isnt "Process"
 
-    console?.time? name
+    now = time()
     res = arr.shift()?()
 
     next = ->
-      console?.timeEnd? name
+      console.log? name, "#{time(now).toFixed(2)}ms"
 
       window.setTimeout (->
         if arr.length

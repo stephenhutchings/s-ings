@@ -9,37 +9,34 @@ shape     = require("experiments/shape")
 unmask    = require("experiments/threshold-to-mask")
 wobble    = require("experiments/wobble")
 
-dpi   = window.webkitDevicePixelRatio or window.devicePixelRatio or 1
-
 module.exports =
   draw: (options, done) ->
     { canvas, ctx } = bigCanvas(options)
 
-    scale = options.scale or 2.5
+    scale = options.scale or 1.1
 
     canvas.width  *= scale
     canvas.height *= scale
 
-    sequence [
-      => layer(ctx, @arcs(canvas))
-      -> layer(ctx, frame(canvas, scale * 20))
-      ->
-        margin = 24 * dpi * scale
-        { width, height, data } = badge(margin / dpi)
-        ctx.putImageData(
-          data
-          (canvas.width - width) / 2
-          canvas.height - height - margin
-        )
+    smaller = Math.min(canvas.width, canvas.height)
+    outer   = (smaller) / 8
 
-      -> posterize(canvas, Math.pow(scale, 0.35) * dpi * 1.5, "grayscale")
+    sequence [
+      => layer(ctx, @arcs(canvas, outer))
+      -> layer(ctx, frame(canvas, Math.max(smaller / 40 - 24, 20)))
+      ->
+        height = Math.max(smaller / 40 - 24, 20)
+        margin = height * 4
+        { width, height, data } = badge(height)
+        ctx.putImageData(data, (canvas.width - width) / 2, canvas.height - height - margin)
+
+      -> posterize(canvas, Math.pow(scale, 0.35) * outer / 44, "grayscale")
       -> resample(ctx, canvas, scale)
       -> done canvas
     ]
 
-  arcs: ({ width, height}) ->
+  arcs: ({ width, height}, outer) ->
     inner = 1
-    outer = 90 * dpi
     rings = 12
 
     canvas = document.createElement("canvas")
@@ -53,39 +50,41 @@ module.exports =
 
     y = row = 0
 
-    outer = wobble(outer, 60 * dpi)
+    rWidth = wobble(outer, outer / 2)
+    w = outer * 0.08
+    lw = w / 6
 
-    while y < canvas.height + outer
-      y = row * (outer * 0.33)
-      x = wobble(-outer * (row % 2), 16 * dpi)
+    while y < canvas.height + rWidth
+      y = row * (rWidth * 0.33)
+      x = wobble(-rWidth * (row % 2), rWidth * 0.25)
       row++
 
-      while x < canvas.width + outer
-        width  = wobble(outer,  6 * dpi)
-        height = wobble(outer, 16 * dpi)
+      while x < canvas.width + rWidth
+        width  = wobble(rWidth, w / 2)
+        height = wobble(rWidth, w)
 
         for i in [0..rings]
           for repeat in [0..2]
-            ctx.lineWidth = wobble(2, 1)
+            ctx.lineWidth = wobble(lw, lw * 0.5)
             radius = height - (height - inner) * (i / rings)
             cw = width - (width - inner) * (i / rings)
-            cr = wobble(radius, 2)
-            cx = wobble(x, 4)
-            cy = wobble(y, 4)
+            cr = wobble(radius, w / 6)
+            cx = wobble(x, w / 3)
+            cy = wobble(y, w / 3)
 
-            top = wobble cy - cr * 1.3, 3
+            top = wobble cy - cr * 1.3, w / 6
 
             ctx.beginPath()
             ctx.moveTo cx - cw, cy
             ctx.bezierCurveTo(
-              wobble(cx - cw, 8), wobble(cy - cr * 0.4, 8)
-              wobble(cx - cw * 0.66, 8), top
+              wobble(cx - cw, w), wobble(cy - cr * 0.4, w)
+              wobble(cx - cw * 0.66, w), top
               cx, top
             )
             ctx.bezierCurveTo(
-              wobble(cx + cw * 0.66, 8), top
-              wobble(cx + cw, 8), wobble(cy - cr * 0.4, 8)
-              wobble(cx + cw, 8), cy
+              wobble(cx + cw * 0.66, w), top
+              wobble(cx + cw, w), wobble(cy - cr * 0.4, w)
+              wobble(cx + cw, w), cy
             )
 
             ctx.stroke()

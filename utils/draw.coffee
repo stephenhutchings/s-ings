@@ -1,45 +1,45 @@
-fs     = require("fs")
+_      = require("lodash")
+fs     = require("fs-extra")
+glob   = require("glob")
 async  = require("async")
 logger = require("loggy")
-setup  = require("./lib/setup")
 
-decodeBase64Image = (dataString) ->
-  matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
-
-  if matches.length isnt 3
-    new Error('Invalid input string')
-
-  else
-    new Buffer(matches[2], 'base64')
+{fork} = require("child_process")
 
 s = (s, n) -> "#{n} #{s}#{if n is 1 then "" else "s"}"
 
-module.exports = (argv) ->
-  logger.log "Seting up JSDOM..."
-  setup (err, window) ->
-    logger.log "JSDOM is ready"
-    logger.log "Drawing experiment '#{argv.method}' #{s("time", argv.amount)}"
+n = (i) ->
+  name = (i + 1).toString()
+  name = "0#{name}" while name.length < 3
+  name
 
-    experiment = window.require("experiments/#{argv.method}")
+nextDir = (base) ->
+  index = glob
+    .sync("#{base}/*/")
+    .sort()
+    .map((d) -> +d.match(/\d+/)?[0])
+    .reverse()[0]
+  [base, n(index or 0)].join("/")
 
-    async.parallelLimit (
-      for i in [0...argv.amount]
-        do (i) -> (d) ->
-          name = (i + 1).toString()
-          name = "0#{name}" while name.length < 3
+module.exports = (options) ->
+  path = nextDir("./renders/#{options.method}")
+  fs.mkdirsSync(path)
 
-          logger.log "Starting #{name}"
+  logger.log "Drawing experiment '#{options.method}' #{s("time", options.amount)}"
 
-          experiment.draw argv, (canvas) ->
-            logger.log "Completed #{name}"
-            file = __dirname + "/examples/#{name}.png"
-            data = decodeBase64Image(canvas.toDataURL())
-            canvas.remove()
-            fs.writeFile file, data, d
+  async.parallelLimit (
+    for i in [0...options.amount]
+      do (i) -> (d) ->
+        opts = _.extend { file: "#{path}/#{n(i)}.png" }, options
+        argv = ("--#{key}=#{val}" for key, val of opts when key isnt "_")
 
-      ), 3, (err, res) ->
-        if err
-          throw err
-        else
-          logger.log "Completed #{res.length} #{s("file", res.length)}"
-          window.close()
+        child = fork "./utils/draw-one.coffee", argv
+        child.on "exit",  d
+        child.on "error", -> d("#{options.name} failed")
+
+  ), 3, (err, res) ->
+    if err
+      throw err
+    else
+      logger.log "Completed #{res.length} #{s("file", res.length)}"
+      process.exit()

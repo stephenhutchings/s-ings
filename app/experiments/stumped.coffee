@@ -43,7 +43,7 @@ module.exports =
       pointShift:  smaller / 4800
       radialJump:  [smaller / 120,  smaller / 40]
       innerWidth:  smaller  / 3000
-      outerWidth:  [smaller / 240, smaller / 60]
+      outerWidth:  [smaller / 180, smaller / 60]
 
       extrusionAngle:  Math.random() * Math.PI * 2
       extrusionLength: Math.floor wobble smaller / 2.5, smaller / 5
@@ -190,8 +190,8 @@ module.exports =
             isOuter = true
             style.lineWidth = _.random(features.outerWidth...)
             style.strokeStyle = "#000"
-            style.globalAlpha = wobble 0.4, 0.1
-            style.shadowBlur = radius / 40
+            style.globalAlpha = wobble 0.25, 0.15
+            style.shadowBlur = radius / 20
             style.shadowColor = "#000"
           else
             mult = Math.sin (ring / rings) * Math.PI
@@ -249,7 +249,7 @@ module.exports =
     # Extrusion
     theta = features.extrusionAngle
     count = features.extrusionLength
-    shift = 0#radius / 10
+    shift = 0
     scale = 0.1
 
     { paths } = _.last instructions
@@ -258,14 +258,17 @@ module.exports =
     h2 = canvas.height / 2
 
     for i in [count..0]
+      f = i / count
+      shift = wobble shift, Math.PI / 400
       scale = wobble 0.05, 0.05
-      s = 1 - scale * (i / count) + 0.01
-      x = Math.cos(theta) * i
-      y = Math.sin(theta) * i
+      s = 1.005 - scale * f + 0.01
+      x = Math.cos(theta + shift * f) * (i)
+      y = Math.sin(theta + shift * f) * (i)
       ctx.save()
 
       if i <= 0
         shift = 0
+        s = 1
         ctx.fillStyle = "#ddd"
       else
         ctx.fillStyle = "#000"
@@ -274,7 +277,7 @@ module.exports =
       ctx.translate(w2, h2)
       ctx.scale(s, s)
       ctx.translate(-w2, -h2)
-      ctx.translate(wobble(x, shift), wobble(y, shift))
+      ctx.translate(x, y)
       for path, j in paths
         ctx[if j is 0 then "moveTo" else "bezierCurveTo"](path...)
 
@@ -363,7 +366,7 @@ module.exports =
     for [x1, y1, x2, y2, x3, y3] in _.sample tosample, n
       f = 1 - wobble 0.3, 0.3
       t = Math.atan2(y3 - y1, x3 - x1)
-      d = radius / 12 * Math.random()
+      d = _.random _.last(instructions).style.lineWidth * 1.6
       mx = cx + (x1 - cx) * f
       my = cy + (y1 - cy) * f
 
