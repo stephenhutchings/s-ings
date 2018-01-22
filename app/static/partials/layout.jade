@@ -3,6 +3,9 @@ block config
   - page.description  = "Hi, I’m Stephen Hutchings. ";
   - page.description += "I design and build well-crafted digital ";
   - page.description += "interfaces, interactions & experiences.";
+  - page.style = {};
+
+- if (!page.title || !page.description) console.log(__, page)
 
 doctype html
 html.no-js(lang="en")
@@ -18,14 +21,19 @@ html.no-js(lang="en")
       title
         block title
           != page.title
-          |  - Stephen Hutchings, front-end designer and developer in Sydney
 
-      meta(name="title"       content=page.title)
-      meta(name="description" content=page.description)
-      meta(name="keywords"    content=package.keywords.join(", "))
-      meta(name="author"      content="Stephen Hutchings")
-      meta(name="copyright"   content="Stephen Hutchings 2015")
-      meta(name="robots"      content="index, follow")
+      meta(name="title"               content=page.title)
+      meta(name="twitter:title"       content=page.title)
+      meta(name="description"         content=page.description)
+      meta(name="og:description"      content=page.description)
+      meta(name="twitter:description" content=page.description)
+      meta(name="og:image"            content=page.image)
+      meta(name="og:site_name"        content="Stephen Hutchings")
+      meta(name="og:type"             content="website")
+      meta(name="keywords"            content=package.keywords.join(", "))
+      meta(name="author"              content="Stephen Hutchings")
+      meta(name="copyright"           content="Stephen Hutchings #{(new Date().getFullYear())}")
+      meta(name="robots"              content="index, follow")
 
       meta(http-equiv="content-type" content="text/html;UTF-8")
       meta(http-equiv="cache-control" content="cache")
@@ -37,22 +45,29 @@ html.no-js(lang="en")
       block css
         link(rel="stylesheet" href="/css/app.css")
 
-  body(class=page.class)
+  body
     block page
       #outbound
-      #inbound(data-class=page.class)
-          block header
-            include header
+      #inbound.ready(class=page.class)
+        block body
+          .content.stretch
+            aside.flex-between.stretch
+              block aside
+                block header
+                  include header
+              
+                footer
+                  block footer
+                    include connect
 
-          block body
-            #content
-              .content-wrap
-                block content
-                hr
-                block footer
-                  include footer
+            article.stretch(
+              style=(_.map(page.style, function(v, k){ 
+                return v ? k + ":" + v : ""
+              })).join(";")
+            )
+              block article
 
-            include crossword
+        include footer
 
     block scripts
       script(type="text/javascript" src="/js/vendor.js")
@@ -61,3 +76,17 @@ html.no-js(lang="en")
         $(document).ready(function(){
           require("app").initialize();
         })
+
+      script(type="text/javascript").
+        if (window.console && window.console.log) {
+          window.console.log([
+            "",
+            "╭───────────────────────────────╮",
+            "│                               │",
+            "│  Hi, I'm Stephen Hutchings.   │",
+            "│  Want to get in touch? Reach  │",
+            "│  out to stephen@s-ings.com.   │",
+            "│                               │",
+            "╰───────────────────────────────╯"
+          ].join("\n"))
+        }

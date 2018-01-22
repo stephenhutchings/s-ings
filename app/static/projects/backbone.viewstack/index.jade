@@ -1,7 +1,7 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "backbone.viewstack";
+  - var project = data.getOne("projects",  "backbone.viewstack");
 
 block project
   :marked
@@ -76,7 +76,7 @@ block project
 
     If you need to pass options for you view when it’s initialized, these can be passed in this method.
 
-    If you aren't using a CommonJS/AMD wrapper in your project, you can still use backbone.viewstack. All you have to do is create your views in the stack before showing them. Simply pass a name for your view, the view constructor and the options with which to initialize the view.
+    If you aren’t using a CommonJS/AMD wrapper in your project, you can still use backbone.viewstack. All you have to do is create your views in the stack before showing them. Simply pass a name for your view, the view constructor and the options with which to initialize the view.
 
     ```js
     this.viewstack.create("myView", MyView, {})
@@ -101,7 +101,7 @@ block project
     });
     ```
 
-    Views that don't already have and `open` or `exit` method will be given one. `open` will show the view if it exists, and takes the same options that are returned in `show` and `initialize`. `exit` will close the current view if it is at the top of the stack. It doesn't take any parameters.
+    Views that don’t already have and `open` or `exit` method will be given one. `open` will show the view if it exists, and takes the same options that are returned in `show` and `initialize`. `exit` will close the current view if it is at the top of the stack. It doesn’t take any parameters.
 
     ```js
       exampleView.open({}); // Open the current view
@@ -115,7 +115,7 @@ block project
 
     #### Event management
 
-    backbone.viewstack automatically handles event delegation for your views. When a view is hidden, `undelegateEvents` is called to ensure no events are left around when they're no longer needed.
+    backbone.viewstack automatically handles event delegation for your views. When a view is hidden, `undelegateEvents` is called to ensure no events are left around when they’re no longer needed.
 
     #### Transitions
 
@@ -125,7 +125,7 @@ block project
     this.viewstack.show("level1", {transition: "fade"})
     ```
 
-    Any transition that isn't `swipe` will automatically reverse when popping, so a view that fades in will fade out, and a view that zooms in will zoom out. These transitions disable the swipe to go back functionality.
+    Any transition that isn’t `swipe` will automatically reverse when popping, so a view that fades in will fade out, and a view that zooms in will zoom out. These transitions disable the swipe to go back functionality.
 
     If you want to write your own transitions, add a method to your view stack in the form `nameTranform` and then use `name` when you show the view. For example:
 
@@ -143,7 +143,7 @@ block project
 
     `__head` and `__body` are both jQuery/Zepto elements saved onto your Backbone view on initialization. Your view *must* render these onto the DOM at initialization, or you will have to set these yourself. In the same sense, you can use `__head.add($elements)` to add more elements if you wish these to be transitioned/transformed as well.
 
-    They are underscored to ensure they don't clash with any view keys you create yourself.
+    They are underscored to ensure they don’t clash with any view keys you create yourself.
 
     #### Example
 

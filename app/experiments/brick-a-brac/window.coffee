@@ -36,8 +36,9 @@ inset = (ctx, { x, y, w, h }, features) ->
 divisions = (ctx, { x, y, w, h }, features) ->
   x += features.frameInset
   y += features.frameInset
-  ih = (h - features.frameInset * 1.5) / (features.divisions + 1) - features.frameInset / 2
   iw = (w - features.frameInset * 2)
+  ih = (h - features.frameInset * 1.5) / (features.divisions + 1) -
+       features.frameInset / 2
 
   isOpen = maybe(0.4)
   openWindows = []

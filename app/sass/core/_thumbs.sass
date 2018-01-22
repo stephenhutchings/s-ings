@@ -1,0 +1,40 @@
+.thumb
+  background-size: cover
+  background-position: center bottom
+  background-repeat: no-repeat
+  position: relative
+  overflow: hidden
+
+  .thumb-link,
+  .thumb-img
+    position: absolute
+    display: block
+    left: 0
+    width: 100%
+    height: 100%
+    transition: all 600ms
+
+  .thumb-link
+    border: none
+    color: inherit
+
+  .thumb-img
+    background: inherit
+
+  .thumb-title
+    position: absolute
+    width: 100%
+    bottom: 1em
+    left: 0
+
+    @media (max-width: 768px)
+      bottom: 0.4em
+
+  &.bg-center
+    background-position: center
+
+  &.bg-contain
+    background-size: contain
+
+  &:hover .thumb-img
+    opacity: 0

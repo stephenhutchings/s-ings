@@ -1,7 +1,7 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "iostap";
+  - var project = data.getOne("projects",  "iostap");
 
 block project
   :marked
@@ -13,7 +13,7 @@ block project
     $ bower install iostap
     ```
 
-    Then you're good to go. You can listen for "iostap" events on any old element. For example:
+    Then you’re good to go. You can listen for "iostap" events on any old element. For example:
 
     ```
     $("a.link").on("iostap", function(e) {
@@ -27,7 +27,7 @@ block project
     in the iOS ecosystem with a great degree of precision, affording 
     developers who build hybrid web apps a greater user experience for their 
     users. iostap is a super-lightweight library, weighing in at about 1kb, 
-    and doesn't add unecessary overhead client-side.
+    and doesn’t add unecessary overhead client-side.
 
     Under the hood, there is more going on than you might think.
 

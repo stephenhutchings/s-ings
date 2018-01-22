@@ -1,0 +1,42 @@
+name: Svenska
+date: 20 Jun 2015
+size: col-sm
+desc: >
+  Svenska is like any strong-willed Scandinavian—it knows how to go its own
+  way when everyone else is following the crowd.
+pageCount: 6
+colors:
+  dark: "#0C242A"
+  highlight: "#34b4c4"
+  light: "#F6F6F3"
+  muted: "#d4d3ce"
+
+font:
+  name: Svenska
+  path: /fonts/svenska/
+  variants:
+    - name: Hairline
+      weight: 100
+    - name: ExtraLight
+      weight: 200
+    - name: Light
+      weight: 300
+    - name: Regular
+      weight: 400
+    - name: Medium
+      weight: 500
+    - name: SemiBold
+      weight: 600
+    - name: Bold
+      weight: 700
+    - name: ExtraBold
+      weight: 800
+    - name: Black
+      weight: 900
+
+urls:
+  -
+    text: Purchase
+    link: https://www.youworkforthem.com/font/T7230/svenska
+
+image: "/img/page/svenska.png"

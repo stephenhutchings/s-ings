@@ -1,0 +1,38 @@
+name: Golumpki
+date: 20 Jun 2015
+size: col-sm
+desc: >
+  Golumpki is a slab with panâche! Full of flavour, it’s bouncy curves and
+  bold shapes are bursting with energy, while idiosyncratic letter&shy;forms
+  make the design sizzle.
+pageCount: 5
+colors:
+  dark: "#0C242A"
+  muted: "#d4d3ce"
+  highlight: "#FF5948"
+  light: "#F6F6F3"
+
+font:
+  name: Golumpki
+  path: /fonts/golumpki/
+  variants:
+    - name: Hairline
+      weight: 100
+    - name: ExtraLight
+      weight: 200
+    - name: Light
+      weight: 300
+    - name: Regular
+      weight: 400
+    - name: Medium
+      weight: 500
+    - name: SemiBold
+      weight: 600
+    - name: Bold
+      weight: 700
+    - name: ExtraBold
+      weight: 800
+    - name: Black
+      weight: 900
+
+image: "/img/page/golumpki.png"

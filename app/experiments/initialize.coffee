@@ -10,7 +10,6 @@ module.exports = (experiment) ->
       [key, val] = opt.split("=")
       options[key] = (try JSON.parse(val)) or val
 
-  console.log options
   draw = ->
     require("experiments/#{experiment}").draw options, (c) ->
       window.open(c.toDataURL(), "__blank") if c? and options.save
@@ -22,10 +21,10 @@ module.exports = (experiment) ->
     _.delay draw, 300
     document.body.classList.add("show")
 
-  if window.FontFace
-    fontName = "Texta"
-    fontPath = "url(/fonts/texta-black/texta-black-webfont.woff2)"
-    new FontFace(fontName, fontPath).load().then(ready)
+  if false
+    fontName = "sans"
+    fontPath = "url(/fonts/philippa/Philippa-Bold.woff)"
+    new FontFace(fontName, fontPath).load().then(ready).catch(ready)
   else
     ready()
 

@@ -1,7 +1,7 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "written";
+  - var project = data.getOne("projects",  "written");
 
 block project
   :marked
@@ -17,68 +17,69 @@ block project
 
     This is what *written* can do:
 
-  .col-sm
-    ul
-      li 
-        a(href="#capitalization") Capitalization 
-        br
-        small of words and strings
-      li 
-        a(href="#cases") Cases 
-        br
-        small both for computers and humans
-      li 
-        a(href="#collapse") Collapse 
-        br
-        small for trimming whitespace
-      li 
-        a(href="#glyphs") Glyphs 
-        br
-        small for special characters
-      li 
-        a(href="#hyphenation") Hyphenation 
-        br
-        small to make text wrap on small screens
-      li 
-        a(href="#lists") Lists 
-        br
-        small for human-readable arrays
-      li 
-        a(href="#numbers") Numbers 
-        br
-        small for conversion and display
+  .col-wrap
+    .col-md
+      ul
+        li 
+          a(href="#capitalization") Capitalization 
+          br
+          small of words and strings
+        li 
+          a(href="#cases") Cases 
+          br
+          small both for computers and humans
+        li 
+          a(href="#collapse") Collapse 
+          br
+          small for trimming whitespace
+        li 
+          a(href="#glyphs") Glyphs 
+          br
+          small for special characters
+        li 
+          a(href="#hyphenation") Hyphenation 
+          br
+          small to make text wrap on small screens
+        li 
+          a(href="#lists") Lists 
+          br
+          small for human-readable arrays
+        li 
+          a(href="#numbers") Numbers 
+          br
+          small for conversion and display
 
-  .col-sm
-    ul
-      li
-        a(href="#ordinals") Ordinals 
-        br
-        small for counting
-      li
-        a(href="#quantify") Quantify 
-        br
-        small numbers of item(s)
-      li
-        a(href="#quotes") Quotes 
-        br
-        small for things that were said
-      li
-        a(href="#tags") Tags 
-        br
-        small for HTML wrappers
-      li
-        a(href="#utilities") Utilities 
-        br
-        small for common tasks
-      li
-        a(href="#written-numbers") Written Numbers 
-        br
-        small for body text
-      li
-        | and finally 
-        a(href="#language-support") Language Support 
-        br
-        small for everyone else
+    .col-md
+      ul
+        li
+          a(href="#ordinals") Ordinals 
+          br
+          small for counting
+        li
+          a(href="#quantify") Quantify 
+          br
+          small numbers of item(s)
+        li
+          a(href="#quotes") Quotes 
+          br
+          small for things that were said
+        li
+          a(href="#tags") Tags 
+          br
+          small for HTML wrappers
+        li
+          a(href="#utilities") Utilities 
+          br
+          small for common tasks
+        li
+          a(href="#written-numbers") Written Numbers 
+          br
+          small for body text
+        li
+          | and finally 
+          a(href="#language-support") Language Support 
+          br
+          small for everyone
 
 
   :marked
@@ -278,7 +279,7 @@ block project
     ```
 
     Some style guides prefer the numbers 12 and under to be written out, so 
-    we'll include those in dictionary. If more or fewer numbers need to be 
+    we’ll include those in dictionary. If more or fewer numbers need to be 
     added, or those from another language, see
     [Language Support](#language-support).
 
@@ -320,6 +321,6 @@ block project
     
     Please note that only partial support for French, German, Italian, Spanish 
     and Swedish is currently implemented. If using in the browser, ensure that 
-    the document’s charset is set to UTF-8. *Pull requests which extend 
-    language support are encouraged.*
+    the document’s charset is set to UTF-8. Pull requests which extend 
+    language support are encouraged.
 

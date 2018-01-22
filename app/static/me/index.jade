@@ -1,54 +1,117 @@
 extends ../partials/layout
 
 block append config
-  - page.class = "page-about";
+  - page.class = "page-gallery";
   - page.title = "Hi, I’m Stephen Hutchings.";
   - page.description = "Nice to meet you. Let me introduce myself.";
 
-block content
-  
-  .col-wrap: .col-sm
-    h1
-      em Hi, I’m 
-      | Stephen
-      br
-      | Hutchings
+block footer
+  include ../partials/connect
 
-    h2.hl-block
-      span.highlight Nice to meet you. 
-      span.highlight Let me introduce myself.
+  p
+    a.btn(href="/") &larr; Back
 
-    hr.tight
+block append article
+  .gallery-pagination.bg-dk(data-view="views/gallery-scroller")
+      for page, i in (new Array(5))
+        a(href="#item-#{i + 1}" data-parent=".gallery")= i + 1
 
-  .col-wrap: .col-lg
-    :marked
-      For the past five years, I’ve been working at
-      [Creative Licence Digital][1]. There my role is two-fold, acting as both 
-      the Art Director and Front-End Lead for our teams in Sydney and New 
-      York. We build web and native applications for a range of domestic and 
-      international clients. We do all sorts of stuff there — steak timers, 
-      medical reminders, HTML5 games, huge e-commerce projects, brand 
-      identities — you name it and we've probably done&nbsp;it.
+  .gallery.stretch
+    #item-1.gallery-item.p-v-xxl.p-h-xl.flex-between.p-v-xl.bg-dk
+      .mx-md.p-v-xl
+        h1.txt-xxl.mx-sm.mx-mn
+          span.txt-hl Hi.<br>
+          | I’m Stephen Hutchings.
+      section.mx-md.txt-justify.txt-hyphens
+        :marked
+          **I’m a multi‑disciplinary digital designer, with hands-on 
+          experience spanning UI/UX design, front‑end develop&shy;ment, type 
+          design, branding, animation & illustration.**
 
-      It’s my responsibility to ensure our design team can deliver engaging, 
-      beautiful experiences. For me, this doesn’t mean just art direction but 
-      a set of tools that helps our team work better and smarter. Whether it’s 
-      compilers that create more beautiful code, modern frameworks that help 
-      structure large projects or assemblers that take the grunt-work out of 
-      development — the web is alive with new technology and we are always 
-      ready to&nbsp;innovate.
+          **Currently, I’m the design and front-end lead at
+          [Ed Microlearning](https://www.edapp.com).**
+          
+          I sit at the intersection of design and front-end development, 
+          heading up a small team as the lead designer. It’s my job to make 
+          sure everything looks great and works intuitively, building digital 
+          products that are fit for purpose. If you ever read, click on, look 
+          for, tap, drag, delete, edit or sign into something, I’m the one who 
+          designs and builds that user experience. 
 
-      While my training is in design and illustration, I have always had a 
-      keen interest in digital. I am one of those people, though, that likes 
-      to get my hands into everything. You will find a mix of [projects][3] 
-      here, from utilities for other developers to design work that fills my 
-      spare time, including some recent [drawing experiments][4]. So have a 
-      look around, and [hit me up][2] if you want to&nbsp;chat.
+    #item-2.gallery-item
+      .flex-stretch.stretch.txt-center(style="height: 80vh")
+        figure.thumb.bg-center(
+          style="background-image: url(/img/art/top-down.jpg)"
+        )
+          figcaption.thumb-title The Ed Platform
+        figure.thumb.bg-center(
+          style="background-image: url(/img/art/floating-phones.jpg)"
+        )
+        figure.thumb.bg-center(
+          style="background-image: url(/img/art/philippa-wip.png)"
+        )
+          figcaption.thumb-title.txt-white 
+            a(href="/fonts/philippa") Philippa
+            |  — A New Typeface
 
-      [1]: http://www.creativelicencedigital.com
-      [2]: mailto:stephen@s-ings.com
-      [3]: /projects/
-      [4]: /experiments/
+    #item-3.gallery-item.p-v-xxl.p-h-xl.flex-between.p-v-xl
+      h3.txt-xxl.mx-md My Role
 
-  a.btn-text.btn-prev(href="/") Back
-  a.btn-text.btn-next(href="/projects") Projects
+      section.mx-md.txt-justify.txt-hyphens
+        :marked
+          Ed Microlearning is a SaaS learning platform. We provide the tools 
+          to author and deliver better training. The 
+          platform includes a customer facing app—available on the web or 
+          natively on iOS and Android—as well as an online portal for 
+          creating and administering learning content, a client-facing 
+          website, a product blog as well as our knowledge base. Our point 
+          of difference is a simpler and smarter product, delivering more 
+          engaging and better designed learning on any device.
+
+          The small size of our team means I work right across the product. 
+          I make decisions about the best way to introduce new features, how 
+          they fit into the user flow and how we can achieve great results 
+          within technical and time constraints. Then I get my hands dirty. 
+          On any given day, you might find me with my design hat on, 
+          creating wireframes, mock-ups, graphics and animations, style 
+          guides, logos and any other artwork needed for the platform. 
+          Otherwise I’ll be working on the front-end, producing prototypes, 
+          implementing designs and interactions into the final product, 
+          reviewing code or writing documentation.
+
+    #item-4.gallery-item.p-v-xxl.p-h-xl.flex-between.bg-lt.p-v-xl
+      h3.txt-xxl.mx-md Special Interests
+      .mx-md.txt-justify.txt-hyphens
+        :marked
+          My full time role is only half the story. I’m always busy working 
+          away on other projects, which have taken various forms over the 
+          course of my career. Currently I’m moonlighting as a type designer, 
+          creating a number of different retail fonts. This text is set in the 
+          latest, a typeface called [Philippa]. In the past, I’ve created an 
+          iOS app for creatives to manage colour swatches on the go. You might 
+          know [Typicons], one of the first freely-available icon fonts. I’ve 
+          also written a number of open source front-end libraries, which you 
+          can find on [GitHub]. My interest in design fields that interrelate 
+          with my work keeps me engaged and provides fresh insight into the 
+          problems that need to be solved day&#x2011;to&#x2011;day.
+
+          [Philippa]: /fonts/philippa
+          [Typicons]: /typicons
+          [GitHub]: https://www.github.com/stephenhutchings
+
+    #item-5.gallery-item.p-v-xxl.p-h-xl.flex-between.p-v-xl
+      h3.txt-xxl.mx-md My Philosophy
+      section.mx-md.txt-justify.txt-hyphens
+        :marked
+          I’m an enthusiast who wants to make better digital products. I get 
+          excited about the small details—microcopy, tone of voice, 
+          typography, motion—as well as the big picture—user journeys, 
+          information hierarchy, business logic, brand positioning. A balance 
+          of both is needed to create beautiful, well-designed products.
+
+          There is high standard of excellence that we now expect in a 
+          competitive, global marketplace, where technology giants normalise 
+          best-in-class software. But success isn’t exclusive to teams with 
+          endless resources and massive scale. By designing finely-tuned 
+          solutions that address real problems, I help make things that people 
+          want to&nbsp;use.

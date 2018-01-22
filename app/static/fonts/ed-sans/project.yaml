@@ -1,0 +1,45 @@
+name: Ed Sans
+date: 20 Jun 2015
+size: col-sm
+desc: >
+  Ed Sans is designed for legibility and neutrality, but small tweaks give it
+  the warmth & style it needs to make the right impression. The font was
+  developed as an integral part of the broader design strategy for
+  [Ed](https://www.edapp.com).
+
+pageCount: 3
+
+colors:
+  highlight: "#46b4e9"
+  muted: "#9aa5ad"
+  dark: "#1b2d48"
+  light: "#F5F8FA"
+
+font:
+  name: "edsansneue"
+  path: "/fonts/ed-sans/"
+  variants:
+    - name: semibold
+      weight: 600
+    - name: semibolditalic
+      weight: 600
+      style: italic
+    - name: light
+      weight: 300
+    - name: lightitalic
+      weight: 300
+      style: italic
+
+    - name: bold
+      weight: 700
+    - name: bolditalic
+      weight: 700
+      style: italic
+
+    - name: regular
+      weight: 400
+    - name: regularitalic
+      weight: 400
+      style: italic
+
+image: "/img/page/ed-sans.png"

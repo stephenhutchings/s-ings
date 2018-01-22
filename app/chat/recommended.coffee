@@ -1,5 +1,5 @@
 module.exports =
-  signature: "S&middot;INGS Recommendation Engine&reg;"
+  signature: "<small><b>S◆INGS</b></small> Recommendation Engine&reg;"
   inventory: ["things", "get", "after"]
 
   phrasings: [
@@ -26,6 +26,9 @@ module.exports =
 
     (its, get, post, a) ->
       "If only every #{get(its).type} was as good as #{get(its, ".").name}"
+
+    (its, get, post, a) ->
+      "If I had to name one #{get(its).type}, it would be #{get(its, ".").name}"
   ]
 
   thesaurus: _.extend require("./data/recommended"),
@@ -35,6 +38,10 @@ module.exports =
         type = _.chain(things).keys().first().value()
         find = window.encodeURIComponent "#{name} #{type}"
         link =
-          "<a href='http://www.google.com/?q=#{find}#'>#{name}#{punctuate}</a>"
+          """
+          <a href='http://www.google.com/search?q=#{find}#'>
+          #{name}#{punctuate}
+          </a>
+          """
 
         { type, name: link }

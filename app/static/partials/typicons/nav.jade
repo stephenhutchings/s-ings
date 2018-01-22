@@ -1,0 +1,16 @@
+- var classname = locals.page && locals.page.metadata.title;
+- classname = classname ? classname.toLowerCase().split(' ').join('-') : '';
+
+nav#nav.clearfix(class="#{classname}")
+  a.making-link(href="#{url}/more/making-typicons/")
+    i.typcn.typcn-edit
+    | Making Typicons
+  a.how-to-link(href="#{url}/more/how-to-use-typicons/")
+    i.typcn.typcn-directions
+    | How to use Typicons
+  a.resources-link(href="#{url}/more/resources/") 
+    i.typcn.typcn-compass
+    | Resources
+  a.github-link(href="https://github.com/stephenhutchings/typicons.font") 
+    i.typcn.typcn-social-github
+    | Typicons on GitHub

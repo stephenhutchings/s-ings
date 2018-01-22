@@ -1,7 +1,7 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "after-brunch";
+  - var project = data.getOne("projects",  "after-brunch");
 
 block project
   :marked

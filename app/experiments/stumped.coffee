@@ -50,22 +50,30 @@ module.exports =
       scratchWobble: smaller / 5
 
     features.center =
-      x: canvas.width  / 2 - Math.cos(features.extrusionAngle) * features.extrusionLength / 2 * Math.random()
-      y: canvas.height / 2 - Math.sin(features.extrusionAngle) * features.extrusionLength / 2 * Math.random()
+      x: canvas.width  / 2 -
+         Math.cos(features.extrusionAngle) *
+         features.extrusionLength / 2 * Math.random()
+      y: canvas.height / 2 -
+         Math.sin(features.extrusionAngle) *
+         features.extrusionLength / 2 * Math.random()
 
     sequence [
       => layer(ctx, @rings(canvas, features))
       => layer(ctx, @cracks(canvas, features))
       => layer(ctx, @grain(canvas, features))
-      => layer(ctx, frame(canvas, Math.max(smaller / 40 - 24, 20)))
-      =>
+      -> layer(ctx, frame(canvas, Math.max(smaller / 40 - 24, 20)))
+      ->
         height = Math.max(smaller / 40 - 24, 20)
         margin = height * 4
         { width, height, data } = badge(height)
-        ctx.putImageData(data, (canvas.width - width) / 2, canvas.height - height - margin)
+        ctx.putImageData(
+          data
+          (canvas.width - width) / 2
+          canvas.height - height - margin
+        )
 
-      => posterize(canvas, Math.pow(scale, 0.35) * radius / 360, "grayscale")
-      => resample(ctx, canvas, scale)
+      -> posterize(canvas, Math.pow(scale, 0.35) * radius / 360, "grayscale")
+      -> resample(ctx, canvas, scale)
       -> done canvas
     ]
 
@@ -213,7 +221,8 @@ module.exports =
 
           diff     = 0.004 / Math.abs(0.004 - angls[i])
           limit    = (features.limitBase + features.limitShift) * diff * factor
-          amount   = (features.radialBase / paths) + (features.radialShift / paths) * factor
+          amount   = (features.radialBase / paths) +
+                     (features.radialShift / paths) * factor
           radii[i] = wobble radii[i], amount, limit
 
           r1 = r + radii[i]
@@ -226,10 +235,14 @@ module.exports =
           y1 = cy + r1 * Math.sin(a1)
           x4 = cx + r2 * Math.cos(a2)
           y4 = cy + r2 * Math.sin(a2)
-          x2 = x1 + r1 * Math.cos(a1 + Math.PI / 2) / (paths / wobble(features.pointStart, features.pointShift))
-          y2 = y1 + r1 * Math.sin(a1 + Math.PI / 2) / (paths / wobble(features.pointStart, features.pointShift))
-          x3 = x4 - r2 * Math.cos(a2 + Math.PI / 2) / (paths / wobble(features.pointStart, features.pointShift))
-          y3 = y4 - r2 * Math.sin(a2 + Math.PI / 2) / (paths / wobble(features.pointStart, features.pointShift))
+          x2 = x1 + r1 * Math.cos(a1 + Math.PI / 2) /
+               (paths / wobble(features.pointStart, features.pointShift))
+          y2 = y1 + r1 * Math.sin(a1 + Math.PI / 2) /
+               (paths / wobble(features.pointStart, features.pointShift))
+          x3 = x4 - r2 * Math.cos(a2 + Math.PI / 2) /
+               (paths / wobble(features.pointStart, features.pointShift))
+          y3 = y4 - r2 * Math.sin(a2 + Math.PI / 2) /
+               (paths / wobble(features.pointStart, features.pointShift))
 
           cx += wobble(features.pointShift)
           cy += wobble(features.pointShift)

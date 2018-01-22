@@ -13,7 +13,7 @@ module.exports = ({ width, height, padding } = {}) ->
 
   padding ?= 40
   width   ?= (ww - padding * 2) * dpi
-  height  ?= (wh - padding * 2) * dpi
+  height  ?= (wh - padding * 3) * dpi
 
   canvas.width  = width
   canvas.height = height
@@ -28,6 +28,6 @@ module.exports = ({ width, height, padding } = {}) ->
 
   _.extend canvas.style,
     width:  "#{sw}px"
-    margin: "#{-sh / 2}px #{-sw / 2}px"
+    margin: "#{-sh / 2 - padding / 2}px #{-sw / 2}px"
 
   { canvas, ctx }

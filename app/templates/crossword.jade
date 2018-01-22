@@ -1,28 +1,29 @@
-.content-wrap
-  .crossword-letters
-    for letter, i in clue.word.split("")  
-      - var reveal = (show.indexOf(i) > -1 && letter) || "";
+h4.txt-muted
+  for type, i in ["Quick", "Cryptic"]
+    if i > 0
+      | /
+    span.crossword-mode.btn-no-bg.btn(
+      class=type.toLowerCase() == mode ? "active" : ""
+      data-mode=type.toLowerCase()
+    )= type
 
-      if /[A-Z]/.test(letter)
-        .crossword-letter(class=reveal ? "disabled" : "")
-          .crossword-mask= reveal
-          input.crossword-input(value=reveal disabled=!!reveal)
+  span.crossword-hint.btn-no-bg.btn Hint
 
-  .crossword-definition
-    .crossword-definition-text
-      = clue[mode]
-      | 
-      span.text-muted.crossword-length (#{length})
+  span.txt-normal.btn-no-bg.btn(title="Your record is #{score.record} points")
+    span.crossword-score= score.total 
+    |  points
 
-  hr
+.crossword-letters
+  for letter, i in clue.word.split("")  
+    - var reveal = (show.indexOf(i) > -1 && letter) || "";
 
-  .text-muted
-    for type in ["Quick", "Cryptic"]
-      span.crossword-mode.btn-no-bg.btn-text(
-        class=type.toLowerCase() == mode ? "active" : ""
-        data-mode=type.toLowerCase()
-      )= type
+    if /[A-Z]/.test(letter)
+      .crossword-letter(class=reveal ? "disabled" : "")
+        .crossword-mask= reveal
+        input.crossword-input(value=reveal disabled=!!reveal)
 
-    span.btn-no-bg.btn-text(title="Your record is #{score.record} points")
-      span.crossword-score= score.total 
-      |  points
+.crossword-definition
+  .crossword-definition-text
+    = clue[mode]
+    | 
+    span.txt-muted.crossword-length (#{length})

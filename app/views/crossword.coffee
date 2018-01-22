@@ -4,15 +4,17 @@ clues      = _.shuffle require("data/clues")
 
 class CrosswordView extends Backbone.View
   events:
-    "iostap   .crossword-mode": "setMode"
-    "click    .crossword-mode": "setMode"
-    "iostap  .crossword-input": "focus"
-    "click   .crossword-input": "focus"
-    "focus   .crossword-input": "focus"
-    "blur    .crossword-input": "blur"
-    "keydown .crossword-input": "onKeyUp"
-    "keyup   .crossword-input": "preventDefault"
-    "change  .crossword-input": "preventDefault"
+    "iostap    .crossword-mode": "setMode"
+    "click     .crossword-mode": "preventDefault"
+    "click     .crossword-mask": "preventDefault"
+    "click     .crossword-hint": "preventDefault"
+    "iostap    .crossword-hint": "onHint"
+    "iostap   .crossword-input": "onSelect"
+    "focusout .crossword-input": "onBlur"
+    "focusin  .crossword-input": "onFocus"
+    "keydown  .crossword-input": "onKeyUp"
+    "keyup    .crossword-input": "preventDefault"
+    "change   .crossword-input": "preventDefault"
 
   template: require("templates/crossword")
 
@@ -48,6 +50,8 @@ class CrosswordView extends Backbone.View
 
     @delegateEvents()
     @score.timestamp = (new Date()).getTime()
+    @score.pointsAvailable = if @mode is "cryptic" then 3000 else 1000
+    @score.bonusAvailable  = 1000
 
     @$el.removeClass("success")
     @$(".crossword-input").not("[disabled]").first().focus() unless initial
@@ -56,18 +60,26 @@ class CrosswordView extends Backbone.View
     @mode = @$(e.target).data("mode")
     @prepare()
 
-  focus: (e) ->
-    $el = @$(e.target)
-    $el.focus() unless e.type is "focusin"
-    $el.parent().addClass("focus").siblings().removeClass("focus")
+  onSelect: (e) ->
+    @$(e.target)
+      .siblings("input")
+      .focus()
 
-  blur: (e) ->
-    $el = @$(e.target)
-    $el.parent().removeClass("focus")
+  onFocus: (e) ->
+    @$(e.target)
+      .parent()
+      .addClass("focus")
+      .siblings()
+      .removeClass("focus")
+
+  onBlur: (e) ->
+    if e.isSimulated
+      e.preventDefault()
+      $el = @$(e.target)
+      $el.parent().removeClass("focus")
 
   preventDefault: (e) ->
     e.preventDefault()
-    false
 
   onKeyUp: (e) ->
     return if e.metaKey or e.ctrlKey
@@ -99,7 +111,27 @@ class CrosswordView extends Backbone.View
 
     @checkAnswer()
 
-    return not (dir and val)
+  onHint: ->
+    el = _.sample(@$(".crossword-input")
+      .not(".disabled")
+      .filter((i, el) -> not el.value)
+      .toArray()
+    )
+
+    $el = $(el)
+    index = $el.parent().index()
+    val = clues[0].word[index]
+
+    $el.val(val)
+      .prev().html(val)
+      .parent().addClass("disabled")
+
+    $el.attr("disabled", true)
+
+    @score.setBy {score: -500}, silent: true
+    @score.pointsAvailable = ~~Math.max(@score.pointsAvailable * 0.6 - 200, 0)
+    @score.bonusAvailable  = 0
+    @score.trigger "tally", {ms: 300, tallyAll: true, callback: => @checkAnswer(true)}
 
   onScoreChange: ({changed}) ->
     { total } = changed
@@ -108,20 +140,22 @@ class CrosswordView extends Backbone.View
       @$(".crossword-score")
         .html(@score.display().total)
 
-  checkAnswer: ->
+  checkAnswer: (fromHint) ->
     answer = @$(".crossword-input").map((i, el) -> el.value).toArray().join("")
 
     if clues[0].word.match(/[A-Z]/g).join("") is answer
       total = @score.get "total"
       bonus = Math.max(10000 + @score.timestamp - (new Date()).getTime(), 0)
 
-      @score.setBy
-        score: if @mode is "cryptic" then 3000 else 1000
-        bonus: ~~(bonus / 10)
-      , silent: true
+      if fromHint
+        @prepare()
+      else
+        @score.setBy
+          score: @score.pointsAvailable
+          bonus: Math.min(~~(bonus / 10), @score.bonusAvailable)
+        , silent: true
 
-      @score.trigger "tally", {tallyFrom: total, ms: 300, tallyAll: true}
-      @prepare()
+        @score.trigger "tally", {ms: 800, tallyAll: true, callback: => @prepare()}
 
 
 module.exports = CrosswordView

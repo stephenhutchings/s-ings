@@ -42,44 +42,44 @@ class ScoreModel extends Backbone.Model
     if score is 0
       callback?()
     else
-      start   = Date.now()
+      ts   = Date.now()
       ms      = Math.min((ms or 3000), score)
+      tf      = if tallyFrom then tallyFrom else total
       fps     = 1000 / 60
       frame   = 0
       frames  = ms / fps
-      initial = if tallyFrom then tallyFrom else 0
 
       @inProgress = true
 
       do repeat = =>
+        frame = Math.floor((Date.now() - ts) / fps)
         dist = (frame / frames) or 0
         dist = 1 unless 0 <= dist <= 1
 
         attrs =
           total: Math.round(
-            Easie.quartInOut(dist, initial, (bonus + score - initial), 1)
+            tf + Easie.quartInOut(dist) * (bonus + score - tf)
           )
 
         attrs.record = Math.max(attrs.total, record or 0)
 
         if tallyAll
-          attrs.bonus = Math.round(Easie.quartInOut(dist, initial, bonus - initial, 1))
-          attrs.score = Math.round(Easie.quartInOut(dist, initial, score - initial, 1))
+          attrs.bonus = Math.round(tf + Easie.quartInOut(dist) * (bonus - tf))
+          attrs.score = Math.round(tf + Easie.quartInOut(dist) * (score - tf))
 
         @set attrs
 
         if frame < frames
           window.clearTimeout @timeout
           @timeout = window.setTimeout(repeat, fps)
-          frame = Math.floor((Date.now() - start) / fps)
         else
           @inProgress = false
-          callback?()
+          window.setTimeout(callback, 100) if callback?
 
   # When scores change, ensure the total still represents the score + bonus
   getTotal: ({changed}) ->
     unless changed.total or @inProgress or not (changed.total and changed.bonus)
-      @set total: @get("score") + @get("bonus")
+      @set { total: @get("score") + @get("bonus") }
     if changed.record
       window.localStorage.setItem("s-ings.game.#{@id}", changed.record)
 

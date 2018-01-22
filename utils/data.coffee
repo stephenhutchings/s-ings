@@ -2,7 +2,6 @@ _         = require "lodash"
 fs        = require "fs"
 yaml      = require "js-yaml"
 glob      = require "glob"
-marked    = require "marked"
 moment    = require "moment"
 
 root  = "./app/static"
@@ -43,12 +42,12 @@ getFolders = (path) ->
     .sync("#{path}/*/")
     .map((m) -> m.replace(path, "").replace(/\//g, ""))
 
-clearCache = ->
-  projects = false
+clear = ->
+  cache = {}
 
 module.exports = {
   getAll
   getOne
   getFolders
-  clearCache
+  clear
 }

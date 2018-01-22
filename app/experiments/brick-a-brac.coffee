@@ -146,17 +146,17 @@ module.exports =
       { x, y, w, h } = position(canvas, features)
 
     sequence [
-      =>
+      ->
         ctx.fillStyle   = "#ddd"
         ctx.beginPath()
         ctx.rect(0, 0, canvas.width, canvas.height)
         ctx.fill()
 
-      =>
+      ->
         sequence _.flatten(
           for floor in [0...features.floors.amount - 1].reverse()
             for feature, i in features.sides.features when feature
-              do (feature, i, floor) => =>
+              do (feature, i, floor) -> ->
                 fw   = features.sides["#{feature}Width"]
                 fx   = if i is 0 then -fw else w
                 draw = if feature is "escape" then drawEscape else drawBalcony
@@ -174,24 +174,24 @@ module.exports =
               layer(ctx, data, x + (w - data.width) / 2, y + h * floor)
           , 0, "Floors"
         )
-      =>
+      ->
         { x, y, w, h } = position(canvas, features)
 
         data = drawRoof(features)
         layer(ctx, data, x + (w - data.width) / 2, y - data.height)
 
-      =>
+      ->
         layer ctx, frame(canvas, 20 * scale)
 
-      =>
+      ->
         fx = new CanvasEffects(canvas, {useWorker: false})
         posterize(canvas, 2, "grayscale")
 
-      =>
+      ->
         data = drawGround(features, { w })
         layer(ctx, data, x + (w - data.width) / 2, y + h * features.floors.amount)
 
-      =>
+      ->
         margin = 24 * dpi * scale
         { width, height, data } = badge margin / dpi, (c) ->
           fx = new CanvasEffects(c, {useWorker: false})

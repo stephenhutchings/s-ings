@@ -25,6 +25,7 @@ things:
       - "“The Conversation” with Gene Hackman"
       - "“The Holy Mountain” by Alejandro Jodorowsky"
       - "“The White Ribbon” by Michael Haneke"
+      - "“The Long Goodbye” by Robert Altman"
   -
     group:
       - "Bing & Ruth"
@@ -35,6 +36,12 @@ things:
       - "The Drones"
       - "The Microphones"
       - "The Necks"
+      - "Lower Dens"
+      - "Big Thief"
+      - "Life Without Buildings"
+      - "De La Soul"
+      - "Digable Planets"
+      - "Mazes"
   -
     artist:
       - "Burial"
@@ -43,7 +50,15 @@ things:
       - "Julianna Barwick"
       - "King Krule"
       - "Lubomyr Melnyk"
-      - "Mark McGuire"
+      - "Nahawa Doumbia"
+      - "Lizzy Mercier Descloux"
+      - "Charles Mingus"
+      - "Fela Kuti"
+  -
+    album:
+      - "“In a Silent Way” by Miles Davis"
+      - "“Amethyst Waves” by Mark McGuire"
+      - "“Remain in Light” by Talking Heads"
   -
     director:
       - "Andrei Tarkovsky"
@@ -52,11 +67,24 @@ things:
       - "Jim Jarmusch"
       - "Lars Von Trier"
       - "Yasujirō Ozu"
+      - "Stanley Kubrick"
+      - "Paolo Sorrentino"
+      - "David Cronenburg"
+      - "Luis Buñuel"
   -
     painter:
       - "Cy Twombly"
       - "Franz Kline"
       - "Mark Rothko"
+  -
+    "random thing":
+      - a Klein bottle
+
+  -
+    song:
+      - "“Marquee Moon” by Television"
+      - "“Laughing Heiroglyphic” by Avey Tare"
+      - "“The Presence” by Crispy Ambulance"
 
 after:
   - Right up my alley.

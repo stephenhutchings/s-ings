@@ -1,28 +1,26 @@
 .page-chat-bot
   color: #fff
   overflow: hidden
+  padding-bottom: 0 !important
 
-  #outbound,
-  #inbound
-    padding-bottom: 0
+  .header-container
+    position: absolute
+    width: 100%
 
 #message
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  background: #333
+  background: #222
   display: flex
   align-items: center
 
 #message-content
+  font-size: 48px
+
   @media (max-width: 480px)
     font-size: 28px
 
   a
     border-bottom-color: transparent
-    color: lighten($highlight, 8)
+    color: $highlight
     transition: border-color 300ms
 
     &:hover

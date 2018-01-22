@@ -1,19 +1,19 @@
 #footer
-  width: 296px
-  padding: 0 0 64px
-  z-index: 10
+  z-index: 0
   position: relative
 
-  h4
-    width: 380px
-    display: block
-    color: #999
-    margin-bottom: 12px
-    font-weight: normal
-    font-size: 85%
+  &:before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: rgba(black, 0.4)
 
-    @media (max-width: 480px)
-      width: 220px
+  @media (max-width: 820px)
+    .col-fluid
+      width: 33%
 
-  p
-    @extend .tight
+    .crossword-wrap
+      width: 100%

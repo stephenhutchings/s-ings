@@ -8,13 +8,19 @@ class MessageView extends Backbone.View
   history: {}
 
   initialize: ->
-    @$el.height($("body").height())
+    @$el.height($(window).height())
     @$content = @$("#message-content")
     @$author = @$("#message-author")
-    @generate()
+    @render(@prettify "Loading...")
+
+    @undelegateEvents()
+
+  ready: ->
+    @render(@prettify "To start chatting, tap anywhere.")
+    @delegateEvents()
 
   generate: (e) ->
-    if @$(e?.target).closest("a").size() is 0
+    if @$(e?.target).closest("a").length is 0
       tasks = [@select, @require, @extract, @prettify, @render]
       do _.bind(_.compose(tasks.reverse()...), this)
 
@@ -24,6 +30,7 @@ class MessageView extends Backbone.View
         "itstimefora"
         "recommended"
         "thecomputer"
+        "recommended"
         "itstodayand"
       ]
     , "data")
@@ -74,7 +81,12 @@ class MessageView extends Backbone.View
     @timeout = window.setTimeout =>
       @$el.removeClass("leave")
       @$content.html(message).offset()
-      @$author.html(@require(@history["data"]).signature)
+      @$author.html(
+        if @history.data
+          @require(@history.data).signature
+        else
+          "The Computer"
+      )
       @$el.addClass("active")
     , 600
 

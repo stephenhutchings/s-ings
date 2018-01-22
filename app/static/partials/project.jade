@@ -1,28 +1,53 @@
 extends layout
 
 block append config
-  - var project = data.getOne("projects", projectPath);
-  - page.class = "page-project";
+  - page.class = "page-gallery";
   - page.title = project.name;
   - page.description = project.desc;
+  - page.image = project.image;
 
-block content
-  .col-sm
-    h1.tile-title!= project.name
-    h2.hl-block
-      for line in _.chunk(project.desc.split(" "), 5)
-        span.highlight!= typogr.typogrify(line.concat("").join(" "))
+block footer
+  if project.colors
+    style
+      | .txt-hl { color: #{project.colors.highlight}; }
+      | .txt-mt { color: #{project.colors.muted}; }
+      | .bg-lt { background-color: #{project.colors.light}; }
+      | .bg-hl { background-color: #{project.colors.highlight}; color: #fff }
+      | .bg-dk { background-color: #{project.colors.dark}; color: #fff  }
 
-    include project-links
+  if project.font
+    style
+      - n = 6; d = Math.pow(11.11, 1 / n)
+      for size, i in (new Array(n))
+        | .t-#{i + 1} { 
+        |   font-size: #{Math.pow(d, i + 1)}em;
+        |   line-height: 1.2;
+        | }
+      for variant, i in project.font.variants
+        - var path = project.font.path + project.font.name + "-" + variant.name
+        | @font-face {
+        |   font-family: #{project.font.name};
+        |   font-weight: #{variant.weight};
+        |   font-style: #{variant.style || "normal"};
+        |   font-display: block;
+        |   src: url("#{path}.woff") format("woff"),
+        |        url("#{path}.woff2") format("woff2"); 
+        | }
+        | .f-g-#{variant.weight}#{variant.style ? "i" : ""} {
+        |   font-family: #{project.font.name};
+        |   font-weight: #{variant.weight};
+        | }
 
-    hr.tight
+  h1.p-v-sm!= project.name
+  p.p-v-sm!= typogr.typogrify(marked(project.desc))
 
-  .col-wrap
-    block project-full
-      .col-lg
-        block project
-
-  include project-links
+  p
+    a.btn(href="/") &larr; Back
+    if project.urls
+      for action in project.urls
+        | &ensp;&middot;&ensp;
+        | 
+        a.btn(href=action.link)= action.text
 
 block append scripts
   script(type="application/ld+json").
@@ -45,3 +70,12 @@ block append scripts
         }
       }]
     }
+
+block prepend article
+  if project.pageCount
+    .gallery-pagination.bg-dk(data-view="views/gallery-scroller")
+      for page, i in (new Array(project.pageCount))
+        a(href="#item-#{i + 1}" data-parent=".gallery")= i + 1
+
+block append article
+   block project

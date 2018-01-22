@@ -2,10 +2,21 @@ name: Asterisms
 date: 20 Jun 2015
 size: col-sm
 desc: >
-  A chart of the stars and constellations in the  night sky.
+  Asterisms charts the night sky in a beautifully detailed A2 format
+  poster. Using a projection which distorts both hemispheres onto a
+  circle, it offers a combined view of the northern and sourthen skies.
+
+pageCount: 2
+
 imgs:
   cover:  /img/projects/asterisms/cover.png
   reveal: /img/projects/asterisms/reveal.png
+
+colors:
+  highlight: "#deac74"
+
 tags:
   - Design
   - Posters
+
+image: "/img/page/asterisms.png"

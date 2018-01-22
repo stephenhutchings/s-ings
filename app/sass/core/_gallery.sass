@@ -1,0 +1,72 @@
+.gallery
+  bottom: 0
+  margin: 0 -3em -3rem
+
+  @media (max-width: 480px)
+    margin: 0 -1.6rem
+
+.gallery-item
+  box-sizing: border-box
+  width: 100%
+  overflow: hidden
+
+  > img
+    max-height: 106%
+    margin: -3% auto
+
+.gallery-pagination
+  text-align: center
+
+  a
+    display: inline-block
+    width: 2em
+    height: 2em
+    line-height: 2em
+    border: none
+    transition: all 300ms
+
+    &:hover
+      background-color: rgba(#fff, 0.3)
+
+    &:hover,
+    &.active
+      color: #fff
+
+@media (min-width: 1000px) and (min-height: 720px)
+  .gallery
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    margin: 0
+    width: 100%
+    display: flex
+    flex-direction: row
+    overflow-x: auto
+    box-sizing: border-box
+
+  .gallery-item
+    max-width: 800px
+    flex-shrink: 0
+    margin: auto
+    height: 100%
+    box-sizing: border-box
+
+  .gallery-pagination
+    position: absolute
+    left: 0
+    width: 2em
+    bottom: 15vh
+    z-index: 10
+    transform: none
+    z-index: 1
+
+  .gallery-pagination-indicator
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 2em
+    box-shadow: 4px 0 16px rgba(#000, 0.12)
+    background-color: rgba(#fff, 0.2)
+    z-index: -1

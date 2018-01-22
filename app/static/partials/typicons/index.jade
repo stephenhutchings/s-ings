@@ -1,0 +1,37 @@
+extends ../project
+
+block prepend config
+  - var project = data.getOne("projects",  "typicons");
+
+block prepend project-head
+  .col-sm.col-md-m
+    include carbon
+
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.css")
+  link(rel="stylesheet" href="/css/typicons/style.css")
+
+
+block aside
+  :marked
+    **v1.0.9**
+
+    Typicons are free-to-use vector icons embedded in a webfont for easy 
+    use in your user interfaces, whether it be on the web or in a native 
+    application.
+
+block image
+  include icons
+
+block project-full
+  .col-lg
+    :marked
+      The set of icons are available on Github, with everything included from 
+      the source files in SVG format to the minifed CSS. You can even use this 
+      project to build your own custom version of Typicons! Find out more 
+      [here](/more/making-typicons/).
+
+      This version greatly improves Typicons, with the addition on 220 icons 
+      with solid and outline styles and Github hosting of the source content. 
+      So what are you waiting for? Combine HTTP requests with a retina ready, 
+      resolution independent, screen-reader-friendly webfont.
+

@@ -2,11 +2,22 @@ name: console.log
 date: 24 Aug 2016
 size: col-lg
 desc: >
-  A series of computer generated drawings capturing the natural,  stylised technique of a  skilled&nbsp;illustrator.
+  This series of generated drawings
+  explores the beauty inherent in nature’s ordered chaos.
+  Undirected wandering and iterative mark-making combine to create
+  endless variations.
 
 imgs:
   cover:  /img/projects/console-log/cover.png
   reveal: /img/projects/console-log/reveal.png
+
+pageCount: 5
+
+colors:
+  light: "#f5f5f5"
+
 tags:
   - Design
   - Posters
+
+image: "/img/page/console-log.png"

@@ -1,12 +1,50 @@
-footer#footer.text-sm
-  h4 Sydney-based UI/UX Designer, Art&nbsp;Director &amp; Front End Developer
+footer#footer.bg-dk
+  .content-wrap.p-v-md
+    .col-wrap
+      .col-fluid.p-v-lg
+        h4.txt-muted Fonts
+        ul.list-bare
+          li
+            a.btn(href="/fonts/philippa")
+              | Philippa
+          li
+            a.btn(href="/fonts/svenska")
+              | Svenska
+          li
+            a.btn(href="/fonts/golumpki")
+              | Golumpki
+          li
+            a.btn(href="/fonts/ed-sans")
+              | Ed Sans
 
-  :marked
-    If you want to get in touch, shoot me an [email][1].
-    Maybe we can build something together.
-    
-    You can also find me on [Github][2].
+      .col-fluid.p-v-lg
+        h4.txt-muted Projects
+        ul.list-bare
+          li
+            a.btn(href="/projects/asterisms")
+              | Asterisms
+          li
+            a.btn(href="/projects/console-log")
+              | console.log
+          li
+            a.btn(href="/typicons/")
+              | Typicons
+          li
+            a.btn(href="/projects/")
+              | Archives
 
-    [1]: mailto:stephen@s-ings.com
-    [2]: https://github.com/stephenhutchings
-    [3]: #message
+      .col-fluid.p-v-lg
+        h4.txt-muted More
+        ul.list-bare
+          li
+            a.btn(href="/me/")
+              | About Me
+          li
+            a.btn(href="/chat-bot/")
+              | Chat Bot
+          li
+            a.btn(href="/experiments/")
+              | Drawing
+
+      .col-fluid.p-v-lg.crossword-wrap
+        include crossword

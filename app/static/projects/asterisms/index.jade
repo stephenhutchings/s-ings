@@ -1,53 +1,56 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "asterisms";
+  - var project = data.getOne("projects",  "asterisms");
 
-block project-full
-  .col-full
-    :marked
-      ![Asterisms - Full Size](/img/projects/asterisms/asterisms-full.png)
+block append article
+  .gallery.stretch
+    #item-1.gallery-item.p-h-lg.p-v-xxl(style="background: #f9f6f2;")
+      img(
+        alt="Asterisms - Full Size"
+        src="/img/projects/asterisms/asterisms-poster.jpg"
+      )
+    #item-2.gallery-item.p-h-xl.p-v-xxl.flex-between.txt-sm(style="background: #212121; color: #fff")
+      .col-wrap.p-v-sm
+        .col-lg
+          p 
+            | Detail of Betelgeuse, Orion’s second brightest star
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-1.png"
+              alt="Detail of Betelgeuse, Orion’s second brightest star"
+              width="480"
+            )
 
-  .col-lg
-    :marked
-      Asterisms charts the night sky onto an A2 poster. The projection 
-      distorts the both hemispheres onto a circle, giving a combined view of 
-      the northern and sourthen skies. The ecliptic path can be seen swerving 
-      through the centre of the chart, as can the Milky Way’s cluster of 
-      stars. This work is an adaptation of a sky chart from
-      [Allsky Asterisms][1], with many modifications and liberties taken.
+        .col-sm
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-3.png"
+              alt="M33 in the Triangulum constellation"
+              width="480"
+            )
+          p 
+            | 
+            | M33 in the Triangulum constellation, one of the most distant 
+            | objects visible with the naked eye
 
-      Below are some details of the star chart. The typefaces used include
-      Effra from [Dalton Maag][2] and [The Lost Type Co-op’s][3] Klinic Slab.
+      .col-wrap.p-v-sm
+        .col-md
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-2.png"
+              alt="Altair, “the flying eagle”, in the Aquila constellation"
+              width="480"
+            )
+          p 
+            | Altair, “the flying eagle”, in the Aquila constellation
 
-      [1]: http://www.armchairastronautics.blogspot.com.au/p/asterisms.html
-      [2]: https://www.daltonmaag.com/library/effra
-      [3]: http://www.losttype.com/font/?name=klinic
-
-  hr
-  
-  .col-sm
-    p
-      img(src="/img/projects/asterisms/asterisms-detail-1.png")
-    
-    p 
-      | Detail of Betelgeuse, Orion's second brightest star
-
-  .col-sm
-    p
-      img(src="/img/projects/asterisms/asterisms-detail-2.png")
-    p 
-      | Altair, “the flying eagle”, in the Aquila constellation
-
-  .col-sm
-    p
-      img(src="/img/projects/asterisms/asterisms-detail-3.png")
-    p 
-      | M33 in the Triangulum constellation, one of the most distant objects 
-      | visible with the naked eye
-
-  .col-sm
-    p
-      img(src="/img/projects/asterisms/asterisms-detail-4.png")
-    p 
-      | The constellation of Leo and the awesome-sounding Al’dzhabkhakh
+        .col-md
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-4.png"
+              alt="The constellation of Leo"
+              width="480"
+            )
+          p 
+            | The constellation of Leo and the awesome-sounding Al’dzhabkhakh

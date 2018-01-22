@@ -1,13 +1,13 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "jade-style-guide";
+  - var project = data.getOne("projects",  "jade-style-guide");
 
 block project
   :marked
     #### No unnecessary DIVs
 
-    Unspecified elements are automatically cast as a `div`, so don't waste 
+    Unspecified elements are automatically cast as a `div`, so don’t waste 
     space specifying one.
 
     ```jade
@@ -20,7 +20,7 @@ block project
 
     #### No commas in attributes
 
-    Don't add unnecessary commas to attributes.
+    Don’t add unnecessary commas to attributes.
 
     ```jade
     //- BAD
@@ -33,7 +33,7 @@ block project
     #### No unnecessary interpolation or parentheses
 
     Do use string interpolation where it makes sense, but not for strings or 
-    content that will be placed directly into the element. Don't wrap 
+    content that will be placed directly into the element. Don’t wrap 
     conditions in parentheses when it’s not necessary.
 
     ```jade
@@ -56,7 +56,7 @@ block project
 
     #### Wrap many attributes
 
-    If attributes won't fit easily on one line, wrap all attributes with the 
+    If attributes won’t fit easily on one line, wrap all attributes with the 
     same indentation, closing the brackets on the following line to make 
     current indentation clear.
 
@@ -109,7 +109,7 @@ block project
 
     ```jade
     //- BAD
-    form(method='POST' action='')
+    form(method="POST" action='')
 
     //- GOOD
     form(method="POST" action="")
@@ -117,7 +117,7 @@ block project
 
     #### Use valid HTML
 
-    Don't create custom attributes or nest invalid elements. Never use IDs 
+    Don’t create custom attributes or nest invalid elements. Never use IDs 
     inside of a loop.
 
     ```jade
@@ -143,7 +143,7 @@ block project
 
     #### Reduce unnecessary duplication
 
-    Don't place conditions at the top level when they can be nested further 
+    Don’t place conditions at the top level when they can be nested further 
     down.
 
     ```jade
@@ -184,7 +184,7 @@ block project
 
     #### No JS event handlers inlined
 
-    Don't attach event handlers inside Jade, whose purpose is only to mark up 
+    Don’t attach event handlers inside Jade, whose purpose is only to mark up 
     the document.
 
     ```jade

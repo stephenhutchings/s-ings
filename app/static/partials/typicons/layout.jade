@@ -1,0 +1,47 @@
+extends ../layout
+
+block append head
+  title
+    block title
+      = locals.name
+
+  meta(charset="utf-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
+  meta(name="description", content=locals.description)
+  meta(name="keywords", content=locals.keywords)
+  meta(name="author", content=locals.owner)
+
+  //if lt IE 9
+    script(src="#{url}/assets/js/html5shiv.js")
+
+  link(rel="shortcut icon"  href="#{url}/favicon.ico" type="image/icon")
+  link(rel="stylesheet" href="#{url}/assets/css/style.css")
+
+block body
+  header#header
+    a(href="#{url}/")
+      h1
+        =locals.name
+        small.sub v#{locals.version}
+      p.desc= locals.description
+
+    a#download.btn(
+      href="https://github.com/stephenhutchings/typicons.font/releases/latest"
+    )
+      span.typcn.typcn-download
+      | Download
+
+    block header
+
+  #content
+    #content-inner
+      include nav
+      block content
+      include carbon
+
+  footer
+    block footer
+    include footer
+
+  script(src="#{url}/assets/js/zepto.min.js")
+  script(src="#{url}/assets/js/script.min.js")

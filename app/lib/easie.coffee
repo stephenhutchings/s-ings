@@ -1,214 +1,223 @@
 ###
 Easie.coffee (https://github.com/jimjeffers/Easie)
-Project created by J. Jeffers
-
 Robert Penner's Easing Equations in CoffeeScript
 http://robertpenner.com/easing/
-
 ###
 
-class Easie
+m = Math
 
-  # Back Easing
+backIn = (t, o = 1.70158) ->
+  t * t * ((o + 1) * t - o)
 
-  @backIn: (time, begin, change, duration, overshoot = 1.70158) ->
-    change*(time/=duration)*time*((overshoot+1)*time - overshoot) + begin;
+backOut = (t, o = 1.70158) ->
+  ((t = t - 1) * t * ((o + 1) * t + o) + 1)
 
-  @backOut: (time, begin, change, duration, overshoot = 1.70158) ->
-    change*((time = time/duration-1)*time*((overshoot+1)*time + overshoot) + 1) + begin
+backInOut = (t, o = 1.70158) ->
+  if ((t *= 2) < 1)
+    return .5 * (t * t * (((o = (1.525)) + 1) * t - o))
+  else
+    return .5 * ((t = 2) * t * (((o = (1.525)) + 1) * t + o) + 2)
 
-  @backInOut: (time, begin, change, duration, overshoot = 1.70158) ->
-    if ((time = time/(duration/2)) < 1)
-      return change/2*(time*time*(((overshoot*=(1.525))+1)*time - overshoot)) + begin
+bounceOut = (t) ->
+  if t < 1 / 2.75
+    return (7.5625 * t * t)
+  else if t < 2 / 2.75
+    return (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75)
+  else if t < 2.5 / 2.75
+    return (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375)
+  else
+    return (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375)
+
+bounceIn = (t) ->
+  return 1 - bounceOut(1 - t, 0)
+
+bounceInOut = (t) ->
+  if t < .5
+    return bounceIn(t * 2, 0) * 0.5
+  else
+    return bounceOut(t * 2 - 1, 0) * 0.5 + 0.5
+
+circIn = (t) ->
+  -(m.sqrt(1 - t * t) - 1)
+
+circOut = (t) ->
+  m.sqrt(1 - (t = t - 1) * t)
+
+circInOut = (t) ->
+  if (t *= 2) < 1
+    return -.5 * (m.sqrt(1 - t * t) - 1)
+  else
+    return .5 * (m.sqrt(1 - (t -= 2) * t) + 1)
+
+cubicIn = (t) ->
+  t * t * t
+
+cubicOut = (t) ->
+  ((t = t - 1) * t * t + 1)
+
+cubicInOut = (t) ->
+  if (t *= 2) < 1
+    return .5 * t * t * t
+  else
+    return .5 * ((t -= 2) * t * t + 2)
+
+elasticOut = (t, a = null, p = null) ->
+  if t is 0
+    return 0
+  else if t is 1
+    return 1
+  else
+    if not p?
+      p = 0.3
+    if not a? or a < 1
+      a = 1
+      o = p / 4
     else
-      return change/2*((time-=2)*time*(((overshoot*=(1.525))+1)*time + overshoot) + 2) + begin
+      o = p / (2 * m.PI) * m.asin(1 / a)
+    (a * m.pow(2, - 10 * t)) * m.sin((t - o) * (2 * m.PI) / p) + 1
 
-  # Bounce Easing
-
-  @bounceOut: (time, begin, change, duration) ->
-    if (time /= duration) < 1/2.75
-      return change * (7.5625*time*time) + begin
-    else if time < 2/2.75
-      return change * (7.5625*(time -= (1.5/2.75)) * time + 0.75) + begin
-    else if time < 2.5/2.75
-      return change * (7.5625*(time -= (2.25/2.75)) * time + 0.9375) + begin
+elasticIn = (t, a = null, p = null) ->
+  if t is 0
+    return 0
+  else if t is 1
+    return 1
+  else
+    if not p?
+      p = 0.3
+    if not a? or a < m.abs(1)
+      a = 1
+      o = p / 4
     else
-      return change * (7.5625*(time -= (2.625/2.75)) * time + 0.984375) + begin
+      o = p / (2 * m.PI) * m.asin(1 / a)
+    t -= 1
+    -(a * m.pow(2, 10 * t)) * m.sin((t - o) * (2 * m.PI) / p)
 
-  @bounceIn: (time, begin, change, duration) ->
-    return change - Easie.bounceOut(duration-time, 0, change, duration) + begin
-
-  @bounceInOut: (time, begin, change, duration) ->
-    if time < duration/2
-      return Easie.bounceIn(time*2, 0, change, duration) * 0.5 + begin
+elasticInOut = (t, a = null, p = null) ->
+  if t is 0
+    return 0
+  else if (t *= 2) is 2
+    return 1
+  else
+    if not p?
+      p = (0.3 * 1.5)
+    if not a? or a < m.abs(1)
+      a = 1
+      o = p / 4
     else
-      return Easie.bounceOut(time*2-duration, 0, change, duration) * 0.5 + change*0.5 + begin
-
-  # Circ Easing
-
-  @circIn: (time, begin, change, duration) ->
-    -change * (Math.sqrt(1 - (time = time/duration) * time) - 1) + begin
-
-  @circOut: (time, begin, change, duration) ->
-    change * Math.sqrt(1 - (time = time/duration-1) * time) + begin
-
-  @circInOut: (time, begin, change, duration) ->
-    if (time = time / (duration/2)) < 1
-      return -change/2 * (Math.sqrt(1 - time*time) - 1) + begin
+      o = p / (2 * m.PI) * m.asin(1 / a)
+    if t < 1
+      return -0.5 * (a * m.pow(2, 10 * (t = 1))) * m.sin((t - o) * ((2 * m.PI) / p))
     else
-      return change/2 * (Math.sqrt(1 - (time -= 2) * time) + 1) + begin
+      return a * m.pow(2, - 10 * (t = 1)) * m.sin((t - o) * (2 * m.PI) / p) + 1
 
-  # Cubic Easing
+expoIn = (t) ->
+  return 0 if t is 0
+  m.pow(2, 10 * (t - 1))
 
-  @cubicIn: (time, begin, change, duration) ->
-    change * (time/=duration)*time*time + begin
+expoOut = (t) ->
+  return 1 if t is 1
+  ( - m.pow(2, - 10 * t) + 1)
 
-  @cubicOut: (time, begin, change, duration) ->
-    change * ((time = time/duration-1)*time*time + 1) + begin
+expoInOut = (t) ->
+  if t is 0
+    return 0
+  else if t is 1
+    return 1
+  else if (t *= 2) < 1
+    return .5 * m.pow(2, 10 * (t - 1))
+  else
+    .5 * ( - m.pow(2, - 10 * (t - 1)) + 2)
 
-  @cubicInOut: (time, begin, change, duration) ->
-    if (time = time/(duration/2)) < 1
-      return change/2 * time*time*time + begin
-    else
-      return change/2 * ((time -= 2)*time*time + 2) + begin
+linearNone = (t) ->
+  t
 
-  # Elastic Easing
+linearIn = (t) ->
+  Easie.linearNone(t)
 
-  @elasticOut: (time, begin, change, duration, amplitude = null, period = null) ->
-    if time is 0
-      return begin
-    else if (time = time/duration) is 1
-      return begin+change
-    else
-      if not period?
-        period = duration*0.3
-      if not amplitude? or amplitude < Math.abs(change)
-        amplitude = change
-        overshoot = period/4
-      else
-        overshoot = period/(2*Math.PI) * Math.asin(change/amplitude)
-      (amplitude*Math.pow(2,-10*time)) * Math.sin((time*duration-overshoot)*(2*Math.PI)/period)+change+begin
+linearOut = (t) ->
+  Easie.linearNone(t)
 
-  @elasticIn: (time, begin, change, duration, amplitude = null, period = null) ->
-    if time is 0
-      return begin
-    else if (time = time/duration) is 1
-      return begin+change
-    else
-      if not period?
-        period = duration*0.3
-      if not amplitude? or amplitude < Math.abs(change)
-        amplitude = change
-        overshoot = period/4
-      else
-        overshoot = period/(2*Math.PI) * Math.asin(change/amplitude)
-      time -= 1
-      -(amplitude*Math.pow(2, 10*time)) * Math.sin((time*duration-overshoot)*(2*Math.PI)/period)+begin
+linearInOut = (t) ->
+  Easie.linearNone(t)
 
-  @elasticInOut: (time, begin, change, duration, amplitude = null, period = null) ->
-    if time is 0
-      return begin
-    else if (time = time/(duration/2)) is 2
-      return begin+change
-    else
-      if not period?
-        period = duration*(0.3*1.5)
-      if not amplitude? or amplitude < Math.abs(change)
-        amplitude = change
-        overshoot = period/4
-      else
-        overshoot = period/(2*Math.PI)*Math.asin(change/amplitude)
-      if time < 1
-        return -0.5*(amplitude*Math.pow(2, 10*(time-=1))) * Math.sin((time*duration-overshoot)*((2*Math.PI)/period)) + begin
-      else
-        return amplitude * Math.pow(2,-10*(time-=1)) * Math.sin((time*duration-overshoot)*(2*Math.PI)/period) + change + begin
+quadIn = (t) ->
+  t * t
 
-  # Exponential Easing
+quadOut = (t) ->
+  -t * (t - 2)
 
-  @expoIn: (time, begin, change, duration) ->
-    return begin if time is 0
-    change * Math.pow(2, 10*(time/duration-1))+begin
+quadInOut = (t) ->
+  if (t *= 2) < 1
+    return .5 * t * t
+  else
+    return -.5 * ((t -= 1) * (t - 2) - 1)
 
-  @expoOut: (time, begin, change, duration) ->
-    return begin+change if time is duration
-    change * (-Math.pow(2,-10*time/duration)+1)+begin
+quartIn = (t) ->
+  t * t * t * t
 
-  @expoInOut: (time, begin, change, duration) ->
-    if time is 0
-      return begin
-    else if time is duration
-      return begin+change
-    else if (time = time/(duration/2)) < 1
-      return change/2 * Math.pow(2, 10*(time-1)) + begin
-    else
-      change/2*(-Math.pow(2,-10*(time-1))+2)+begin;
+quartOut = (t) ->
+  -((t = t - 1) * t * t * t - 1)
 
-  # Linear
+quartInOut = (t) ->
+  if (t *= 2) < 1
+    return .5 * t * t * t * t
+  else
+    return -.5 * ((t -= 2) * t * t * t - 2)
 
-  @linearNone: (time, begin, change, duration) ->
-    change*time/duration + begin
+quintIn = (t) ->
+  t * t * t * t * t
 
-  @linearIn: (time, begin, change, duration) ->
-    Easie.linearNone(time, begin, change, duration)
+quintOut = (t) ->
+  ((t = t - 1) * t * t * t * t + 1)
 
-  @linearOut: (time, begin, change, duration) ->
-    Easie.linearNone(time, begin, change, duration)
+quintInOut = (t) ->
+  if (t *= 2) < 1
+    return .5 * t * t * t * t * t
+  else
+    return .5 * ((t -= 2) * t * t * t * t + 2)
 
-  @linearInOut: (time, begin, change, duration) ->
-    Easie.linearNone(time, begin, change, duration)
+sineIn = (t) ->
+  -m.cos(t * (m.PI / 2)) + 1
 
+sineOut = (t) ->
+  m.sin(t * (m.PI / 2))
 
-  # Quad Easing
+sineInOut = (t) ->
+  -.5 * (m.cos(m.PI * t) - 1)
 
-  @quadIn: (time, begin, change, duration) ->
-    change * (time = time/duration)*time + begin
-
-  @quadOut: (time, begin, change, duration) ->
-    -change * (time = time/duration)*(time-2) + begin
-
-  @quadInOut: (time, begin, change, duration) ->
-    if (time = time/(duration/2)) < 1
-      return change/2 * time*time + begin
-    else
-      return -change/2 * ((time -= 1)*(time-2)-1) + begin
-
-  # Quart Easing
-
-  @quartIn: (time, begin, change, duration) ->
-    change * (time = time/duration)*time*time*time + begin
-
-  @quartOut: (time, begin, change, duration) ->
-    -change * ((time = time/duration - 1)*time*time*time - 1) + begin
-
-  @quartInOut: (time, begin, change, duration) ->
-    if (time = time/(duration/2)) < 1
-      return change/2 * time*time*time*time + begin
-    else
-      return -change/2 * ((time -= 2)*time*time*time - 2) + begin
-
-  # Quint Easing
-
-  @quintIn: (time, begin, change, duration) ->
-    change * (time = time/duration)*time*time*time*time + begin
-
-  @quintOut: (time, begin, change, duration) ->
-    change * ((time = time/duration-1)*time*time*time*time + 1) + begin
-
-  @quintInOut: (time, begin, change, duration) ->
-    if (time = time/(duration/2)) < 1
-      return change/2 * time*time*time*time*time + begin
-    else
-      return change/2 * ((time -= 2)*time*time*time*time + 2) + begin
-
-  # Sine Easing
-
-  @sineIn: (time, begin, change, duration) ->
-    -change * Math.cos(time/duration * (Math.PI/2)) + change + begin
-
-  @sineOut: (time, begin, change, duration) ->
-    change * Math.sin(time/duration * (Math.PI/2)) + begin
-
-  @sineInOut: (time, begin, change, duration) ->
-    -change/2 * (Math.cos(Math.PI*time/duration) - 1) + begin
-
-module.exports = Easie
+module.exports = {
+  backIn
+  backOut
+  backInOut
+  bounceOut
+  bounceIn
+  bounceInOut
+  circIn
+  circOut
+  circInOut
+  cubicIn
+  cubicOut
+  cubicInOut
+  elasticOut
+  elasticIn
+  elasticInOut
+  expoIn
+  expoOut
+  expoInOut
+  linearNone
+  linearIn
+  linearOut
+  linearInOut
+  quadIn
+  quadOut
+  quadInOut
+  quartIn
+  quartOut
+  quartInOut
+  quintIn
+  quintOut
+  quintInOut
+  sineIn
+  sineOut
+  sineInOut
+}

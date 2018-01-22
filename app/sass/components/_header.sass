@@ -1,27 +1,15 @@
 #header
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  z-index: 10
-  padding-top: 52px
-
-  .hide-nav &
-    pointer-events: none
+  position: relative
+  z-index: 100
 
   #logo
     border-bottom: none
-    display: inline-block
-    padding: 0.5em 1em
-    margin: -0.5em -1em
     transition: all 250ms
-    border-top: 1px solid transparent
 
     .no-js &
       background: rgba(#fff, 0.4)
       padding-left: 2em
       margin-left: -2em
-      border-radius: 4px
       position: relative
       background-clip: padding-box
       overflow: hidden
@@ -37,42 +25,68 @@
         z-index: -1
         -webkit-backdrop-filter: blur(8px)
 
-    &:focus
-      #inbound &
-        border-top-color: initial
-
     &:hover
       .diamond
-        transform: translate3d(0, 0, 0) rotate(-45deg) scale(1)
+        transform: translate3d(0, 0, 0) rotate(-90deg) scale(1)
 
     .hide-nav &
       color: transparent
+      pointer-events: none
 
   .diamond
     display: inline-block
-    transform: translate3d(0, 0, 0) rotate(45deg) scale(1)
-    overflow: hidden
-    width: 0.43em
-    border-bottom: 0.43em solid
-    height: 0
-    margin: 2px 4px
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1)
     transition: all 600ms
+    width: 0.725em
+    height: 0.725em
+    line-height: 0.725em
+    vertical-align: baseline
+    margin-right: 0.06em
 
     .hide-nav &
       transform: translate3d(0, 0, 0) rotate(-135deg) scale(2)
       opacity: 0
 
+  a
+    position: relative
+    display: inline-block
+    padding: 0.5em 1em
+    margin: -0.5em -1em
+    border: none
+
+    &:after
+      content: ""
+      position: absolute
+      left: 1em
+      right: 1em
+      bottom: 0.3em
+      transform: scale3d(1, 0.2, 1) translate3d(0, 8px, 0)
+      opacity: 0
+      background: currentColor
+      height: 2px
+      transition: all 300ms
+      pointer-events: none
+
+    &:focus,
+    &:hover
+      &:after
+        opacity: 1
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0)
+
 #header-loader
   opacity: 1
-  position: absolute
-  top: -4px
-  right: 12px
+  float: right
+  margin: -10px 0
+  background-color: #fff
+  border-radius: 50%
+  z-index: 100
   transform: translate3d(0, 0, 0)
   @extend %transition-sm
+  opacity: 0
 
-  .ready &,
-  .no-js &
-    opacity: 0
+  nav + &
+    margin-right: 3.2em
 
-  &:hover
+  &:hover,
+  .loading &
     opacity: 1

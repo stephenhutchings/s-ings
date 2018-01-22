@@ -3,10 +3,10 @@ smooth    = require("./smooth")
 module.exports = (fontSize, process) ->
   canvas = document.createElement("canvas")
   ctx    = canvas.getContext("2d")
-  font   = "900 #{fontSize}px Texta"
+  font   = "700 #{fontSize}px sans"
 
   hairspace        = ""#String.fromCharCode(8202)
-  author           = "S    #{["I", "N", "G", "S"].join(hairspace)}"
+  author           = ["S", "◆", "I", "N", "G", "S"].join(hairspace)
   ctx.font         = font
 
   authorWidth      = ctx.measureText(author).width

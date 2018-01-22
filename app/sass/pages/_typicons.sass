@@ -1,0 +1,116 @@
+.page-typicons
+  .icon
+    width: 6.25%
+    max-width: 30px
+    position: relative
+    background: no-repeat center /80%
+    transition: opacity 300ms
+    cursor: none
+
+    &:before
+      content: ""
+      display: block
+      padding-bottom: 100%
+
+    &.expand-before:after
+      content: ""
+      position: absolute
+      top: -200%
+      left: -200%
+      right: -200%
+      bottom: -200%
+      background: inherit
+      transform: scale3d(0.2, 0.2, 0.2)
+      pointer-events: none
+      opacity: 0
+      border-radius: 3px
+      transition: all 300ms, background-color 300ms 200ms
+
+    &.inactive
+      pointer-events: none
+      opacity: 0.25
+
+    &.expand
+      z-index: 10
+
+      &:after
+        opacity: 1
+        background-color: rgba(34, 53, 80, 0.9)
+        transform: scale3d(1, 1, 1)
+
+  #icon-search-bar
+    position: relative
+    border: 1px solid
+    border-radius: 3px
+    color: rgba(#fff, 0.7)
+
+  #icon-details,
+  #icon-search
+    transition: all 300ms
+
+  #icon-details
+    padding: 0.5em
+
+    .icon-img
+      width: 1.5em
+      margin-top: -0.25em
+      display: inline-block
+      vertical-align: middle
+
+    .icon-name
+      margin: 0 0.33em
+
+    .icon-code
+      opacity: 0.8
+
+  #icon-search
+    font: inherit
+    border: none
+    width: 100px
+    background: rgba(#fff, 0.8)
+    border-radius: 2px 0 0 2px
+    padding: 1px 4px
+    margin: 0
+    -webkit-appearance: none
+
+    &:focus
+      outline: none
+      background: #fff
+
+  .hover,
+  .search
+    #icon-search-bar
+      color: #fff
+      border-color: rgba(#fff, 0.3)
+
+    #icon-search
+      color: #222
+      background: #fff
+
+  .donate-btn
+    font-family: inherit
+    font-size: inherit
+    font-weight: inherit
+    padding: 0
+    margin: 0
+    border-width: 0 0 1px
+    border-style: solid
+    border-color: currentColor
+    display: inline
+    background: none
+    border-radius: 0
+    -webkit-appearance: none
+
+    &:hover
+      @extend %cursor-hand
+      border-bottom-width: 2px
+
+  @media (min-width: 1280px) and (min-height: 720px)
+    .gallery-item:first-child
+      max-width: 960px
+      padding-left: 10%
+      padding-right: 10%
+
+    .icon
+      width: 4.7619047619%
+      max-width: none

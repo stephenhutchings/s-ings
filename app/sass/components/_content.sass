@@ -1,11 +1,13 @@
 #inbound,
 #outbound
   overflow: hidden
-  min-height: 100%
-  padding-bottom: 280px
+  background: white
 
   .no-js &
     padding-bottom: 0
+
+  @media (min-width: 1000px) and (min-height: 720px)
+    min-height: 100%
 
 #inbound
   position: relative
@@ -19,18 +21,12 @@
   right: 0
   z-index: 0
 
-#content
+.content
   position: relative
-  transition: all 600ms
-  padding-top: 144px
+  transition: all 500ms
   height: 100%
-  margin-bottom: 120px
+  opacity: 0
 
+  #inbound.ready &,
   .no-js &
-    margin-bottom: 0
-
-  #outbound &
-    opacity: 0
-
-  #inbound &
     opacity: 1

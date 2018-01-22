@@ -1,6 +1,30 @@
-.project-links
-  margin: 2em 0
+.project-head
+  padding-bottom: 3em
+  position: relative
+
+  // &:after
+    content: ""
+    position: absolute
+    left: 30%
+    bottom: 0
+    margin: -3em
+    height: 12em
+    width: 0.6em
+    // border-radius: 50%
+    background: currentColor
+    transform-origin: bottom center
+    animation: stripe 20s 2s infinite forwards
 
 @media (min-width: 360px)
   .project-title
     margin-right: -0.6em
+
+@keyframes stripe
+  0%,
+  100%
+    transform: translateY(0) scaleY(1)
+  30%
+    transform: translateY(0) scaleY(0)
+  30.01%,
+  80%
+    transform: translateY(-100%) scaleY(0)

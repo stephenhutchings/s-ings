@@ -3,14 +3,13 @@ extends ../partials/layout
 block append config
   - page.class = "page-chat-bot";
   - page.title = "Want to chat?";
-  - page.description = "";
+  - page.description = "While away your time with recommendations, idle chit-chat and alliterative suggestions.";
 
 block body
-  #content
-    #message(data-view="views/chat")
-      .content-wrap
-        h1#message-content
-        p#message-author.text-lg
-
-append scripts
-  script(type="text/javascript" src="/js/chat.js")
+  .header-container
+    .p-v-xxl.content-wrap
+      include ../partials/header
+  #message(data-view="views/chat" data-require="/js/chat.js")
+    .content-wrap
+      h1#message-content
+      p#message-author

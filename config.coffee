@@ -14,6 +14,8 @@ exports.config =
       "node_modules"
       /^app\/static\/partials/
       /^app\/static(\/|\\)(.+)\.yaml$/
+      /\.(tmp\$\$)$/
+      /\.(eot|woff2|ttf|otf)$/
     ]
 
   plugins:
@@ -27,8 +29,27 @@ exports.config =
         moment:   require("moment")
         typogr:   require("typogr")
         written:  require("written")
+        marked:   require("marked")
         package:  require("./package.json")
         data:     data
+
+    coffeelint:
+      pattern: /^app\/.*\.coffee$/
+
+      options:
+        no_empty_param_list:
+          level: "error"
+
+        prefer_english_operator:
+          value: true
+          level: "warn"
+
+        indentation:
+          value: 2
+          level: "warn"
+
+        max_line_length:
+          level: "warn"
 
   files:
     javascripts:
@@ -59,8 +80,6 @@ exports.config =
 
   hooks:
     onCompile: (generatedFiles) ->
-      data.clearCache()
-
       for g in generatedFiles
         for f in g.sourceFiles
           if f.path.match "sitemap"

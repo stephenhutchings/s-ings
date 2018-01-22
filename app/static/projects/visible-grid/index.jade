@@ -1,7 +1,7 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "visible-grid";
+  - var project = data.getOne("projects",  "visible-grid");
 
 block project
   :marked

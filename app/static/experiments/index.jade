@@ -3,41 +3,40 @@ extends ../partials/layout
 block append config
   - page.title = "Experiments";
 
-block content
-  .col-sm
-    h1
-      em Drawing
-      | Experi&shy;ments
+block article
+  .col-wrap
+    .col-lg
+      h1
+        | Drawing
+        | Experi&shy;ments
 
-    h2.hl-block
-      span.highlight Endless unique illustrations
-      span.highlight programmatically generated
-      span.highlight by my computer, or yours
+      h2
+        | Endless unique illustrations
+        | programmatically generated
+        | by my computer, or yours
     
-  .col-wrap.hl-block
-    hr
-    .col-md
-      small.text-muted
+      p
         | These experiments run with Javascript and HTML5’s Canvas. They may —
         | and probably will — perform slowly depending on your hardware. Each
         | result is unique, and some are available as prints. Get in touch if
         | your interested.
 
 
-  .col-wrap(data-view="views/tiles")
+  .col-wrap.p-v-md(data-view="views/tiles")
     for its in data.getAll("experiments")
-      a.tile-link.col-sm(href="/#{its.path}" data-follow)
-        .tile-imgs
-          img.tile-img(
-            src="/img/#{its.path.slice(0, -1)}.png"
-            style="height: auto"
-          )
+      .col-md.p-v-md
+        a.tile-link(href="/#{its.path}" data-follow)
+          .tile-imgs
+            img.tile-img(
+              src="/img/#{its.path.slice(0, -1)}.png"
+              style="height: auto"
+            )
 
-        .tile-caption
-          h3.tile-name!= its.name
-          .tile-desc.col-md
-            p!= typogr(its.desc || "").typogrify()
+          .tile-caption
+            h3.tile-name!= its.name
+            .tile-desc
+              p!= typogr(its.desc || "").typogrify()
 
-          .tile-open &rarr;
-          .tile-close &times;
+            .tile-open &rarr;
+            .tile-close &times;
 

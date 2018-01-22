@@ -17,7 +17,8 @@ module.exports = (features, dimensions) ->
 
   x = 0
   w = dimensions.w + outset * 2
-  y = Math.max(bh * baseH - Math.abs(incline), Math.abs(incline)) + ctx.lineWidth / 2
+  y = Math.max(bh * baseH - Math.abs(incline), Math.abs(incline)) +
+      ctx.lineWidth / 2
 
   ctx.fillStyle   = "#f4dabe"
 

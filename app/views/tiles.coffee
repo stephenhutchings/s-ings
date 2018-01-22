@@ -33,7 +33,7 @@ class TilesView extends Backbone.View
 
     $link = @$(e.target).closest(klass)
 
-    if $link.size() > 0
+    if $link.length > 0
       if e.type is "iostap" and $link.hasClass(active)
         return true
       else

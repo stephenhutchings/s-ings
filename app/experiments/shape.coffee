@@ -1,6 +1,6 @@
 module.exports = (ctx, r, dir = 1, size) ->
-  x = size / 2 + (-.5 + Math.random()) * 8;
-  y = size / 2 + (-.5 + Math.random()) * 8;
+  x = size / 2 + (-.5 + Math.random()) * 8
+  y = size / 2 + (-.5 + Math.random()) * 8
 
   r1 = r * (1 + Math.random() * 0.2)
   r2 = r * (1 - Math.random() * 0.3)

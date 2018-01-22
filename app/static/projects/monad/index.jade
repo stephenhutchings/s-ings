@@ -1,26 +1,28 @@
 extends ../../partials/project
 
 block prepend config
-  - var projectPath = "monad";
+  - var project = data.getOne("projects",  "monad");
 
-block project-full
-  .col-md
-    p 
-      | Monad Sans is my first attempt at a professional grade typeface. It’s
-      | inspired by traditional and modern grotesques. It is available in 
-      | eight weights and has a medium x-height and generous character width.
-    p
-      | Monad is currently a work in progress and not available for general 
-      | use, but get in touch if you are interested in using it in a project.
+block article
+  .col-wrap
+    .col-md
+      p 
+        | Monad Sans is my first professional grade typeface. It’s
+        | inspired by traditional and modern grotesques. It is available in 
+        | eight weights and has a medium x-height and generous character width.
+      p
+        | Monad is currently a work in progress and not available for general 
+        | use, but get in touch if you are interested in using it in a project.
 
-  .col-full 
-    :marked
-      ![Monad Sans](/img/projects/monad-sans/display-weights.png)
+    .col-full 
+      p
+        :marked
+          ![Monad Sans](/img/projects/monad-sans/display-weights.png)
 
-  .col-md
-    p
-      img(src="/img/projects/monad-sans/sample-1.png")
-    p
-      img(src="/img/projects/monad-sans/sample-2.png")
-    p
-      img(src="/img/projects/monad-sans/sample-3.png")
+    .col-md
+      p
+        img(src="/img/projects/monad-sans/sample-1.png")
+      p
+        img(src="/img/projects/monad-sans/sample-2.png")
+      p
+        img(src="/img/projects/monad-sans/sample-3.png")
