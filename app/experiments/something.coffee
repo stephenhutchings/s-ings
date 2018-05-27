@@ -44,15 +44,19 @@ module.exports =
               layer(ctx, data)
         )
 
-      => layer(ctx, frame(canvas, Math.max(smaller / 40 - 24, 20)))
-      =>
+      -> layer(ctx, frame(canvas, Math.max(smaller / 40 - 24, 20)))
+      ->
         height = Math.max(smaller / 40 - 24, 20)
         margin = height * 4
         { width, height, data } = badge(height)
-        ctx.putImageData(data, (canvas.width - width) / 2, canvas.height - height - margin)
+        ctx.putImageData(
+          data,
+          (canvas.width - width) / 2,
+          canvas.height - height - margin
+        )
 
-      => posterize(canvas, Math.pow(scale, 0.35) * smaller / 400, "grayscale")
-      => resample(ctx, canvas, scale)
+      -> posterize(canvas, Math.pow(scale, 0.35) * smaller / 400, "grayscale")
+      -> resample(ctx, canvas, scale)
       -> done canvas
     ]
 

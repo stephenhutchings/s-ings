@@ -9,21 +9,21 @@ exports.config =
     hostname: "0.0.0.0"
 
   conventions:
+    assets: /app\/(assets|static)\//
     ignored: [
       /[\\/]_/
       "node_modules"
       /^app\/static\/partials/
       /^app\/static(\/|\\)(.+)\.yaml$/
       /\.(tmp\$\$)$/
-      /\.(eot|woff2|ttf|otf)$/
     ]
 
   plugins:
     autoprefixer:
       browsers: ["> 1%"]
 
-    jade:
-      staticPatterns: /^app(\/|\\)static(\/|\\)(.+)\.jade$/
+    pug:
+      staticBasedir: "app/static/"
       locals:
         _:        require("lodash")
         moment:   require("moment")
@@ -51,6 +51,11 @@ exports.config =
         max_line_length:
           level: "warn"
 
+  overrides:
+    production:
+      pug:
+        staticPretty: false
+
   files:
     javascripts:
       joinTo:
@@ -74,7 +79,7 @@ exports.config =
 
     templates:
       joinTo:
-        "js/app.js": /^app\/templates(\/|\\)(.+)\.jade$/
+        "js/app.js": /^app\/templates(\/|\\)(.+)\.pug$/
 
   framework: "backbone"
 
@@ -88,4 +93,3 @@ exports.config =
               "#{__dirname}/build/sitemap.xml", (err) ->
                 console.log err if err?
             )
-

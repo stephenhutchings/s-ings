@@ -11,8 +11,8 @@
     display: inline-block
 
   #message-author
-    transition: all 300ms
-    color: #666
+    color: desaturate(lighten($dark, 40%), 40%)
+    @extend %transition-sm
 
     &:before
       content: "— "
@@ -44,10 +44,10 @@
   opacity: 0
   display: inline-block
   transform: translate3d(0, 0px, 0) scale(0.8)
-  transition: all 1600ms $bounce
+  transition: opacity 1600ms $bounce, transform 1600ms $bounce
 
   .no-js &,
-  .ready.page-about &
+  .ready.page-home &
     opacity: 1
     transform: translate3d(0, 0, 0) scale(1)
 

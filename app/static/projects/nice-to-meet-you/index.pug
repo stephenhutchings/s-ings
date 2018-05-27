@@ -1,0 +1,46 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "nice-to-meet-you");
+
+block append article
+  .gallery
+    #item-1.gallery-item.p-xxl.flex-evenly.bg-dk
+      section
+        :marked
+          Conceived as a simple but fun book for children and adults,
+          this remains a work in progress. Eventually each page will be
+          coupled with a facing page of illustrations for each name.
+
+          With 388 names over 10 pages, it’s nearly impossible to make
+          it through in one run.
+
+    - var bg = ["#84cba0", "#fbec82", "#343433", "#f5f6f7", "#75645f", "#14619d", "#a92174", "#1aa574", "#f7931f", "#e63a43"]
+    - var fg = ["#853b1b", "#f05a88", "#ffffff", "#f1592b", "#3bc2d6", "#b2cb5e", "#eadb4a", "#64cdf2", "#283891", "#b5d333"]
+    for part, i in _.chunk(project.text.trim().split(/\n+/), 10)
+      .gallery-item.p-xxl.flex-evenly(
+        id=`item-${i + 2}`
+        style=`background: ${bg[i]}; color: ${fg[i]};`
+      )
+        h1.txt-nowrap!= part.join("<br />")
+
+  //- :marked
+    ![Nice to meet you - Page 1](/img/projects/nice-to-meet-you/page-1.png)
+
+    ![Nice to meet you - Page 2](/img/projects/nice-to-meet-you/page-2.png)
+
+    ![Nice to meet you - Page 3](/img/projects/nice-to-meet-you/page-3.png)
+
+    ![Nice to meet you - Page 4](/img/projects/nice-to-meet-you/page-4.png)
+
+    ![Nice to meet you - Page 5](/img/projects/nice-to-meet-you/page-5.png)
+
+    ![Nice to meet you - Page 6](/img/projects/nice-to-meet-you/page-6.png)
+
+    ![Nice to meet you - Page 7](/img/projects/nice-to-meet-you/page-7.png)
+
+    ![Nice to meet you - Page 8](/img/projects/nice-to-meet-you/page-8.png)
+
+    ![Nice to meet you - Page 9](/img/projects/nice-to-meet-you/page-9.png)
+
+    ![Nice to meet you - Page 10](/img/projects/nice-to-meet-you/page-10.png)

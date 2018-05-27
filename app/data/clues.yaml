@@ -261,6 +261,7 @@
 -
   word: WEIRDOS
   cryptic: "Strange words, i.e. wackos"
+  quick: Wackos
 -
   word: VETERAN
   cryptic: Old-timer crashes van into tree
@@ -268,6 +269,7 @@
 -
   word: VENISON
   cryptic: Game to play on vines
+  quick: Game meat
 -
   word: TENABLE
   cryptic: "Last night, green light sound"

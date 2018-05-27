@@ -4,13 +4,21 @@ body
   height: 100%
   user-select: none
 
+#header
+  position: absolute
+  top: 20px
+  left: 50%
+  color: #fff
+  margin: 20px 0
+  float: left
+  transform: translateX(-50%)
+  background-color: transparent
+
 label
   background: #202226
   background: rgba(#202226, 0.8)
   border-radius: 2px
   color: #fff
-  font-size: 13px
-  font-weight: bold
   left: 50%
   line-height: 24px
   padding: 8px 0
@@ -23,16 +31,11 @@ label
   width: 200px
   z-index: 20
 
-  em
-    font-style: normal
-    opacity: 0.7
-
   .show &
     opacity: 1
 
-h1
+footer
   margin: 0
-  font-size: 16px
   position: fixed
   bottom: 0
   left: 0
@@ -47,6 +50,9 @@ h1
 
   &:hover
     opacity: 0.8
+
+  h1
+    font-size: 16px
 
 a
   border-bottom: none

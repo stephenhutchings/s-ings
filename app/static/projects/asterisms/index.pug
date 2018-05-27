@@ -1,0 +1,68 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "asterisms");
+
+block append article
+  .gallery.stretch
+    #item-1.gallery-item.p-h-lg.p-v-xxl.bg-lt.flex-evenly
+      img(
+        alt="Asterisms - Full Size"
+        src="/img/projects/asterisms/asterisms-poster.jpg"
+      )
+
+    #item-2.gallery-item.bg-dk
+      .stretch
+        img.stretch(
+          src="/img/projects/asterisms/asterisms-detail-shallow-focus.jpg"
+          alt="Detail with shallow focus"
+        )
+
+    #item-3.gallery-item.p-h-xl.p-v-xxl.flex-between.txt-sm.bg-dk
+      .col-wrap.p-v-sm
+        .col-lg
+          p
+            | Detail of Betelgeuse, Orion’s second brightest star
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-1.png"
+              alt="Detail of Betelgeuse, Orion’s second brightest star"
+              width="480"
+              style="border: 1px solid; margin-bottom: -1px;"
+            )
+
+        .col-sm
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-3.png"
+              alt="M33 in the Triangulum constellation"
+              width="480"
+              style="border: 1px solid; margin-bottom: -1px;"
+            )
+          p
+            |
+            | M33 in the Triangulum constellation, one of the most distant
+            | objects visible with the naked eye
+
+      .col-wrap.p-v-sm
+        .col-md
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-2.png"
+              alt="Altair, “the flying eagle”, in the Aquila constellation"
+              width="480"
+              style="border: 1px solid; margin-bottom: -1px;"
+            )
+          p
+            | Altair, “the flying eagle”, in the Aquila constellation
+
+        .col-md
+          p
+            img(
+              src="/img/projects/asterisms/asterisms-detail-4.png"
+              alt="The constellation of Leo"
+              width="480"
+              style="border: 1px solid; margin-bottom: -1px;"
+            )
+          p
+            | The constellation of Leo and the awesome-sounding Al’dzhabkhakh

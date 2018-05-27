@@ -1,6 +1,9 @@
 #footer
   z-index: 0
   position: relative
+  min-height: 40vh
+  pointer-events: none
+  background-image: none
 
   &:before
     content: ""
@@ -9,11 +12,67 @@
     left: 0
     right: 0
     bottom: 0
-    background-color: rgba(black, 0.4)
+    background-color: rgba(darken($dark, 8), 0.4)
+    z-index: -1
+
+  .txt-muted
+    color: rgba(#fff, 0.7)
 
   @media (max-width: 820px)
     .col-fluid
-      width: 33%
+      width: 50%
+      height: 11em
 
     .crossword-wrap
       width: 100%
+
+  .txt-muted,
+  .thumb .btn
+    @extend %transition-md
+
+  .thumb .btn
+    pointer-events: all
+    &:hover,
+    &:focus
+      background: rgba(#000, 0.9)
+      opacity: 1
+
+  .thumb-bg
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    pointer-events: none
+    z-index: -1
+    transition: all 800ms
+    background-size: cover
+    background-position: center
+    opacity: 0
+    background-blend-mode: normal
+
+  .thumb
+    &:hover,
+    a:focus +
+      .thumb-bg
+        opacity: 1
+
+.thumb-bg
+  .font-philippa &
+    background-image: url(/img/thumbs/philippa-reveal.svg)
+  .font-svenska &
+    background-image: url(/img/thumbs/svenska-reveal.svg)
+  .font-golumpki &
+    background-image: url(/img/thumbs/golumpki-reveal.svg)
+  .font-ed-sans &
+    background-image: url(/img/thumbs/ed-sans-reveal.svg)
+  .font-vernacular &
+    background-image: url(/img/thumbs/vernacular-reveal.svg)
+  .project-asterisms &
+    background-image: url(/img/projects/asterisms/asterisms-reveal.jpg)
+  .project-console-log &
+    background-image: url(/img/projects/console-log/console-log-reveal.jpg)
+  .project-gordian-knots &
+    background-image: url(/img/projects/gordian-knots/gordian-knot-reveal.jpg)
+  .project-typicons &
+    background-image: url(/img/thumbs/typicons-reveal.svg)

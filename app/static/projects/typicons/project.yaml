@@ -2,6 +2,9 @@ name: Typicons
 date: 06 Jul 2014
 size: col-md
 slug: typicons
+
+version: 2.0.9
+
 desc: >
   Typicons are free-to-use vector icons embedded in a webfont for easy use in any&nbsp;UI, whether it be on the web&nbsp;or in a native app.
 urls:
@@ -14,7 +17,7 @@ urls:
 imgs:
   cover:  /img/projects/typicons/cover.png
   reveal: /img/projects/typicons/reveal.png
-
+metaTitle: Typicons - A Free Icon Font by Stephen Hutchings
 tags:
   - Design
   - Icons
@@ -1004,10 +1007,10 @@ icons:
     match: "weather windy"
   - name: "wi-fi-outline"
     code: "0xe145"
-    match: "internet connection wi fi outline"
+    match: "internet connection wi-fi wifi outline"
   - name: "wi-fi"
     code: "0xe146"
-    match: "internet connection wi fi"
+    match: "internet connection wi-fi wifi"
   - name: "wine"
     code: "0xe147"
     match: "drink beverage wine"

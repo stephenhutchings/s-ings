@@ -1,0 +1,84 @@
+// - var projects = _.flatten([data.getAll("fonts"), data.getAll("projects")]);
+
+footer#footer.bg-dk.flex-evenly
+  .content-wrap.p-v-sm
+    .col-wrap
+      .col-fluid.p-v-lg
+        h4.txt-muted Fonts
+        ul.list-bare
+          li.thumb.font-philippa
+            a.btn(href="/fonts/philippa/")
+              | Philippa
+            .thumb-bg.bg-hl
+          li.thumb.font-svenska
+            a.btn(href="/fonts/svenska/")
+              | Svenska
+            .thumb-bg.bg-hl
+          li.thumb.font-golumpki
+            a.btn(href="/fonts/golumpki/")
+              | Golumpki
+            .thumb-bg.bg-hl
+          li.thumb.font-ed-sans
+            a.btn(href="/fonts/ed-sans/")
+              | Ed Sans
+            .thumb-bg.bg-hl
+          li.thumb.font-vernacular
+            a.btn(href="/fonts/vernacular/")
+              | Vernacular
+            .thumb-bg.bg-hl
+
+      .col-fluid.p-v-lg
+        h4.txt-muted Art &amp; Design
+        ul.list-bare
+          li.thumb.project-asterisms
+            a.btn(href="/projects/asterisms/")
+              | Asterisms
+            .thumb-bg.bg-hl
+          li.thumb.project-console-log
+            a.btn(href="/projects/console-log/")
+              | console.log
+            .thumb-bg.bg-hl
+          li.thumb.project-gordian-knots
+            a.btn(href="/projects/gordian-knots/")
+              | Gordian Knots
+            .thumb-bg.bg-hl
+          li.thumb.project-typicons
+            a.btn(href="/typicons/")
+              | Typicons
+            .thumb-bg.bg-hl
+
+      .col-fluid.p-v-lg
+        h4.txt-muted Code
+        ul.list-bare
+          li.thumb
+            a.btn(href="/projects/written/")
+              | Written
+          li.thumb
+            a.btn(href="/projects/backbone.viewstack/")
+              | Viewstack
+          li.thumb
+            a.btn(href="/projects/visible-grid/")
+              | Visible Grid
+            .thumb-bg.bg-hl
+          li.thumb
+            a.btn(href="/projects/iostap/")
+              | iostap
+
+      .col-fluid.p-v-lg
+        h4.txt-muted More
+        ul.list-bare
+          li.thumb
+            a.btn(href="/me/")
+              | About Me
+          li.thumb
+            a.btn(href="/chat-bot/")
+              | Chat Bot
+          li.thumb
+            a.btn(href="/experiments/")
+              | Experiments
+          li.thumb
+            a.btn(href="/projects/")
+              | Archives
+
+      .col-fluid.p-v-lg.crossword-wrap
+        include crossword

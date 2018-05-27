@@ -1,34 +1,69 @@
-.thumb
-  background-size: cover
-  background-position: center bottom
-  background-repeat: no-repeat
+.thumb-gallery
+  background: currentColor
   position: relative
+  z-index: 1
+
+  &:hover
+    .thumb-title,
+    .thumb-img
+      opacity: 0
+
+.thumb
+  position: static
+  border: none
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
   overflow: hidden
+  padding: 0 !important
+
+  .thumb-bg
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    pointer-events: none
+    z-index: -1
+    background-size: cover
+    background-position: center
+    @extend %transition-lg
 
   .thumb-link,
-  .thumb-img
+  .thumb-img,
+  .thumb-reveal
     position: absolute
     display: block
     left: 0
     width: 100%
     height: 100%
-    transition: all 600ms
 
-  .thumb-link
-    border: none
-    color: inherit
+  .thumb-img,
+  .thumb-reveal
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    @extend %transition-md
 
   .thumb-img
-    background: inherit
+    opacity: 0.3
+
+  .thumb-link
+    color: #fff
+    position: relative
+    height: inherit
+    min-height: inherit
+
+  .thumb-reveal,
+  .thumb-bg
+    opacity: 0
 
   .thumb-title
     position: absolute
     width: 100%
     bottom: 1em
     left: 0
-
-    @media (max-width: 768px)
-      bottom: 0.4em
+    transition: all 600ms
 
   &.bg-center
     background-position: center
@@ -36,5 +71,16 @@
   &.bg-contain
     background-size: contain
 
-  &:hover .thumb-img
-    opacity: 0
+  &:hover,
+  &:focus
+    .thumb-img,
+    &.thumb-hide-img .thumb-reveal
+      opacity: 0
+    .thumb-reveal,
+    .thumb-bg,
+    .thumb-title
+      opacity: 1
+
+  @media (max-width: 480px)
+    &.col-md
+      width: 50%

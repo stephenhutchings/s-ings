@@ -11,7 +11,7 @@
   &.active,
   &.__active
     background-color: #eee
-    background-color: rgba(#aaa, 0.12)
+    background-color: rgba(#000, 0.12)
 
   &:first-child
     margin-left: -0.4em
@@ -24,3 +24,29 @@
     &.active,
     &.__active
       color: #fff
+
+.btn-ul
+  position: relative
+  display: inline-block
+  padding: 0.5em 1em
+  margin: -0.5em -1em
+  border: none
+
+  &:after
+    content: ""
+    position: absolute
+    left: 1em
+    right: 1em
+    bottom: 0.3em
+    transform: scale3d(1, 0.2, 1) translate3d(0, 8px, 0)
+    opacity: 0
+    background: currentColor
+    height: 2px
+    pointer-events: none
+    @extend %transition-sm
+
+  &:focus,
+  &:hover
+    &:after
+      opacity: 1
+      transform: scale3d(1, 1, 1) translate3d(0, 0, 0)

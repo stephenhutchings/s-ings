@@ -1,0 +1,57 @@
+extends /partials/layout
+
+block append config
+  - data.clear()
+  - page.class = "page-projects";
+  - page.title = "Projects";
+  - page.description = "Experiments, designs & tools made in the small hours";
+  - var projects = data.getAll("projects");
+
+block append aside
+  include /partials/connect
+
+block article
+  h1 Projects
+  h2
+    | Experiments, designs &amp; tools
+    | made in the small hours.
+
+  hr
+
+  .col-wrap
+    .col-full(data-view="views/tiles")
+      .projects.col-wrap
+        for project in projects
+          .tile.p-v-md(class=project.size || "col-sm")
+            a.tile-link(
+              href=`/${project.slug || project.path}`
+              data-tags=project.tags.join(",")
+            )
+              .tile-imgs
+                img.tile-img.tile-img-reveal(data-src=project.imgs.reveal)
+                img.tile-img.tile-img-cover(src=project.imgs.cover)
+
+              .tile-caption
+                h3.tile-name!= project.name
+                .tile-desc
+                  p!= typogr(project.desc || "").typogrify()
+                  small.tile-tags.txt-muted
+                    != project.tags.join(" &middot; ")
+
+                .tile-open &rarr;
+                .tile-close &times;
+  
+block append scripts
+  script(type="application/ld+json").
+    {
+      "@context": "http://s-ings.com",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://s-ings.com/projects",
+          "name": "Projects"
+        }
+      }]
+    }

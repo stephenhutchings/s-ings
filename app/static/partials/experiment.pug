@@ -1,0 +1,40 @@
+extends ./layout
+
+block title
+  = page.title
+  |  - Drawing Experiments by Stephen Hutchings
+
+block append css
+  link(rel="stylesheet" href="/css/experiments.css")
+
+block page
+  include ./header
+  
+  label
+    h4.sequence-status
+
+  footer
+    h2.tight= page.title
+
+    h4
+      a(href="/experiments") Experiments
+      |  &middot;&nbsp;
+      a.repeat Repeat
+      - name = written.hyphenCase(page.title.toLowerCase())
+      - expt = data.getOne("experiments", name)
+      if expt.link
+        |  &middot;&nbsp;
+        a(href=expt.link) More Details
+
+
+block scripts
+  script(type="text/javascript" src="/js/vendor.js")
+  script(type="text/javascript" src="/js/other/stack-blur.js")
+  script(type="text/javascript" src="/js/other/canvas-fx.js")
+  script(type="text/javascript" src="/js/app.js")
+  script(type="text/javascript" src="/js/experiments.js")
+  script.
+    $(document).ready(function(){
+      require("experiments/initialize")("#{page.experiment}")
+    })
+    

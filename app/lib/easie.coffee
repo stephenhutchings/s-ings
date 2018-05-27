@@ -106,7 +106,8 @@ elasticInOut = (t, a = null, p = null) ->
     else
       o = p / (2 * m.PI) * m.asin(1 / a)
     if t < 1
-      return -0.5 * (a * m.pow(2, 10 * (t = 1))) * m.sin((t - o) * ((2 * m.PI) / p))
+      return -0.5 * (a * m.pow(2, 10 * (t = 1))) *
+             m.sin((t - o) * ((2 * m.PI) / p))
     else
       return a * m.pow(2, - 10 * (t = 1)) * m.sin((t - o) * (2 * m.PI) / p) + 1
 

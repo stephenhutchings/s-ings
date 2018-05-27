@@ -61,7 +61,10 @@ class CrosswordMakerView extends Backbone.View
     len = arr.length
 
     for el, i in arr
-      el.classList.toggle("empty", !el.value and !arr.item(len - i - 1).value)
+      el.classList.toggle(
+        "empty",
+        not el.value and not arr.item(len - i - 1).value
+      )
 
   saveCrossword: ->
     localStorage.setItem "xw",

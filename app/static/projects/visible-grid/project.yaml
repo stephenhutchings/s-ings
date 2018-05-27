@@ -3,6 +3,9 @@ date: 22 Jun 2015
 size: col-sm
 desc: >
   Design and develop better web applications by making your grid system visible while you work.
+
+version: 0.1.1
+
 urls:
   -
     text: Demo
@@ -13,6 +16,7 @@ urls:
 imgs:
   cover:  /img/projects/visible-grid/cover.png
   reveal: /img/projects/visible-grid/reveal.png
+  header: /img/projects/visible-grid/visible-grid-header.jpg
 tags:
   - Developer Tools
   - Design

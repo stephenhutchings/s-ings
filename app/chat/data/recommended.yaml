@@ -26,6 +26,11 @@ things:
       - "“The Holy Mountain” by Alejandro Jodorowsky"
       - "“The White Ribbon” by Michael Haneke"
       - "“The Long Goodbye” by Robert Altman"
+      - "“Waking Life” by Richard Linklater"
+      - "“Son of Saul” by Robert Altman"
+      - "“Inside Llewyn Davis” by the Cohen Brothers"
+      - "“Heat” by Michael Mann"
+      - "“Rosencratz and Gildenstern are Dead” by Tom Stoppard"
   -
     group:
       - "Bing & Ruth"
@@ -59,6 +64,9 @@ things:
       - "“In a Silent Way” by Miles Davis"
       - "“Amethyst Waves” by Mark McGuire"
       - "“Remain in Light” by Talking Heads"
+      - "“Green Twins” by Nick Hakim"
+      - "“Floa” by Mammal Hands"
+      - "“Antiphon” by Alfa Mist"
   -
     director:
       - "Andrei Tarkovsky"
@@ -76,15 +84,14 @@ things:
       - "Cy Twombly"
       - "Franz Kline"
       - "Mark Rothko"
-  -
-    "random thing":
-      - a Klein bottle
 
   -
     song:
       - "“Marquee Moon” by Television"
       - "“Laughing Heiroglyphic” by Avey Tare"
       - "“The Presence” by Crispy Ambulance"
+      - "“Lkj” by All Against Logic"
+      - "“A.I. Fugitive” by Olaf Stuut"
 
 after:
   - Right up my alley.
@@ -93,3 +100,4 @@ after:
   - For real.
   - On the top of my list.
   - Brilliant.
+  - Try it & see.

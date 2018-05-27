@@ -110,4 +110,6 @@ class ScoreModel extends Backbone.Model
         @set({lastScore: 0}, silent: true)
         @set(lastScore: val)
 
+    return this
+
 module.exports = ScoreModel

@@ -1,0 +1,60 @@
+extends /partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "typicons");
+
+block append config
+  - page.title = "Typicons";
+  - page.description = "336 pixel perfect, all-purpose vector icons";
+  - page.class += " page-typicons";
+
+block prepend description
+  include /partials/typicons/carbon
+  link(rel="stylesheet" href="/fonts/typicons/typicons.css")
+
+block append article
+  .gallery.stretch(data-view="views/typicons")
+    #icon-container.gallery-item.flex-between.p-h-lg.p-v-xxl.bg-hl
+      .flex-grid.p-v-sm.txt-center
+        for icon in project.icons
+          .icon(
+            data-name=icon.name
+            data-code=icon.code
+            data-match=icon.match
+          )
+            .typcn.icon-default(class=`typcn-${icon.name}`)
+
+      .p-v-sm
+        #icon-search-bar
+          input#icon-search.fl-l(type="text" placeholder="Search....")
+          label#icon-details.txt-ellipsis(for="icon-search")
+            | Search for a specific icon by its name or keywords.
+
+    .gallery-item.flex-between.p-h-xxl.p-v-xxl.bg-lt
+      h1 Typicons. 336 pixel perfect,<br>all-purpose vector icons.
+
+      h2
+        | Typicons are free-to-use vector icons embedded in a webfont for easy
+        | use in your user interfaces, whether it be on the web or in a native
+        | application.
+
+      p
+        | The set of icons are available on Github, with everything included
+        | from the source files in SVG format to the minifed CSS. You can even
+        | use this project to build your own custom version of Typicons! Find
+        | out more here.
+
+      p
+        | This version greatly improves Typicons, with the addition on 220
+        | icons with solid and outline styles and Github hosting of the source
+        | content. So what are you waiting for? Combine HTTP requests with a
+        | retina ready, resolution independent, screen-reader-friendly webfont.
+
+      p
+        | Read more about&nbsp;
+        a(href="/typicons/more/making-typicons") making Typicons
+        |  and&nbsp;
+        a(href="/typicons/more/how-to-use-typicons") how to use them.
+
+      include ../partials/typicons/donate
+

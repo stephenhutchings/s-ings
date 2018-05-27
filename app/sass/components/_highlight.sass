@@ -1,10 +1,10 @@
 .bg-dk,
 .bg-hl
   color: #fff
-  transition: background 300ms, color 300ms
+  transition: background-color 30ms, color 300ms
 
 .bg-dk
-  background: #181818
+  background: $dark
 
 .bg-hl
   background: $highlight
@@ -12,10 +12,15 @@
 .bg-lt
   background: #f3f5f6
 
-.bg-hl,
-.bg-dk
-  background-image: linear-gradient(to bottom right, rgba(#fff, 0.15), rgba(#000, 0.15))
+.bg-wh
+  background: #fff
+
+.bg-hl
+  background-image: linear-gradient(to bottom right, rgba(#fff, .4), rgba(#000, .4))
   background-blend-mode: overlay
+
+.bg-flat
+  background-image: none
 
 .txt-hl
   color: $highlight

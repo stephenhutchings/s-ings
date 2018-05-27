@@ -1,5 +1,5 @@
 timeout  = null
-label = document?.querySelector("label")
+label = document?.querySelector(".sequence-status")
 html  = label?.innerHTML
 
 time = (since = 0) -> (window.performance or window.Date)?.now() - since
@@ -23,7 +23,7 @@ sequence = (arr, i = 0, title = "Process", resolve) ->
         else
           console?.timeEnd? "#{title} Total"
           resolve()
-      ), 1
+      ), 0
 
     if res?.constructor?.name is "Promise"
       res.then(next)

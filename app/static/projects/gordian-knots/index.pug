@@ -1,0 +1,61 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "gordian-knots");
+
+block append article
+  .gallery.stretch
+    #item-1.gallery-item.p-h-lg.p-v-xxl.bg-lt.bg-flat.flex-evenly
+      img(
+        alt="Asterisms - Full Size"
+        src="/img/projects/gordian-knots/poster-1.jpg"
+      )
+    #item-2.gallery-item.p-h-lg.p-v-xxl.bg-dk.bg-flat.flex-evenly
+      img(
+        alt="Asterisms - Full Size"
+        src="/img/projects/gordian-knots/poster-2.jpg"
+      )
+    #item-3.gallery-item.p-h-lg.p-v-xxl.bg-hl.bg-flat.flex-evenly(
+      style="background: #456fff"
+    )
+      img(
+        alt="Asterisms - Full Size"
+        src="/img/projects/gordian-knots/poster-3.jpg"
+      )
+    #item-4.gallery-item.p-h-lg.p-v-xxl.flex-evenly
+      .p-v-sm
+        h3.txt-center Recipe
+        hr.mx-sm(style="width: 120px")
+        .mx-md
+          ol
+            li Divide a canvas into an evenly dispersed&nbsp;grid.
+            li
+              | Using a naive search algorithm, join the dots in the grid so
+              | that each dot occurs only once in the line, and that each dot
+              | is preferrably connected with one in it’s&nbsp;neighbourhood.
+            li
+              | Using a smoothing algorithm, transform this line into a spline
+              | so that each sharp angle becomes&nbsp;curved.
+            li
+              | Interpolate between each pair of points to ensure they are
+              | equally&nbsp;spaced.
+            li
+              | For each point moving along this spline, rotate around the
+              | current point at a determined frequency but with a
+              | shifting&nbsp;radius.
+            li
+              | At these extrapolated points, draw a the final “string” you
+              | see in the&nbsp;image.
+            li
+              | As the string is drawn, check for intersections with any
+              | existing segments. If there is, start rendering new string
+              | above or below what has already been&nbsp;drawn.
+
+        hr.mx-sm(style="width: 120px")
+
+    #item-5.gallery-item
+      .stretch
+        img.stretch(
+          alt="Asterisms - Full Size"
+          src="/img/projects/gordian-knots/texture.jpg"
+        )

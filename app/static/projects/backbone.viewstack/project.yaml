@@ -2,6 +2,9 @@ name: "backbone.&shy;viewstack"
 date: 19 Sep 2014
 desc: >
   Seamless management of a view’s stacking, pushing and popping for Backbone single-page apps.
+
+version: 0.9.8
+
 urls:
   -
     text: Demo

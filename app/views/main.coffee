@@ -7,10 +7,13 @@ cache = {}
 class MainView extends Backbone.View
 
   events:
+    "focus": "toggleLinkBehaviour"
     "keyup": "toggleLinkBehaviour"
     "keydown": "toggleLinkBehaviour"
     "iostap a[href]": "navigateWithoutDelay"
     "click a[href]": "preventDefault"
+    "mousemove": "onMouseMove"
+    "touchmove": "onMouseMove"
 
   initialize: ->
     $inbound = @$("#inbound")
@@ -19,19 +22,38 @@ class MainView extends Backbone.View
     debounced = _.debounce _.bind(@onResize, this), 300
     $(window).on "resize", debounced
 
-  toggleLinkBehaviour: (e) ->
-    if e.metaKey or e.ctrlKey
-      @disableTap = e.type is "keydown"
+    @$style = $("<style />")
+    @$el.append(@$style)
 
+  toggleLinkBehaviour: (e) ->
+    if e.type is "keydown"
+      @disableTap = e.metaKey or e.ctrlKey
+    else
+      @disableTap = false
+
+    if [13, 32].indexOf(e.keyCode) > -1
+      $el = $(document.activeElement)
+      if $el.is("a[href]")
+        e.preventDefault()
+        $el.trigger("iostap") if e.type is "keyup"
+
+    return
+
+  # Clicking a link will either smooth scroll to the target element,
+  # navigate using the Backbone router or provide the default behaviour
+  # of setting the window location. Clicks modified by CMD or CTRL are
+  # disabled to allow the normal behaviour to occur.
   navigateWithoutDelay: (e) ->
-    if e.currentTarget.hash
+    el = e.currentTarget
+
+    if el.hash
       e.preventDefault()
-      $anchor = $(e.currentTarget)
+      $anchor = $(el)
       $target = $($anchor.attr('href'))
       $parent = $($anchor.data("parent") or document.scrollingElement)
       sx = $target.get(0).offsetLeft
       sy = $target.get(0).offsetTop
-      mx = $parent.get(0).scrollWidth - $parent.get(0).offsetWidth
+      mx = $parent.get(0).scrollWidth  - $parent.get(0).offsetWidth
       my = $parent.get(0).scrollHeight - $parent.get(0).offsetHeight
       if my or mx
         $parent.stop().animate
@@ -44,13 +66,16 @@ class MainView extends Backbone.View
     else if @disableTap
       false
 
-    else if @isAllowed(e.currentTarget)
+    else if @isAllowed(el)
       e.preventDefault()
-      app.router.navigate(e.currentTarget.pathname, true)
+
+      $(document.scrollingElement).scrollTo 0, ->
+        app.router.navigate(el.pathname, true)
+
       false
 
     else
-      window.location = e.currentTarget.href
+      window.location = el.href
 
   preventDefault: (e) ->
     unless @disableTap and not e.currentTarget.hash
@@ -79,37 +104,39 @@ class MainView extends Backbone.View
 
     @key = key
 
-  # Turn off events, flip the inbound and outbound containers and scroll to
-  # top. Remove events and call a hide method on any child view. Finish by
-  # loading the new page.
+  # Turn off events and flip the inbound and outbound containers.
+  # Remove events and call a hide method on any child view. Finish
+  # by loading the new page.
   transitionViews: (params, callback) ->
+    window.clearTimeout @transitionTimeout
+
     url = Backbone.history.location.pathname
 
     for key, view of @views
       view.stopListening()
       view.undelegateEvents()
-      view.hide?()
-      delete @views[key]
 
     @$el.addClass("loading")
 
-    $(document.scrollingElement).scrollTo 0, =>
-      if response = cache[url]
-        @onLoad(params, response, callback)
-      else
-        $.ajax
-          url: url
-          type: "GET"
-          success: (response) =>
-            cache[url] = response
-            @onLoad(params, response, callback)
+    if response = cache[url]
+      @onLoad(params, response, callback)
+    else
+      $.ajax
+        url: url
+        type: "GET"
+        success: (response) =>
+          cache[url] = response
+          @onLoad(params, response, callback)
 
-  # Insert the new title and content onto the page, and create a view for any
-  # new component on the page. Fail silently if view doesn't match a valid view
-  # name.
+
+  # Insert the new title and content onto the page, and create a view
+  # for any new component on the page. Fail silently if view doesn't
+  # match a valid view name.
   onLoad: (params, response, callback) ->
     $resp = $(response)
     _inb  = $resp.filter("#inbound")
+
+    @$el.removeClass("loading")
 
     if window.hljs
       _inb.find("pre code").each -> window.hljs.highlightBlock this
@@ -122,14 +149,16 @@ class MainView extends Backbone.View
     $outbound.html(_inb.html())
     $outbound.get(0).offsetWidth
 
-    window.setTimeout =>
-      $inbound.attr("id", "outbound")
-      $outbound.attr("id", "inbound")
+    $inbound.attr("id", "outbound")
+    $outbound.attr("id", "inbound")
 
-      @createViews($outbound, params)
+    for key, view of @views
+      view.hide?($inbound, $outbound)
+      delete @views[key]
 
-      callback()
-    , 10
+    @createViews($outbound, params)
+
+    callback()
 
   createViews: ($el, params) ->
     $el
@@ -154,9 +183,8 @@ class MainView extends Backbone.View
   afterTransition: ->
     window.clearTimeout @transitionTimeout
     @transitionTimeout = window.setTimeout( =>
-      $inbound.removeClass "ready"
       $outbound.addClass "ready"
-      @$el.removeClass("loading")
+      $inbound.removeClass "ready"
       @swapContainers()
     , 600)
 
@@ -165,9 +193,27 @@ class MainView extends Backbone.View
     _otb = $inbound
     $inbound = _inb
     $outbound = _otb
-    $outbound.empty()
+    $outbound.empty().removeAttr("class")
 
   onResize: ->
     view.trigger("resize") for key, view of @views
+
+  onMouseMove: (e) ->
+    e = e.touches[0] if e.touches
+    w = window.innerWidth
+    h = window.innerHeight
+    x = e.clientX / w
+    y = 1 - e.clientY / h
+
+    h = 180 + (60 * y) % 60
+    s = 100 - Math.abs(0.5 - x) * 100
+    l = 40 + y * 25 + Math.abs(0.5 - x) * 10
+
+    highlight = "hsl(#{h.toFixed(2)}, #{s.toFixed(2)}%, #{l.toFixed(2)}%)"
+
+    @$style.html """
+      .txt-hl { color: #{highlight}; }
+      .bg-hl  { background-color: #{highlight}; }
+    """
 
 module.exports = MainView

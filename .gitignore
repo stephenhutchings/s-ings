@@ -9,3 +9,12 @@ vendor/js/ga.js
 renders/*
 _*.png
 app/assets/img/projects/console-log/originals
+app/assets/fonts/**/*.ttf
+app/assets/fonts/**/*.otf
+app/assets/fonts/**/*.eot
+app/assets/fonts/**/*.woff
+app/assets/fonts/**/*.woff2
+
+*.ai
+
+backup/

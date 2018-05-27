@@ -21,8 +21,7 @@ class GalleryScrollerView extends Backbone.View
     @$el.siblings(".gallery").off("scroll")
 
   onScroll: (e) ->
-    window.clearTimeout @timeout
-    @timeout = window.setTimeout (=> @handleScroll($(e.currentTarget))), 10
+    @handleScroll($(e.currentTarget))
 
   onResize: ($gallery) ->
     @data =

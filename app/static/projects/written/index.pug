@@ -1,0 +1,334 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "written");
+
+block project
+  .mx-lg.mx-mn
+    :marked
+      It can be a pain formatting dynamic text. And user interfaces need to do 
+      it all the time. Making it look a little more human can go a long way. 
+      This library collects some of the things I find myself rewriting over 
+      and over again.
+
+      I had a lot of fun writing this utility. The README is written in 
+      literate coffeescript, so it’s the source code for the module as well as 
+      the documentation for it. Below the implementation details have been 
+      removed, so check it out on GitHub to see it all in one place.
+
+      This is what *written* can do:
+
+    .col-wrap
+      .col-md
+        ul
+          li 
+            a(href="#capitalization") Capitalization 
+            br
+            small of words and strings
+          li 
+            a(href="#cases") Cases 
+            br
+            small both for computers and humans
+          li 
+            a(href="#collapse") Collapse 
+            br
+            small for trimming whitespace
+          li 
+            a(href="#glyphs") Glyphs 
+            br
+            small for special characters
+          li 
+            a(href="#hyphenation") Hyphenation 
+            br
+            small to make text wrap on small screens
+          li 
+            a(href="#lists") Lists 
+            br
+            small for human-readable arrays
+          li 
+            a(href="#numbers") Numbers 
+            br
+            small for conversion and display
+
+      .col-md
+        ul
+          li
+            a(href="#ordinals") Ordinals 
+            br
+            small for counting
+          li
+            a(href="#quantify") Quantify 
+            br
+            small numbers of item(s)
+          li
+            a(href="#quotes") Quotes 
+            br
+            small for things that were said
+          li
+            a(href="#tags") Tags 
+            br
+            small for HTML wrappers
+          li
+            a(href="#utilities") Utilities 
+            br
+            small for common tasks
+          li
+            a(href="#written-numbers") Written Numbers 
+            br
+            small for body text
+          li
+            | and finally 
+            a(href="#language-support") Language Support 
+            br
+            small for everyone
+
+
+    :marked
+      -------
+
+      #### Setup
+
+      *written* is available via NPM and Bower.
+
+      ```bash
+      $ npm install written
+      # or
+      $ bower install written
+      ```
+
+      *written* can be required as a module in Node and CommonJS contexts, and 
+      will otherwise be made available as a global variable (`window.written`).
+
+      -------
+
+      #### Capitalization
+      Capitalize the first letter of a string. Nothing new to see here.
+
+      ```coffee
+      w.capitalize("obviously")                         # Obviously
+      ```
+
+      Capitalize all words in a string apart from some common lower case words.
+      This can be tested with the internal noncaps regular expression, which 
+      are stored by language code, or by passing a regular expression of your 
+      own.
+
+      ```coffee
+      w.capitalizeAll("this and that")                  # This and That
+      w.capitalizeAll("the cat in the hat")             # The Cat in the Hat
+      ```
+
+      Following the APA style guide (for ease and practicality) conjunctions,
+      articles, and short prepositions of less than four letters will be
+      left in lowercase when calling `capitalizeAll()`.
+
+      #### Cases
+      Transform strings between common code cases, and back to normal language.
+
+      ```coffee
+      w.camelCase("some-thing")                         # someThing
+      w.hyphenCase("some_thing")                        # some-thing
+      w.snakeCase("someThing")                          # some_thing
+      w.humanCase("fromA_to-Z")                         # from A to Z
+      ```
+
+      #### Collapse
+      Replace all white-space in a string with a single space character.
+
+      ```coffee
+      w.collapse("this   \t\t and \n    that")          # this and that
+      ```
+
+      #### Glyphs
+      Provide quick access to different typographic glyphs without the need to
+      commit them to memory or look at a reference table. You can also 
+      transform a character into it’s HTML encoded equivalent.
+
+      ```coffee
+      w.glyphs()                                        # Create map of ASCII glyphs
+      w.glyph("!")                                      # &#33;
+      ```
+
+      #### Hyphenation
+      Add soft hyphens every `n` characters so that the CSS attribute
+      `hyphens: manual` will allow for nice breaks in long strings of text. 
+      This is especially useful on mobile devices, where long strings can 
+      break the layout. Soft hyphens are only visible when they break a word 
+      at the end of the line.
+
+      ```coffee
+      w.hyphenate("antidisestablishmentarianism")
+      # antidisest%C2%ADablishm...
+      ```
+
+      #### Lists
+      Group strings into a grammatically correct list with an arbitrary limit.
+      The final example shows all the possible options available.
+
+      ```coffee
+      w.prettyList(["Ben", "Bob"])                      # Ben and Bob
+      w.prettyList(["Ben", "Bob", "Bill"])              # Ben, Bob and Bill
+      w.prettyList(["Ben", "Bob", "Bill", "Max"], 2)    # Ben, Bob and 2 more
+      w.prettyList(["Ben", "Bob"], 1, {more: "other"})  # Ben and 1 other
+      
+      # Document 1 & two other files
+      w.prettyList([                                    
+        {file: "Document 1"},
+        {file: "Document 2"},
+        {file: "Document 3"}
+      ], 1, {
+        amp: "&"
+        written: true,
+        more: "other file",
+        quantify: true,
+        key: "file"
+      })
+      ```
+
+      #### Numbers
+      Format a number in various ways and parse one from a string.
+
+      ```coffee
+      w.prettyNumber(1000)                              # 1,000
+      w.prettyNumber(10.5, 2)                           # 10.50
+      w.prettyNumber(9999, " ", 2, ",")                 # 9 999,00
+
+      w.prettyPrice(4)                                  # $4.00
+      w.prettyPrice(1200, "£")                          # £1,200.00
+      w.prettyPrice(                                    # €4<sup>00</sup>
+        4,
+        {
+            currency: "€",
+            wrap: "sup"
+        }
+      )
+
+      w.parseNumber(1000)                               # 1000
+      w.parseNumber("1,000.00")                         # 1000
+      w.parseNumber("99%")                              # 0.99
+      w.parseNumber("some 44,000 participants")         # 44000
+      ```
+
+      #### Ordinals
+      Convert a number from it’s cardinal to ordinal equivalent.
+
+      ```coffee
+      w.ordinal(1)                                      # 1st
+      w.ordinal(2, {written: true})                     # second
+      w.ordinal(3, {wrap: true})                        # 3<sup>rd</sup>
+      w.ordinal(4, {wrap: "em"})                        # 4<em>th</em>
+      ```
+
+      A regular expression is used to determine the correct ordinal for any 
+      number. The first value in the returned array from `match` should give
+      the index of the written number our dictionary of ordinals.
+
+      #### Quantify
+      Add an "s" to a string when an amount is non-singular, disregarding the
+      order of the arguments passsed.
+
+      ```coffee
+      w.quantify("monkey", 1)                           # 1 monkey
+      w.quantify(1, "monkey")                           # 1 monkey
+      w.quantify("monkey", 9, {written: true})          # nine monkeys
+      w.quantify("person", 9, {plural: "people"})       # 9 people
+      ```
+
+      #### Quotes
+      Wrap a string in single or double quotes, guillemets (angle quotes), or
+      inverted marks for Spanish.
+
+      ```coffee
+      w.quote("pastry chef", "s")                       # ‘pastry chef’
+      w.quote("cats cradle")                            # “cats cradle”
+      w.quote("tres chic", "a")                         # «tres chic»
+      w.quote("Gol", "!")                               # ¡Gol!
+      w.quote("Cómo estás", "?")                        # ¿Cómo estás?
+      ```
+
+      #### Tags
+      Enclose a string inside an HTML tag.
+
+      ```coffee
+      # <span>Hello world!</span>
+      w.wrapInTag("Hello world!")
+      
+      # <em>Hello world!</em>
+      w.wrapInTag("Hello world!", "em")
+      
+      # <a href="/url" class="b" disabled="disabled">Link</a>
+      w.wrapInTag(
+        "Link",
+        "a", {
+          href: "/url",
+          class: ["b"],
+          disabled: true
+        }
+      )
+      ```
+
+      #### Utilities
+      `enclose` wraps a string within two other strings, repeating the first 
+      if needs be. `cleanJoin` joins an array of words (with falsy, non-string 
+      values removed) with some glue. Both are used internally but are exposed
+      in case of their external value.
+
+      ```coffee
+      w.enclose("'", "string")                          # 'string'
+      w.cleanJoin(["this", null, "that"], " and ")      # this and that
+      ```
+
+      #### Written Numbers
+
+      Convert numbers between one and twelve into their written counter-parts.
+
+      ```coffee
+      w.writtenNumber(1)                                # one
+      w.writtenNumber(2, "DE")                          # zwei
+      ```
+
+      Some style guides prefer the numbers 12 and under to be written out, so 
+      we’ll include those in dictionary. If more or fewer numbers need to be 
+      added, or those from another language, see
+      [Language Support](#language-support).
+
+      ---
+
+      #### Language Support
+      Set cardinal and ordinal numbers and non-caps words for different 
+      languages as appropriate. The dictionary below shows the options passed
+      for English support. See the other languages for support for gendered
+      plurals and numbers.
+
+      ```coffee
+      dico =
+        noncaps: ///^(
+                   an|and|as|at|be|but|by|has|in|if|nor|of|
+                   off|on|or|out|per|the|to|up|was
+                 )$///
+
+        cardinals:
+          written: ["one", "two", "three", "four",
+                    "five", "six", "seven", "eight",
+                    "nine", "ten", "eleven", "twelve"]
+
+        ordinals:
+          written: ["first", "second", "third", "fourth",
+                    "fifth", "sixth", "seventh", "eighth",
+                    "ninth", "tenth", "eleventh", "twelfth"]
+
+          rule:    /((1{0,1}[123])|(\d))\b/
+
+          suffixes:
+            "1": "st"
+            "2": "nd"
+            "3": "rd"
+            "n": "th"
+
+      w.setLanguage(dico, "MyLanguage")
+      ```
+
+      Please note that only partial support for French, German, Italian, 
+      Spanish and Swedish is currently implemented. If using in the browser, 
+      ensure that the document’s charset is set to UTF-8. Pull requests which 
+      extend language support are encouraged.

@@ -3,7 +3,6 @@ Prefix = require("lib/prefix")
 class MessageView extends Backbone.View
   events:
     "iostap": "generate"
-    "click": "generate"
 
   history: {}
 
@@ -32,6 +31,7 @@ class MessageView extends Backbone.View
         "thecomputer"
         "recommended"
         "itstodayand"
+        "recommended"
       ]
     , "data")
 
@@ -57,6 +57,10 @@ class MessageView extends Backbone.View
   prettify: (string) ->
     i = 0
 
+    # Kerner
+    $k = $("<span>")
+    $k.css("font-size", "10em").appendTo("body")
+
     interval = 300 / string.replace(/(<[^<]+>)/g, "").length
     message  =
       for word in _.compact(string.split(/[\s$](<a[^<]+<\/a>)*/))
@@ -65,13 +69,18 @@ class MessageView extends Backbone.View
         middle =
           for word in middle.split(" ")
             @wrapWord (
-              for span in word
+              for span, j in word
+                if j > 0
+                  w1 = $k.html(word[j - 1] + span).width()
+                  w2 = $k.html(word[j - 1]).width() + $k.html(span).width()
+                  wd = (w1 - w2) / 10
                 i++
-                @wrapSpan(span, i * interval)
+                @wrapSpan(span, i * interval, wd)
             ).join("")
 
         [start, middle.join(" "), end].join("")
 
+    $k.remove()
     message.join(" ")
 
   render: (message) ->
@@ -93,11 +102,13 @@ class MessageView extends Backbone.View
   wrapWord: (w) ->
     "<div class=\"word\">#{w}</div>"
 
-  wrapSpan: (c, d) ->
+  wrapSpan: (c, d, m) ->
     unless c is " "
       t = Prefix("transition-delay")
       t = t.replace(/([A-Z])/g, (w, c) -> "-" + c.toLowerCase())
-      "<span style=\"#{t}: #{d}ms;\" class=\"char\">#{c}</span>"
+      style = "#{t}: #{d}ms;"
+      style += "margin-left: #{m}px" if m
+      "<span style=\"#{style}\" class=\"char\">#{c}</span>"
 
   random: (from, name) ->
     from = _.without(from, @history[name]) if from.length > 1

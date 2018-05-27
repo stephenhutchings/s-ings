@@ -26,17 +26,10 @@
     background-color: black
     color: white
 
-.tile-link
-  display: block
-  text-decoration: none
-  color: inherit
-  border: none
-  -webkit-tap-highlight-color: transparent
-  background-color: #eee
+.tile
   position: relative
   z-index: 1
   transition: z-index 300ms, background-color 300ms
-  @extend %clearfix
 
   &.tile-active,
   &:focus
@@ -85,6 +78,16 @@
       opacity: 0.3
       -webkit-filter: saturate(0)
       transform: translate3d(0, 0, 0) scale(0.95)
+
+.tile-link
+  display: block
+  text-decoration: none
+  color: inherit
+  border: none
+  -webkit-tap-highlight-color: transparent
+  background-color: #eee
+  position: relative
+  @extend %clearfix
 
 .tile-imgs
   margin: 0 auto

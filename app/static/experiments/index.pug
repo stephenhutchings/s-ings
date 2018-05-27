@@ -1,0 +1,40 @@
+extends ../partials/layout
+
+block append config
+  - page.title = "Experiments";
+
+block append aside
+  section
+    h1
+      | Drawing
+      | Experiments
+
+    h2
+      | Endless unique illustrations
+      | programmatically generated
+      | by my computer, or yours
+
+    p
+      | These experiments run with Javascript and HTML5’s Canvas. They may —
+      | and probably will — perform slowly depending on your hardware. Each
+      | result is unique, and some are available as prints. Get in touch if
+      | your interested.
+
+block article
+  .col-wrap(data-view="views/tiles")
+    for its in data.getAll("experiments")
+      .col-md.tile
+        a.tile-link(href=`/${its.path}` data-follow)
+          .tile-imgs
+            img.tile-img(
+              src=`/img/${its.path.slice(0, -1)}.png`
+              style="height: auto"
+            )
+
+          .tile-caption
+            h3.tile-name!= its.name
+            .tile-desc
+              p!= typogr(its.desc || "").typogrify()
+
+            .tile-open &rarr;
+            .tile-close &times;

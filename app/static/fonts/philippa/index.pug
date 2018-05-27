@@ -1,0 +1,128 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("fonts",  "philippa");
+
+block append article
+  .gallery
+    #item-1.gallery-item.p-v-xxl.p-h-lg.flex-evenly.bg-dk.txt-center
+      .f-g-700(contenteditable)
+        .t-6
+          | &amp;c
+          span.txt-hl .
+    #item-2.gallery-item
+      .flex-stretch.stretch
+        .txt-center.bg-lt.flex-evenly.p-h-xl
+          .f-g-600.t-3.p-v-xl(contenteditable)
+            | My Fox News TV quip?&nbsp;Big jerks add&nbsp;zilch!
+        .txt-center.bg-hl.flex-evenly.p-h-xl
+          .f-g-200.t-3.p-v-xl(contenteditable)
+            | Panel who rave mixed&nbsp;bag&nbsp;of quite crazy&nbsp;jokers.
+
+    #item-3.gallery-item.p-v-xxl.p-h-lg.flex-between.txt-center
+      div
+        small 200 / ExtraLight
+        .t-1.f-g-200.txt-ellipsis(contenteditable)
+          | Mephistopheles if I’m not&nbsp;mistaken
+      div
+        small 300 / Light
+        .t-1.f-g-300.txt-ellipsis(contenteditable)
+          | Flippant responses from&nbsp;surveyors
+      div
+        small 400 / Regular
+        .t-1.f-g-400.txt-ellipsis(contenteditable)
+          | Thieves are all heart and no&nbsp;sense
+      div
+        small 500 / Medium
+        .t-1.f-g-500.txt-ellipsis(contenteditable)
+          | Quantitative easing&nbsp;polynomials
+      div
+        small 600 / SemiBold
+        .t-1.f-g-600.txt-ellipsis(contenteditable)
+          | Eyes Wide Shut primary&nbsp;colours 
+      div
+        small 700 / Bold
+        .t-1.f-g-700.txt-ellipsis(contenteditable)
+          | Great Scott what rot you&nbsp;speak
+      div
+        small 800 / ExtraBold
+        .t-1.f-g-800.txt-ellipsis(contenteditable)
+          | Raconteur spins thrilling&nbsp;yarn
+
+    #item-4.gallery-item.p-v-xxl.p-h-xl.flex-evenly.txt-center.bg-lt
+      .t-2.f-g-700(contenteditable)
+        | Ampère Becquerel&nbsp;Celsius
+      .t-2.f-g-200(contenteditable)
+        | Coulomb Faraday Gray&nbsp;Henry
+      .t-2.f-g-400(contenteditable)
+        | Hertz Joules Kelvin&nbsp;Newton
+      .t-2.f-g-300(contenteditable)
+        | Ohm Pascal Siemens&nbsp;Sievert
+      .t-2.f-g-800(contenteditable)
+        | Tesla Volta Watt &amp;&nbsp;Weber
+
+    #item-5.gallery-item.p-v-xxl.p-h-xl.flex-evenly.txt-center
+      .mx-md
+        .t-1.flex-grid(contenteditable)
+          for glyph, i in project.font.glyphs.split(/\s/)
+            span.glyph!=glyph
+
+    #item-6.gallery-item
+      .flex-stretch.stretch
+        .txt-center.bg-hl.flex-evenly.p-h-xl
+          .f-g-600.t-3.p-v-xl(contenteditable)
+            | Queen’s Council
+        .txt-center.bg-dk.flex-evenly.p-h-xl
+          .f-g-200.t-3.p-v-xl(contenteditable)
+            | Crown Prosecutor
+        .txt-center.flex-evenly.p-h-xl
+          .f-g-700.t-3.p-v-xl.txt-ulc(contenteditable)
+            span.txt-ul Attorney General
+
+    #item-7.gallery-item.p-xxl.flex-evenly
+      dl
+        dt Font Details
+        dd
+          | Sans-serif with elliptical counters and geometric forms, evoking
+          | modernist 20th Century ideals. Contemporary proportions with 
+          | large x-height, improving readabilty in digital contexts.
+          | Elegant lettering works perfectly for branding or corporate use.
+
+        .col-wrap
+          .col-sm
+            dt Glyphs
+            dd.txt-sm  1,203
+
+          .col-sm
+            dt Weights
+            dd.txt-sm  8
+            | &nbsp;
+
+        dt Language Support
+        dd.txt-sm 
+          | Afrikaans, Albanian, Asturian, Asu, Azerbaijani, Basque, Bemba, 
+          | Bena, Bosnian, Breton, Catalan, Chiga, Colognian, Cornish, 
+          | Croatian, Czech, Danish, Dutch, Embu, English, Esperanto, 
+          | Estonian, Faroese, Filipino, Finnish, French, Friulian, 
+          | Galician, Ganda, German, Greek, Gusii, Hawaiian, Hungarian, 
+          | Icelandic, Igbo, Inari Sami, Indonesian, Irish, Italian, 
+          | Jola-Fonyi, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda, 
+          | Latvian, Lithuanian, Low German, Lower Sorbian, Luo, 
+          | Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde, 
+          | Malagasy, Malay, Maltese, Manx, Meru, Morisyen, Nama, North 
+          | Ndebele, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk, 
+          | Nyankole, Oromo, Polish, Portuguese, Quechua, Romanian, Romansh, 
+          | Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena, 
+          | Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish, 
+          | Swahili, Swedish, Swiss German, Taita, Teso, Tongan, Turkish, 
+          | Turkmen, Upper Sorbian, Uzbek, Vunjo, Walser, Welsh, Western 
+          | Frisian, Yoruba and Zulu
+
+        dt OpenType Features
+        dd.txt-sm
+          | Alternates, Capitals to Small Caps, Case Sensive Forms, Glyph 
+          | Composition &amp; Decomposition, Discretionary Ligatures, 
+          | Denominator, Fractions, Standard Ligatures, Lining Figures, 
+          | Localized Forms, Numerator, Oldstyle Figures, Ordinals, 
+          | Proportional Figures, Tabular Figures, Scientific Inferiors, 
+          | Small Caps, Subscript and Superscript

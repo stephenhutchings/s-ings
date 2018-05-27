@@ -1,0 +1,79 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "swatch");
+
+block append article
+  .mx-lg.mx-mn
+    :marked
+      Swatch began as an aimless design exercise - messing around with a few
+      layout ideas without having any goal in mind. It soon developed into
+      an all-absorbing project, with a prototype and then full application
+      following quickly.
+
+      The entire app is written with web technologies, but it’s optimised to
+      feel and react as if it were native app. Check it out on the app store
+      and tell me if you agree. Below are some screenshots from the project,
+      as well as the app’s features.
+
+
+    .col-wrap
+      .col-md.p-v-md
+        :marked
+          ![Scan](/img/projects/swatch/scan.png)
+
+          Scan an image to get it’s colours
+      .col-md.p-v-md
+        :marked
+          ![Detail](/img/projects/swatch/details.png)
+
+          Dive into your chosen colour
+
+    .col-wrap
+      .col-md.p-v-md
+        :marked
+          ![Pipette](/img/projects/swatch/pipette.png)
+
+          Easily pick any colour
+      .col-md.p-v-md
+        :marked
+          ![Email](/img/projects/swatch/email.png)
+
+          Email your work when your done
+
+
+    :marked
+      ### The Marketing
+
+      Swatch is an iPad® and iPhone® app made for professionals. Whether you
+      are a graphic designer, web developer, interior decorator, ready to
+      paint your house or just interested in the creative use of colour,
+      Swatch is for you.
+
+      Quickly pick out the colour you are looking for with an intuitive
+      interface. Swatch features beautiful design and transitions in a
+      gorgeous interface designed specifically for iPad and iPhone, giving
+      you the professional flare you deserve.
+
+      Manage as many swatches and swatch groups as necessary with a powerful
+      swatch manager. You can quickly add groups of colour to your swatches,
+      then email them to your clients, co-workers or friends in just a few
+      taps.
+
+      Get quick conversions of any colour into hexadecimal, HSL, HSV, RGB or
+      CMYK. Get inspiration with different colour schemes as well as a
+      colour’s tones, tints and shades. Don’t compromise on accessiblity
+      with colour blindness simulation.
+
+      Love the colours in an image you’ve taken? Instantly scan an image for
+      its overall palette. You can even take a photo and add it’s colour
+      palette to your saved swatches. Or use the pipette to pick out any
+      colour with pixel precision.
+
+      Swatch has a comprehensive reference library of over 33,000 colours -
+      including Behr, Benjamin Moore, Berger, Bristol, British Paints, Clark
+      \+ Kensington, Crayola, Dulux, Glidden, Farrow & Ball, Haymes,
+      Humbrol, MAB Paints, Model Master, Pantone, Porter’s, RAL, Revell,
+      Sherwin Williams, Tamiya, Taubmans, Testors, Valspar, Vellejo, Wattyl
+      & YOLO Colourhouse - making it easy to find a paint to match any
+      project, the closest CSS colour or even ink approximations for print.

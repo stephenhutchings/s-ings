@@ -1,5 +1,6 @@
 ScoreModel = require("models/score")
 prefix     = require("lib/prefix")
+keycode    = require("lib/keycode")
 clues      = _.shuffle require("data/clues")
 
 class CrosswordView extends Backbone.View
@@ -22,17 +23,26 @@ class CrosswordView extends Backbone.View
     @mode  = "cryptic"
     @score = new ScoreModel("crossword")
     @listenTo @score, "change", @onScoreChange
-    @render(true)
+    @prepare(true)
 
-  prepare: ->
+  onComplete: ->
     @undelegateEvents()
     @$el.addClass("success")
-    _.delay _.bind(@render, this), 600
+    _.delay _.bind(@prepare, this), 600
 
-  render: (initial) ->
+  prepare: (isInitial) ->
+    @nextClue()
+    @render()
+    @delegateEvents()
+    @prepareScore()
+    @focus() unless isInitial
+
+  nextClue: ->
     clue = clues.pop()
     clues.unshift(clue)
 
+  render: (clue) ->
+    clue = clues[0]
     idxs = _.range(clue.word.length)
 
     @$el.html @template
@@ -48,13 +58,19 @@ class CrosswordView extends Backbone.View
       el.style[prefix "transition-delay"] = "#{i * 30}ms"
       el.offsetLeft
 
-    @delegateEvents()
-    @score.timestamp = (new Date()).getTime()
-    @score.pointsAvailable = if @mode is "cryptic" then 3000 else 1000
-    @score.bonusAvailable  = 1000
+    @$inputs = @$(".crossword-input")
+    @$score  = @$(".crossword-score")
 
     @$el.removeClass("success")
-    @$(".crossword-input").not("[disabled]").first().focus() unless initial
+
+  prepareScore: ->
+    @score.set
+      timestamp: (new Date()).getTime()
+      pointsAvailable: if @mode is "cryptic" then 3000 else 1000
+      bonusAvailable: 1000
+
+  focus: ->
+    @$inputs.not("[disabled]").first().focus()
 
   setMode: (e) ->
     @mode = @$(e.target).data("mode")
@@ -82,45 +98,46 @@ class CrosswordView extends Backbone.View
     e.preventDefault()
 
   onKeyUp: (e) ->
-    return if e.metaKey or e.ctrlKey
-
     e.preventDefault()
+    key = keycode(e)
 
-    min = "A".charCodeAt(0)
-    max = "Z".charCodeAt(0)
-
-    if e.keyCode is 8
-      val = ""
-      dir = "prev"
-    else if e.keyCode is 37 or e.keyCode is 9 and e.shiftKey
-      dir = "prev"
-    else if _.include [9, 39], e.keyCode
-      dir = "next"
-    else if min <= e.keyCode <= max
-      val = String.fromCharCode(e.keyCode)
-      dir = "next"
+    switch key
+      when "DEL"
+        val = ""
+        dir = "prev"
+      when "LEFT", "SHIFT_TAB"
+        dir = "prev"
+      when "RIGHT", "TAB"
+        dir = "next"
+      else
+        if key.match("CHAR")
+          val = String.fromCharCode(e.keyCode)
+          dir = "next"
 
     $prev = @$(e.target)
     $next = $prev
 
-    $prev.val(val).prev().html(val) if val?
+    if val?
+      $prev.val(val).prev().html(val)
 
-    while dir and ($next is $prev or $next.is("[disabled]"))
-      $next = $next.parent()[dir]().find(".crossword-input")
-      $next.focus()
+    if dir?
+      while $next is $prev or $next.is("[disabled]")
+        $next = $next.parent()[dir]().find(".crossword-input")
+        $next.focus()
 
-    @checkAnswer()
+      @checkAnswer()
 
   onHint: ->
-    el = _.sample(@$(".crossword-input")
+    el = _.sample(@$inputs
       .not(".disabled")
       .filter((i, el) -> not el.value)
       .toArray()
     )
 
-    $el = $(el)
+    $el   = $(el)
     index = $el.parent().index()
-    val = clues[0].word[index]
+    val   = clues[0].word[index]
+    avail = @score.get("pointsAvailable")
 
     $el.val(val)
       .prev().html(val)
@@ -128,35 +145,45 @@ class CrosswordView extends Backbone.View
 
     $el.attr("disabled", true)
 
-    @score.setBy {score: -500}, silent: true
-    @score.pointsAvailable = ~~Math.max(@score.pointsAvailable * 0.6 - 200, 0)
-    @score.bonusAvailable  = 0
-    @score.trigger "tally", {ms: 300, tallyAll: true, callback: => @checkAnswer(true)}
+    @score
+      .setBy(
+        { score: -500 }, silent: true
+      ).set(
+        pointsAvailable: Math.floor(Math.max(avail * 0.6 - 200, 0))
+        bonusAvailable: 0
+      ).trigger("tally",
+        ms: 300
+        tallyAll: true
+        callback: => @checkAnswer(true)
+      )
 
-  onScoreChange: ({changed}) ->
-    { total } = changed
-
-    if total?
-      @$(".crossword-score")
-        .html(@score.display().total)
+  onScoreChange: ({ changed }) ->
+    if changed.total?
+      @$score.html(@score.display().total)
 
   checkAnswer: (fromHint) ->
-    answer = @$(".crossword-input").map((i, el) -> el.value).toArray().join("")
+    answer = clues[0].word.match(/[A-Z]/g).join("")
+    input  = @$inputs.map((i, el) -> el.value).toArray().join("")
 
-    if clues[0].word.match(/[A-Z]/g).join("") is answer
+    if input is answer
+      delta = @score.get("timestamp") - (new Date()).getTime()
       total = @score.get "total"
-      bonus = Math.max(10000 + @score.timestamp - (new Date()).getTime(), 0)
+      avail = @score.get "bonusAvailable"
+      bonus = Math.max(10000 + delta, 0)
 
       if fromHint
-        @prepare()
+        @onComplete()
       else
-        @score.setBy
-          score: @score.pointsAvailable
-          bonus: Math.min(~~(bonus / 10), @score.bonusAvailable)
-        , silent: true
-
-        @score.trigger "tally", {ms: 800, tallyAll: true, callback: => @prepare()}
+        @score
+          .setBy(
+            score: @score.get("pointsAvailable")
+            bonus: Math.min(Math.floor(bonus / 10), avail)
+          , silent: true
+          ).trigger("tally",
+            ms: 800
+            tallyAll: true
+            callback: => @onComplete()
+          )
 
 
 module.exports = CrosswordView
-

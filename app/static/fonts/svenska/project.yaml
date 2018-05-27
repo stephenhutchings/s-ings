@@ -4,12 +4,8 @@ size: col-sm
 desc: >
   Svenska is like any strong-willed Scandinavian—it knows how to go its own
   way when everyone else is following the crowd.
+metaTitle: Svenska - A Sans-Serif Font Stephen Hutchings
 pageCount: 6
-colors:
-  dark: "#0C242A"
-  highlight: "#34b4c4"
-  light: "#F6F6F3"
-  muted: "#d4d3ce"
 
 font:
   name: Svenska

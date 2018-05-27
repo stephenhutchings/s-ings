@@ -1,0 +1,104 @@
+extends /partials/layout
+
+block append config
+  - page.title = "Hi, I’m Stephen Hutchings.";
+  - page.description = "Nice to meet you. Let me introduce myself.";
+  - page.navigation = [{ href: "/", title: "Portfolio" }];
+
+block body
+  .content.stretch
+    .p-v-xxl.content-wrap.flex-between(style="min-height: 60vh")
+      include /partials/header
+      include /partials/intro
+
+    .clearfix.bg-dk
+      .content-wrap.p-v-xl
+        .col-wrap
+          .col-sm.p-v-sm
+            h4.txt-center.bg-hl(style="padding:.7em;margin: 0.9em 0 2.4em;")
+              a.btn-ul(data-view="views/send-email") Send me an email
+
+            :marked
+              **Currently, I’m the design and front-end lead at
+              [Ed Microlearning](https://www.edapp.com).**
+
+          .col-lg.p-v-sm
+            :marked
+              I sit at the intersection of design and front-end development,
+              heading up a small team as the lead designer. It’s my job to
+              make sure everything looks great and works intuitively, building
+              digital products that are fit for purpose. If you ever read,
+              click on, look for, tap, drag, delete, edit or sign into
+              something, I’m the one who designs and builds that
+              user&nbsp;experience.
+
+        .col-wrap
+          .col-sm
+            hr.tight
+            h3.p-v-sm My Role
+          .col-lg.p-v-sm
+            section.mx-md.txt-justify.txt-hyphens
+              :marked
+                Ed Microlearning is a SaaS learning platform. We provide the
+                tools to author and deliver better training. Our point
+                of difference is a simpler and smarter product, so our
+                customers can deliver well-designed, enjoyable training
+                on any device.
+
+                The small size of our team means I work right across the
+                product. I make decisions about the best way to introduce new
+                features, how they fit into the user experience and how we can
+                achieve great results within technical and time constraints.
+                Then I get my hands dirty. On any given day, you might find me
+                with my design hat on, creating wireframes, mock-ups, graphics
+                and animations, style guides, logos and any other artwork
+                needed for the platform. Otherwise I’ll be working on the
+                front-end, producing prototypes, implementing designs and
+                interactions into the final product, reviewing code or
+                writing&nbsp;documentation.
+
+        .col-wrap
+          .col-sm
+            hr.tight
+            h3.p-v-sm Special Interests
+          .col-lg.p-v-sm
+            section.mx-md.txt-justify.txt-hyphens
+              :marked
+                My full time role is only half the story. I’m always busy
+                working  away on other projects, which have taken various
+                forms over the  course of my career. Currently I’m
+                moonlighting as a type designer,  creating a number of
+                different retail fonts. This text is set in the  latest, a
+                typeface called [Philippa]. In the past, I’ve created an  iOS
+                app for creatives to manage colour swatches on the go. You
+                might  know [Typicons], one of the first freely-available icon
+                fonts. I’ve  also written a number of open source front-end
+                libraries, which you  can find on [GitHub]. My interest in
+                design fields that interrelate  with my work keeps me engaged
+                and provides fresh insight into the  problems that need to be
+                solved day&#x2011;to&#x2011;day.
+
+                [Philippa]: /fonts/philippa
+                [Typicons]: /typicons
+                [GitHub]: https://www.github.com/stephenhutchings
+
+        .col-wrap
+          .col-sm
+            hr.tight
+            h3.p-v-sm My Philosophy
+          .col-lg.p-v-sm
+            section.mx-md.txt-justify.txt-hyphens
+              :marked
+                I’m an enthusiast who wants to make better digital products. I
+                get excited about the small details—microcopy, tone of voice,
+                typography, motion—as well as the big picture—user journeys,
+                information hierarchy, business logic, brand positioning. A
+                balance of both is needed to create beautiful, well-designed
+                products.
+
+                There is high standard of excellence that we now expect in a
+                competitive, global marketplace, where technology giants
+                normalise best-in-class software. But success isn’t exclusive
+                to teams with endless resources and massive scale. By
+                designing finely-tuned solutions that address real problems, I
+                help make things that people want to&nbsp;use.

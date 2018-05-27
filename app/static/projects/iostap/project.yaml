@@ -7,6 +7,12 @@ urls:
   -
     text: GitHub
     link: http://github.com/stephenhutchings/iostap/
+  -
+    text: NPM
+    link: http://npmjs.com/iostap/
+  -
+    text: Demo
+    link: http://stephenhutchings.github.com/iostap/demo/
 imgs:
   cover:  /img/projects/iostap/cover.png
   reveal: /img/projects/iostap/reveal.png

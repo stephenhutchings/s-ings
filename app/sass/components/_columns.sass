@@ -1,6 +1,6 @@
 .col-wrap
   clear: both
-  margin: 0 -1.8823529411em
+  margin: 0 -1.6470588235em
   @extend %clearfix
 
 .col-fluid,
@@ -11,7 +11,7 @@
 .col-full
   max-width: 100%
   float: left
-  padding: 0 1.8823529411em
+  padding: 0 1.6470588235em
   box-sizing: border-box
   flex-shrink: 0
 
@@ -82,10 +82,10 @@
       @extend %p-last
 
 +make-block(xxl, 10vh)
-+make-block(xl,  4rem)
-+make-block(lg,  3rem)
-+make-block(md,  2rem)
-+make-block(sm,  1rem)
++make-block(xl,  (28 / 17) * 3.0rem)
++make-block(lg,  (28 / 17) * 2.0rem)
++make-block(md,  (28 / 17) * 1.5rem)
++make-block(sm,  (28 / 17) * 1.0rem)
 
 @media (max-width: 480px)
   .col-wrap
@@ -113,11 +113,11 @@
   .col-lg
     width: 100%
 
-  +make-block(xxl, 2.4rem, true)
-  +make-block(xl,  1.6rem, true)
-  +make-block(lg,  1.2rem, true)
-  +make-block(md,  1.0rem, true)
-  +make-block(sm,  0.6rem, true)
+  +make-block(xxl, (28 / 17) * 1.50rem, true)
+  +make-block(xl,  (28 / 17) * 1.00rem, true)
+  +make-block(lg,  (28 / 17) * 0.75rem, true)
+  +make-block(md,  (28 / 17) * 0.50rem, true)
+  +make-block(sm,  (28 / 17) * 0.33rem, true)
 
 @media (min-width: 1200px) and (min-height: 840px)
   +make-block(xxl, 15vh, true)

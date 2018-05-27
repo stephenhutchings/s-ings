@@ -1,0 +1,32 @@
+name: Confidential
+date: 20 Jun 2015
+size: col-sm
+desc: >
+  Confidential is the working title for a new serif typeface that is currently
+  in development. How did you find it?
+metaTitle: Confidential - A Sans-Serif Font by Stephen Hutchings
+pageCount: 4
+
+colors:
+  dark: "#1f1f27"
+  muted: "#c3a1a9"
+  highlight: "#c52d41"
+  light: "#f3f5f6"
+
+font:
+  name: Confidential
+  path: /fonts/confidential/
+  variants:
+    - name: Light
+      weight: 300
+    - name: Regular
+      weight: 400
+    - name: Medium
+      weight: 500
+    - name: SemiBold
+      weight: 600
+    - name: Bold
+      weight: 700
+
+  glyphs:
+    "A Á Ă Ǎ Â Ä Ȧ À Ā Ą Å Ã Æ Ǽ Ǣ B Ḃ Ḇ Ƀ C Ć Č Ç Ĉ Ċ D Ð Ď Ḋ Ḍ Ḏ E É Ĕ Ě Ê Ë Ė Ẹ È Ē Ę Ẽ F Ḟ G Ǵ Ğ Ǧ Ĝ Ģ Ġ Ɠ Ḡ H Ħ Ḫ Ĥ Ḣ Ḥ I Ĳ Í Ĭ Ǐ Î Ï İ Ị Ì Ī Į Ĩ J Ĵ K Ķ Ḳ Ḵ L Ĺ Ľ Ļ Ŀ Ḷ Ḻ Ł M Ḿ Ṁ Ṃ N Ń Ň Ņ Ṅ Ṇ Ǹ Ṉ Ñ O Ó Ŏ Ǒ Ô Ö Ȯ Ọ Ò Ơ Ő Ō Ø Õ Œ P Ṗ Þ Q R Ŕ Ř Ŗ Ṙ Ṛ Ṝ Ṟ S Ś Š Ş Ŝ Ș Ṡ Ṣ Ṩ T Ŧ Ť Ţ Ț Ṫ Ṭ Ṯ U Ú Ŭ Ǔ Û Ü Ụ Ù Ư Ű Ū Ų Ů Ũ V W Ẃ Ŵ Ẅ Ẇ Ẁ X Ẋ Y Ý Ŷ Ÿ Ẏ Ỵ Ỳ Ỹ Z Ź Ž Ż Ẓ Ẕ a á ă ǎ â ä ȧ à ā ą å ã æ ǽ ǣ b ḃ ḇ ƀ c ć č ç ĉ ċ d ð ď ḋ ḍ ḏ e é ĕ ě ê ë ė ẹ è ē ę ẽ f ḟ g ǵ ğ ǧ ĝ ģ ġ ɠ ḡ h ħ ḫ ĥ ḣ ḥ i ĳ í ĭ ǐ î ï i̇ ị ì ī į ĩ j ĵ k ķ ḳ ḵ l ĺ ľ ļ ŀ ḷ ḻ ł m ḿ ṁ ṃ n ń ň ņ ṅ ṇ ǹ ṉ ñ o ó ŏ ǒ ô ö ȯ ọ ò ơ ő ō ø õ œ p ṗ þ q r ŕ ř ŗ ṙ ṛ ṝ ṟ s ś š ş ŝ ș ṡ ṣ ṩ ß t ŧ ť ţ ț ṫ ṭ ṯ u ú ŭ ǔ û ü ụ ù ư ű ū ų ů ũ v w ẃ ŵ ẅ ẇ ẁ x ẋ y ý ŷ ÿ ẏ ỵ ỳ ỹ z ź ž ż ẓ ẕ & ¶ † ‡ @ ‰ % 0 1 2 3 4 5 6 7 8 9"

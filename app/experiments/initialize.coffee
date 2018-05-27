@@ -2,7 +2,6 @@ module.exports = (experiment) ->
   window.iostap.initialize()
 
   canvas  = null
-  label   = document.querySelector("label")
   options = {}
 
   if window.location.search
@@ -28,9 +27,6 @@ module.exports = (experiment) ->
   else
     ready()
 
-  $(document).on "iostap", (e) ->
-    if e.target.href
-      window.location = e.target.href
-    else
-      canvas = document.querySelector("canvas")
-      ready()
+  $(".repeat").on "iostap", (e) ->
+    canvas = document.querySelector("canvas")
+    ready()

@@ -1,0 +1,32 @@
+h4.txt-muted
+  for type, i in ["Quick", "Cryptic"]
+    if i > 0
+      | /
+    span.crossword-mode.btn-no-bg.btn(
+      class=type.toLowerCase() == mode ? "active" : ""
+      data-mode=type.toLowerCase()
+    )= type
+
+h4.txt-muted
+  span.crossword-hint.btn-no-bg.btn Need a hint?
+
+  span.txt-normal.btn-no-bg.btn(
+    title="Your record is " + score.record + " points"
+  )
+    span.crossword-score= score.total 
+    |  points
+
+.crossword-letters
+  for letter, i in clue.word.split("")  
+    - var reveal = (show.indexOf(i) > -1 && letter) || "";
+
+    if /[A-Z]/.test(letter)
+      .crossword-letter(class=reveal ? "disabled" : "")
+        .crossword-mask= reveal
+        input.crossword-input(value=reveal disabled=!!reveal)
+
+.crossword-definition
+  .crossword-definition-text
+    = clue[mode]
+    | &nbsp;
+    span.txt-muted.crossword-length (#{length})

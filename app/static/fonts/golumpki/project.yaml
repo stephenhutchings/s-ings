@@ -5,12 +5,13 @@ desc: >
   Golumpki is a slab with panâche! Full of flavour, it’s bouncy curves and
   bold shapes are bursting with energy, while idiosyncratic letter&shy;forms
   make the design sizzle.
+metaTitle: Golumpki - A Slab-Serif Font by Stephen Hutchings
 pageCount: 5
-colors:
-  dark: "#0C242A"
-  muted: "#d4d3ce"
-  highlight: "#FF5948"
-  light: "#F6F6F3"
+# colors:
+#   dark: "#0C242A"
+#   muted: "#d4d3ce"
+#   highlight: "#FF5948"
+#   light: "#F6F6F3"
 
 font:
   name: Golumpki

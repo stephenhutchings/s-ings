@@ -1,0 +1,121 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("fonts",  "svenska");
+
+block append article
+  .gallery.stretch(autocorrect="off" spellcheck="false")
+    #item-1.gallery-item.p-v-xxl.p-h-lg.flex-evenly
+      .txt-center.t-3
+        .f-g-100(contenteditable style={"letter-spacing": "em"})
+          | PALSTERNACKA
+        .f-g-200(contenteditable style={"letter-spacing": "em"})
+          | VATTENKRASSE
+        .f-g-300(contenteditable style={"letter-spacing": "em"})
+          | BITTERMANDEL
+        .f-g-400(contenteditable style={"letter-spacing": ".008em"})
+          | FÄRSKPOTATIS
+        .f-g-500(contenteditable style={"letter-spacing": ".009em"})
+          | KRYDDPEPPAR
+        .f-g-600(contenteditable style={"letter-spacing": ".006em"})
+          | GRANATÄPPLE
+        .f-g-700(contenteditable style={"letter-spacing": "0.001em"})
+          | PISTASCHNÖT
+        .f-g-800(contenteditable style={"letter-spacing": "0.02em"})
+          | NASHIPÄRON
+        .f-g-900(contenteditable style={"letter-spacing": "0.015em"})
+          | SOCKERBETA
+
+    #item-2.gallery-item.p-v-xxl.p-h-lg.flex-evenly.txt-center.bg-hl
+      .t-4(contenteditable)
+        span.f-g-600 Ombudsman
+        br
+        span.f-g-200 Smörgåsbord
+
+    #item-3.gallery-item
+      .flex-stretch.stretch.txt-center
+        .f-g-900.flex-evenly.bg-hl.t-3.p-v-md
+          span(contenteditable) IKEA
+        .f-g-200.flex-evenly.t-3.p-v-md
+          span(contenteditable) Husqvarna
+        .f-g-400.flex-evenly.bg-lt.t-3.p-v-md
+          span(contenteditable) Volvo
+        .f-g-700.flex-evenly
+          .t-3.p-v-md.txt-ulc(contenteditable)
+            span.txt-mt.txt-ul spotify
+        .f-g-100.flex-evenly.bg-lt.txt-hl.t-3.p-v-md
+          span(contenteditable)
+            | Hennes och Mauritz
+        .f-g-600.flex-evenly.bg-dk.t-3.p-v-md
+          span.txt-hl(contenteditable) Electrolux
+
+    #item-4.gallery-item.p-v-xxl.p-h-lg.flex-between.txt-center
+      .f-g-900.t-3(contenteditable) Sölvesborg
+      .f-g-800.t-3(contenteditable) Trollhättan
+      .f-g-700.t-3(contenteditable) Hässleholm
+      .f-g-600.t-3(contenteditable) Vänersborg
+      .f-g-500.t-3(contenteditable) Landskrona
+      .f-g-400.t-3(contenteditable) Sundbyberg
+      .f-g-300.t-3(contenteditable) Oskarshamn
+      .f-g-200.t-3(contenteditable) Söderköping
+      .f-g-100.t-3(contenteditable) Örnsköldsvik
+
+    #item-5.gallery-item.p-v-xxl.p-h-xxl.flex-evenly.bg-dk
+      .mx-sm
+          .f-g-600.t-6.txt-hl ❣
+
+          .f-g-300.t-1(contenteditable)
+            | Svenska’s vertical asymmetry, driven by a low centre of gravity,
+            | distinguishes it from the mun&shy;dane &amp; commonplace. The
+            | font has a distinctive flair, combining closed letter-forms
+            | and tight spacing to betray the sort of independent swagger
+            | you’d expect from your typical Swedish speaker.
+
+    #item-6.gallery-item.p-xxl.flex-evenly
+      dl
+        dt Font Details
+        dd
+          | Sans-serif with even stroke thickness. Short descenders
+          | constrast with tall ascenders, which reach well above the
+          | caps-height. A large x-height also contrasts with a low vertical
+          | center. The font thus pairs rational letterforms with unexpected
+          | proportions. Tight letter spacing.
+
+        .col-wrap
+          .col-sm
+            dt Glyphs
+            dd.txt-sm 1,077
+
+          .col-sm
+            dt Weights
+            dd.txt-sm 9
+            | &nbsp;
+
+        dt Language Support
+        dd.txt-sm
+          | Afrikaans, Albanian, Asturian, Asu, Azerbaijani, Basque, Bemba,
+          | Bena, Bosnian, Breton, Catalan, Chiga, Colognian, Cornish,
+          | Croatian, Czech, Danish, Dutch, Embu, English, Esperanto,
+          | Estonian, Faroese, Filipino, Finnish, French, Friulian,
+          | Galician, Ganda, German, Greek, Gusii, Hawaiian, Hungarian,
+          | Icelandic, Igbo, Inari Sami, Indonesian, Irish, Italian,
+          | Jola-Fonyi, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda,
+          | Latvian, Lithuanian, Low German, Lower Sorbian, Luo,
+          | Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde,
+          | Malagasy, Malay, Maltese, Manx, Meru, Morisyen, Nama, North
+          | Ndebele, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk,
+          | Nyankole, Oromo, Polish, Portuguese, Quechua, Romanian, Romansh,
+          | Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena,
+          | Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish,
+          | Swahili, Swedish, Swiss German, Taita, Teso, Tongan, Turkish,
+          | Turkmen, Upper Sorbian, Uzbek, Vunjo, Walser, Welsh, Western
+          | Frisian, Yoruba and Zulu
+
+        dt OpenType Features
+        dd.txt-sm
+          | Alternates, Capitals to Small Caps, Case Sensive Forms, Glyph
+          | Composition &amp; Decomposition, Discretionary Ligatures,
+          | Denominator, Fractions, Standard Ligatures, Lining Figures,
+          | Localized Forms, Numerator, Oldstyle Figures, Ordinals,
+          | Proportional Figures, Tabular Figures, Scientific Inferiors,
+          | Small Caps, Subscript and Superscript

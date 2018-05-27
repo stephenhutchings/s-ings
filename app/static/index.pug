@@ -1,0 +1,26 @@
+extends /partials/layout
+
+block append config
+  - page.class = "page-home";
+  - page.title = "Stephen Hutchings, digital designer and front-end developer in Sydney";
+  - page.image = "/img/page/s-ings.com.png"
+  - page.style.background = "#1c1b1e";
+  - page.style.color = "white";
+  - page.navigation = [{ href: "/me", title: "Read more", style: {"letter-spacing": "0.04em" } }];
+
+block append head
+  meta(
+    name="google-site-verification"
+    content="j2qH6q1a7HLwyCh12csRKq88mBtuVE01DVnie41MBiw"
+  )
+
+block body
+  .content.stretch
+    .p-v-xxl.content-wrap.flex-between(style="min-height: 60vh")
+      include /partials/header
+      include /partials/intro
+
+    include /partials/footer
+
+block footer
+  //- Empty

@@ -1,0 +1,106 @@
+extends ../../partials/project
+
+block prepend config
+  - var project = data.getOne("fonts",  "ed-sans");
+
+block append config
+  - page.style.background = "white"
+
+block prepend description
+  style
+    include /../assets/fonts/ed-sans/icons.css
+
+block append article
+  .gallery.stretch
+    #item-1.gallery-item.p-v-xxl.p-h-lg.flex-between.bg-hl.txt-center
+      .p-v-md
+        .f-g-300.t-3 All your
+        .f-g-300.t-3 learning needs.
+        .f-g-600.t-3 One platform.
+
+      .p-v-md
+        p.f-g-700
+          small DEPLOY ANYWHERE
+
+      .p-v-md.f-g-400 
+        p.t-2
+          | Mobile-first, responsive<br>
+          | courseware designed for<br>
+          | iOS, Android and the web
+
+      .p-v-md.f-g-400i
+        p
+          em
+            | Authoring beautiful, engaging and efficient 
+            br
+            | microlearning courses has never been easier
+
+    #item-2.gallery-item.p-v-xxl.p-h-xxl.flex-between.bg-lt
+      .p-v-md
+        .t-3.f-g-300 Beautiful, engaging and effective
+      
+      .p-v-md.f-g-400
+        p 
+          | Our mobile first template library will provide inspiration to 
+          | create a whole variety of beautifully crafted lessons easily.
+
+        p 
+          | There are templates available for all facets of learning for you 
+          | to populate with your video, text, and imagery all allowing for 
+          | full personalisation.
+
+        p 
+          | Our pre-built games are also a part of the template library to 
+          | help reinforce key concepts and ensure message retention in a fun 
+          | and memorable way.
+    
+    #item-3.gallery-item
+      .flex-stretch.txt-center.stretch
+        .bg-dk.p-v-xxl.p-h-xxl.flex-evenly
+          .f-g-300.t-2
+            span
+              strong.f-g-600 Welcome to Ed,
+              |  the world’s smartest
+              | learning platform.
+
+        .bg-hl.p-v-xxl.p-h-xxl.flex-evenly
+          .f-g-300.t-2
+            span
+              | Ed is easy and 
+              strong.f-g-600 free to try
+              |  for you and your team.
+
+    
+    for k, i in ["", "bg-dk"]
+      - var len = Math.floor(project.icons.length / 2);
+      .gallery-item.flex-evenly(class=(k) id=`item-${4 + i}`)
+        .col-wrap.p-xl
+          for icon in project.icons.slice(len * i, len * (i + 1))
+            .col-xs.f-g-400.p-v-sm
+              .icon-display.txt-lg
+                i.icon(class=`icon-${icon.name}`)
+                p.txt-ellipsis.tight= icon.title
+
+    #item-6.gallery-item.txt-center.flex-evenly.p-lg.bg-hl
+      .t-5.f-g-600.mx-md
+        i.icon.icon-eye-closed
+        | Draft
+
+      p.mx-md.f-g-400
+        | Ed Sans features a complementary icon set designed to work in harmony
+        | with the typeface, sharing a stroke thickness equal to the
+        | middle weights. The vertical alignment is a balance between the
+        | natural baseline and the optical centre of each glyph. Icons share
+        | a consistent language, but are built on a grid flexible enough to
+        | accommodate a wide range of expression.
+
+      .t-3.f-g-600
+        i.icon.icon-chevron-left
+        i.icon.icon-volume-mute
+        i.icon.icon-eye-closed
+        i.icon.icon-subtitles
+        i.icon.icon-mail
+        i.icon.icon-image-reversed
+        i.icon.icon-audio-description
+        i.icon.icon-wifi
+        i.icon.icon-arrow-right

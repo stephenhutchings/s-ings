@@ -2,6 +2,9 @@ name: written
 date: 20 Jun 2015
 url: "https://github.com/stephenhutchings/written"
 size: col-sm
+
+version: 0.1.8
+
 desc: >
   Written is a set of utilities for shaping text, with a focus on providing typographic tools over pure string  manipulation.
 urls:

@@ -5,15 +5,18 @@ desc: >
   Asterisms charts the night sky in a beautifully detailed A2 format
   poster. Using a projection which distorts both hemispheres onto a
   circle, it offers a combined view of the northern and sourthen skies.
+metaTitle: Asterisms - Sky Chart Poster Design by Stephen Hutchings
 
-pageCount: 2
+pageCount: 3
 
 imgs:
   cover:  /img/projects/asterisms/cover.png
   reveal: /img/projects/asterisms/reveal.png
 
 colors:
-  highlight: "#deac74"
+  # highlight: "#deac74 !important"
+  dark: "#212121"
+  light: "#f9f6f2"
 
 tags:
   - Design

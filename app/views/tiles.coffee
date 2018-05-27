@@ -1,6 +1,6 @@
 app = require("app")
 
-klass    = ".tile-link"
+klass    = ".tile"
 muted    = "tile-muted"
 active   = "tile-active"
 action   = "tile-actionable"
