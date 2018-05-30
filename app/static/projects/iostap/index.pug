@@ -1,53 +1,52 @@
-extends ../../partials/project
+extends ../../partials/article
 
 block prepend config
   - var project = data.getOne("projects",  "iostap");
 
-block project
-  .mx-lg.mx-mn
-    :marked
-      #### How to use it
+block project-article
+  :marked
+    #### How to use it
 
-      Download the source files from the build directory, or use Bower.
+    Download the source files from the build directory, or use Bower.
 
-      ```
-      $ bower install iostap
-      ```
+    ```
+    $ bower install iostap
+    ```
 
-      Then you’re good to go. You can listen for "iostap" events on any old
-      element. For example:
+    Then you’re good to go. You can listen for "iostap" events on any old
+    element. For example:
 
-      ```
-      $("a.link").on("iostap", function(e) {
-        console.log(e.currentTarget);
-      })
-      ```
+    ```
+    $("a.link").on("iostap", function(e) {
+      console.log(e.currentTarget);
+    })
+    ```
 
-      #### Tell me more
+    #### Tell me more
 
-      `iostap` is a plugin designed to mimic the behaviour of tapping a button
-      in the iOS ecosystem with a great degree of precision, affording
-      developers who build hybrid web apps a greater user experience for their
-      users. iostap is a super-lightweight library, weighing in at about 1kb,
-      and doesn’t add unecessary overhead client-side.
+    `iostap` is a plugin designed to mimic the behaviour of tapping a button
+    in the iOS ecosystem with a great degree of precision, affording
+    developers who build hybrid web apps a greater user experience for their
+    users. iostap is a super-lightweight library, weighing in at about 1kb,
+    and doesn’t add unecessary overhead client-side.
 
-      Under the hood, there is more going on than you might think.
+    Under the hood, there is more going on than you might think.
 
-      The library aims to acheive several goals in imitating the native iOS
-      tap:
+    The library aims to acheive several goals in imitating the native iOS
+    tap:
 
-      - Tapping on an element and releasing near that element triggers an
-        "iostap" event.
-      - Moving a significant distance away from the original element with your
-        finger cancels the event, unless your finger returns to the element
-        without leaving the surface of the touch device.
-      - When an element is active, the element (and all of its parent
-        elements), are given an `__active` class, so that you can control
-        their appearance with CSS. For example: `a.button.__active {...}`.
-      - If you start a tap on an element, but it or its parents begin to
-        scroll, the tap event is cancelled.
-      - The "iostap" event is triggered regardless of whether the device is
-        touch-enabled or not, so you can use it in any environment without
-        extra configuration.
-      - The library reverts to click events if window.getComputedStyle is
-        unavailable, making it compatible with IE 8.
+    - Tapping on an element and releasing near that element triggers an
+      "iostap" event.
+    - Moving a significant distance away from the original element with your
+      finger cancels the event, unless your finger returns to the element
+      without leaving the surface of the touch device.
+    - When an element is active, the element (and all of its parent
+      elements), are given an `__active` class, so that you can control
+      their appearance with CSS. For example: `a.button.__active {...}`.
+    - If you start a tap on an element, but it or its parents begin to
+      scroll, the tap event is cancelled.
+    - The "iostap" event is triggered regardless of whether the device is
+      touch-enabled or not, so you can use it in any environment without
+      extra configuration.
+    - The library reverts to click events if `window.getComputedStyle` is
+      unavailable, making it compatible with IE 8.

@@ -1,61 +1,58 @@
-extends ../../partials/project
+extends ../../partials/article
 
 block prepend config
   - var project = data.getOne("projects",  "visible-grid");
-  
-block project
-  p
-    img(src=project.imgs.header)
-  .mx-lg.mx-mn
-    :marked
-      #### What is it?
-      
-      `visible-grid` makes it easier to develop and design beautiful web 
-      applications by making your grid system visible while you work.
 
-      You can configure as many grids as you want, and they are all saved to 
-      `localStorage`. This means they will stay synchronized across any page 
-      your working on. Resizing is taken care of automatically, so if you have a 
-      responsive set-up simply resize to see the grid at that width.
+block project-article
+  :marked
+    #### What is it?
 
-      Quickly toggle the UI and grid with the “u” and “g” hot-keys.
+    `visible-grid` makes it easier to develop and design beautiful web 
+    applications by making your grid system visible while you work.
 
-      #### How do I use it?
+    You can configure as many grids as you want, and they are all saved to 
+    `localStorage`. This means they will stay synchronized across any page 
+    your working on. Resizing is taken care of automatically, so if you have a 
+    responsive set-up simply resize to see the grid at that width.
 
-      The easiest way is to use this bookmarklet on the [demo page][1].
+    Quickly toggle the UI and grid with the “u” and “g” hot-keys.
 
-      Otherwise, you can get the script via `$ bower install visible-grid`.
-      Then you can add the JS to your page. It’s all packaged in there.
+    #### How do I use it?
 
-      ```
-      <script src="visual-grid.js" type="text/javascript">
-      ```
+    The easiest way is to use this bookmarklet on the [demo page][1].
 
-      Then you can create a new instance on your page.
+    Otherwise, you can get the script via `$ bower install visible-grid`.
+    Then you can add the JS to your page. It’s all packaged in there.
 
-      ```javascript
-      var myGrid = new Grid();
-      ```
+    ```
+    <script src="visual-grid.js" type="text/javascript">
+    ```
 
-      You can programmatically add, remove and reset grids too.
+    Then you can create a new instance on your page.
 
-      ```javascript
-      // Add a new grid with this sort of configuration.
-      myGrid.add({
-        name:      "New Grid",
-        columns:   12,
-        size:      1200,
-        gutter:    20,
-        baseline:  18,
-        color:     "lightcoral",
-        constrain: true
-      })
+    ```javascript
+    var myGrid = new Grid();
+    ```
 
-      // Remove that grid we just added.
-      myGrid.remove("New Grid")
+    You can programmatically add, remove and reset grids too.
 
-      // Reset all grids back to default.
-      myGrid.reset()
-      ```
+    ```javascript
+    // Add a new grid with this sort of configuration.
+    myGrid.add({
+      name:      "New Grid",
+      columns:   12,
+      size:      1200,
+      gutter:    20,
+      baseline:  18,
+      color:     "lightcoral",
+      constrain: true
+    })
 
-      [1]: http://stephenhutchings.github.io/visible-grid/demo/
+    // Remove that grid we just added.
+    myGrid.remove("New Grid")
+
+    // Reset all grids back to default.
+    myGrid.reset()
+    ```
+
+    [1]: http://stephenhutchings.github.io/visible-grid/demo/

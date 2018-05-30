@@ -50,7 +50,7 @@ class TypiconsView extends Backbone.View
       $el.removeClass("expand")
 
       window.clearTimeout timeouts[data.name]
-      timeouts[data.name] = window.setTimeout =>
+      timeouts[data.name] = window.setTimeout ->
         $el.removeClass("expand-before transition")
       , 300
 

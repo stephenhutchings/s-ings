@@ -21,7 +21,9 @@ h4.txt-muted
     - var reveal = (show.indexOf(i) > -1 && letter) || "";
 
     if /[A-Z]/.test(letter)
-      .crossword-letter(class=reveal ? "disabled" : "")
+      .crossword-letter(
+        class=reveal ? "disabled" : ""
+      )
         .crossword-mask= reveal
         input.crossword-input(value=reveal disabled=!!reveal)
 

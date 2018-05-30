@@ -1,21 +1,45 @@
-.carbonad
+#carbonads
   margin: 20px 0
-  font-size: 12px !important
-  line-height: 17px !important
-  font-family: inherit !important
-  width: auto !important
+  line-height: 17px
+  padding: 6px
+  display: block
+  border-radius: 2px
+  font-size: 14px
+  position: relative
+  z-index: 0
+  @extend %clearfix
 
-.carbonad-text
-  padding-top: 7px !important
-  min-height: 88px
+  &:before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 1
+    border-radius: inherit
+    border: 1px solid rgba(#000, 0.08)
+    pointer-events: none
 
-.carbonad-text a
-  border: none
+  a
+    text-decoration: none
+    border: none
 
-.carbonad-tag
-  text-align: left !important
-  margin-top: 0 !important
+  @media (min-width: 1000px) and (min-height: 720px)
+    margin-right: -40px
 
-.carbonad-text,
-.carbonad-tag
-  width: 120px !important
+.carbon-text
+  min-height: 68px
+  display: block
+  hyphens: auto
+
+.carbon-poweredby
+  display: block
+  font-size: 90%
+  color: #a0a7af
+
+.carbon-img
+  float: left
+  margin: -6px 10px -6px -6px
+  border-radius: 2px 0 0 2px
+  overflow: hidden

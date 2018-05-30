@@ -3,9 +3,9 @@ block config
   - page.description  = "Hi, I’m Stephen Hutchings. ";
   - page.description += "I design and build well-crafted digital ";
   - page.description += "interfaces, interactions & experiences.";
-  - page.style = {};
-
-- if (!page.title || !page.description) console.log(__, page)
+  - page.style        = {};
+  - page.author       = package.author;
+  - page.copyright    = `${page.author} ${(new Date().getFullYear())}`
 
 doctype html
 html.no-js(lang="en")
@@ -21,7 +21,6 @@ html.no-js(lang="en")
         content="width=device-width, user-scalable=no, initial-scale=1"
       )
 
-
       title
         block title
           != page.metaTitle
@@ -32,11 +31,11 @@ html.no-js(lang="en")
       meta(name="og:description"      content=page.metaDescription)
       meta(name="twitter:description" content=page.metaDescription)
       meta(name="og:image"            content=page.image)
-      meta(name="og:site_name"        content="Stephen Hutchings")
+      meta(name="og:site_name"        content=page.author)
       meta(name="og:type"             content="website")
       meta(name="keywords"            content=package.keywords.join(", "))
-      meta(name="author"              content="Stephen Hutchings")
-      meta(name="copyright"           content=`Stephen Hutchings ${(new Date().getFullYear())}`)
+      meta(name="author"              content=page.author)
+      meta(name="copyright"           content=page.copyright)
       meta(name="robots"              content="index, follow")
 
       meta(http-equiv="content-type" content="text/html;UTF-8")
@@ -66,13 +65,13 @@ html.no-js(lang="en")
               })).join(";")
             )
               block article
-        
+
         block footer
           include footer
 
     block scripts
       script(type="text/javascript" src="/js/vendor.js")
-      script(type="text/javascript" src="/js/app.js")    
+      script(type="text/javascript" src="/js/app.js")
       script(type="text/javascript").
         $(document).ready(function(){
           require("app").initialize();

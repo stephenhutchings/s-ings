@@ -35,10 +35,10 @@ block append article
             br
             | microlearning courses has never been easier
 
-    #item-2.gallery-item.p-v-xxl.p-h-xxl.flex-between.bg-lt
+    #item-2.gallery-item.p-v-xxl.p-h-xxl.flex-between
       .p-v-md
         .t-3.f-g-300 Beautiful, engaging and effective
-      
+
       .p-v-md.f-g-400
         p 
           | Our mobile first template library will provide inspiration to 
@@ -53,7 +53,7 @@ block append article
           | Our pre-built games are also a part of the template library to 
           | help reinforce key concepts and ensure message retention in a fun 
           | and memorable way.
-    
+
     #item-3.gallery-item
       .flex-stretch.txt-center.stretch
         .bg-dk.p-v-xxl.p-h-xxl.flex-evenly
@@ -70,10 +70,10 @@ block append article
               strong.f-g-600 free to try
               |  for you and your team.
 
-    
+
     for k, i in ["", "bg-dk"]
       - var len = Math.floor(project.icons.length / 2);
-      .gallery-item.flex-evenly(class=(k) id=`item-${4 + i}`)
+      .gallery-item.flex-evenly.p-lg(class=(k) id=`item-${4 + i}`)
         .col-wrap.p-xl
           for icon in project.icons.slice(len * i, len * (i + 1))
             .col-xs.f-g-400.p-v-sm

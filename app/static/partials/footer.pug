@@ -1,5 +1,3 @@
-// - var projects = _.flatten([data.getAll("fonts"), data.getAll("projects")]);
-
 footer#footer.bg-dk.flex-evenly
   .content-wrap.p-v-sm
     .col-wrap
@@ -53,9 +51,11 @@ footer#footer.bg-dk.flex-evenly
           li.thumb
             a.btn(href="/projects/written/")
               | Written
+            .thumb-bg.bg-hl
           li.thumb
             a.btn(href="/projects/backbone.viewstack/")
               | Viewstack
+            .thumb-bg.bg-hl
           li.thumb
             a.btn(href="/projects/visible-grid/")
               | Visible Grid
@@ -63,6 +63,7 @@ footer#footer.bg-dk.flex-evenly
           li.thumb
             a.btn(href="/projects/iostap/")
               | iostap
+            .thumb-bg.bg-hl
 
       .col-fluid.p-v-lg
         h4.txt-muted More
@@ -70,15 +71,15 @@ footer#footer.bg-dk.flex-evenly
           li.thumb
             a.btn(href="/me/")
               | About Me
+            .thumb-bg.bg-hl
           li.thumb
             a.btn(href="/chat-bot/")
               | Chat Bot
+            .thumb-bg.bg-hl
           li.thumb
             a.btn(href="/experiments/")
               | Experiments
-          li.thumb
-            a.btn(href="/projects/")
-              | Archives
+            .thumb-bg.bg-hl
 
       .col-fluid.p-v-lg.crossword-wrap
         include crossword

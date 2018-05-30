@@ -1,3 +1,5 @@
+# coffeelint: disable:max_line_length
+
 badge     = require("experiments/badge")
 layer     = require("experiments/layer")
 frame     = require("experiments/frame")

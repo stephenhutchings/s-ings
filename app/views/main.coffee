@@ -1,4 +1,5 @@
-app = require "app"
+app      = require "app"
+keycode  = require("lib/keycode")
 
 $inbound = $outbound = null
 
@@ -26,12 +27,21 @@ class MainView extends Backbone.View
     @$el.append(@$style)
 
   toggleLinkBehaviour: (e) ->
+    code = keycode(e)
+
+    # Avoid treating CMD or CTRL clicks like normal ones so that you're
+    # still able to open a new tab from a link
     if e.type is "keydown"
-      @disableTap = e.metaKey or e.ctrlKey
+      @disableTap = code.match("META")?
     else
       @disableTap = false
 
-    if [13, 32].indexOf(e.keyCode) > -1
+    for key, view of @views
+      view.trigger(e.type, code)
+
+    # If an anchor is focussed and the user presses enter or space, assume
+    # they want to trigger a click on that element
+    if code is "ENTER" or code is "SPACE"
       $el = $(document.activeElement)
       if $el.is("a[href]")
         e.preventDefault()
@@ -127,7 +137,8 @@ class MainView extends Backbone.View
         success: (response) =>
           cache[url] = response
           @onLoad(params, response, callback)
-
+        error: =>
+          @$el.removeClass("loading")
 
   # Insert the new title and content onto the page, and create a view
   # for any new component on the page. Fail silently if view doesn't
@@ -177,7 +188,7 @@ class MainView extends Backbone.View
               async: true
               success: => @views[el.dataset.view]?.ready?()
         catch err
-          throw err
+          console?.error err
 
   # Redelegate events on the main view and flip back the container elements.
   afterTransition: ->
@@ -198,6 +209,8 @@ class MainView extends Backbone.View
   onResize: ->
     view.trigger("resize") for key, view of @views
 
+  # Choose the highlight colouration based on the current mouse position,
+  # use hsl colour for easy manipulation within a limited spectrum
   onMouseMove: (e) ->
     e = e.touches[0] if e.touches
     w = window.innerWidth

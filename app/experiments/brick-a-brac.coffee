@@ -1,3 +1,5 @@
+# coffeelint: disable:max_line_length
+
 badge     = require("experiments/badge")
 resample  = require("experiments/resample")
 posterize = require("experiments/posterize")

@@ -15,8 +15,8 @@ imgs:
 
 colors:
   # highlight: "#deac74 !important"
-  dark: "#212121"
-  light: "#f9f6f2"
+  dark: "#191919"
+  # light: "#f9f6f2"
 
 tags:
   - Design

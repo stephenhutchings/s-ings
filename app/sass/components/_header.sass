@@ -2,12 +2,18 @@
   position: relative
   z-index: 100
 
-  #logo
-    transition: all 250ms, transform 300ms, opacity 300ms
+#logo
+  @extend %transition-sm
 
-    .loading &
-      #logo-link
-        opacity: 0
+  .loading &
+    #logo-link
+      opacity: 0
+
+  #inbound &
+    transition-timing-function: ease-out
+
+  #outbound &
+    transition-timing-function: ease-in
 
 #header-loader
   opacity: 1

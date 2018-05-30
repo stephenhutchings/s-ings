@@ -1,3 +1,5 @@
+# coffeelint: disable:max_line_length
+
 badge     = require("experiments/badge")
 bigCanvas = require("experiments/big-canvas")
 frame     = require("experiments/frame")
@@ -19,7 +21,7 @@ module.exports =
     canvas.height *= scale
 
     smaller = Math.min(canvas.width, canvas.height)
-    outer   = (smaller) / 8
+    outer   = (smaller) / 12
 
     sequence [
       => layer(ctx, @arcs(canvas, outer))
@@ -51,7 +53,7 @@ module.exports =
     y = row = 0
 
     rWidth = wobble(outer, outer / 2)
-    w = outer * 0.08
+    w = outer * 0.1
     lw = w / 6
 
     while y < canvas.height + rWidth

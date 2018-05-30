@@ -41,35 +41,6 @@
   text-overflow: ellipsis
   white-space: nowrap
   overflow: hidden
-.txt-strike
-  position: relative
-  @extend %transition-sm
-
-  &:after
-    content: ""
-    position: absolute
-    left: 0.08em
-    right: 0.064em
-    height: 0.06em
-    background: black
-    bottom: 0.44em
-    transition: inherit
-    transform-origin: right center
-
-  &:hover
-    color: inherit
-
-    &:after
-      transform: translateY(-0.08em) scale3d(1, 6, 1)
-      transform: scale3d(0, 1, 1)
-
-  // @media (max-width: 480px)
-    display: inline-block
-    width: 0.5em
-    margin: 0 -0.04em
-    overflow: hidden
-    white-space: nowrap
-    vertical-align: bottom
 
 // Style
 .txt-italic, em
@@ -218,7 +189,7 @@ ol, ul
     list-style: none
 
 li
-  line-height: 1.2em
+  line-height: (24em / 17)
   margin-bottom: (28em / 17) - 1.2em
 
 h1, h2, h3, h4, h5, ul, ol, li, dl, dd, fieldset, p, blockquote
@@ -245,3 +216,6 @@ hr
 .tight
   margin-top: 0
   margin-bottom: 0
+
+.glyph
+  padding: 0 2px

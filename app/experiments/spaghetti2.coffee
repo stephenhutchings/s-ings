@@ -1,3 +1,5 @@
+# coffeelint: disable:max_line_length
+
 easie     = require("lib/easie")
 bigCanvas = require("experiments/big-canvas")
 sequence  = require("experiments/sequence")

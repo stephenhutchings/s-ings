@@ -51,10 +51,17 @@ exports.config =
         max_line_length:
           level: "warn"
 
+    postcss:
+      processors: [
+        require("autoprefixer")(["> 1%"])
+        require("csswring")({ preserveHacks: true })
+      ]
+
   overrides:
     production:
-      pug:
-        staticPretty: false
+      plugins:
+        pug:
+          staticPretty: false
 
   files:
     javascripts:

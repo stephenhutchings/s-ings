@@ -1,7 +1,7 @@
 ScoreModel = require("models/score")
 prefix     = require("lib/prefix")
 keycode    = require("lib/keycode")
-clues      = _.shuffle require("data/clues")
+clues      = []
 
 class CrosswordView extends Backbone.View
   events:
@@ -13,7 +13,7 @@ class CrosswordView extends Backbone.View
     "iostap   .crossword-input": "onSelect"
     "focusout .crossword-input": "onBlur"
     "focusin  .crossword-input": "onFocus"
-    "keydown  .crossword-input": "onKeyUp"
+    "keydown  .crossword-input": "onKeyPress"
     "keyup    .crossword-input": "preventDefault"
     "change   .crossword-input": "preventDefault"
 
@@ -26,7 +26,6 @@ class CrosswordView extends Backbone.View
     @prepare(true)
 
   onComplete: ->
-    @undelegateEvents()
     @$el.addClass("success")
     _.delay _.bind(@prepare, this), 600
 
@@ -37,14 +36,17 @@ class CrosswordView extends Backbone.View
     @prepareScore()
     @focus() unless isInitial
 
+  # Cycle through the clues, and reshuffle when we run out
   nextClue: ->
-    clue = clues.pop()
-    clues.unshift(clue)
+    clues = clues.slice(1)
+    clues = _.shuffle(require("data/clues")) if clues.length is 0
 
   render: (clue) ->
     clue = clues[0]
     idxs = _.range(clue.word.length)
 
+    # Render the crossword using the crossword.pug template,
+    # passing the relevant local data
     @$el.html @template
       clue: clue
       mode: @mode
@@ -54,6 +56,9 @@ class CrosswordView extends Backbone.View
         .replace(/([A-Z]+)/g, (w) -> w.length)
         .replace(/\s/g, ", ")
 
+    # Now that they are rendered, add a delay on each letter,
+    # cache the key elements that we'll manipulate and remove
+    # the success class from the last round
     @$(".crossword-letter").each (i, el) ->
       el.style[prefix "transition-delay"] = "#{i * 30}ms"
       el.offsetLeft
@@ -65,6 +70,7 @@ class CrosswordView extends Backbone.View
 
   prepareScore: ->
     @score.set
+      complete: false
       timestamp: (new Date()).getTime()
       pointsAvailable: if @mode is "cryptic" then 3000 else 1000
       bonusAvailable: 1000
@@ -97,12 +103,16 @@ class CrosswordView extends Backbone.View
   preventDefault: (e) ->
     e.preventDefault()
 
-  onKeyUp: (e) ->
+  onKeyPress: (e) ->
     e.preventDefault()
+    e.stopImmediatePropagation()
+
     key = keycode(e)
 
+    # Depending on which key was pressed, choose which direction
+    # to move in and which value to set on the current input
     switch key
-      when "DEL"
+      when "DELETE"
         val = ""
         dir = "prev"
       when "LEFT", "SHIFT_TAB"
@@ -117,9 +127,13 @@ class CrosswordView extends Backbone.View
     $prev = @$(e.target)
     $next = $prev
 
+    # If there is a value to set, set it on the input and the
+    # adjacent element
     if val?
       $prev.val(val).prev().html(val)
 
+    # Depending on which direction we're going, find the next
+    # available input and focus that element
     if dir?
       while $next is $prev or $next.is("[disabled]")
         $next = $next.parent()[dir]().find(".crossword-input")
@@ -145,6 +159,9 @@ class CrosswordView extends Backbone.View
 
     $el.attr("disabled", true)
 
+    # When you use a hint, you lose 500 points and reduce the potential
+    # points you could have earned for this word. You also lose any
+    # chance of earning a bonus for speed.
     @score
       .setBy(
         { score: -500 }, silent: true
@@ -166,15 +183,25 @@ class CrosswordView extends Backbone.View
     input  = @$inputs.map((i, el) -> el.value).toArray().join("")
 
     if input is answer
-      delta = @score.get("timestamp") - (new Date()).getTime()
-      total = @score.get "total"
-      avail = @score.get "bonusAvailable"
-      bonus = Math.max(10000 + delta, 0)
+      # Now that the game is over, ignore any events until
+      # we are ready to play again
+      @undelegateEvents()
 
+      # If the user just used hints to finish the word, they don't
+      # earn any points and we can just set the next game up
       if fromHint
         @onComplete()
       else
+        # Compute how many points will be awarded depending on the
+        # speed of the user. 10,000 points is the max bonus, but
+        # that decays linearly over 10 seconds
+        delta = @score.get("timestamp") - (new Date()).getTime()
+        total = @score.get "total"
+        avail = @score.get "bonusAvailable"
+        bonus = Math.max(10000 + delta, 0)
+
         @score
+          .set(complete: true)
           .setBy(
             score: @score.get("pointsAvailable")
             bonus: Math.min(Math.floor(bonus / 10), avail)

@@ -1,3 +1,5 @@
+# coffeelint: disable:max_line_length
+
 easie     = require("lib/easie")
 bigCanvas = require("experiments/big-canvas")
 sequence  = require("experiments/sequence")
@@ -29,7 +31,7 @@ subGrid = (grid, index, width, height, limit) ->
 
 module.exports =
   draw: (options, done) ->
-    { canvas, ctx } = bigCanvas({width: 3200, height: 2400, padding: 40})
+    { canvas, ctx } = bigCanvas(options)
 
     data =
       scale: 1.5

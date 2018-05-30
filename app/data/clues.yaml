@@ -27,6 +27,10 @@
   cryptic: "Gets down mariner who sails aloud"
   quick: "Ropes down"
 -
+  word: ABSORBS
+  cryptic: "Drunken bar boss soaks up"
+  quick: "Soaks up"
+-
   word: ACADEMY
   cryptic: "School begins, and current affairs deserve educated, mindful youth"
   quick: "School"
@@ -46,10 +50,6 @@
   word: ADHERED
   cryptic: "Commerical spot did start to become stuck"
   quick: "Stuck"
--
-  word: ABSORBS
-  cryptic: "Drunken boss rad, soaks up"
-  quick: "Soaks up"
 -
   word: ADVANCE
   cryptic: "Early payment Dave can check"
@@ -167,57 +167,21 @@
   cryptic: "Hairy biped is almost 13 inches"
   quick: "Hairy biped"
 -
-  word: BISCUIT
-  cryptic: "Two diamonds surround vitamin cookie"
-  quick: "Cookie"
--
-  word: CANYON
-  cryptic: "Something grand in a Tuscany onion"
-  quick: "Something grand"
--
-  word: DREADS
-  cryptic: "Fears rap doctor commercials"
-  quick: "Fears"
--
-  word: FEATHER
-  cryptic: "Soften her fate clumsily"
-  quick: "Soften"
--
-  word: FERVOUR
-  cryptic: "Pelt around nervous inner passion"
-  quick: "Passion"
--
-  word: PEGASUS
-  cryptic: "Famed four-legger imitates our clip"
-  quick: "Famed four-legger"
--
-  word: PERHAPS
-  cryptic: "Sharp EP remix, maybe?"
-  quick: "Maybe"
--
-  word: LODGE
-  cryptic: "Tender retreat"
-  quick: "Retreat"
--
-  word: NIRVANA
-  cryptic: "Ran vain attempts at peace"
-  quick: "Peace"
--
-  word: GANDER
-  cryptic: "Spy danger uncoils"
-  quick: "Spy"
--
   word: BIGSHOT
   cryptic: "Strong coffee for someone of note"
   quick: "Someone of note"
+-
+  word: BISCUIT
+  cryptic: "Two diamonds surround vitamin cookie"
+  quick: "Cookie"
 -
   word: BLONDER
   cryptic: "More fair with oblong exposed and turning red"
   quick: "More fair"
 -
-  word: HUMOUR
-  cryptic: "Go along with unsure pause in 60 Minutes"
-  quick: "Go along with"
+  word: CANYON
+  cryptic: "Something grand in a Tuscany onion"
+  quick: "Something grand"
 -
   word: CAPRICE
   cryptic: Fancy best cereal
@@ -231,53 +195,57 @@
   cryptic: Lock-up foreign instruments
   quick: Instruments
 -
-  word: PLUNGER
-  cryptic: Diver for each without air sac
-  quick: Diver
--
-  word: WORKMAN
-  cryptic: Labourer is to know arm wrestles
-  quick: Labourer
--
-  word: WARLOCK
-  cryptic: Ill will catch a caster of spells
-  quick: A caster of spells
--
-  word: WITCHES
-  cryptic: Hags cleverness? Never finishing chess!
-  quick: Hags
--
-  word: WOBBLY
-  cryptic: Staggering blow by tornado
-  quick: Staggering
--
-  word: WALLOWS
-  cryptic: Savours swallow at sixes and sevens
-  quick: Savours
--
-  word: WHEREAS
-  cryptic: Used to be around this spot on the other hand
-  quick: On the other hand
--
-  word: WEIRDOS
-  cryptic: "Strange words, i.e. wackos"
-  quick: Wackos
--
-  word: VETERAN
-  cryptic: Old-timer crashes van into tree
-  quick: Old-timer
--
-  word: VENISON
-  cryptic: Game to play on vines
-  quick: Game meat
--
-  word: TENABLE
-  cryptic: "Last night, green light sound"
-  quick: Sound
--
   word: DAMPER
   cryptic: More moist camp provision
   quick: More moist
+-
+  word: DEACONS
+  cryptic: Professors collect group of priests
+  quick: Priests
+-
+  word: DOGGONE
+  cryptic: Departed animal is blessed
+  quick: Blessed
+-
+  word: DREADS
+  cryptic: "Fears rap doctor commercials"
+  quick: "Fears"
+-
+  word: FEATHER
+  cryptic: "Soften her fate clumsily"
+  quick: "Soften"
+-
+  word: FERVOUR
+  cryptic: "Pelt around nervous inner passion"
+  quick: "Passion"
+-
+  word: GANDER
+  cryptic: "Spy danger uncoils"
+  quick: "Spy"
+-
+  word: HUMOUR
+  cryptic: "Go along with unsure pause in 60 Minutes"
+  quick: "Go along with"
+-
+  word: INTEGER
+  cryptic: Bury example inside number
+  quick: Number
+-
+  word: JACKPOT
+  cryptic: Lift and raise top to find kitty
+  quick: Kitty
+-
+  word: LETS GO
+  cryptic: Loosens up Spooner on the dance floor
+  quick: Loosens up
+-
+  word: LODGE
+  cryptic: "Tender retreat"
+  quick: "Retreat"
+-
+  word: LOSING
+  cryptic: Eluding second half of solo croon
+  quick: Eluding
 -
   word: MADNESS
   cryptic: End up central to horde hysteria
@@ -287,38 +255,80 @@
   cryptic: "Hammers smash set, closing arcade"
   quick: Hammers
 -
-  word: DEACONS
-  cryptic: Professors collect group of priests
-  quick: Priests
+  word: NIRVANA
+  cryptic: "Ran vain attempts at peace"
+  quick: "Peace"
+-
+  word: PEGASUS
+  cryptic: "Famed four-legger imitates our clip"
+  quick: "Famed four-legger"
+-
+  word: PERHAPS
+  cryptic: "Sharp EP remix, maybe?"
+  quick: "Maybe"
+-
+  word: PLUNGER
+  cryptic: Diver for each without air sac
+  quick: Diver
+-
+  word: QUIP
+  cryptic: Make a joke that's quick, short and quiet
+  quick: Make a joke
 -
   word: SESAME
   cryptic: "Asian flavour loses key in mixed message"
   quick: Seeds on a roll
 -
-  word: TAX-FREE
-  cryptic: "Without duty, Spooner will send source of paper"
-  quick: Without duty
--
-  word: TEQUILA
-  cryptic: "Surreal quiet, then the Spanish drink"
-  quick: Drink
--
   word: TASTING
   cryptic: Get back at smart sample
   quick: Sample
+-
+  word: TAX-FREE
+  cryptic: "Without duty, Spooner will send source of paper"
+  quick: Without duty
 -
   word: TEACHER
   cryptic: Guide or disguised cheater?
   quick: Guide
 -
-  word: LETS GO
-  cryptic: Loosens up Spooner on the dance floor
-  quick: Loosens up
+  word: TENABLE
+  cryptic: "Last night, green light sound"
+  quick: Sound
 -
-  word: DOGGONE
-  cryptic: Departed animal is blessed
-  quick: Blessed
+  word: TEQUILA
+  cryptic: "Surreal quiet, then the Spanish drink"
+  quick: Drink
 -
-  word: LOSING
-  cryptic: Eluding second half of solo croon
-  quick: Eluding
+  word: VENISON
+  cryptic: Game to play on vines
+  quick: Game meat
+-
+  word: VETERAN
+  cryptic: Old-timer crashes van into tree
+  quick: Old-timer
+-
+  word: WALLOWS
+  cryptic: Savours swallow at sixes and sevens
+  quick: Savours
+-
+  word: WARLOCK
+  cryptic: Ill will catch a caster of spells
+  quick: A caster of spells
+-
+  word: WHEREAS
+  cryptic: "Strange words, i.e. wackos"
+  cryptic: Used to be around this spot on the other hand
+  quick: On the other hand
+  quick: Wackos
+-
+  word: WITCHES
+  cryptic: Hags cleverness? Never finishing chess!
+  quick: Hags
+-
+  word: WOBBLY
+  cryptic: Staggering blow by tornado
+  quick: Staggering
+-
+  word: WORKMAN
+  cryptic: Labourer is to know arm wrestles
+  quick: Labourer

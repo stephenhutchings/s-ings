@@ -23,21 +23,25 @@ class MessageView extends Backbone.View
       tasks = [@select, @require, @extract, @prettify, @render]
       do _.bind(_.compose(tasks.reverse()...), this)
 
+  # Choose a bot to play with, giving priority to the recommender
   select: ->
-    @random(
-      [
-        "itstimefora"
-        "recommended"
-        "thecomputer"
-        "recommended"
-        "itstodayand"
-        "recommended"
-      ]
-    , "data")
+    @random [
+      "itstimefora"
+      "recommended"
+      "thecomputer"
+      "recommended"
+      "itstodayand"
+      "recommended"
+    ], "data"
 
   require: (path) ->
     _.extend { path }, require("chat/#{path}")
 
+  # Using the data from any of the chat bots, choose a random phrasing and
+  # pass it the relavant data from the thesaurus (the YAML file) based on
+  # the data type. Use the random method to ensure there are no repeats.
+  # The last argument passed to each phrase is a method to choose the correct
+  # article depending on the whether the noun starts with a vowel.
   extract: ({phrasings, inventory, thesaurus, path}) ->
     says = @random phrasings, path
     args =
@@ -57,10 +61,14 @@ class MessageView extends Backbone.View
   prettify: (string) ->
     i = 0
 
-    # Kerner
+    # Each letter is placed in a non-inline span, so the kerning will be
+    # lost and needs to be re-engineered by rendering the letter pairs
+    # at 10 times their normal size
     $k = $("<span>")
     $k.css("font-size", "10em").appendTo("body")
 
+    # Split each sentence into words, and each word into spans, taking care
+    # not to preserve any HTML tags that are contained within
     interval = 300 / string.replace(/(<[^<]+>)/g, "").length
     message  =
       for word in _.compact(string.split(/[\s$](<a[^<]+<\/a>)*/))
@@ -80,9 +88,11 @@ class MessageView extends Backbone.View
 
         [start, middle.join(" "), end].join("")
 
+    # Remove the kerning element
     $k.remove()
     message.join(" ")
 
+  # Animate last message out, and the new one in after 800ms
   render: (message) ->
     @$el.addClass("leave").removeClass("active")
 
@@ -97,11 +107,13 @@ class MessageView extends Backbone.View
           "The Computer"
       )
       @$el.addClass("active")
-    , 600
+    , 800
 
   wrapWord: (w) ->
     "<div class=\"word\">#{w}</div>"
 
+  # Wrap a c = character in a span with transition d = delay and
+  # m = margin to simulate the kerning
   wrapSpan: (c, d, m) ->
     unless c is " "
       t = Prefix("transition-delay")
@@ -110,8 +122,14 @@ class MessageView extends Backbone.View
       style += "margin-left: #{m}px" if m
       "<span style=\"#{style}\" class=\"char\">#{c}</span>"
 
+  # Try not to repeat anything by splicing the last choice out of the
+  # possible options for the next item, when there's enough to choose from.
+  # Duplicate options will result in possible repeats, but this is intended.
   random: (from, name) ->
-    from = _.without(from, @history[name]) if from.length > 1
-    @history[name] = _.sample from
+    index = from.indexOf(@history[name])
+    [].concat(from).splice(index, 1) if index? and from.length > 1
+    item = _.sample from
+    @history[name] = item
+
 
 module.exports = MessageView
