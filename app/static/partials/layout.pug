@@ -46,7 +46,7 @@ html.no-js(lang="en")
       link(rel="shortcut icon" href="/img/favicon.png")
 
       block css
-        link(rel="stylesheet" href="/css/app.css")
+        link(rel="stylesheet" href=`/css/app.${version}.css`)
 
   body
     block page
@@ -70,8 +70,8 @@ html.no-js(lang="en")
           include footer
 
     block scripts
-      script(type="text/javascript" src="/js/vendor.js")
-      script(type="text/javascript" src="/js/app.js")
+      script(type="text/javascript" src=`/js/vendor.${version}.js`)
+      script(type="text/javascript" src=`/js/app.${version}.js`)
       script(type="text/javascript").
         $(document).ready(function(){
           require("app").initialize();

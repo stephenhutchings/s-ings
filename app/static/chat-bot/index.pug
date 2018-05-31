@@ -11,7 +11,7 @@ block body
     .p-v-xxl.content-wrap
       include ../partials/header
 
-  #message(data-view="views/chat" data-require="/js/chat.js")
+  #message(data-view="views/chat" data-require=`/js/chat.${version}.js`)
     .content-wrap
       h1#message-content
       p#message-author

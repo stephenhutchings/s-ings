@@ -1,5 +1,7 @@
 fs   = require("fs")
 data = require("./utils/data")
+git  = require("git-rev-sync")
+hash = git.short()
 
 exports.config =
   paths:
@@ -32,6 +34,7 @@ exports.config =
         marked:   require("marked")
         package:  require("./package.json")
         data:     data
+        version:  hash
 
     coffeelint:
       pattern: /^app\/.*\.coffee$/
@@ -66,10 +69,10 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        "js/app.js": /^app\/((?!(chat|experiments)\/).)*$/
-        "js/chat.js": /^app\/chat/
-        "js/experiments.js": /^app\/experiments/
-        "js/vendor.js": (path) -> /^(vendor|bower_components)/.test(path)
+        "js/app.#{hash}.js": /^app\/((?!(chat|experiments)\/).)*$/
+        "js/chat.#{hash}.js": /^app\/chat/
+        "js/experiments.#{hash}.js": /^app\/experiments/
+        "js/vendor.#{hash}.js": (path) -> /^(vendor|bower_components)/.test(path)
 
       order:
         before: [
@@ -81,12 +84,12 @@ exports.config =
 
     stylesheets:
       joinTo:
-        "css/app.css": "app/sass/app.sass"
-        "css/experiments.css": "app/sass/experiments.sass"
+        "css/app.#{hash}.css": "app/sass/app.sass"
+        "css/experiments.#{hash}.css": "app/sass/experiments.sass"
 
     templates:
       joinTo:
-        "js/app.js": /^app\/templates(\/|\\)(.+)\.pug$/
+        "js/app.#{hash}.js": /^app\/templates(\/|\\)(.+)\.pug$/
 
   framework: "backbone"
 
