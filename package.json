@@ -18,22 +18,23 @@
   "dependencies": {
     "auto-reload-brunch": "^2.7.1",
     "autoprefixer": "^6.3.7",
+    "brunch": "^2.10.16",
     "clean-css-brunch": "~1.7.1",
     "coffee-script-brunch": "~1.7.3",
-    "brunch": "^2.10.12",
     "csswring": "^6.0.3",
     "fontkit": "^1.7.7",
     "git-rev-sync": "^1.5.1",
     "glob": "^5.0.5",
-    "postcss-brunch": "^2.1.0",
-    "pugjs-brunch": "^2.10.1",
     "javascript-brunch": "~1.7.1",
     "js-yaml": "^3.2.6",
     "jstransformer-marked": "^1.0.1",
     "lodash": "^3.2.0",
-    "marked": "^0.3.3",
+    "marked": "^0.3.19",
     "minimist": "^1.2.0",
     "moment": "^2.10.3",
+    "node-sass": "^4.9.3",
+    "postcss-brunch": "^2.1.0",
+    "pugjs-brunch": "^2.10.1",
     "sass-brunch": "^2.6.3",
     "typogr": "^0.6.5",
     "uglify-js-brunch": "~1.7.7",
@@ -67,6 +68,6 @@
     "coffeelint-brunch": ">= 1.0 < 1.9",
     "fs-extra": "^0.30.0",
     "jsdom": "^9.4.2",
-    "loggy": "^0.3.5"
+    "loggy": "^1.0.3"
   }
 }

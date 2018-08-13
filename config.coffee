@@ -36,6 +36,9 @@ exports.config =
         data:     data
         version:  hash
 
+    sass:
+      mode: "native"
+
     coffeelint:
       pattern: /^app\/.*\.coffee$/
 
