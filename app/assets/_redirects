@@ -1,5 +1,2 @@
 # Redirect default Netlify subdomain to primary domain
 https://s-ings.netlify.com/* https://www.s-ings.com/:splat 301!
-
-# These extra rules are required because HTTPS is not forced
-http://s-ings.netlify.com/* https://www.s-ings.com/:splat 301!

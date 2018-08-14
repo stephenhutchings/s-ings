@@ -13,7 +13,7 @@ exports.config =
   conventions:
     assets: /app\/(assets|static)\//
     ignored: [
-      /[\\/]_/
+      /[\\/]_(?!\.*redirects$).*/
       "node_modules"
       /^app\/static\/partials/
       /^app\/static(\/|\\)(.+)\.yaml$/
