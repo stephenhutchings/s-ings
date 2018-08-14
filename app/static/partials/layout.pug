@@ -45,6 +45,16 @@ html.no-js(lang="en")
 
       link(rel="shortcut icon" href="/img/favicon.png")
 
+      for weight in ["Regular", "SemiBold", "Light"]
+        for format in ["woff", "woff2"]
+          link(
+            rel="preload"
+            as="font"
+            crossorigin
+            type=`font/${format}`
+            href=`/fonts/philippa/Philippa-${weight}.${format}`
+          )
+
       block css
         link(rel="stylesheet" href=`/css/app.${version}.css`)
 
