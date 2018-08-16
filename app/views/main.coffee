@@ -215,8 +215,8 @@ class MainView extends Backbone.View
     e = e.touches[0] if e.touches
     w = window.innerWidth
     h = window.innerHeight
-    x = e.clientX / w
-    y = 1 - e.clientY / h
+    x = Math.max(e.clientX / w, 0)
+    y = 1 - Math.max(e.clientY / h, 0)
 
     h = 180 + (60 * y) % 60
     s = 100 - Math.abs(0.5 - x) * 100
