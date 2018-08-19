@@ -2,7 +2,9 @@ name: Fire Truck
 date: 03 Jul 2014
 size: col-sm
 desc: >
-  Concept toy truck laser-cut from bamboo ply
+  Concept toy truck laser-cut from 7mm bamboo ply, with etched designs and
+  no-glue construction
+pageCount: 2
 imgs:
   cover:  /img/projects/fire-truck/cover.png
   reveal: /img/projects/fire-truck/reveal.png
