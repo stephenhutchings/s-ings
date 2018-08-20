@@ -3,6 +3,9 @@ extends project
 block prepend title
   | #{ page.title } - 
 
+block append config
+  - page.class = `page-article ${projectClass}`;
+
 block project
-  .mx-lg.p-v-lg
+  .mx-lg
     block project-article
