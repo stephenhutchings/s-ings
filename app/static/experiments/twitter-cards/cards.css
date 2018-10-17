@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #1f333e;
+  background-color: #f4f6f8;
+  font-family: Sans;
+  text-align: center;
+}
+
+#inbound {
+  padding: 40px 0;
+  max-width: 800px;
+  margin: auto;
+}
+
+[contenteditable] {
+  outline: none;
+  transition: background 300ms;
+}
+
+[contenteditable]:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+[contenteditable]:focus {
+  background: transparent;
+}
+
+#wrapper {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+#card {
+  width: 800px;
+}
+
+.width-narrow #card {
+  padding: 0 80px;
+}
+
+#canvas {
+  width: auto;
+  color: #fff;
+  padding: 48px 60px 48px 104px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  background: inherit;
+}
+
+#canvas:before {
+  content: "“";
+  font-size: 100px;
+  position: absolute;
+  line-height: 0;
+  top: 92px;
+  left: 36px;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 40px;
+  margin-top: 12px;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 0.03em; */
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: 28px;
+  padding-top: 32px;
+  border-top: 1px solid;
+  float: left;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  height: 3em;
+}
+
+#logo {
+  display: inline-block;
+  background: no-repeat center;
+  background-size: contain;
+  vertical-align: middle;
+  position: relative;
+  margin-left: 2px;
+}
+
+fieldset {
+  border: none;
+  padding: 12px;
+}
+
+fieldset + fieldset {
+  border-top: 1px solid #eaeef1;
+}
+
+select {
+  -webkit-appearance: none;
+  font: inherit;
+  border: none;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  height: 40px;
+  margin: -8px -12px;
+  display: block;
+  padding: 8px 36px 8px 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn {
+  font-size: 18px;
+  font-weight: 600;
+  color: inherit;
+  background: #ebeef1;
+  text-decoration: none;
+  padding: 8px 12px;
+  margin: 4px;
+  line-height: 24px;
+  border-radius: 4px;
+  transition: background 300ms;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #dfe6ec;
+  cursor: pointer;
+}
+
+#download {
+  float: right;
+}
+
+.select-wrap {
+  position: relative;
+  border-radius: 4px;
+  float: left;
+}
+
+.select-wrap:after {
+  content: "";
+  border: 6px solid transparent;
+  border-top-color: currentColor;
+  border-top-width: 7px;
+  position: absolute;
+  opacity: 0.3;
+  right: 12px;
+  top: 17px;
+  pointer-events: none;
+}
+
+#preview {
+  display: block;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.type-interpreter #card {
+  background: #31363c;
+}
+
+.type-interpreter #canvas:before,
+.type-interpreter h2 {
+  color: #ff9300;
+}
+
+.type-interpreter #logo {
+  background-image: url("./the-interpreter.png");
+  width: 148px;
+  height: 28px;
+  top: -2px;
+}
+
+.type-lowy #card {
+  background: #002b45;
+}
+
+.type-lowy #canvas:before,
+.type-lowy h2 {
+  color: #539fd5;
+}
+
+.type-lowy #logo {
+  background-image: url("./lowy-institute.png");
+  width: 156px;
+  height: 18px;
+  top: -2px;
+}

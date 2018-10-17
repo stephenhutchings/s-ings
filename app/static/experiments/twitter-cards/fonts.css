@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/scholen/Scholen-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-ThinCondensed.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-ExtraLightCondensed.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-LightCondensed.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-RegularCondensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-MediumCondensed.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-SemiBoldCondensed.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-BoldCondensed.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-ExtraBoldCondensed.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cond";
+  src: url("/fonts/scholen/Scholen-BlackCondensed.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-ThinSemiCondensed.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-ExtraLightSemiCondensed.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-LightSemiCondensed.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-RegularSemiCondensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-MediumSemiCondensed.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-SemiBoldSemiCondensed.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-BoldSemiCondensed.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-ExtraBoldSemiCondensed.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Semi";
+  src: url("/fonts/scholen/Scholen-BlackSemiCondensed.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-ThinExpanded.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-ExtraLightExpanded.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-LightExpanded.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-RegularExpanded.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-MediumExpanded.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-SemiBoldExpanded.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-BoldExpanded.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-ExtraBoldExpanded.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Wide";
+  src: url("/fonts/scholen/Scholen-BlackExpanded.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal; }
