@@ -101,6 +101,7 @@ h3 {
   background-size: contain;
   vertical-align: middle;
   position: relative;
+  margin-left: 4px;
 }
 
 fieldset {
