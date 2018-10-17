@@ -130,7 +130,9 @@ select {
   padding: 8px 36px 8px 12px;
   outline: none;
   cursor: pointer;
+  border-radius: 4px;
 }
+
 
 .btn {
   font-size: 18px;
@@ -145,10 +147,12 @@ select {
   transition: background 300ms;
 }
 
+select:focus,
 .btn:hover,
 .btn:focus {
-  background: #dfe6ec;
+  background: #d4dde4;
   cursor: pointer;
+  outline: none;
 }
 
 #download {
