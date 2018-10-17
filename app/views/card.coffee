@@ -26,7 +26,7 @@ class CardView extends Backbone.View
       author = @$("h2").text().trim()
       quote  = @$("h1").text().trim()
       title  = [author, quote].join("-")
-      fname  = title.replace(/\s+/g, "-").toLowerCase().slice(0, 32)
+      fname  = title.replace(/\s+/g, "-").toLowerCase().slice(0, 50)
 
       @$("#preview").attr("src", data)
 
