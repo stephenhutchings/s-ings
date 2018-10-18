@@ -12,15 +12,19 @@ class CardView extends Backbone.View
     "drop #card": "onDrop"
 
   initialize: ->
+    @updateClasses()
     @update()
 
-  update: (e) ->
+  updateClasses: ->
     @$el.attr("class", "")
-    @$("[name]").each (i, el) =>
-      @$el.addClass([el.name, el.value].join("-"))
+    @$("[name]").each (i, el) => @$el.addClass([el.name, el.value].join("-"))
 
+  update: (e) ->
     window.clearTimeout @timeout
-    @timeout = window.setTimeout (=> @create()), 300
+    @timeout = window.setTimeout (=>
+      @updateClasses()
+      @create()
+    ), 300
 
   create: ->
     @$el

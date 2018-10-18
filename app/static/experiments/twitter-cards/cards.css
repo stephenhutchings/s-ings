@@ -51,6 +51,10 @@ body {
   background: #000;
 }
 
+.rendering #canvas {
+  background: inherit;
+}
+
 .width-narrow #card {
   border-color: rgba(255,255,255,0.12);
   border-width: 0 80px;
@@ -80,7 +84,6 @@ body {
   background-size: cover;
   z-index: -1;
 }
-
 .opacity-1 #canvas-img {
   opacity: 0.1;
 }
