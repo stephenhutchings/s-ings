@@ -30,6 +30,7 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
+.rendering [contenteditable],
 [contenteditable]:focus {
   background: transparent;
 }
@@ -43,6 +44,11 @@ body {
 
 #card {
   width: 800px;
+  text-rendering: geometricPrecision;
+}
+
+.drag #canvas {
+  background: #000;
 }
 
 .width-narrow #card {
@@ -54,45 +60,98 @@ body {
 #canvas {
   width: auto;
   color: #fff;
-  padding: 48px 60px 48px 104px;
+  padding: 60px;
   margin: auto;
-  position: relative;
   overflow: hidden;
-  text-align: left;
   background: inherit;
+  position: relative;
+  z-index: 0;
+  transition: background-color 300ms;
 }
 
-#open-quote {
-  font-size: 104px;
+#canvas-overlay,
+#canvas-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: no-repeat center;
+  background-size: cover;
+  z-index: -1;
+}
+
+.opacity-1 #canvas-img {
+  opacity: 0.1;
+}
+.opacity-2 #canvas-img {
+  opacity: 0.2;
+}
+.opacity-3 #canvas-img {
+  opacity: 0.3;
+}
+.opacity-4 #canvas-img {
+  opacity: 0.4;
+}
+.opacity-5 #canvas-img {
+  opacity: 0.5;
+}
+.opacity-6 #canvas-img {
+  opacity: 0.6;
+}
+.opacity-7 #canvas-img {
+  opacity: 0.7;
+}
+
+.style-luminosity #canvas-img {
+  mix-blend-mode: luminosity;
+}
+.style-normal #canvas-img {
+  mix-blend-mode: normal;
+}
+
+#open-quote,
+#close-quote {
+  font-size: 400px;
   position: absolute;
   line-height: 0;
-  top: 94px;
+  font-weight: 800;
+  opacity: 0.08;
+  top: 44px;
   left: 38px;
+  display: none;
 }
 
 h1 {
   font-size: 40px;
   line-height: 48px;
-  font-weight: 300;
+  font-weight: 400;
+  position: relative;
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 21px;
   line-height: 40px;
   margin-top: 12px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 21px;
   margin-top: 28px;
   padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.3);
-  float: left;
+  display: inline-block;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   height: 3em;
+}
+
+h3 span {
+  float: left;
 }
 
 #logo {
@@ -131,17 +190,32 @@ select {
   outline: none;
   cursor: pointer;
   border-radius: 4px;
+  min-width: 100px;
+}
+
+select[disabled] {
+  cursor: not-allowed;
+  opacity: 0.3;
 }
 
 
+label {
+  float: left;
+  text-align: left;
+  padding-right: 12px;
+}
+
+.btn,
+strong {
+  font-weight: 600;
+}
+
 .btn {
   font-size: 18px;
-  font-weight: 600;
   color: inherit;
   background: #ebeef1;
   text-decoration: none;
   padding: 8px 12px;
-  margin: 4px;
   line-height: 24px;
   border-radius: 4px;
   transition: background 300ms;
@@ -157,12 +231,13 @@ select:focus,
 
 #download {
   float: right;
+  margin-top: 27px;
 }
 
 .select-wrap {
   position: relative;
   border-radius: 4px;
-  float: left;
+  margin-top: 8px;
 }
 
 .select-wrap:after {
@@ -185,10 +260,13 @@ select:focus,
 }
 
 .type-interpreter #card {
-  background: #31363c;
+  background: rgba(49, 54, 60, 1);
 }
 
-.type-interpreter #open-quote,
+.type-interpreter #canvas-overlay {
+  background-image: linear-gradient(to bottom, rgba(49, 54, 60, 0.7), transparent);
+}
+
 .type-interpreter h2 {
   color: #ff9300;
 }
@@ -201,10 +279,13 @@ select:focus,
 }
 
 .type-lowy #card {
-  background: #002b45;
+  background: rgba(0, 43, 69, 1);
 }
 
-.type-lowy #open-quote,
+.type-lowy #canvas-overlay {
+  background-image: linear-gradient(to bottom, rgba(0, 43, 69, 0.7), transparent);
+}
+
 .type-lowy h2 {
   color: #539fd5;
 }
@@ -214,4 +295,8 @@ select:focus,
   width: 156px;
   height: 18px;
   top: -2px;
+}
+
+.style-normal #canvas-overlay {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
 }
