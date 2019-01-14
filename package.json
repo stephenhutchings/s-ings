@@ -35,7 +35,7 @@
     "node-sass": "^4.9.3",
     "postcss-brunch": "^2.1.0",
     "pugjs-brunch": "^2.10.1",
-    "sass-brunch": "^2.6.3",
+    "sass-brunch": "2.10.5",
     "typogr": "^0.6.5",
     "uglify-js-brunch": "~1.7.7",
     "written": "^0.1.3",
