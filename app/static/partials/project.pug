@@ -82,9 +82,13 @@ block append scripts
 
 block prepend article
   if project.pageCount
-    .gallery-pagination.bg-dk(data-view="views/gallery-scroller")
+    .gallery-pagination.bg-dk(
+      data-view="views/gallery-scroller"
+      class=project.pageCount < 10 ? "gallery-sm" : "gallery-lg"
+    )
       for page, i in (new Array(project.pageCount))
-        a(href=`#item-${i + 1}` data-parent=".gallery")= i + 1
+        a(href=`#item-${i + 1}` data-parent=".gallery")
+          = i + 1
 
 block append article
    block project

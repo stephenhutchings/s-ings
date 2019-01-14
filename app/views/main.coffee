@@ -69,7 +69,8 @@ class MainView extends Backbone.View
         $parent.stop().animate
           scrollLeft: Math.min(sx, mx)
           scrollTop: Math.min(sy, my)
-        , 800, "quintInOut"
+        , 800, "quintInOut", ->
+          document.activeElement?.blur()
       else
         $(document.scrollingElement).scrollTo $target.offset().top
 
@@ -172,6 +173,7 @@ class MainView extends Backbone.View
     callback()
 
   createViews: ($el, params) ->
+
     $el
       .find("[data-view], [data-require]")
       .each (i, el) =>
