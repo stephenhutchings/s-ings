@@ -146,7 +146,7 @@ class MainView extends Backbone.View
   # match a valid view name.
   onLoad: (params, response, callback) ->
     $resp = $(response)
-    _inb  = $resp.filter("#inbound")
+    _inb  = $resp.filter("#inbound").removeClass("ready")
 
     @$el.removeClass("loading")
 
@@ -196,9 +196,13 @@ class MainView extends Backbone.View
   afterTransition: ->
     window.clearTimeout @transitionTimeout
     @transitionTimeout = window.setTimeout( =>
-      $outbound.addClass "ready"
       $inbound.removeClass "ready"
       @swapContainers()
+
+      window.setTimeout =>
+        $inbound.addClass "ready"
+        $outbound.removeClass "ready"
+      , 100
     , 600)
 
   swapContainers: ->

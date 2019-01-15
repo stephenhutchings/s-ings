@@ -19,6 +19,7 @@
   text-align: center
   max-width: 580px
   margin: auto
+  overflow: hidden
 
   @media (max-width: 480px)
     display: none
@@ -29,17 +30,37 @@
     height: 2em
     line-height: 2em
     border: none
-    transition: all 300ms
+    transition: all 300ms, background-color 1200ms
     color: transparent
+    position: relative
+
+    &:after
+      content: ""
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 4px
+      height: 4px
+      border-radius: 2px
+      margin: -2px
+      background: #fff
+      opacity: 0.3
 
     &:hover,
     &:focus
       background-color: rgba(#fff, 0.3)
+      transition-delay: 0ms, 400ms
 
     &:hover,
     &:focus,
     &.active
       color: #fff
+
+      &:after
+        opacity: 0
+        transform: scale(12)
+        background: rgba(#fff, 0.5)
+        transition: opacity 400ms 400ms ease-in, transform 800ms $bounce
 
     &.active
       background-color: transparent
@@ -81,3 +102,8 @@
     height: 2em
     background-color: rgba(#fff, 0.2)
     z-index: -1
+    opacity: 0
+
+    .ready &
+      opacity: 1
+      transition: opacity 1200ms
