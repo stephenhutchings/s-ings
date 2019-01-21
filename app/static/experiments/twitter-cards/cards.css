@@ -232,9 +232,14 @@ select:focus,
   outline: none;
 }
 
+#balance,
+#download {
+  float: left;
+  margin-top: 27px;
+}
+
 #download {
   float: right;
-  margin-top: 27px;
 }
 
 .select-wrap {

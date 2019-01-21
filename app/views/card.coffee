@@ -1,15 +1,16 @@
 class CardView extends Backbone.View
 
   events:
-    # "iostap button": "download"
     "input select, input, [contenteditable]": "update"
     "click a[href]": "allowDefault"
     "iostap a[href]": "allowDefault"
+    "iostap #balance": "balanceText"
     "dragend #card": "onDragEnd"
     "dragover #card": "onDragEnd"
     "dragleave #card": "onDragEnd"
     "dragend #card": "onDragEnd"
     "drop #card": "onDrop"
+    "paste [contenteditable]": "onPaste"
 
   initialize: ->
     @updateClasses()
@@ -44,10 +45,17 @@ class CardView extends Backbone.View
 
       @$("#preview").attr("src", data)
 
-      @$("a")
+      @$("#download")
         .attr("download", "#{fname}.png")
         .attr("href", data)
         .click()
+
+  balanceText: ->
+    $el = @$(".balance-text")
+    str = $el.html()
+    $el.html(str.replace(/\s+|<br[^>]+>/g, " "))
+    window.balanceText(".balance-text")
+    @update()
 
   allowDefault: (e) ->
     e.stopImmediatePropagation()
@@ -70,5 +78,16 @@ class CardView extends Backbone.View
       window.setTimeout (=> @create()), 300
 
     reader.readAsDataURL(file)
+
+  onPaste: (e) ->
+    $el = @$(".balance-text")
+
+    window.setTimeout ->
+      txt = $el.html().replace(/\s+|<[^>]+>/g, " ")
+      console.log txt
+      $el.html(txt)
+      window.balanceText(".balance-text")
+    , 10
+
 
 module.exports = CardView

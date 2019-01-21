@@ -14,7 +14,7 @@ html.no-js(lang="en")
             #canvas-img
             #canvas-overlay
             h1
-              span(contenteditable)
+              span.balance-text(contenteditable style="display:block")
                 | It does not even matter whether the story is accurate or not
                 | because the damage has already been done.
 
@@ -53,8 +53,11 @@ html.no-js(lang="en")
             | Style
             .select-wrap.btn
               select(name="style" disabled)
-                option(value="luminosity") Monotone
+                option(value="luminosity") Mono
                 option(value="normal") Colour
+
+          a#balance.btn
+            | Balance Text
 
           a#download.btn
             | Download
@@ -71,6 +74,7 @@ html.no-js(lang="en")
           img#preview
 
 
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/balance-text/3.2.1/balancetext.js")
     script(type="text/javascript" src="d2i.js")
     script(type="text/javascript" src=`/js/vendor.${version}.js`)
     script(type="text/javascript" src=`/js/app.${version}.js`)
