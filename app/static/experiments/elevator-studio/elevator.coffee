@@ -30,7 +30,7 @@ require.register "views/elevator", (exports, require, module) ->
         { dpi: 144 }
       ).then (data) =>
         @$el.removeClass("rendering")
-        fname  = moment().format("Elevator-MMM-DD")
+        fname = "Elevator-#{moment().format("MMM-DD")}"
 
         @$("#preview").attr("src", data)
 
