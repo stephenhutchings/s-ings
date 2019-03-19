@@ -55,11 +55,8 @@ require.register "views/elevator", (exports, require, module) ->
     onPaste: (e) ->
       $el = @$(".balance-text")
 
-      window.setTimeout ->
-        txt = $el.html().replace(/\s+|<[^>]+>/g, " ")
-        console.log txt
-        $el.html(txt)
-        window.balanceText(".balance-text")
+      window.setTimeout =>
+        @balanceText()
       , 10
 
 
