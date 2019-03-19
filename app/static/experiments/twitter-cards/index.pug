@@ -78,7 +78,11 @@ html.no-js(lang="en")
     script(type="text/javascript" src="d2i.js")
     script(type="text/javascript" src=`/js/vendor.${version}.js`)
     script(type="text/javascript" src=`/js/app.${version}.js`)
+    script(type="text/javascript")
+      include:coffee card.coffee
+
     script(type="text/javascript").
       $(document).ready(function(){
         require("app").initialize();
       })
+

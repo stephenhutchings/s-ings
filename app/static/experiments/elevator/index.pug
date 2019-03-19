@@ -1,0 +1,85 @@
+doctype html
+html.no-js(lang="en")
+  head
+    meta(name="robots" content="noindex, nofollow")
+    style
+      include fonts.css
+      include elevator.css
+
+  body
+    #inbound
+      #wrapper(data-view="views/elevator")
+        #card
+          #canvas
+            #canvas-header
+              div(contenteditable).balance-text
+                | The Lowy Institute invites<br>
+                | 1 Bligh to the upcoming<br>
+                | Lowy Lecture Series events
+
+            #canvas-body
+              #events
+                .event
+                  .event-wrap
+                    .event-date
+                      div(contenteditable)
+                        | 00 Month
+                    .event-content
+                      .event-title.balance-text(contenteditable)
+                        | Lorem ipsum dolor amet consectetuer 
+
+                      .event-desc.balance-text(contenteditable)
+                        | Dipiscing elit and Diam nonummy nibh 
+
+                .event
+                  .event-wrap
+                    .event-date
+                      div(contenteditable)
+                        | 00 Month
+                    .event-content
+                      .event-title.balance-text(contenteditable)
+                        | Lorem ipsum dolor amet consectetuer 
+
+                      .event-desc.balance-text(contenteditable)
+                        | Dipiscing elit and Diam nonummy nibh 
+
+                .event
+                  .event-wrap
+                    .event-date
+                      div(contenteditable)
+                        | 00 Month
+                    .event-content
+                      .event-title.balance-text(contenteditable)
+                        | Lorem ipsum dolor amet consectetuer 
+
+                      .event-desc.balance-text(contenteditable)
+                        | Dipiscing elit and Diam nonummy nibh 
+
+              .event-cta
+                | Please contact 
+                strong events@lowyinstitute.org
+                |  to register
+
+        fieldset
+          label Elevator Studio
+
+          a#balance.btn
+            | Balance Text
+
+          a#download.btn
+            | Download
+
+        fieldset
+          img#preview
+
+
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/balance-text/3.2.1/balancetext.js")
+    script(type="text/javascript" src="../twitter-cards/d2i.js")
+    script(type="text/javascript" src=`/js/vendor.${version}.js`)
+    script(type="text/javascript" src=`/js/app.${version}.js`)
+    script(type="text/javascript")
+      include:coffee elevator.coffee
+    script(type="text/javascript").
+      $(document).ready(function(){
+        require("app").initialize();
+      })

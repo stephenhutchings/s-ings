@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/william/William-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal; }
