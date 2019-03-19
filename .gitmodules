@@ -1,3 +1,4 @@
 [submodule "fonts"]
 	path = app/assets/fonts
 	url = https://github.com/stephenhutchings/s-ings.com-fonts
+	ignore = dirty
