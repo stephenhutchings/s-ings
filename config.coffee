@@ -35,6 +35,15 @@ exports.config =
         package:  require("./package.json")
         data:     data
         version:  hash
+      filters:
+        sass: (data) ->
+          require("node-sass").renderSync({
+            data
+            indentedSyntax: true
+          }).css.toString()
+
+        coffee: (data) ->
+          require("coffeescript").compile(data)
 
     sass:
       mode: "native"
