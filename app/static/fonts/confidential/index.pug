@@ -4,7 +4,7 @@ block prepend config
   - var project = data.getOne("fonts",  "confidential");
 
 block append article
-  .gallery
+  .gallery(style="font-feature-settings: \"ss01\" 1;")
     #item-1.gallery-item.p-xxl.flex-evenly.bg-hl
       .t-4.f-g-700(contenteditable)
         span thankfully.
@@ -15,7 +15,7 @@ block append article
         span Maybe?<br>
         span.txt-mt Not sure...
 
-    #item-3.gallery-item.p-v-xxl.p-h-xl.flex-evenly.bg-lt
+    #item-3.gallery-item.pv-xxl.ph-xl.flex-evenly.bg-lt
       .mx-md
         .t-1.f-g-400(contenteditable)
           | A portmanteau is a piece of luggage, usually made of leather and 

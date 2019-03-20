@@ -12,34 +12,34 @@ block prepend description
 
 block append article
   .gallery.stretch
-    #item-1.gallery-item.p-v-xxl.p-h-lg.flex-between.bg-hl.txt-center
-      .p-v-md
+    #item-1.gallery-item.pv-xxl.ph-lg.flex-between.bg-hl.txt-center
+      .pv-md
         .f-g-300.t-3 All your
         .f-g-300.t-3 learning needs.
         .f-g-600.t-3 One platform.
 
-      .p-v-md
+      .pv-md
         p.f-g-700
           small DEPLOY ANYWHERE
 
-      .p-v-md.f-g-400 
+      .pv-md.f-g-400 
         p.t-2
           | Mobile-first, responsive<br>
           | courseware designed for<br>
           | iOS, Android and the web
 
-      .p-v-md.f-g-400i
+      .pv-md.f-g-400i
         p
           em
             | Authoring beautiful, engaging and efficient 
             br
             | microlearning courses has never been easier
 
-    #item-2.gallery-item.p-v-xxl.p-h-xxl.flex-between
-      .p-v-md
+    #item-2.gallery-item.pv-xxl.ph-xxl.flex-between
+      .pv-md
         .t-3.f-g-300 Beautiful, engaging and effective
 
-      .p-v-md.f-g-400
+      .pv-md.f-g-400
         p 
           | Our mobile first template library will provide inspiration to 
           | create a whole variety of beautifully crafted lessons easily.
@@ -56,14 +56,14 @@ block append article
 
     #item-3.gallery-item
       .flex-stretch.txt-center.stretch
-        .bg-dk.p-v-xxl.p-h-xxl.flex-evenly
+        .bg-dk.pv-xxl.ph-xxl.flex-evenly
           .f-g-300.t-2
             span
               strong.f-g-600 Welcome to Ed,
               |  the world’s smartest
               | learning platform.
 
-        .bg-hl.p-v-xxl.p-h-xxl.flex-evenly
+        .bg-hl.pv-xxl.ph-xxl.flex-evenly
           .f-g-300.t-2
             span
               | Ed is easy and 
@@ -76,7 +76,7 @@ block append article
       .gallery-item.flex-evenly.p-lg(class=(k) id=`item-${4 + i}`)
         .col-wrap.p-xl
           for icon in project.icons.slice(len * i, len * (i + 1))
-            .col-xs.f-g-400.p-v-sm
+            .col-xs.f-g-400.pv-sm
               .icon-display.txt-lg
                 i.icon(class=`icon-${icon.name}`)
                 p.txt-ellipsis.tight= icon.title

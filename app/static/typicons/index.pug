@@ -14,8 +14,8 @@ block prepend description
 
 block append article
   .gallery.stretch(data-view="views/typicons")
-    #icon-container.gallery-item.flex-between.p-h-lg.p-v-xxl.bg-hl
-      .flex-grid.p-v-sm.txt-center
+    #icon-container.gallery-item.flex-between.ph-lg.pv-xxl.bg-hl
+      .flex-grid.pv-sm.txt-center
         for icon in project.icons
           .icon(
             data-name=icon.name
@@ -24,13 +24,13 @@ block append article
           )
             .typcn.icon-default(class=`typcn-${icon.name}`)
 
-      .p-v-sm
+      .pv-sm
         #icon-search-bar
           input#icon-search.fl-l(type="text" placeholder="Search....")
           label#icon-details.txt-ellipsis(for="icon-search")
             | Search for a specific icon by its name or keywords.
 
-    .gallery-item.flex-between.p-h-lg.p-v-xxl.bg-lt
+    .gallery-item.flex-between.ph-lg.pv-xxl.bg-lt
       .mx-md
         :marked
           # Typicons. 336 pixel perfect, all-purpose vector icons.

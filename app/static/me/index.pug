@@ -2,19 +2,20 @@ extends /partials/layout
 
 block append config
   - page.title = "Hi, I’m Stephen Hutchings.";
+  - page.class = "page-me"
   - page.description = "Nice to meet you. Let me introduce myself.";
   - page.navigation = [{ href: "/", title: "Portfolio" }];
 
 block body
   .content.stretch
-    .p-v-xxl.content-wrap.flex-between(style="min-height: 60vh")
+    .pv-xxl.content-wrap.flex-between(style="min-height: 60vh")
       include /partials/header
       include /partials/intro
 
     .clearfix.bg-dk
-      .content-wrap.p-v-xl
+      .content-wrap.pv-xl
         .col-wrap
-          .col-sm.p-v-sm
+          .col-sm.pv-sm
             h4.txt-center.bg-hl(style="padding:.7em;margin: 0.9em 0 2.4em;")
               a.btn-ul(data-view="views/send-email") Send me an email
 
@@ -22,7 +23,7 @@ block body
               **Currently, I am the Lead&nbsp;Designer at 
               the [Lowy&nbsp;Institute](https://www.lowyinstitute.org).**
 
-          .col-lg.p-v-sm.txt-justify.txt-hyphen
+          .col-lg.pv-sm.txt-justify.txt-hyphen
             :marked
               I sit at the intersection between design and front-end 
               development, working with a small and talented team as the lead 
@@ -36,7 +37,7 @@ block body
       img(src="/img/art/interface-examples.jpg")
 
     .clearfix
-      .content-wrap.p-v-xl
+      .content-wrap.pv-xl
         .col-wrap
           .col-sm
             h3 My Role
@@ -116,3 +117,9 @@ block body
                 to teams with endless resources and massive scale. By
                 designing finely-tuned solutions that address real problems, I
                 help make things that people want to&nbsp;use.
+
+  //- style.
+    .page-me.ready h1 {
+      opacity: 0;
+      transition: opacity 800ms 1200ms;
+    }

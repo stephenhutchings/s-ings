@@ -22,7 +22,7 @@ block article
     .col-full(data-view="views/tiles")
       .projects.col-wrap
         for project in projects
-          .tile.p-v-md(class=project.size || "col-sm")
+          .tile.pv-md(class=project.size || "col-sm")
             a.tile-link(
               href=`/${project.slug || project.path}`
               data-tags=project.tags.join(",")

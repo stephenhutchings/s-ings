@@ -171,7 +171,7 @@ block project-article
     w.prettyList(["Ben", "Bob", "Bill"])              # Ben, Bob and Bill
     w.prettyList(["Ben", "Bob", "Bill", "Max"], 2)    # Ben, Bob and 2 more
     w.prettyList(["Ben", "Bob"], 1, {more: "other"})  # Ben and 1 other
-    
+
     # Document 1 & two other files
     w.prettyList([                                    
       {file: "Document 1"},
@@ -253,10 +253,10 @@ block project-article
     ```coffee
     # <span>Hello world!</span>
     w.wrapInTag("Hello world!")
-    
+
     # <em>Hello world!</em>
     w.wrapInTag("Hello world!", "em")
-    
+
     # <a href="/url" class="b" disabled="disabled">Link</a>
     w.wrapInTag(
       "Link",
