@@ -34,8 +34,9 @@ getOne = (type, name) ->
     try
       file = glob.sync("#{root}/#{path}*.yaml")?[0]
       yaml.load fs.readFileSync(file, "UTF-8")
-    catch
-      {}
+    catch err
+      console.error err
+      { hide: true }
 
 getFolders = (path) ->
   glob
