@@ -58,6 +58,8 @@ class GalleryScrollerView extends Backbone.View
   onKeyPress: (k) ->
     return unless k is "LEFT" or k is "RIGHT"
 
+    return if $(document.activeElement).is("[contenteditable], input")
+
     l = @$el.children().length
     d = if @current.desired? then @current.desired else @current.offset
 
