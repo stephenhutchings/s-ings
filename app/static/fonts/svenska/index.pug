@@ -26,13 +26,52 @@ block append article
         .f-g-900(contenteditable style={"letter-spacing": "0.015em"})
           | SOCKERBETA
 
-    #item-2.gallery-item.pv-xxl.ph-lg.flex-evenly.txt-center.bg-hl
+    #item-2.gallery-item.pv-xxl.ph-lg.bg-lt.flex-evenly(
+      data-view="views/font-selector"
+      data-target="#font-tester"
+      data-label="#font-label"
+      data-weights=project.font.weights
+    )
+      .mx-md.txt-left
+        nav.pv-sm
+          .flex-grid
+            label.txt-tu 
+              .fl-l Weight
+              input.fl-l(type="range" value="4" name="weight" min=1 max=_.size(project.font.weights))
+
+            #font-tester-mask
+              | Svenska&nbsp;
+              span#font-label Regular 17px
+
+            label.txt-tu 
+              .fl-l Size
+              input.fl-l(type="range" value="17" name="size" min=12 max=96)
+
+        #font-tester-wrap.f-g-400
+          #font-tester.of-auto(contenteditable)
+            style
+              :sass
+                #font-tester-wrap
+                  border-top: 1px solid
+                  border-bottom: 1px solid
+
+                #font-tester
+                  height: 440px
+                  word-break: break-all
+                  margin: 0 -8px
+
+                  p
+                    margin-bottom: 8px
+
+            include:marked story.md
+
+    #item-3.gallery-item.pv-xxl.ph-lg.flex-evenly.txt-center.bg-hl
       .t-4(contenteditable)
         span.f-g-600 Ombudsman
         br
         span.f-g-200 Smörgåsbord
 
-    #item-3.gallery-item
+    #item-4.gallery-item
       .flex-stretch.stretch.txt-center
         .f-g-900.flex-evenly.bg-hl.t-3.pv-md
           span(contenteditable) IKEA
@@ -49,7 +88,7 @@ block append article
         .f-g-600.flex-evenly.bg-dk.t-3.pv-md
           span.txt-hl(contenteditable) Electrolux
 
-    #item-4.gallery-item.pv-xxl.ph-lg.flex-between.txt-center
+    #item-5.gallery-item.pv-xxl.ph-lg.flex-between.txt-center
       .f-g-900.t-3(contenteditable) Sölvesborg
       .f-g-800.t-3(contenteditable) Trollhättan
       .f-g-700.t-3(contenteditable) Hässleholm
@@ -60,7 +99,7 @@ block append article
       .f-g-200.t-3(contenteditable) Söderköping
       .f-g-100.t-3(contenteditable) Örnsköldsvik
 
-    #item-5.gallery-item.pv-xxl.ph-xxl.flex-evenly.bg-dk
+    #item-6.gallery-item.pv-xxl.ph-xxl.flex-evenly.bg-dk
       .mx-sm
           .f-g-600.t-6.txt-hl ❣
 
@@ -71,7 +110,7 @@ block append article
             | and tight spacing to betray the sort of independent swagger
             | you’d expect from your typical Swedish speaker.
 
-    #item-6.gallery-item.p-xxl.flex-evenly
+    #item-7.gallery-item.p-xxl.flex-evenly
       dl
         dt Font Details
         dd

@@ -61,9 +61,31 @@ block append article
       .t-2.f-g-800(contenteditable)
         | Tesla Volta Watt &amp;&nbsp;Weber
 
+    #item-5.gallery-item.pv-xxl.ph-xl.flex-evenly.txt-center(
+      data-view="views/font-selector"
+      data-target="#font-tester"
+      data-label="#font-label"
+      data-weights=project.font.weights
     )
       .mx-md
-        .t-1.flex-grid(contenteditable)
+        nav.pv-sm
+          .flex-grid
+            label.txt-tu 
+              .fl-l Weight
+              input.fl-l(type="range" value="3" name="weight" min=1 max=_.size(project.font.weights))
+            label.txt-center(style={width: "200px"})
+              | Philippa&nbsp;
+              span#font-label Regular 17px
+            label.txt-tu 
+              .fl-l Size
+              input.fl-l(type="range" value="25" name="size" min=12 max=96)
+
+        #font-tester.t-1.flex-grid.of-auto(contenteditable
+          style={
+            "height": "540px",
+            "word-break": "break-all"
+          }
+        )
           for glyph, i in project.font.glyphs.split(/\s/)
             span.glyph!=glyph
 

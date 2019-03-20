@@ -18,15 +18,17 @@ block append aside
   if project.font
     style
       - n = 6; d = Math.pow(11.11, 1 / n);
+
       for size, i in new Array(n)
         | .#{projectClass} .t-#{i + 1} {
         |   font-size: #{Math.pow(d, i + 1)}em;
         |   line-height: #{1 + 0.05 * ((n / 2) - i)};
         | }
       for variant, i in project.font.variants
+        - var fontName = `${project.font.name.toLowerCase()}${variant.width || ""}`
         - var path = project.font.path + project.font.name + "-" + variant.name
         | @font-face {
-        |   font-family: #{project.font.name};
+        |   font-family: #{fontName};
         |   font-weight: #{variant.weight};
         |   font-style: #{variant.style || "normal"};
         |   font-display: block;
@@ -34,9 +36,10 @@ block append aside
         |        url("#{path}.woff2") format("woff2"),
         |        url("#{path}.otf") format("opentype");
         | }
-        | .#{projectClass} .f-g-#{variant.weight}#{variant.style ? "i" : ""} {
-        |   font-family: #{project.font.name};
+        | .#{projectClass} .f-g-#{variant.weight}#{variant.width || ""}#{variant.style ? "i" : ""} {
+        |   font-family: #{fontName};
         |   font-weight: #{variant.weight};
+        |   font-style: #{variant.style || "normal"};
         | }
 
   block description

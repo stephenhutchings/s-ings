@@ -5,11 +5,22 @@ desc: >
   Svenska is like any strong-willed Scandinavian—it knows how to go its own
   way when everyone else is following the crowd.
 metaTitle: Svenska - A Sans-Serif Font Stephen Hutchings
-pageCount: 6
+pageCount: 7
 
 font:
   name: Svenska
   path: /fonts/svenska/
+  weights:
+    Thin: 100
+    ExtraLight: 200
+    Light: 300
+    Regular: 400
+    Medium: 500
+    SemiBold: 600
+    Bold: 700
+    ExtraBold: 800
+    Black: 900
+
   variants:
     - name: Hairline
       weight: 100

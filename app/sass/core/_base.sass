@@ -78,3 +78,60 @@ img
 
   ::selection
     background: white
+
+.checkbox-hidden
+  position: absolute
+  opacity: 0
+
+.checkbox,
+input[type="range"]
+  color: inherit
+  width: 4px
+  display: inline-block
+  transition: all 300ms
+
+.checkbox
+  height: 10px
+  width: 10px
+  border: 1px solid currentColor
+  border-radius: 6px
+  background-color: #fff
+  margin: 8px 0 8px 12px
+  box-sizing: border-box
+  cursor: pointer
+
+  input:checked + &
+    color: $dark
+    background-color: currentColor
+
+  input:focus + &,
+  input:hover + &
+    color: $highlight
+    box-shadow: 0 0 0 8px rgba($highlight, 0.2)
+
+input[type="range"]
+  width: 60px
+  border-radius: 2px
+  background: currentColor
+  height: 4px
+  margin: 11px 0 12px 12px
+  vertical-align: middle
+  cursor: pointer
+  -webkit-appearance: none
+  -moz-appearance: none
+
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    height: 10px
+    width: 10px
+    border: 1px solid currentColor
+    border-radius: 6px
+    background-color: #fff
+    transition: all 300ms
+
+  &:focus,
+  &:hover
+    outline: none
+    color: $highlight
+    &::-webkit-slider-thumb
+      box-shadow: 0 0 0 8px rgba($highlight, 0.2)

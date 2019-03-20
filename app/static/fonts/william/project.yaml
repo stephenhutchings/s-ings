@@ -1,0 +1,279 @@
+name: William
+date: 20 Jun 2015
+size: col-sm
+desc: >
+  William is a super family of 72 fonts, with four widths, nine weights and
+  matching italics. Neither strictly geometric nor grotesque in form,
+  the typeface embodies all that is prototypical in modern type.
+
+colors:
+  muted: "#b4c8dc"
+
+metaTitle: William - A Sans-Serif Super Family by Stephen Hutchings
+pageCount: 7
+
+font:
+  name: William
+  path: /fonts/william/
+  widths:
+    "Condensed": cond
+    "SemiCondensed": semi
+    "Normal": ""
+    "Expanded": wide
+
+  weights:
+    Thin: 100
+    ExtraLight: 200
+    Light: 300
+    Regular: 400
+    Medium: 500
+    SemiBold: 600
+    Bold: 700
+    ExtraBold: 800
+    Black: 900
+
+  variants:
+    - name: Thin
+      weight: 100
+    - name: ExtraLight
+      weight: 200
+    - name: Light
+      weight: 300
+    - name: Regular
+      weight: 400
+    - name: Medium
+      weight: 500
+    - name: SemiBold
+      weight: 600
+    - name: Bold
+      weight: 700
+    - name: ExtraBold
+      weight: 800
+    - name: Black
+      weight: 900
+
+    - name: ThinCondensed
+      weight: 100
+      width: "cond"
+    - name: ExtraLightCondensed
+      weight: 200
+      width: "cond"
+    - name: LightCondensed
+      weight: 300
+      width: "cond"
+    - name: RegularCondensed
+      weight: 400
+      width: "cond"
+    - name: MediumCondensed
+      weight: 500
+      width: "cond"
+    - name: SemiBoldCondensed
+      weight: 600
+      width: "cond"
+    - name: BoldCondensed
+      weight: 700
+      width: "cond"
+    - name: ExtraBoldCondensed
+      weight: 800
+      width: "cond"
+    - name: BlackCondensed
+      weight: 900
+      width: "cond"
+
+    - name: ThinSemiCondensed
+      weight: 100
+      width: "semi"
+    - name: ExtraLightSemiCondensed
+      weight: 200
+      width: "semi"
+    - name: LightSemiCondensed
+      weight: 300
+      width: "semi"
+    - name: RegularSemiCondensed
+      weight: 400
+      width: "semi"
+    - name: MediumSemiCondensed
+      weight: 500
+      width: "semi"
+    - name: SemiBoldSemiCondensed
+      weight: 600
+      width: "semi"
+    - name: BoldSemiCondensed
+      weight: 700
+      width: "semi"
+    - name: ExtraBoldSemiCondensed
+      weight: 800
+      width: "semi"
+    - name: BlackSemiCondensed
+      weight: 900
+      width: "semi"
+
+    - name: ThinExpanded
+      weight: 100
+      width: "wide"
+    - name: ExtraLightExpanded
+      weight: 200
+      width: "wide"
+    - name: LightExpanded
+      weight: 300
+      width: "wide"
+    - name: RegularExpanded
+      weight: 400
+      width: "wide"
+    - name: MediumExpanded
+      weight: 500
+      width: "wide"
+    - name: SemiBoldExpanded
+      weight: 600
+      width: "wide"
+    - name: BoldExpanded
+      weight: 700
+      width: "wide"
+    - name: ExtraBoldExpanded
+      weight: 800
+      width: "wide"
+    - name: BlackExpanded
+      weight: 900
+      width: "wide"
+
+    - name: ThinItalic
+      weight: 100
+      style: italic
+    - name: ExtraLightItalic
+      weight: 200
+      style: italic
+    - name: LightItalic
+      weight: 300
+      style: italic
+    - name: RegularItalic
+      weight: 400
+      style: italic
+    - name: MediumItalic
+      weight: 500
+      style: italic
+    - name: SemiBoldItalic
+      weight: 600
+      style: italic
+    - name: BoldItalic
+      weight: 700
+      style: italic
+    - name: ExtraBoldItalic
+      weight: 800
+      style: italic
+    - name: BlackItalic
+      weight: 900
+      style: italic
+
+    - name: ThinCondensedItalic
+      weight: 100
+      width: "cond"
+      style: italic
+    - name: ExtraLightCondensedItalic
+      weight: 200
+      width: "cond"
+      style: italic
+    - name: LightCondensedItalic
+      weight: 300
+      width: "cond"
+      style: italic
+    - name: RegularCondensedItalic
+      weight: 400
+      width: "cond"
+      style: italic
+    - name: MediumCondensedItalic
+      weight: 500
+      width: "cond"
+      style: italic
+    - name: SemiBoldCondensedItalic
+      weight: 600
+      width: "cond"
+      style: italic
+    - name: BoldCondensedItalic
+      weight: 700
+      width: "cond"
+      style: italic
+    - name: ExtraBoldCondensedItalic
+      weight: 800
+      width: "cond"
+      style: italic
+    - name: BlackCondensedItalic
+      weight: 900
+      width: "cond"
+      style: italic
+
+    - name: ThinSemiCondensedItalic
+      weight: 100
+      width: "semi"
+      style: italic
+    - name: ExtraLightSemiCondensedItalic
+      weight: 200
+      width: "semi"
+      style: italic
+    - name: LightSemiCondensedItalic
+      weight: 300
+      width: "semi"
+      style: italic
+    - name: RegularSemiCondensedItalic
+      weight: 400
+      width: "semi"
+      style: italic
+    - name: MediumSemiCondensedItalic
+      weight: 500
+      width: "semi"
+      style: italic
+    - name: SemiBoldSemiCondensedItalic
+      weight: 600
+      width: "semi"
+      style: italic
+    - name: BoldSemiCondensedItalic
+      weight: 700
+      width: "semi"
+      style: italic
+    - name: ExtraBoldSemiCondensedItalic
+      weight: 800
+      width: "semi"
+      style: italic
+    - name: BlackSemiCondensedItalic
+      weight: 900
+      width: "semi"
+      style: italic
+
+    - name: ThinExpandedItalic
+      weight: 100
+      width: "wide"
+      style: italic
+    - name: ExtraLightExpandedItalic
+      weight: 200
+      width: "wide"
+      style: italic
+    - name: LightExpandedItalic
+      weight: 300
+      width: "wide"
+      style: italic
+    - name: RegularExpandedItalic
+      weight: 400
+      width: "wide"
+      style: italic
+    - name: MediumExpandedItalic
+      weight: 500
+      width: "wide"
+      style: italic
+    - name: SemiBoldExpandedItalic
+      weight: 600
+      width: "wide"
+      style: italic
+    - name: BoldExpandedItalic
+      weight: 700
+      width: "wide"
+      style: italic
+    - name: ExtraBoldExpandedItalic
+      weight: 800
+      width: "wide"
+      style: italic
+    - name: BlackExpandedItalic
+      weight: 900
+      width: "wide"
+      style: italic
+
+  glyphs:
+    "! \" # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ [ \ ] ^ _ ` A a B b C c D d E e F f G g H h I i J j K k L l M m N n O o P p Q q R r S s T t U u V v W w X x Y y Z z { | } ~ ¡ £ ¥ ¦ § ¨ © ª « ¬ ® ¯ ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿ × ß à À á Á â Â ã Ã Ä ä Å å Æ æ Ç ç è È É é ê Ê ë Ë ì Ì í Í î Î ï Ï Ð ð Ñ ñ ò Ò ó Ó ô Ô õ Õ Ö ö ÷ Ø ø ù Ù ú Ú û Û Ü ü Ý ý Þ þ ÿ Ÿ ı Ł ł Œ œ Š š Ž ž ˆ ˇ ˘ ˙ ˚ ˛ ˜ ˝ – — ‘ ’ ‚ “ ” „ † ‡ • … ‰ ‹ › ⁄ € ™ ∂ ∏ ∑ − √ ∞ ∫ ≈ ≠ ≤ ≥"
