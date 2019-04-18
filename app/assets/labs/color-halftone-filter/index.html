@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Halftone screen filter</title>
+<style>
+html, body {
+  margin: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  position: relative;
+  height: 100%;
+}
+
+input {
+  font: inherit;
+}
+
+#container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.drag #container {
+  background: #f3f3f3;
+}
+.drag #canvas {
+  opacity: 0.6;
+}
+
+#canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#instructions {
+  position: relative;
+  width: 15em;
+  z-index: 1;
+  text-align: center;
+  margin: -20px auto;
+  height: 40px;
+  top: 50%;
+  overflow: hidden;
+}
+
+#fileinput {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+#controller {
+  display: none;
+  position: relative;
+  background-color: #ffffff;
+  padding: 15px;
+  width: 15em;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+  border: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#range,
+#color {
+  width: 120px;
+  box-sizing: border-box;
+  padding: 3px 0;
+  border: none;
+}
+
+label {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 12px;
+}
+
+.label-title {
+  width: 80px;
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 0;
+}
+
+#download {
+  display: block;
+  padding: 8px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+#info {
+  font-size: 11px;
+  color: #aaa;
+}
+</style>
+
+<script src="js/tsunami/utils/Debug.js"></script>
+<script src="js/tsunami/geom/Rectangle.js"></script>
+<script src="js/tsunami/geom/Point.js"></script>
+<script src="js/tsunami/geom/Ratio.js"></script>
+<script src="js/tsunami/filters/Blendmode.js"></script>
+<script src="js/tsunami/filters/ColorHalftoneFilter.js"></script>
+
+<script>
+document.onreadystatechange = function(){
+  init = function () {
+    container = document.getElementById("container");
+
+    canvas = document.getElementById("canvas");
+    canvas.ondragover = this.canvasDragOver.bind(this);
+    canvas.ondragend = this.canvasDragEnd.bind(this);
+    canvas.ondragleave = this.canvasDragEnd.bind(this);
+    canvas.ondrop = this.canvasDrop.bind(this);
+
+    controller = document.getElementById("controller");
+
+    color = document.getElementById("color");
+    range = document.getElementById("range");
+
+    range.addEventListener("input", onChange);
+    color.addEventListener("input", onChange);
+
+    ppp = document.getElementById("ppp");
+    ppp.innerHTML = range.value;
+
+    output = document.getElementById("output");
+
+    copy = document.createElement("canvas");
+
+    filter = new tsunami.filters.ColorHalftoneFilter();
+
+    instructions = document.getElementById("instructions");
+
+    button = document.getElementById("fileinput");
+    button.onchange = this.buttonChange.bind(this);
+
+    window.onresize = this.windowResize.bind(this);
+    windowResize(null);
+  }
+
+  var timeout;
+  onChange = function () {
+    if (timeout) { window.clearTimeout(timeout) }
+    timeout = window.setTimeout(applyFilter, 80)
+  }
+
+  windowResize = function (event) {
+    var stageWidth = Math.min(1280, window.innerWidth);
+    var stageHeight = 720 * stageWidth / 1280;
+    var ratio = 0.8
+
+    container.style.width      = ratio * stageWidth + "px";
+    container.style.height     = ratio * stageHeight + "px";
+    container.style.marginTop  = -ratio * stageHeight / 2 + "px"
+    container.style.marginLeft = -ratio * stageWidth / 2 + "px"
+
+    canvas.width  = stageWidth -  20;
+    canvas.height = stageHeight -  20;
+
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    copy.width = canvas.width;
+    copy.height = canvas.height;
+
+    instructions.style.display = "block";
+    controller.style.display = "none";
+  }
+
+  buttonChange = function(event) {
+    var file = event.target.files[0];
+    this.readFile(file);
+  }
+
+  canvasDragOver = function(event) {
+    event.preventDefault();
+    document.body.classList.add("drag");
+  }
+
+  canvasDragEnd = function(event) {
+    event.preventDefault();
+    document.body.classList.remove("drag");
+  }
+
+  canvasDrop = function(event) {
+    event.preventDefault();
+    document.body.classList.remove("drag");
+
+    file = event.dataTransfer.files[0];
+    this.readFile(file);
+  }
+
+  readFile = function(file) {
+    instructions.style.display = "none";
+    controller.style.display = "block";
+
+    reader = new FileReader();
+    reader.onload = this.readerLoad.bind(this);
+    reader.readAsDataURL(file);
+
+    link.dataset.filename = file.name;
+  }
+
+  readerLoad = function(event) {
+    image = new Image();
+    image.onload = this.imageload.bind(this);
+    image.src = event.target.result;
+  }
+
+  imageload = function (event) {
+    var size = tsunami.geom.Ratio.scaleToFill({width: image.width, height: image.height}, {width: canvas.width, height: canvas.height});
+    var size2 = tsunami.geom.Ratio.scaleToFit({width: canvas.width, height: canvas.height}, {width: image.width, height: image.height});
+    var context = copy.getContext("2d");
+    context.drawImage(image, (image.width - size2.width) / 2, (image.height - size2.height) / 2, size2.width, size2.height, 0, 0, canvas.width, canvas.height);
+
+    applyFilter();
+  }
+
+  applyFilter = function() {
+    output.innerHTML = "Rendering filter...";
+    ppp.innerHTML = range.value;
+    var context = canvas.getContext("2d");
+
+    context.globalAlpha = 1
+    context.globalCompositeOperation = "source-over";
+    context.drawImage(copy, 0, 0, canvas.width, canvas.height);
+
+    var gradient = context.createLinearGradient(0, 0, canvas.width * 0.05, canvas.height);
+    gradient.addColorStop(0.0, 'rgba(0,0,0,0.7)');
+    gradient.addColorStop(0.1, 'rgba(0,0,0,0.0)');
+    gradient.addColorStop(0.5, 'rgba(0,0,0,0.1)');
+    gradient.addColorStop(0.7, 'rgba(0,0,0,0.6)');
+    gradient.addColorStop(1.0, 'rgba(0,0,0,0.5)');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    gradient = context.createLinearGradient(0,  -canvas.height * 0.1, canvas.width * -0.05, canvas.height);
+    gradient.addColorStop(0.0, 'rgba(0,0,0,0.7)');
+    gradient.addColorStop(0.2, 'rgba(0,0,0,0.0)');
+    gradient.addColorStop(0.5, 'rgba(0,0,0,0.1)');
+    gradient.addColorStop(0.8, 'rgba(0,0,0,0.7)');
+    gradient.addColorStop(1.0, 'rgba(0,0,0,0.6)');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+
+    var gradient = context.createRadialGradient(
+      canvas.width  * 0.67,
+      canvas.height * 0.67,
+      canvas.width  * 0.33,
+      canvas.width  * 0.67,
+      canvas.height * 0.67,
+      0
+    );
+    gradient.addColorStop(0.0, 'rgba(0,0,0,0.0)');
+    gradient.addColorStop(1.0, 'rgba(0,0,0,0.8)');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    timeout = window.setTimeout(waitForRedraw, 100);
+  }
+
+  waitForRedraw = function() {
+    var context = canvas.getContext("2d");
+    var time = new Date().getTime();
+    filter.pixelsPerPoint = parseFloat(range.value, 10);
+    filter.applyFilter(context);
+
+    context.fillStyle = "#000";
+    context.globalCompositeOperation = "color";
+    context.globalAlpha = 0.5;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = color.value || "#0099bb";
+    context.globalAlpha = 0.3;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    var time2 = (new Date().getTime() - time) / 1000;
+    output.innerHTML = "Rendered in " + time2.toString() + "s";
+  }
+
+
+  function dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type: mime});
+  }
+
+  var downloadCanvas = function(el, filename){
+    var imgData = canvas.toDataURL({
+      format: 'png',
+      multiplier: 4
+    });
+    var strDataURI = imgData.substr(22, imgData.length);
+    var blob = dataURLtoBlob(imgData);
+    var objurl = URL.createObjectURL(blob);
+
+    el.download = filename;
+    el.href = objurl;
+
+    console.log("download", objurl);
+  }
+
+  var link = document.getElementById('download');
+  link.addEventListener('click', function() {
+    downloadCanvas(this, this.dataset.filename);
+    false;
+  }, false);
+
+}
+</script>
+</head>
+<body onload="init()">
+  <div id="container">
+    <canvas id="canvas"></canvas>
+    <label id="instructions">
+      Drag and drop an image or click to choose
+      <input id="fileinput" type="file" />
+    </label>
+
+    <fieldset id="controller">
+      <label>
+        <input id="range" type="range" name="points" min="3" step="0.5" max="16" value="4" />
+        <span class="label-title">
+          Size
+        </span>
+      </label>
+      <label>
+        <span class="label-title">Color</span>
+        <input id="color" type="text" placeholder="#0099bb" />
+      </label>
+      <a id="download" href="#">Download</a>
+      <div id="info">
+        <span id="ppp"></span> pixels per point
+        &emsp;&middot;&emsp;
+        <span id="output">Choose an image</span>
+      </div>
+    </fieldset>
+  </div>
+</body>
+</html>
