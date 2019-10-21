@@ -23,8 +23,8 @@ section#details
 
   :marked
     Icons are not fixed width, but do share common side bearings where it
-    makes sense. For example, the `volume-low` icon is narrower than the
-    `volume-high` icon, but both have the same left side bearing. This means
+    makes sense. For example, the `vol-low` icon is narrower than the
+    `vol-high` icon, but both have the same left side bearing. This means
     you can easily switch between the two when the UI state changes, with
     no shift in the unchanged components of the icon.
 
@@ -47,17 +47,10 @@ section#details
         - var c1 = _.find(project.iconList, {class: "mu-" + lig[1]}).code
         - var c2 = _.find(project.iconList, {class: "mu-" + lig[2]}).code
         span.mu.txt-24.txt-vm(class="mu-" + lig[1])
-        span.txt-vm &emsp;+&emsp;
+        span.txt-vm &ensp;+&ensp;
         span.mu.txt-24.txt-vm(class="mu-" + lig[2])
-        span.txt-vm &emsp;=&emsp;
+        span.txt-vm &ensp;=&ensp;
         span.mu.txt-24.txt-vm.txt-liga &#x#{c1};&#x#{c2};
-  //- p
-    span.mu-search
-    | &emsp;+&emsp;
-    span.mu-minus
-    | &emsp;=&emsp;
-    span.mu.txt-liga &#xE739;&#xE70B;
-
 
   h4 Construction Grid
 

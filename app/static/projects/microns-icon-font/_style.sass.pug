@@ -55,15 +55,25 @@ for group in project.icons
     height: 24px
     font-weight: 400
 
+    @media (max-width: 820px)
+      height: 64px
+
+      label
+        display: block
+        float: none
+
     .mu
       font-size: 24px
       float: left
       margin-right: 8px
 
-    .mu-search
-      font-size: 24px
-      .search &
-        color: #456fff
+  #icon-search-label .mu-search
+    font-size: 24px
+    .search &
+      color: #456fff
+
+    @media (max-width: 820px)
+      position: absolute
 
   #icon-search
     font: inherit
@@ -76,10 +86,28 @@ for group in project.icons
     border-right: 1px solid #fff
     margin-right: 1em
     line-height: 24px
+    box-shadow: none
     -webkit-appearance: none
 
     &:focus
       outline: none
+
+    @media (max-width: 820px)
+      width: 100%
+      padding-left: 32px
+      box-sizing: border-box
+      float: none
+      padding-bottom: 8px
+      border-right: 0
+      border-bottom: 1px solid #fff
+      margin-bottom: 8px
+
+  @media (max-width: 820px)
+    #icon-details
+      display: block
+      padding: 0 4px
+
+    .mu-search
 
   .icon-name,
   .icon-class,
@@ -222,6 +250,9 @@ for group in project.icons
     width: 208px
     position: relative
     outline-color: #98a3b1
+
+    @media (max-width: 800px)
+      width: 100%
 
     input,
     select
@@ -369,6 +400,17 @@ for group in project.icons
       bottom: 3px
       opacity: 0.5
 
+    img
+      max-width: 100%
+      max-height: 100%
+
+    @media (max-width: 800px)
+      width: 144px
+      height: 144px
+
+      .mu
+        font-size: 144px
+
   .ligature
     line-height: 24px
 
@@ -381,6 +423,24 @@ for group in project.icons
     border-radius: 4px
     border: 1px solid #b0c9d6
     color: #607e90
+    line-height: 1.2
+    overflow: hidden
+    padding: 8px
+
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    text-align: left
+
+    .mu
+      margin-right: 8px
+
+    .msg
+      max-width: 80%
+
+    @media (max-width: 800px)
+      justify-content: flex-start
 
   .well-warn
     background: #e6d0da
