@@ -39,7 +39,7 @@ block append article
       div
         small 600 / SemiBold
         .t-1.f-g-600.txt-ellipsis(contenteditable)
-          | Eyes Wide Shut primary&nbsp;colours 
+          | Eyes Wide Shut primary&nbsp;colours
       div
         small 700 / Bold
         .t-1.f-g-700.txt-ellipsis(contenteditable)
@@ -70,20 +70,21 @@ block append article
       .mx-md
         nav.pv-sm
           .flex-grid
-            label.txt-tu 
+            label.txt-tu
               .fl-l Weight
               input.fl-l(type="range" value="3" name="weight" min=1 max=_.size(project.font.weights))
             label.txt-center(style={width: "200px"})
               | Philippa&nbsp;
-              span#font-label Regular 17px
-            label.txt-tu 
+              span#font-label Regular 20px
+            label.txt-tu
               .fl-l Size
-              input.fl-l(type="range" value="25" name="size" min=12 max=96)
+              input.fl-l(type="range" value="20" name="size" min=12 max=96)
 
-        #font-tester.t-1.flex-grid.of-auto(contenteditable
+        #font-tester.t-1.f-g-300.flex-grid.of-auto(contenteditable
           style={
             "height": "540px",
-            "word-break": "break-all"
+            "word-break": "break-all",
+            "font-size": "20px"
           }
         )
           for glyph, i in project.font.glyphs.split(/\s/)
@@ -106,7 +107,7 @@ block append article
         dt Font Details
         dd
           | Sans-serif with elliptical counters and geometric forms, evoking
-          | modernist 20th Century ideals. Contemporary proportions with 
+          | modernist 20th Century ideals. Contemporary proportions with
           | large x-height, improving readabilty in digital contexts.
           | Elegant lettering works perfectly for branding or corporate use.
 
@@ -121,30 +122,30 @@ block append article
             | &nbsp;
 
         dt Language Support
-        dd.txt-sm 
-          | Afrikaans, Albanian, Asturian, Asu, Azerbaijani, Basque, Bemba, 
-          | Bena, Bosnian, Breton, Catalan, Chiga, Colognian, Cornish, 
-          | Croatian, Czech, Danish, Dutch, Embu, English, Esperanto, 
-          | Estonian, Faroese, Filipino, Finnish, French, Friulian, 
-          | Galician, Ganda, German, Greek, Gusii, Hawaiian, Hungarian, 
-          | Icelandic, Igbo, Inari Sami, Indonesian, Irish, Italian, 
-          | Jola-Fonyi, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda, 
-          | Latvian, Lithuanian, Low German, Lower Sorbian, Luo, 
-          | Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde, 
-          | Malagasy, Malay, Maltese, Manx, Meru, Morisyen, Nama, North 
-          | Ndebele, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk, 
-          | Nyankole, Oromo, Polish, Portuguese, Quechua, Romanian, Romansh, 
-          | Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena, 
-          | Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish, 
-          | Swahili, Swedish, Swiss German, Taita, Teso, Tongan, Turkish, 
-          | Turkmen, Upper Sorbian, Uzbek, Vunjo, Walser, Welsh, Western 
+        dd.txt-sm
+          | Afrikaans, Albanian, Asturian, Asu, Azerbaijani, Basque, Bemba,
+          | Bena, Bosnian, Breton, Catalan, Chiga, Colognian, Cornish,
+          | Croatian, Czech, Danish, Dutch, Embu, English, Esperanto,
+          | Estonian, Faroese, Filipino, Finnish, French, Friulian,
+          | Galician, Ganda, German, Greek, Gusii, Hawaiian, Hungarian,
+          | Icelandic, Igbo, Inari Sami, Indonesian, Irish, Italian,
+          | Jola-Fonyi, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda,
+          | Latvian, Lithuanian, Low German, Lower Sorbian, Luo,
+          | Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde,
+          | Malagasy, Malay, Maltese, Manx, Meru, Morisyen, Nama, North
+          | Ndebele, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk,
+          | Nyankole, Oromo, Polish, Portuguese, Quechua, Romanian, Romansh,
+          | Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena,
+          | Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish,
+          | Swahili, Swedish, Swiss German, Taita, Teso, Tongan, Turkish,
+          | Turkmen, Upper Sorbian, Uzbek, Vunjo, Walser, Welsh, Western
           | Frisian, Yoruba and Zulu
 
         dt OpenType Features
         dd.txt-sm
-          | Alternates, Capitals to Small Caps, Case Sensive Forms, Glyph 
-          | Composition &amp; Decomposition, Discretionary Ligatures, 
-          | Denominator, Fractions, Standard Ligatures, Lining Figures, 
-          | Localized Forms, Numerator, Oldstyle Figures, Ordinals, 
-          | Proportional Figures, Tabular Figures, Scientific Inferiors, 
+          | Alternates, Capitals to Small Caps, Case Sensive Forms, Glyph
+          | Composition &amp; Decomposition, Discretionary Ligatures,
+          | Denominator, Fractions, Standard Ligatures, Lining Figures,
+          | Localized Forms, Numerator, Oldstyle Figures, Ordinals,
+          | Proportional Figures, Tabular Figures, Scientific Inferiors,
           | Small Caps, Subscript and Superscript

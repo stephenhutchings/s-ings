@@ -2,8 +2,8 @@
   z-index: 0
   position: relative
   min-height: 40vh
-  pointer-events: none
   background-image: none
+  transition: background 300ms !important
 
   &:before
     content: ""
@@ -17,6 +17,9 @@
 
   .txt-muted
     color: rgba(#fff, 0.7)
+
+  .btn:first-child
+    margin-left: -0.8em
 
   @media (max-width: 820px)
     .col-fluid
@@ -71,8 +74,8 @@
     background-image: url(/img/thumbs/ed-sans-reveal.svg)
   #footer .font-vernacular &
     background-image: url(/img/thumbs/vernacular-reveal.svg)
-  #footer .font-william &
-    background-image: url(/img/thumbs/william-reveal.png)
+  #footer .font-antipode &
+    background-image: url(/img/thumbs/antipode-reveal.svg)
   #footer .project-asterisms &
     background-image: url(/img/projects/asterisms/asterisms-reveal.jpg)
   #footer .project-console-log &
@@ -81,5 +84,7 @@
     background-image: url(/img/projects/gordian-knots/gordian-knot-reveal.jpg)
   #footer .project-typicons &
     background-image: url(/img/thumbs/typicons-reveal.svg)
+  #footer .project-microns &
+    background-image: url(/img/thumbs/microns-reveal.svg)
   #footer .project-illustration &
     background-image: url(/img/projects/illustration/illustration-reveal.png)

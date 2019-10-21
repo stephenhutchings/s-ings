@@ -10,6 +10,5 @@ class AppRouter extends Backbone.Router
 
   default: (route = "index") ->
     @mainView.display(route)
-    window.ga?("send", "pageview")
 
 module.exports = AppRouter

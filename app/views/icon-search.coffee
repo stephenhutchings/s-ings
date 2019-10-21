@@ -1,6 +1,6 @@
 timeouts = {}
 
-class TypiconsView extends Backbone.View
+class IconSearchView extends Backbone.View
   events:
     "mouseenter .icon": "onEnter"
     "mouseout   .icon": "onLeave"
@@ -8,7 +8,7 @@ class TypiconsView extends Backbone.View
     "focusout   #icon-search": "onBlur"
     "input      #icon-search": "onChange"
 
-  initialize: ->
+  initialize: (@options) ->
     @$details   = @$("#icon-details")
     @$icons     = @$(".icon")
     @$search    = @$("#icon-search")
@@ -22,18 +22,19 @@ class TypiconsView extends Backbone.View
       window.clearTimeout timeouts[data.name]
       window.clearTimeout timeouts["change"]
 
-      $el.addClass("expand-before")
+      $el.addClass("active-before")
 
       before = =>
         @$el.addClass("hover")
         $el.addClass("transition")
 
       after = =>
-        $el.addClass("expand")
+        $el.addClass("active")
 
         @$details.html """
-          <i class="typcn typcn-#{data.name}"></i>
-          <span class="icon-name">#{data.name}</span>
+          <i class="#{@options.classname} #{data.class}"></i>
+          <strong class="icon-name">#{data.name}</strong>
+          <code class="bg-hl icon-class">.#{data.class}</code>
           <small class="icon-code">#{data.code}</small>
         """
 
@@ -47,11 +48,11 @@ class TypiconsView extends Backbone.View
       $el  = @$(e.target)
       data = $el.data()
       @$el.removeClass("hover")
-      $el.removeClass("expand")
+      $el.removeClass("active")
 
       window.clearTimeout timeouts[data.name]
       timeouts[data.name] = window.setTimeout ->
-        $el.removeClass("expand-before transition")
+        $el.removeClass("active-before transition")
       , 300
 
     window.clearTimeout timeouts["change"]
@@ -70,10 +71,11 @@ class TypiconsView extends Backbone.View
 
     if val
       @$active = @$icons.filter (i, el) ->
-        $(el).data("match").match(val)
+        $(el).data("match").match(new RegExp(val, "i"))
 
       max    = 4
-      list   = _.map(@$active.toArray(), (el) -> $(el).data("name"))
+      list   = _.map(@$active.toArray(), (el) -> $(el).data("class"))
+      list   = list.map((e) -> "<code class='icon-class'>#{e}</code>")
       total  = Math.min(list.length, max)
 
       @$details.html ->
@@ -83,7 +85,7 @@ class TypiconsView extends Backbone.View
           """
           #{list.slice(0, total - 1).join(", ")} and #{
             if list.length > total
-              list.length - total + " others"
+              (r = list.length - total + 1) + " other" + (if r isnt 1 then "s" else "")
             else
               list.slice(total - 1)[0]
           }
@@ -100,5 +102,5 @@ class TypiconsView extends Backbone.View
       @$details.html(@searchText)
 
 
-module.exports = TypiconsView
+module.exports = IconSearchView
 

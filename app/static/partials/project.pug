@@ -4,6 +4,7 @@ block append config
   - var projectClass = `page-${written.hyphenCase(project.name)}`;
   - page.class = `page-gallery ${projectClass}`;
   - page.title = project.name;
+  - page.metaDescription = project.desc;
   - page = _.extend(page, project)
 
 block append aside

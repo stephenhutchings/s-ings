@@ -30,1011 +30,1347 @@ colors:
 image: "/img/page/typicons.png"
 
 icons:
-  - name: "adjust-brightness"
+  - name: Adjust brightness
+    class: typcn-adjust-brightness
     code: "0xe000"
     match: "sun adjust brightness"
-  - name: "adjust-contrast"
+  - name: Adjust contrast
+    class: typcn-adjust-contrast
     code: "0xe001"
     match: "half adjust contrast"
-  - name: "anchor-outline"
+  - name: Anchor outline
+    class: typcn-anchor-outline
     code: "0xe002"
     match: "anchor outline"
-  - name: "anchor"
+  - name: Anchor
+    class: typcn-anchor
     code: "0xe003"
     match: "anchor"
-  - name: "archive"
+  - name: Archive
+    class: typcn-archive
     code: "0xe004"
     match: "archive"
-  - name: "arrow-back-outline"
+  - name: Arrow back outline
+    class: typcn-arrow-back-outline
     code: "0xe005"
     match: "arrow back outline"
-  - name: "arrow-back"
+  - name: Arrow back
+    class: typcn-arrow-back
     code: "0xe006"
     match: "arrow back"
-  - name: "arrow-down-outline"
+  - name: Arrow down outline
+    class: typcn-arrow-down-outline
     code: "0xe007"
     match: "arrow down outline"
-  - name: "arrow-down-thick"
+  - name: Arrow down thick
+    class: typcn-arrow-down-thick
     code: "0xe008"
     match: "arrow down thick"
-  - name: "arrow-down"
+  - name: Arrow down
+    class: typcn-arrow-down
     code: "0xe009"
     match: "arrow down"
-  - name: "arrow-forward-outline"
+  - name: Arrow forward outline
+    class: typcn-arrow-forward-outline
     code: "0xe00a"
     match: "arrow forward outline"
-  - name: "arrow-forward"
+  - name: Arrow forward
+    class: typcn-arrow-forward
     code: "0xe00b"
     match: "arrow forward"
-  - name: "arrow-left-outline"
+  - name: Arrow left outline
+    class: typcn-arrow-left-outline
     code: "0xe00c"
     match: "arrow left outline"
-  - name: "arrow-left-thick"
+  - name: Arrow left thick
+    class: typcn-arrow-left-thick
     code: "0xe00d"
     match: "arrow left thick"
-  - name: "arrow-left"
+  - name: Arrow left
+    class: typcn-arrow-left
     code: "0xe00e"
     match: "arrow left"
-  - name: "arrow-loop-outline"
+  - name: Arrow loop outline
+    class: typcn-arrow-loop-outline
     code: "0xe00f"
     match: "arrow loop outline"
-  - name: "arrow-loop"
+  - name: Arrow loop
+    class: typcn-arrow-loop
     code: "0xe010"
     match: "arrow loop"
-  - name: "arrow-maximise-outline"
+  - name: Arrow maximise outline
+    class: typcn-arrow-maximise-outline
     code: "0xe011"
     match: "arrow maximise outline"
-  - name: "arrow-maximise"
+  - name: Arrow maximise
+    class: typcn-arrow-maximise
     code: "0xe012"
     match: "arrow maximise"
-  - name: "arrow-minimise-outline"
+  - name: Arrow minimise outline
+    class: typcn-arrow-minimise-outline
     code: "0xe013"
     match: "arrow minimise outline"
-  - name: "arrow-minimise"
+  - name: Arrow minimise
+    class: typcn-arrow-minimise
     code: "0xe014"
     match: "arrow minimise"
-  - name: "arrow-move-outline"
+  - name: Arrow move outline
+    class: typcn-arrow-move-outline
     code: "0xe015"
     match: "arrow move outline"
-  - name: "arrow-move"
+  - name: Arrow move
+    class: typcn-arrow-move
     code: "0xe016"
     match: "arrow move"
-  - name: "arrow-repeat-outline"
+  - name: Arrow repeat outline
+    class: typcn-arrow-repeat-outline
     code: "0xe017"
     match: "arrow repeat outline"
-  - name: "arrow-repeat"
+  - name: Arrow repeat
+    class: typcn-arrow-repeat
     code: "0xe018"
     match: "arrow repeat"
-  - name: "arrow-right-outline"
+  - name: Arrow right outline
+    class: typcn-arrow-right-outline
     code: "0xe019"
     match: "arrow right outline"
-  - name: "arrow-right-thick"
+  - name: Arrow right thick
+    class: typcn-arrow-right-thick
     code: "0xe01a"
     match: "arrow right thick"
-  - name: "arrow-right"
+  - name: Arrow right
+    class: typcn-arrow-right
     code: "0xe01b"
     match: "arrow right"
-  - name: "arrow-shuffle"
+  - name: Arrow shuffle
+    class: typcn-arrow-shuffle
     code: "0xe01c"
     match: "arrow shuffle"
-  - name: "arrow-sorted-down"
+  - name: Arrow sorted down
+    class: typcn-arrow-sorted-down
     code: "0xe01d"
     match: "arrow sorted down"
-  - name: "arrow-sorted-up"
+  - name: Arrow sorted up
+    class: typcn-arrow-sorted-up
     code: "0xe01e"
     match: "arrow sorted up"
-  - name: "arrow-sync-outline"
+  - name: Arrow sync outline
+    class: typcn-arrow-sync-outline
     code: "0xe01f"
     match: "arrow sync outline"
-  - name: "arrow-sync"
+  - name: Arrow sync
+    class: typcn-arrow-sync
     code: "0xe020"
     match: "arrow sync"
-  - name: "arrow-unsorted"
+  - name: Arrow unsorted
+    class: typcn-arrow-unsorted
     code: "0xe021"
     match: "arrow unsorted"
-  - name: "arrow-up-outline"
+  - name: Arrow up outline
+    class: typcn-arrow-up-outline
     code: "0xe022"
     match: "arrow up outline"
-  - name: "arrow-up-thick"
+  - name: Arrow up thick
+    class: typcn-arrow-up-thick
     code: "0xe023"
     match: "arrow up thick"
-  - name: "arrow-up"
+  - name: Arrow up
+    class: typcn-arrow-up
     code: "0xe024"
     match: "arrow up"
-  - name: "at"
+  - name: At
+    class: typcn-at
     code: "0xe025"
     match: "at"
-  - name: "attachment-outline"
+  - name: Attachment outline
+    class: typcn-attachment-outline
     code: "0xe026"
     match: "attachment outline"
-  - name: "attachment"
+  - name: Attachment
+    class: typcn-attachment
     code: "0xe027"
     match: "attachment"
-  - name: "backspace-outline"
+  - name: Backspace outline
+    class: typcn-backspace-outline
     code: "0xe028"
     match: "delete backspace outline"
-  - name: "backspace"
+  - name: Backspace
+    class: typcn-backspace
     code: "0xe029"
     match: "delete backspace"
-  - name: "battery-charge"
+  - name: Battery charge
+    class: typcn-battery-charge
     code: "0xe02a"
     match: "power battery charge"
-  - name: "battery-full"
+  - name: Battery full
+    class: typcn-battery-full
     code: "0xe02b"
     match: "power battery full"
-  - name: "battery-high"
+  - name: Battery high
+    class: typcn-battery-high
     code: "0xe02c"
     match: "power battery high"
-  - name: "battery-low"
+  - name: Battery low
+    class: typcn-battery-low
     code: "0xe02d"
     match: "power battery low"
-  - name: "battery-mid"
+  - name: Battery mid
+    class: typcn-battery-mid
     code: "0xe02e"
     match: "power battery mid"
-  - name: "beaker"
+  - name: Beaker
+    class: typcn-beaker
     code: "0xe02f"
     match: "lab beta experiment beaker"
-  - name: "beer"
+  - name: Beer
+    class: typcn-beer
     code: "0xe030"
     match: "ale lager beer"
-  - name: "bell"
+  - name: Bell
+    class: typcn-bell
     code: "0xe031"
     match: "tone alarm bell"
-  - name: "book"
+  - name: Book
+    class: typcn-book
     code: "0xe032"
     match: "book"
-  - name: "bookmark"
+  - name: Bookmark
+    class: typcn-bookmark
     code: "0xe033"
     match: "banner flag bookmark"
-  - name: "briefcase"
+  - name: Briefcase
+    class: typcn-briefcase
     code: "0xe034"
     match: "briefcase"
-  - name: "brush"
+  - name: Brush
+    class: typcn-brush
     code: "0xe035"
     match: "brush"
-  - name: "business-card"
+  - name: Business card
+    class: typcn-business-card
     code: "0xe036"
     match: "id business card"
-  - name: "calculator"
+  - name: Calculator
+    class: typcn-calculator
     code: "0xe037"
     match: "calculator"
-  - name: "calendar-outline"
+  - name: Calendar outline
+    class: typcn-calendar-outline
     code: "0xe038"
     match: "calendar outline"
-  - name: "calendar"
+  - name: Calendar
+    class: typcn-calendar
     code: "0xe039"
     match: "calendar"
-  - name: "camera-outline"
+  - name: Camera outline
+    class: typcn-camera-outline
     code: "0xe03a"
     match: "camera outline"
-  - name: "camera"
+  - name: Camera
+    class: typcn-camera
     code: "0xe03b"
     match: "photo camera"
-  - name: "cancel-outline"
+  - name: Cancel outline
+    class: typcn-cancel-outline
     code: "0xe03c"
     match: "photo cancel outline"
-  - name: "cancel"
+  - name: Cancel
+    class: typcn-cancel
     code: "0xe03d"
     match: "cancel"
-  - name: "chart-area-outline"
+  - name: Chart area outline
+    class: typcn-chart-area-outline
     code: "0xe03e"
     match: "graph chart area outline"
-  - name: "chart-area"
+  - name: Chart area
+    class: typcn-chart-area
     code: "0xe03f"
     match: "graph chart area"
-  - name: "chart-bar-outline"
+  - name: Chart bar outline
+    class: typcn-chart-bar-outline
     code: "0xe040"
     match: "graph chart bar outline"
-  - name: "chart-bar"
+  - name: Chart bar
+    class: typcn-chart-bar
     code: "0xe041"
     match: "graph chart bar"
-  - name: "chart-line-outline"
+  - name: Chart line outline
+    class: typcn-chart-line-outline
     code: "0xe042"
     match: "graph chart line outline"
-  - name: "chart-line"
+  - name: Chart line
+    class: typcn-chart-line
     code: "0xe043"
     match: "graph chart line"
-  - name: "chart-pie-outline"
+  - name: Chart pie outline
+    class: typcn-chart-pie-outline
     code: "0xe044"
     match: "graph chart pie outline"
-  - name: "chart-pie"
+  - name: Chart pie
+    class: typcn-chart-pie
     code: "0xe045"
     match: "graph chart pie"
-  - name: "chevron-left-outline"
+  - name: Chevron left outline
+    class: typcn-chevron-left-outline
     code: "0xe046"
     match: "less than chevron left outline"
-  - name: "chevron-left"
+  - name: Chevron left
+    class: typcn-chevron-left
     code: "0xe047"
     match: "less than chevron left"
-  - name: "chevron-right-outline"
+  - name: Chevron right outline
+    class: typcn-chevron-right-outline
     code: "0xe048"
     match: "greater than chevron right outline"
-  - name: "chevron-right"
+  - name: Chevron right
+    class: typcn-chevron-right
     code: "0xe049"
     match: "greater than chevron right"
-  - name: "clipboard"
+  - name: Clipboard
+    class: typcn-clipboard
     code: "0xe04a"
     match: "copy clipboard"
-  - name: "cloud-storage"
+  - name: Cloud storage
+    class: typcn-cloud-storage
     code: "0xe04b"
     match: "data upload cloud storage"
-  - name: "cloud-storage-outline"
+  - name: Cloud storage outline
+    class: typcn-cloud-storage-outline
     code: "0xe054"
     match: "data upload cloud storage outline"
-  - name: "code-outline"
+  - name: Code outline
+    class: typcn-code-outline
     code: "0xe04c"
     match: "tag code outline"
-  - name: "code"
+  - name: Code
+    class: typcn-code
     code: "0xe04d"
     match: "tag code"
-  - name: "coffee"
+  - name: Coffee
+    class: typcn-coffee
     code: "0xe04e"
     match: "beverage coffee"
-  - name: "cog-outline"
+  - name: Cog outline
+    class: typcn-cog-outline
     code: "0xe04f"
     match: "settings cog outline"
-  - name: "cog"
+  - name: Cog
+    class: typcn-cog
     code: "0xe050"
     match: "settings cog"
-  - name: "compass"
+  - name: Compass
+    class: typcn-compass
     code: "0xe051"
     match: "safari compass"
-  - name: "contacts"
+  - name: Contacts
+    class: typcn-contacts
     code: "0xe052"
     match: "address book contacts"
-  - name: "credit-card"
+  - name: Credit card
+    class: typcn-credit-card
     code: "0xe053"
     match: "payment credit card"
-  - name: "css3"
+  - name: Css3
+    class: typcn-css3
     code: "0xe055"
     match: "css3"
-  - name: "database"
+  - name: Database
+    class: typcn-database
     code: "0xe056"
     match: "db database"
-  - name: "delete-outline"
+  - name: Delete outline
+    class: typcn-delete-outline
     code: "0xe057"
     match: "cross close delete outline"
-  - name: "delete"
+  - name: Delete
+    class: typcn-delete
     code: "0xe058"
     match: "cross close delete"
-  - name: "device-desktop"
+  - name: Device desktop
+    class: typcn-device-desktop
     code: "0xe059"
     match: "pc mac device desktop"
-  - name: "device-laptop"
+  - name: Device laptop
+    class: typcn-device-laptop
     code: "0xe05a"
     match: "notebook macbook device laptop"
-  - name: "device-phone"
+  - name: Device phone
+    class: typcn-device-phone
     code: "0xe05b"
     match: "iphone device phone"
-  - name: "device-tablet"
+  - name: Device tablet
+    class: typcn-device-tablet
     code: "0xe05c"
     match: "ipad device tablet"
-  - name: "directions"
+  - name: Directions
+    class: typcn-directions
     code: "0xe05d"
     match: "directions"
-  - name: "divide-outline"
+  - name: Divide outline
+    class: typcn-divide-outline
     code: "0xe05e"
     match: "division divide outline"
-  - name: "divide"
+  - name: Divide
+    class: typcn-divide
     code: "0xe05f"
     match: "division divide"
-  - name: "document-add"
+  - name: Document add
+    class: typcn-document-add
     code: "0xe060"
     match: "file document add"
-  - name: "document-delete"
+  - name: Document delete
+    class: typcn-document-delete
     code: "0xe061"
     match: "file document delete"
-  - name: "document-text"
+  - name: Document text
+    class: typcn-document-text
     code: "0xe062"
     match: "file document text"
-  - name: "document"
+  - name: Document
+    class: typcn-document
     code: "0xe063"
     match: "file document"
-  - name: "download-outline"
+  - name: Download outline
+    class: typcn-download-outline
     code: "0xe064"
     match: "download outline"
-  - name: "download"
+  - name: Download
+    class: typcn-download
     code: "0xe065"
     match: "download"
-  - name: "dropbox"
+  - name: Dropbox
+    class: typcn-dropbox
     code: "0xe066"
     match: "dropbox"
-  - name: "edit"
+  - name: Edit
+    class: typcn-edit
     code: "0xe067"
     match: "pencil edit"
-  - name: "eject-outline"
+  - name: Eject outline
+    class: typcn-eject-outline
     code: "0xe068"
     match: "export log off out eject outline"
-  - name: "eject"
+  - name: Eject
+    class: typcn-eject
     code: "0xe069"
     match: "export log off out eject"
-  - name: "equals-outline"
+  - name: Equals outline
+    class: typcn-equals-outline
     code: "0xe06a"
     match: "equals outline"
-  - name: "equals"
+  - name: Equals
+    class: typcn-equals
     code: "0xe06b"
     match: "equals"
-  - name: "export-outline"
+  - name: Export outline
+    class: typcn-export-outline
     code: "0xe06c"
     match: "share export outline"
-  - name: "export"
+  - name: Export
+    class: typcn-export
     code: "0xe06d"
     match: "share export"
-  - name: "eye-outline"
+  - name: Eye outline
+    class: typcn-eye-outline
     code: "0xe06e"
     match: "view eye outline"
-  - name: "eye"
+  - name: Eye
+    class: typcn-eye
     code: "0xe06f"
     match: "view eye"
-  - name: "feather"
+  - name: Feather
+    class: typcn-feather
     code: "0xe070"
     match: "feather"
-  - name: "film"
+  - name: Film
+    class: typcn-film
     code: "0xe071"
     match: "strip film"
-  - name: "filter"
+  - name: Filter
+    class: typcn-filter
     code: "0xe072"
     match: "funnel refine filter"
-  - name: "flag-outline"
+  - name: Flag outline
+    class: typcn-flag-outline
     code: "0xe073"
     match: "flag outline"
-  - name: "flag"
+  - name: Flag
+    class: typcn-flag
     code: "0xe074"
     match: "flag"
-  - name: "flash-outline"
+  - name: Flash outline
+    class: typcn-flash-outline
     code: "0xe075"
     match: "power lightning flash outline"
-  - name: "flash"
+  - name: Flash
+    class: typcn-flash
     code: "0xe076"
     match: "power lightning flash"
-  - name: "flow-children"
+  - name: Flow children
+    class: typcn-flow-children
     code: "0xe077"
     match: "flow children"
-  - name: "flow-merge"
+  - name: Flow merge
+    class: typcn-flow-merge
     code: "0xe078"
     match: "flow merge"
-  - name: "flow-parallel"
+  - name: Flow parallel
+    class: typcn-flow-parallel
     code: "0xe079"
     match: "flow parallel"
-  - name: "flow-switch"
+  - name: Flow switch
+    class: typcn-flow-switch
     code: "0xe07a"
     match: "flow switch"
-  - name: "folder-add"
+  - name: Folder add
+    class: typcn-folder-add
     code: "0xe07b"
     match: "directory folder add"
-  - name: "folder-delete"
+  - name: Folder delete
+    class: typcn-folder-delete
     code: "0xe07c"
     match: "directory folder delete"
-  - name: "folder-open"
+  - name: Folder open
+    class: typcn-folder-open
     code: "0xe07d"
     match: "directory folder open"
-  - name: "folder"
+  - name: Folder
+    class: typcn-folder
     code: "0xe07e"
     match: "directory folder"
-  - name: "gift"
+  - name: Gift
+    class: typcn-gift
     code: "0xe07f"
     match: "present gift"
-  - name: "globe-outline"
+  - name: Globe outline
+    class: typcn-globe-outline
     code: "0xe080"
     match: "globe outline"
-  - name: "globe"
+  - name: Globe
+    class: typcn-globe
     code: "0xe081"
     match: "globe"
-  - name: "group-outline"
+  - name: Group outline
+    class: typcn-group-outline
     code: "0xe082"
     match: "users group outline"
-  - name: "group"
+  - name: Group
+    class: typcn-group
     code: "0xe083"
     match: "users group"
-  - name: "headphones"
+  - name: Headphones
+    class: typcn-headphones
     code: "0xe084"
     match: "headphones"
-  - name: "heart-full-outline"
+  - name: Heart full outline
+    class: typcn-heart-full-outline
     code: "0xe085"
     match: "like favourite love heart full outline"
-  - name: "heart-half-outline"
+  - name: Heart half outline
+    class: typcn-heart-half-outline
     code: "0xe086"
     match: "like favourite love heart half outline"
-  - name: "heart-outline"
+  - name: Heart outline
+    class: typcn-heart-outline
     code: "0xe087"
     match: "like favourite love heart outline"
-  - name: "heart"
+  - name: Heart
+    class: typcn-heart
     code: "0xe088"
     match: "like favourite love heart"
-  - name: "home-outline"
+  - name: Home outline
+    class: typcn-home-outline
     code: "0xe089"
     match: "home outline"
-  - name: "home"
+  - name: Home
+    class: typcn-home
     code: "0xe08a"
     match: "home"
-  - name: "html5"
+  - name: Html5
+    class: typcn-html5
     code: "0xe08b"
     match: "html5"
-  - name: "image-outline"
+  - name: Image outline
+    class: typcn-image-outline
     code: "0xe08c"
     match: "picture photo image outline"
-  - name: "image"
+  - name: Image
+    class: typcn-image
     code: "0xe08d"
     match: "picture photo image"
-  - name: "infinity-outline"
+  - name: Infinity outline
+    class: typcn-infinity-outline
     code: "0xe08e"
     match: "infinity outline"
-  - name: "infinity"
+  - name: Infinity
+    class: typcn-infinity
     code: "0xe08f"
     match: "infinity"
-  - name: "info-large-outline"
+  - name: Info large outline
+    class: typcn-info-large-outline
     code: "0xe090"
     match: "info large outline"
-  - name: "info-large"
+  - name: Info large
+    class: typcn-info-large
     code: "0xe091"
     match: "info large"
-  - name: "info-outline"
+  - name: Info outline
+    class: typcn-info-outline
     code: "0xe092"
     match: "info outline"
-  - name: "info"
+  - name: Info
+    class: typcn-info
     code: "0xe093"
     match: "info"
-  - name: "input-checked-outline"
+  - name: Input checked outline
+    class: typcn-input-checked-outline
     code: "0xe094"
     match: "tick correct input checked outline"
-  - name: "input-checked"
+  - name: Input checked
+    class: typcn-input-checked
     code: "0xe095"
     match: "tick correct input checked"
-  - name: "key-outline"
+  - name: Key outline
+    class: typcn-key-outline
     code: "0xe096"
     match: "password login key outline"
-  - name: "key"
+  - name: Key
+    class: typcn-key
     code: "0xe097"
     match: "password login key"
-  - name: "keyboard"
+  - name: Keyboard
+    class: typcn-keyboard
     code: "0xe098"
     match: "keyboard"
-  - name: "leaf"
+  - name: Leaf
+    class: typcn-leaf
     code: "0xe099"
     match: "leaf"
-  - name: "lightbulb"
+  - name: Lightbulb
+    class: typcn-lightbulb
     code: "0xe09a"
     match: "idea lightbulb"
-  - name: "link-outline"
+  - name: Link outline
+    class: typcn-link-outline
     code: "0xe09b"
     match: "chain link outline"
-  - name: "link"
+  - name: Link
+    class: typcn-link
     code: "0xe09c"
     match: "chain link"
-  - name: "location-arrow-outline"
+  - name: Location arrow outline
+    class: typcn-location-arrow-outline
     code: "0xe09d"
     match: "direction location arrow outline"
-  - name: "location-arrow"
+  - name: Location arrow
+    class: typcn-location-arrow
     code: "0xe09e"
     match: "direction location arrow"
-  - name: "location-outline"
+  - name: Location outline
+    class: typcn-location-outline
     code: "0xe09f"
     match: "map pin location outline"
-  - name: "location"
+  - name: Location
+    class: typcn-location
     code: "0xe0a0"
     match: "map pin location"
-  - name: "lock-closed-outline"
+  - name: Lock closed outline
+    class: typcn-lock-closed-outline
     code: "0xe0a1"
     match: "locked lock closed outline"
-  - name: "lock-closed"
+  - name: Lock closed
+    class: typcn-lock-closed
     code: "0xe0a2"
     match: "locked lock closed"
-  - name: "lock-open-outline"
+  - name: Lock open outline
+    class: typcn-lock-open-outline
     code: "0xe0a3"
     match: "lock open outline"
-  - name: "lock-open"
+  - name: Lock open
+    class: typcn-lock-open
     code: "0xe0a4"
     match: "lock open"
-  - name: "mail"
+  - name: Mail
+    class: typcn-mail
     code: "0xe0a5"
     match: "email mail"
-  - name: "map"
+  - name: Map
+    class: typcn-map
     code: "0xe0a6"
     match: "brochure pamphlet map"
-  - name: "media-eject-outline"
+  - name: Media eject outline
+    class: typcn-media-eject-outline
     code: "0xe0a7"
     match: "media eject outline"
-  - name: "media-eject"
+  - name: Media eject
+    class: typcn-media-eject
     code: "0xe0a8"
     match: "media eject"
-  - name: "media-fast-forward-outline"
+  - name: Media fast forward outline
+    class: typcn-media-fast-forward-outline
     code: "0xe0a9"
     match: "media fast forward outline"
-  - name: "media-fast-forward"
+  - name: Media fast forward
+    class: typcn-media-fast-forward
     code: "0xe0aa"
     match: "media fast forward"
-  - name: "media-pause-outline"
+  - name: Media pause outline
+    class: typcn-media-pause-outline
     code: "0xe0ab"
     match: "media pause outline"
-  - name: "media-pause"
+  - name: Media pause
+    class: typcn-media-pause
     code: "0xe0ac"
     match: "media pause"
-  - name: "media-play-outline"
+  - name: Media play outline
+    class: typcn-media-play-outline
     code: "0xe0ad"
     match: "media play outline"
-  - name: "media-play-reverse-outline"
+  - name: Media play reverse outline
+    class: typcn-media-play-reverse-outline
     code: "0xe0ae"
     match: "media play reverse outline"
-  - name: "media-play-reverse"
+  - name: Media play reverse
+    class: typcn-media-play-reverse
     code: "0xe0af"
     match: "media play reverse"
-  - name: "media-play"
+  - name: Media play
+    class: typcn-media-play
     code: "0xe0b0"
     match: "media play"
-  - name: "media-record-outline"
+  - name: Media record outline
+    class: typcn-media-record-outline
     code: "0xe0b1"
     match: "media record outline"
-  - name: "media-record"
+  - name: Media record
+    class: typcn-media-record
     code: "0xe0b2"
     match: "media record"
-  - name: "media-rewind-outline"
+  - name: Media rewind outline
+    class: typcn-media-rewind-outline
     code: "0xe0b3"
     match: "media rewind outline"
-  - name: "media-rewind"
+  - name: Media rewind
+    class: typcn-media-rewind
     code: "0xe0b4"
     match: "media rewind"
-  - name: "media-stop-outline"
+  - name: Media stop outline
+    class: typcn-media-stop-outline
     code: "0xe0b5"
     match: "media stop outline"
-  - name: "media-stop"
+  - name: Media stop
+    class: typcn-media-stop
     code: "0xe0b6"
     match: "media stop"
-  - name: "message-typing"
+  - name: Message typing
+    class: typcn-message-typing
     code: "0xe0b7"
     match: "msg chat message typing"
-  - name: "message"
+  - name: Message
+    class: typcn-message
     code: "0xe0b8"
     match: "msg chat message"
-  - name: "messages"
+  - name: Messages
+    class: typcn-messages
     code: "0xe0b9"
     match: "msg chat messages"
-  - name: "microphone-outline"
+  - name: Microphone outline
+    class: typcn-microphone-outline
     code: "0xe0ba"
     match: "record microphone outline"
-  - name: "microphone"
+  - name: Microphone
+    class: typcn-microphone
     code: "0xe0bb"
     match: "record microphone"
-  - name: "minus-outline"
+  - name: Minus outline
+    class: typcn-minus-outline
     code: "0xe0bc"
     match: "subtract minus outline"
-  - name: "minus"
+  - name: Minus
+    class: typcn-minus
     code: "0xe0bd"
     match: "subtract minus"
-  - name: "mortar-board"
+  - name: Mortar board
+    class: typcn-mortar-board
     code: "0xe0be"
     match: "mortar board"
-  - name: "news"
+  - name: News
+    class: typcn-news
     code: "0xe0bf"
     match: "article news"
-  - name: "notes-outline"
+  - name: Notes outline
+    class: typcn-notes-outline
     code: "0xe0c0"
     match: "music notes outline"
-  - name: "notes"
+  - name: Notes
+    class: typcn-notes
     code: "0xe0c1"
     match: "music notes"
-  - name: "pen"
+  - name: Pen
+    class: typcn-pen
     code: "0xe0c2"
     match: "write compose pen"
-  - name: "pencil"
+  - name: Pencil
+    class: typcn-pencil
     code: "0xe0c3"
     match: "write compose pencil"
-  - name: "phone-outline"
+  - name: Phone outline
+    class: typcn-phone-outline
     code: "0xe0c4"
     match: "call ring phone outline"
-  - name: "phone"
+  - name: Phone
+    class: typcn-phone
     code: "0xe0c5"
     match: "call ring phone"
-  - name: "pi-outline"
+  - name: Pi outline
+    class: typcn-pi-outline
     code: "0xe0c6"
     match: "pi outline"
-  - name: "pi"
+  - name: Pi
+    class: typcn-pi
     code: "0xe0c7"
     match: "pi"
-  - name: "pin-outline"
+  - name: Pin outline
+    class: typcn-pin-outline
     code: "0xe0c8"
     match: "pin outline"
-  - name: "pin"
+  - name: Pin
+    class: typcn-pin
     code: "0xe0c9"
     match: "pin"
-  - name: "pipette"
+  - name: Pipette
+    class: typcn-pipette
     code: "0xe0ca"
     match: "picker pipette"
-  - name: "plane-outline"
+  - name: Plane outline
+    class: typcn-plane-outline
     code: "0xe0cb"
     match: "flight plane outline"
-  - name: "plane"
+  - name: Plane
+    class: typcn-plane
     code: "0xe0cc"
     match: "flight plane"
-  - name: "plug"
+  - name: Plug
+    class: typcn-plug
     code: "0xe0cd"
     match: "connect plug"
-  - name: "plus-outline"
+  - name: Plus outline
+    class: typcn-plus-outline
     code: "0xe0ce"
     match: "add plus outline"
-  - name: "plus"
+  - name: Plus
+    class: typcn-plus
     code: "0xe0cf"
     match: "add plus"
-  - name: "point-of-interest-outline"
+  - name: Point of interest outline
+    class: typcn-point-of-interest-outline
     code: "0xe0d0"
     match: "command point of interest outline"
-  - name: "point-of-interest"
+  - name: Point of interest
+    class: typcn-point-of-interest
     code: "0xe0d1"
     match: "command point of interest"
-  - name: "power-outline"
+  - name: Power outline
+    class: typcn-power-outline
     code: "0xe0d2"
     match: "on off power outline"
-  - name: "power"
+  - name: Power
+    class: typcn-power
     code: "0xe0d3"
     match: "on off power"
-  - name: "printer"
+  - name: Printer
+    class: typcn-printer
     code: "0xe0d4"
     match: "fax printer"
-  - name: "puzzle-outline"
+  - name: Puzzle outline
+    class: typcn-puzzle-outline
     code: "0xe0d5"
     match: "jigsaw puzzle outline"
-  - name: "puzzle"
+  - name: Puzzle
+    class: typcn-puzzle
     code: "0xe0d6"
     match: "jigsaw puzzle"
-  - name: "radar-outline"
+  - name: Radar outline
+    class: typcn-radar-outline
     code: "0xe0d7"
     match: "position radar outline"
-  - name: "radar"
+  - name: Radar
+    class: typcn-radar
     code: "0xe0d8"
     match: "position radar"
-  - name: "refresh-outline"
+  - name: Refresh outline
+    class: typcn-refresh-outline
     code: "0xe0d9"
     match: "arrow refresh outline"
-  - name: "refresh"
+  - name: Refresh
+    class: typcn-refresh
     code: "0xe0da"
     match: "arrow refresh"
-  - name: "rss-outline"
+  - name: Rss outline
+    class: typcn-rss-outline
     code: "0xe0db"
     match: "feed rss outline"
-  - name: "rss"
+  - name: Rss
+    class: typcn-rss
     code: "0xe0dc"
     match: "feed rss"
-  - name: "scissors-outline"
+  - name: Scissors outline
+    class: typcn-scissors-outline
     code: "0xe0dd"
     match: "cut scissors outline"
-  - name: "scissors"
+  - name: Scissors
+    class: typcn-scissors
     code: "0xe0de"
     match: "cut scissors"
-  - name: "shopping-bag"
+  - name: Shopping bag
+    class: typcn-shopping-bag
     code: "0xe0df"
     match: "shopping bag"
-  - name: "shopping-cart"
+  - name: Shopping cart
+    class: typcn-shopping-cart
     code: "0xe0e0"
     match: "shopping cart"
-  - name: "social-at-circular"
+  - name: Social at circular
+    class: typcn-social-at-circular
     code: "0xe0e1"
     match: "@ mail social at circular"
-  - name: "social-dribbble-circular"
+  - name: Social dribbble circular
+    class: typcn-social-dribbble-circular
     code: "0xe0e2"
     match: "social dribbble circular"
-  - name: "social-dribbble"
+  - name: Social dribbble
+    class: typcn-social-dribbble
     code: "0xe0e3"
     match: "social dribbble"
-  - name: "social-facebook-circular"
+  - name: Social facebook circular
+    class: typcn-social-facebook-circular
     code: "0xe0e4"
     match: "social facebook circular"
-  - name: "social-facebook"
+  - name: Social facebook
+    class: typcn-social-facebook
     code: "0xe0e5"
     match: "social facebook"
-  - name: "social-flickr-circular"
+  - name: Social flickr circular
+    class: typcn-social-flickr-circular
     code: "0xe0e6"
     match: "social flickr circular"
-  - name: "social-flickr"
+  - name: Social flickr
+    class: typcn-social-flickr
     code: "0xe0e7"
     match: "social flickr"
-  - name: "social-github-circular"
+  - name: Social github circular
+    class: typcn-social-github-circular
     code: "0xe0e8"
     match: "social github circular"
-  - name: "social-github"
+  - name: Social github
+    class: typcn-social-github
     code: "0xe0e9"
     match: "social github"
-  - name: "social-google-plus-circular"
+  - name: Social google plus circular
+    class: typcn-social-google-plus-circular
     code: "0xe0ea"
     match: "social google plus circular"
-  - name: "social-google-plus"
+  - name: Social google plus
+    class: typcn-social-google-plus
     code: "0xe0eb"
     match: "social google plus"
-  - name: "social-instagram-circular"
+  - name: Social instagram circular
+    class: typcn-social-instagram-circular
     code: "0xe0ec"
     match: "social instagram circular"
-  - name: "social-instagram"
+  - name: Social instagram
+    class: typcn-social-instagram
     code: "0xe0ed"
     match: "social instagram"
-  - name: "social-last-fm-circular"
+  - name: Social last fm circular
+    class: typcn-social-last-fm-circular
     code: "0xe0ee"
     match: "social last fm circular"
-  - name: "social-last-fm"
+  - name: Social last fm
+    class: typcn-social-last-fm
     code: "0xe0ef"
     match: "social last fm"
-  - name: "social-linkedin-circular"
+  - name: Social linkedin circular
+    class: typcn-social-linkedin-circular
     code: "0xe0f0"
     match: "social linkedin circular"
-  - name: "social-linkedin"
+  - name: Social linkedin
+    class: typcn-social-linkedin
     code: "0xe0f1"
     match: "social linkedin"
-  - name: "social-pinterest-circular"
+  - name: Social pinterest circular
+    class: typcn-social-pinterest-circular
     code: "0xe0f2"
     match: "social pinterest circular"
-  - name: "social-pinterest"
+  - name: Social pinterest
+    class: typcn-social-pinterest
     code: "0xe0f3"
     match: "social pinterest"
-  - name: "social-skype-outline"
+  - name: Social skype outline
+    class: typcn-social-skype-outline
     code: "0xe0f4"
     match: "social skype outline"
-  - name: "social-skype"
+  - name: Social skype
+    class: typcn-social-skype
     code: "0xe0f5"
     match: "social skype"
-  - name: "social-tumbler-circular"
+  - name: Social tumbler circular
+    class: typcn-social-tumbler-circular
     code: "0xe0f6"
     match: "social tumbler circular"
-  - name: "social-tumbler"
+  - name: Social tumbler
+    class: typcn-social-tumbler
     code: "0xe0f7"
     match: "social tumbler"
-  - name: "social-twitter-circular"
+  - name: Social twitter circular
+    class: typcn-social-twitter-circular
     code: "0xe0f8"
     match: "social twitter circular"
-  - name: "social-twitter"
+  - name: Social twitter
+    class: typcn-social-twitter
     code: "0xe0f9"
     match: "social twitter"
-  - name: "social-vimeo-circular"
+  - name: Social vimeo circular
+    class: typcn-social-vimeo-circular
     code: "0xe0fa"
     match: "social vimeo circular"
-  - name: "social-vimeo"
+  - name: Social vimeo
+    class: typcn-social-vimeo
     code: "0xe0fb"
     match: "social vimeo"
-  - name: "social-youtube-circular"
+  - name: Social youtube circular
+    class: typcn-social-youtube-circular
     code: "0xe0fc"
     match: "social youtube circular"
-  - name: "social-youtube"
+  - name: Social youtube
+    class: typcn-social-youtube
     code: "0xe0fd"
     match: "social youtube"
-  - name: "sort-alphabetically-outline"
+  - name: Sort alphabetically outline
+    class: typcn-sort-alphabetically-outline
     code: "0xe0fe"
     match: "a-z sort alphabetically outline"
-  - name: "sort-alphabetically"
+  - name: Sort alphabetically
+    class: typcn-sort-alphabetically
     code: "0xe0ff"
     match: "a-z sort alphabetically"
-  - name: "sort-numerically-outline"
+  - name: Sort numerically outline
+    class: typcn-sort-numerically-outline
     code: "0xe100"
     match: "123 sort numerically outline"
-  - name: "sort-numerically"
+  - name: Sort numerically
+    class: typcn-sort-numerically
     code: "0xe101"
     match: "123 sort numerically"
-  - name: "spanner-outline"
+  - name: Spanner outline
+    class: typcn-spanner-outline
     code: "0xe102"
     match: "settings spanner outline"
-  - name: "spanner"
+  - name: Spanner
+    class: typcn-spanner
     code: "0xe103"
     match: "settings spanner"
-  - name: "spiral"
+  - name: Spiral
+    class: typcn-spiral
     code: "0xe104"
     match: "curve spiral"
-  - name: "star-full-outline"
+  - name: Star full outline
+    class: typcn-star-full-outline
     code: "0xe105"
     match: "like favourite love rate star full outline"
-  - name: "star-half-outline"
+  - name: Star half outline
+    class: typcn-star-half-outline
     code: "0xe106"
     match: "like favourite love rate star half outline"
-  - name: "star-half"
+  - name: Star half
+    class: typcn-star-half
     code: "0xe107"
     match: "like favourite love rate star half"
-  - name: "star-outline"
+  - name: Star outline
+    class: typcn-star-outline
     code: "0xe108"
     match: "like favourite love rate star outline"
-  - name: "star"
+  - name: Star
+    class: typcn-star
     code: "0xe109"
     match: "like favourite love rate star"
-  - name: "starburst-outline"
+  - name: Starburst outline
+    class: typcn-starburst-outline
     code: "0xe10a"
     match: "banner ribbon starburst outline"
-  - name: "starburst"
+  - name: Starburst
+    class: typcn-starburst
     code: "0xe10b"
     match: "banner ribbon starburst"
-  - name: "stopwatch"
+  - name: Stopwatch
+    class: typcn-stopwatch
     code: "0xe10c"
     match: "time stopwatch"
-  - name: "support"
+  - name: Support
+    class: typcn-support
     code: "0xe10d"
     match: "life ring support"
-  - name: "tabs-outline"
+  - name: Tabs outline
+    class: typcn-tabs-outline
     code: "0xe10e"
     match: "expand merge tabs outline"
-  - name: "tag"
+  - name: Tag
+    class: typcn-tag
     code: "0xe10f"
     match: "tag"
-  - name: "tags"
+  - name: Tags
+    class: typcn-tags
     code: "0xe110"
     match: "tags"
-  - name: "th-large-outline"
+  - name: Th large outline
+    class: typcn-th-large-outline
     code: "0xe111"
     match: "square grid th large outline"
-  - name: "th-large"
+  - name: Th large
+    class: typcn-th-large
     code: "0xe112"
     match: "square grid th large"
-  - name: "th-list-outline"
+  - name: Th list outline
+    class: typcn-th-list-outline
     code: "0xe113"
     match: "thumbnail th list outline"
-  - name: "th-list"
+  - name: Th list
+    class: typcn-th-list
     code: "0xe114"
     match: "thumbnail th list"
-  - name: "th-menu-outline"
+  - name: Th menu outline
+    class: typcn-th-menu-outline
     code: "0xe115"
     match: "th menu outline"
-  - name: "th-menu"
+  - name: Th menu
+    class: typcn-th-menu
     code: "0xe116"
     match: "th menu"
-  - name: "th-small-outline"
+  - name: Th small outline
+    class: typcn-th-small-outline
     code: "0xe117"
     match: "square grid th small outline"
-  - name: "th-small"
+  - name: Th small
+    class: typcn-th-small
     code: "0xe118"
     match: "square grid th small"
-  - name: "thermometer"
+  - name: Thermometer
+    class: typcn-thermometer
     code: "0xe119"
     match: "temperature thermometer"
-  - name: "thumbs-down"
+  - name: Thumbs down
+    class: typcn-thumbs-down
     code: "0xe11a"
     match: "dislike thumbs down"
-  - name: "thumbs-ok"
+  - name: Thumbs ok
+    class: typcn-thumbs-ok
     code: "0xe11b"
     match: "average thumbs ok"
-  - name: "thumbs-up"
+  - name: Thumbs up
+    class: typcn-thumbs-up
     code: "0xe11c"
     match: "like thumbs up"
-  - name: "tick-outline"
+  - name: Tick outline
+    class: typcn-tick-outline
     code: "0xe11d"
     match: "ok done correct tick outline"
-  - name: "tick"
+  - name: Tick
+    class: typcn-tick
     code: "0xe11e"
     match: "ok done correct tick"
-  - name: "ticket"
+  - name: Ticket
+    class: typcn-ticket
     code: "0xe11f"
     match: "pass ticket"
-  - name: "time"
+  - name: Time
+    class: typcn-time
     code: "0xe120"
     match: "watch clock time"
-  - name: "times-outline"
+  - name: Times outline
+    class: typcn-times-outline
     code: "0xe121"
     match: "cross x times outline"
-  - name: "times"
+  - name: Times
+    class: typcn-times
     code: "0xe122"
     match: "cross x times"
-  - name: "trash"
+  - name: Trash
+    class: typcn-trash
     code: "0xe123"
     match: "garbage rubbish delete trash"
-  - name: "tree"
+  - name: Tree
+    class: typcn-tree
     code: "0xe124"
     match: "tree"
-  - name: "upload-outline"
+  - name: Upload outline
+    class: typcn-upload-outline
     code: "0xe125"
     match: "upload outline"
-  - name: "upload"
+  - name: Upload
+    class: typcn-upload
     code: "0xe126"
     match: "upload"
-  - name: "user-add-outline"
+  - name: User add outline
+    class: typcn-user-add-outline
     code: "0xe127"
     match: "person user add outline"
-  - name: "user-add"
+  - name: User add
+    class: typcn-user-add
     code: "0xe128"
     match: "person user add"
-  - name: "user-delete-outline"
+  - name: User delete outline
+    class: typcn-user-delete-outline
     code: "0xe129"
     match: "person user delete outline"
-  - name: "user-delete"
+  - name: User delete
+    class: typcn-user-delete
     code: "0xe12a"
     match: "person user delete"
-  - name: "user-outline"
+  - name: User outline
+    class: typcn-user-outline
     code: "0xe12b"
     match: "person user outline"
-  - name: "user"
+  - name: User
+    class: typcn-user
     code: "0xe12c"
     match: "person user"
-  - name: "vendor-android"
+  - name: Vendor android
+    class: typcn-vendor-android
     code: "0xe12d"
     match: "vendor android"
-  - name: "vendor-apple"
+  - name: Vendor apple
+    class: typcn-vendor-apple
     code: "0xe12e"
     match: "vendor apple"
-  - name: "vendor-microsoft"
+  - name: Vendor microsoft
+    class: typcn-vendor-microsoft
     code: "0xe12f"
     match: "vendor microsoft"
-  - name: "video-outline"
+  - name: Video outline
+    class: typcn-video-outline
     code: "0xe130"
     match: "video outline"
-  - name: "video"
+  - name: Video
+    class: typcn-video
     code: "0xe131"
     match: "video"
-  - name: "volume-down"
+  - name: Volume down
+    class: typcn-volume-down
     code: "0xe132"
     match: "sound volume down"
-  - name: "volume-mute"
+  - name: Volume mute
+    class: typcn-volume-mute
     code: "0xe133"
     match: "sound volume mute"
-  - name: "volume-up"
+  - name: Volume up
+    class: typcn-volume-up
     code: "0xe134"
     match: "sound volume up"
-  - name: "volume"
+  - name: Volume
+    class: typcn-volume
     code: "0xe135"
     match: "sound volume"
-  - name: "warning-outline"
+  - name: Warning outline
+    class: typcn-warning-outline
     code: "0xe136"
     match: "error alert warning outline"
-  - name: "warning"
+  - name: Warning
+    class: typcn-warning
     code: "0xe137"
     match: "error alert warning"
-  - name: "watch"
+  - name: Watch
+    class: typcn-watch
     code: "0xe138"
     match: "time watch"
-  - name: "waves-outline"
+  - name: Waves outline
+    class: typcn-waves-outline
     code: "0xe139"
     match: "waves outline"
-  - name: "waves"
+  - name: Waves
+    class: typcn-waves
     code: "0xe13a"
     match: "waves"
-  - name: "weather-cloudy"
+  - name: Weather cloudy
+    class: typcn-weather-cloudy
     code: "0xe13b"
     match: "weather cloudy"
-  - name: "weather-downpour"
+  - name: Weather downpour
+    class: typcn-weather-downpour
     code: "0xe13c"
     match: "weather downpour"
-  - name: "weather-night"
+  - name: Weather night
+    class: typcn-weather-night
     code: "0xe13d"
     match: "weather night"
-  - name: "weather-partly-sunny"
+  - name: Weather partly sunny
+    class: typcn-weather-partly-sunny
     code: "0xe13e"
     match: "weather partly sunny"
-  - name: "weather-shower"
+  - name: Weather shower
+    class: typcn-weather-shower
     code: "0xe13f"
     match: "weather shower"
-  - name: "weather-snow"
+  - name: Weather snow
+    class: typcn-weather-snow
     code: "0xe140"
     match: "weather snow"
-  - name: "weather-stormy"
+  - name: Weather stormy
+    class: typcn-weather-stormy
     code: "0xe141"
     match: "weather stormy"
-  - name: "weather-sunny"
+  - name: Weather sunny
+    class: typcn-weather-sunny
     code: "0xe142"
     match: "weather sunny"
-  - name: "weather-windy-cloudy"
+  - name: Weather windy cloudy
+    class: typcn-weather-windy-cloudy
     code: "0xe143"
     match: "weather windy cloudy"
-  - name: "weather-windy"
+  - name: Weather windy
+    class: typcn-weather-windy
     code: "0xe144"
     match: "weather windy"
-  - name: "wi-fi-outline"
+  - name: Wi fi outline
+    class: typcn-wi-fi-outline
     code: "0xe145"
     match: "internet connection wi-fi wifi outline"
-  - name: "wi-fi"
+  - name: Wi fi
+    class: typcn-wi-fi
     code: "0xe146"
     match: "internet connection wi-fi wifi"
-  - name: "wine"
+  - name: Wine
+    class: typcn-wine
     code: "0xe147"
     match: "drink beverage wine"
-  - name: "world-outline"
+  - name: World outline
+    class: typcn-world-outline
     code: "0xe148"
     match: "world outline"
-  - name: "world"
+  - name: World
+    class: typcn-world
     code: "0xe149"
     match: "world"
-  - name: "zoom-in-outline"
+  - name: Zoom in outline
+    class: typcn-zoom-in-outline
     code: "0xe14a"
     match: "zoom in outline"
-  - name: "zoom-in"
+  - name: Zoom in
+    class: typcn-zoom-in
     code: "0xe14b"
     match: "zoom in"
-  - name: "zoom-out-outline"
+  - name: Zoom out outline
+    class: typcn-zoom-out-outline
     code: "0xe14c"
     match: "zoom out outline"
-  - name: "zoom-out"
+  - name: Zoom out
+    class: typcn-zoom-out
     code: "0xe14d"
     match: "zoom out"
-  - name: "zoom-outline"
+  - name: Zoom outline
+    class: typcn-zoom-outline
     code: "0xe14e"
-    match: "zoom outline"
-  - name: "zoom"
+    match: "zoom search outline"
+  - name: Zoom
+    class: typcn-zoom
     code: "0xe14f"
-    match: "zoom "
+    match: "zoom search"

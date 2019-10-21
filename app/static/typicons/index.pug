@@ -8,51 +8,79 @@ block append config
   - page.description = "336 pixel perfect, all-purpose vector icons";
   - page.class += " page-typicons";
 
-block prepend description
-  include /partials/typicons/carbon
+block body
   link(rel="stylesheet" href="/fonts/typicons/typicons.css")
 
-block append article
-  .gallery.stretch(data-view="views/typicons")
-    #icon-container.gallery-item.flex-between.ph-lg.pv-xxl.bg-hl
-      .flex-grid.pv-sm.txt-center
-        for icon in project.icons
-          .icon(
-            data-name=icon.name
-            data-code=icon.code
-            data-match=icon.match
-          )
-            .typcn.icon-default(class=`typcn-${icon.name}`)
+  .content
+    .pv-xxl.content-wrap(style="padding-bottom: 2em")
+      include /partials/header
+      .col-wrap.pv-sm
+        .col-md
+          h1= page.title
 
-      .pv-sm
+          != typogr.typogrify(marked(project.desc))
+
+          if project.urls
+            for action, i in project.urls
+              if i > 0
+                | &ensp;&middot;&ensp;
+              a.btn-ul(href=action.link)
+                h4= action.text
+
+          if project.version
+            | &ensp;&middot;&ensp;
+
+            strong.txt-sm v&thinsp;
+              span.txt-uppercase #{project.version}
+
+        .col-md
+          include /partials/typicons/carbon
+
+  .notice.p-sm.bg-hl.bg-flat.txt-center
+    p.txt-lg
+      | Looking for a modern, lightweight font icon set?
+      = " "
+      a.btn-ul(href="/projects/microns-icon-font/")
+        strong Try microns.
+  section.page-typicons(data-view="views/icon-search" data-classname="typcn")
+    #icon-container.flex-between.ph-lg.pv-lg.bg-hl.bg-hl-dk
+      .content-wrap
         #icon-search-bar
-          input#icon-search.fl-l(type="text" placeholder="Search....")
+          input#icon-search.fl-l(type="text" placeholder="Search")
           label#icon-details.txt-ellipsis(for="icon-search")
             | Search for a specific icon by its name or keywords.
 
-    .gallery-item.flex-between.ph-lg.pv-xxl.bg-lt
-      .mx-md
-        :marked
-          # Typicons. 336 pixel perfect, all-purpose vector icons.
+        .icon-grid.flex-grid.pv-sm.txt-center
+          for icon in project.icons
+            .typcn.icon(
+              data-name=icon.name
+              data-class=icon.class
+              data-code=icon.code
+              data-match=[icon.name,icon.match].join(" ")
+              class=icon.class
+            )
 
-          <h2>
-            Typicons are free-to-use vector icons embedded in a webfont for use
-            in your user interfaces, whether it be on the web or in a native
-            application.
-          </h2>
+    .content-wrap.pv-xl
+      :marked
+        ## Typicons. 336 pixel perfect, all-purpose vector icons.
 
-          The set of icons are available on Github, with everything included
-          from the source files in SVG format to the minifed CSS. You can even
-          use this project to build your own custom version of Typicons! Find
-          out more here.
+        <h3>
+          Typicons are free-to-use vector icons embedded in a webfont for use
+          in your user interfaces, whether it be on the web or in a native
+          application.
+        </h3>
 
-          This version greatly improves Typicons, with the addition on 220
-          icons with solid and outline styles and Github hosting of the source
-          content. So what are you waiting for? Combine HTTP requests with a
-          retina ready, resolution independent, screen-reader-friendly webfont.
+        The set of icons are available on Github, with everything included
+        from the source files in SVG format to the minifed CSS. You can even
+        use this project to build your own custom version of Typicons! Find
+        out more here.
 
-          Read more about [making Typicons](/typicons/more/making-typicons)
-          and [how to use them](/typicons/more/how-to-use-typicons).
+        This version greatly improves Typicons, with the addition on 220
+        icons with solid and outline styles and Github hosting of the source
+        content. So what are you waiting for? Combine HTTP requests with a
+        retina ready, resolution independent, screen-reader-friendly webfont.
 
-        include ../partials/typicons/donate
+        Read more about [making Typicons](/typicons/more/making-typicons)
+        and [how to use them](/typicons/more/how-to-use-typicons).
 
+      include ../partials/typicons/donate

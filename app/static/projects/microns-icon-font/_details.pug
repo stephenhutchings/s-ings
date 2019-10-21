@@ -1,0 +1,109 @@
+section#details
+  h2 Details
+
+  h4 Impersonal
+
+  :marked
+    Each icon is designed to maximise consistency, while staying out
+    of the way. Similar to typeface design where no character should stand out,
+    no icon should draw too much attention to itself. This means
+    the set is ready to drop into any greenfield project to get up and running
+    straight away.
+
+  h4 No extras
+
+  :marked
+    Where possible, all non-essential details have been removed from the font.
+    Pictograms that are unlikely to be used in an interface have been removed
+    to ensure file size remains under 5kb. You won't find any lifestyle or
+    automotive iconography. Border radii less than 32 units have
+    been squared off, as these are not visible when rendered at 24 or 32px.
+
+  h4 Icon Width
+
+  :marked
+    Icons are not fixed width, but do share common side bearings where it
+    makes sense. For example, the `volume-low` icon is narrower than the
+    `volume-high` icon, but both have the same left side bearing. This means
+    you can easily switch between the two when the UI state changes, with
+    no shift in the unchanged components of the icon.
+
+    It also means that a row of icons will not appear to have uneven white
+    space between them. If you need to fix the width, you can easily do so
+    with CSS.
+
+
+  h4 Ligatures
+
+  :marked
+    Where an icon is composed of other icons, you can use the two characters
+    together to form a ligature glyph. All ligatures work in either direction.
+    Ligatures may not work in all browsers.
+
+  .flex-grid.ligatures
+    for ligature in project.ligatures
+      p.ligature
+        - var lig = ligature.match(/sub ([\w\-]+) ([\w\-]+)/)
+        - var c1 = _.find(project.iconList, {class: "mu-" + lig[1]}).code
+        - var c2 = _.find(project.iconList, {class: "mu-" + lig[2]}).code
+        span.mu.txt-24.txt-vm(class="mu-" + lig[1])
+        span.txt-vm &emsp;+&emsp;
+        span.mu.txt-24.txt-vm(class="mu-" + lig[2])
+        span.txt-vm &emsp;=&emsp;
+        span.mu.txt-24.txt-vm.txt-liga &#x#{c1};&#x#{c2};
+  //- p
+    span.mu-search
+    | &emsp;+&emsp;
+    span.mu-minus
+    | &emsp;=&emsp;
+    span.mu.txt-liga &#xE739;&#xE70B;
+
+
+  h4 Construction Grid
+
+  :marked
+    Icons are constructed on a 512 unit grid, divided into 16x16 cells. Every
+    node is snapped to a unit on the grid, which helps to reduce file size by
+    removing unneeded decimal precision. The 512 unit grid means icons render
+    crisply at 16, 24 and 32 pixel sizes. But icons don’t follow the glyph
+    slavishly. Inline icons
+
+    The shaded area gives a sense of where the bulk of visual weight lies for
+    each glyph.
+
+  .flex-grid
+    figure.icon-grid.txt-center
+      img(src="/img/projects/microns/grid.svg" width="256" height="256")
+      span.mu.mu-delete.txt-hl
+      figcaption.txt-sm
+        code.txt-muted.bg-dk .mu-delete
+
+    figure.icon-grid.txt-center
+      img(src="/img/projects/microns/grid.svg" width="256" height="256")
+      span.mu.mu-zoom-in.txt-hl
+      figcaption.txt-sm
+        code.txt-muted.bg-dk .mu-zoom-in
+
+    figure.icon-grid.txt-center
+      img(src="/img/projects/microns/grid.svg" width="256" height="256")
+      span.mu.mu-bold.txt-hl
+      figcaption.txt-sm
+        code.txt-muted.bg-dk .mu-bold
+
+    figure.icon-grid.txt-center
+      img(src="/img/projects/microns/grid.svg" width="256" height="256")
+      span.mu.mu-box-cross.txt-hl
+      figcaption.txt-sm
+        code.txt-muted.bg-dk .mu-box-cross
+
+    figure.icon-grid.txt-center
+      img(src="/img/projects/microns/grid.svg" width="256" height="256")
+      span.mu.mu-i-asterisk.txt-hl
+      figcaption.txt-sm
+        code.txt-muted.bg-dk .mu-i-asterisk
+
+    figure.icon-grid.txt-center
+      img(src="/img/projects/microns/grid.svg" width="256" height="256")
+      span.mu.mu-vol-mute.txt-hl
+      figcaption.txt-sm
+        code.txt-muted.bg-dk .mu-vol-mute

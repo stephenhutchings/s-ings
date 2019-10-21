@@ -1,0 +1,30 @@
+section#table
+  h2 Cheat Sheet
+  table(cellpadding=0 cellspacing=0)
+    thead
+      tr
+        th.txt-left.hidden-xs &ensp;
+        th.txt-left Icon
+        th.txt-left Name
+        th.txt-left Class
+        th.txt-left.hidden-xs Code
+        th.txt-left.hidden-xs(width="50%") Keywords
+
+    tbody
+      for group in project.icons
+        tr.tr-group.hidden-xs
+          td(rowspan=group.list.length + 1)
+            h4= group.type
+
+        for icon in group.list
+          tr
+            td.txt-center
+              span.txt-vm.mu.txt-24(
+                class=icon.class
+              )
+            td.txt-nowrap= icon.name
+            td
+              code .#{icon.class}
+            td.hidden-xs.txt-sm.txt-nowrap= icon.code
+            td.hidden-xs
+              = icon.match.split(/\||,/g).join(", ")

@@ -104,6 +104,9 @@ sub, sup
 .num-tf
   font-feature-settings: "tnum"
 
+.num-pf
+  font-feature-settings: "pnum"
+
 .num-osf
   font-feature-settings: "onum"
 
@@ -131,6 +134,9 @@ sub, sup
 .txt-sub
   font-feature-settings: "subs"
 
+.txt-liga
+  font-feature-settings: "liga"
+
 .ss-01
   font-feature-settings: "kern" 1,"liga" 1,"ss01" 1
 
@@ -153,6 +159,12 @@ sub, sup
   font: inherit
   vertical-align: inherit
 
+.txt-vb
+  vertical-align: middle
+
+.txt-vm
+  vertical-align: middle
+
 // Color
 .txt-white
   color: #fff
@@ -166,7 +178,8 @@ sub, sup
   text-transform: lowercase
 h4, .txt-uppercase, .txt-tu
   text-transform: uppercase
-  letter-spacing: 0.06em
+  letter-spacing: 0.1em
+  font-feature-settings: "case" 1
 .txt-capitalize
   text-transform: capitalize
 
@@ -187,9 +200,20 @@ p, pre, dl, dd, ul, ol
 ol, ul
   padding: 0 0 0 1.1em
 
+  &.list-inline,
   &.list-bare
     padding: 0
     list-style: none
+
+  &.list-inline
+    li
+      display: inline-block
+
+      + li
+        margin-left: 8px
+        &:before
+          content: "•"
+          margin-right: 8px
 
 li
   line-height: (24em / 17)

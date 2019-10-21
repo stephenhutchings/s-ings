@@ -1,0 +1,83 @@
+extends /partials/project
+
+block prepend config
+  - var project = data.getOne("projects",  "microns-icon-font");
+  - project.iconList = _.flatten(_.pluck(project.icons, "list"))
+
+block append config
+  - page.class += " page-microns";
+  - page.style = { background: "#f3f5f6"}
+
+block body
+  style
+    include _style.sass.pug
+
+  .content
+    .pv-xxl.content-wrap(style="padding-bottom: 2em")
+      include /partials/header
+      .col-wrap.pv-sm
+        .col-md
+          h1= page.title
+
+          h2.txt-hl= page.subtitle
+
+          != typogr.typogrify(marked(project.desc))
+
+
+          ul.list-inline.txt-sm
+            if project.urls
+              for action, i in project.urls
+                li
+                  if i > 0
+                    | &ensp;&middot;&ensp;
+                  a.btn-ul(href=action.link)
+                    h4= action.text
+
+            li
+              strong.txt-tu
+                = project.iconList.length
+                |  icons
+
+            li
+              strong.txt-tu Size #{(4688 / 1024).toFixed(2)}kb
+
+            if project.version
+              li
+                strong v&thinsp;
+                  span.txt-tu #{project.version}
+
+        .col-md
+          include /partials/typicons/carbon
+
+  .content.bg-lt
+    .pv-sm
+      ul.list-bare.clearfix.txt-center
+        li.ph-xs.di
+          a.txt-bold.btn-ul(href="#section-icons") Icons
+        li.ph-xs.di
+          a.txt-bold.btn-ul(href="#section-examples") Examples
+        li.ph-xs.di
+          a.txt-bold.btn-ul(href="#section-details") Details
+        li.ph-xs.di
+          a.txt-bold.btn-ul(href="#section-table") Cheat Sheet
+
+  #section-icons.content.bg-dk
+    .pv-md.content-wrap
+        include _icons
+
+  #section-examples.content.bg-lt
+    .pv-md.content-wrap
+        include _examples
+
+  #section-details.content
+    .pv-md.content-wrap
+        include _details
+
+  #section-table.content
+    .pv-md.content-wrap
+        include _table
+
+    include /partials/footer
+
+block footer
+  //- Empty

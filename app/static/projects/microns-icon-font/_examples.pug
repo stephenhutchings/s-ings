@@ -1,0 +1,189 @@
+section#examples
+  h2 Examples
+
+  .col-wrap
+    .col-sm: .pv-xs
+      h4 WYSYWYG Editor
+        span.txt-muted  / 20px
+    .col-lg: .pv-xs
+      .toolbar.toolbar-square.bg-wh.clearfix.txt-20
+        .toolset
+          a.txt-bare.txt-vb
+            span.fl-l.txt-vb.txt-sm.toolbar-font.txt-ellipsis monospace
+            span.fl-l.mu.txt-vb.mu-caret-down
+
+          a.txt-bare.txt-vb
+            span.mu.mu-text-size.fl-l
+            span.mu.mu-caret-down.fl-l
+
+        .toolset
+          a.txt-bare.txt-vb
+            span.mu.mu-text.fl-l
+            span.mu.mu-caret-down.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-bold.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-italic.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-underline.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-strikeout.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-text-unstyle.fl-l
+
+        .toolset
+          a.txt-bare.txt-vb
+            span.mu.mu-align-left.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-align-center.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-align-right.fl-l
+
+        //- .toolset
+          a.txt-bare.txt-vb
+            span.mu.mu-indent.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-outdent.fl-l
+
+        .toolset
+          a.txt-bare.txt-vb
+            span.mu.mu-undo.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-redo.fl-l
+
+
+  .col-wrap
+    .col-sm: .pv-xs
+      h4 Media Controls
+        span.txt-muted  / 24px
+    .col-lg: .pv-xs
+      .toolbar.toolbar-glow.bg-wh.clearfix.txt-24
+        .toolset
+          a.txt-bare.txt-vb
+            span.mu.mu-play.fl-l
+          a.txt-bare.txt-vb
+            span.mu.mu-vol-mid.fl-l
+        .toolset
+          .trackbar.bg-hl
+          a.trackpos.txt-bare.txt-vb
+            span.mu.mu-i-bullet.fl-l
+        .toolset
+          a.txt-bare.txt-vb
+            span.mu.mu-captions
+          a.txt-bare.txt-vb
+            span.mu.mu-hd
+          a.txt-bare.txt-vb
+            span.mu.mu-expand
+
+
+  .col-wrap
+    .col-sm: .pv-xs
+      h4 Messages
+        span.txt-muted  / 32px
+    .col-lg
+      .pv-xs
+        .well.well-warn.txt-center
+          span.txt-32.txt-vm
+            span.mu.mu-warn
+          span.txt-vm &ensp;Please update your details before continuing.
+
+      .pv-xs
+        .well.txt-center
+          span.txt-32.txt-vm
+            span.mu.mu-pass
+          span.txt-vm &ensp;Your new details have been saved!
+
+
+  .col-wrap
+    .col-sm: .pv-xs
+      h4 Form Elements
+        span.txt-muted  / 24px
+    .col-lg
+      .pv-xs
+        .flex-grid
+          .input-wrap.input-focus.select-wrap.txt-20
+            select
+              option Select
+
+            span.input-icon.mu.mu-caret.txt-24
+
+          a.input-wrap.input-focus(href="#")
+            span Dropdown
+            span.input-icon.mu.mu-caret-down.txt-24
+
+          .input-wrap.input-focus
+            input(placeholder="Password" autocomplete="off" name="12345678")
+            span.input-icon.mu.mu-lock.txt-24.txt-muted
+
+          .input-wrap.input-focus
+            input(placeholder="Required" autocomplete="off" name="12345678")
+            span.input-icon.mu.mu-i-asterisk.txt-24.txt-muted
+
+          .input-wrap.input-focus.input-success
+            input(placeholder="Success" autocomplete="off" name="12345678")
+            span.input-icon.mu.mu-i-tick.txt-24
+
+          .input-wrap.input-focus.input-error
+            input(placeholder="Error" autocomplete="off" name="12345678")
+            span.input-icon.mu.mu-i-cross.txt-24
+
+          .input-wrap.clearfix
+            label.radio-wrap
+              input(type="radio" name="day" value="weekday" checked)
+              .radio-switch.mu.mu-radio-off.txt-24.fl-l
+              | On
+            label.radio-wrap
+              input(type="radio" name="day" value="weekend")
+              .radio-switch.mu.mu-radio-off.txt-24.fl-l
+              | Off
+
+          .input-wrap.clearfix
+            label.check-wrap
+              input(type="checkbox" name="list" checked)
+              .check-switch.mu.mu-box.txt-24.fl-l
+              span First
+            label.check-wrap
+              input(type="checkbox" name="list")
+              .check-switch.mu.mu-box.txt-24.fl-l
+              span Second
+
+          button.btn.bg-hl.txt-bold Confirm
+
+          button.btn.bg-hl.txt-bold Continue&ensp;
+            span.mu.mu-i-right.txt-vb.txt-24
+
+          button.btn.bg-dk.txt-bold
+            h4.di.txt-vb.tight Clear&emsp;
+            span.mu.mu-i-cross.txt-vb.txt-24
+          button.btn.bg-dk.txt-bold
+            span.mu.mu-mail.txt-vb.txt-24 &ensp;
+            h4.di.txt-vb.tight Send
+
+  .col-wrap
+    .col-sm: .pv-xs
+      h4 To-do list
+        span.txt-muted  / 24px
+    .col-lg: .pv-xs
+      .bg-wh.modal
+        .modal-title
+          //- span.mu.mu-menu.fl-l.txt-24 &ensp;
+          h2.tight Reminders
+          a.modal-exit.txt-bare.txt-vb.fl-r.txt-24
+            span.mu.mu-cancel
+        .modal-body
+          ul.todos.list-bare
+            li
+              span.mu.mu-i-tick.fl-l.txt-24 &ensp;
+              | Walk to work if the weather is good
+            li
+              span.mu.mu-i-tick.fl-l.txt-24 &ensp;
+              | Drink some coffee
+            li
+              span.mu.mu-i-cross.fl-l.txt-24 &ensp;
+              | Get down to work
+
+          .clearfix
+            .txt-hl.fl-l.txt-24
+              span.mu-i-plus.txt-vm &ensp;
+              span.txt-sm.txt-vm
+                | Create a new item

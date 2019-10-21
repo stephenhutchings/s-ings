@@ -1,0 +1,21 @@
+#icons.pv-sm.clearfix(data-view="views/icon-search" data-classname="mu")
+  #icon-search-bar
+    label
+      span.mu.mu-search.fl-l
+      input#icon-search.fl-l(type="text" placeholder="Search")
+    label#icon-details.txt-ellipsis(for="icon-search")
+      | Search for a specific icon by name or keyword. Hover for details.
+
+  #icon-grid
+    for group in project.icons
+      .icon-group
+        h4= group.type
+        .icon-list
+          for icon in group.list
+            span.icon.mu.txt-28(
+              class=icon.class
+              data-class=icon.class
+              data-name=icon.name
+              data-code=icon.code
+              data-match=[group.type, icon.name, icon.match].join("|")
+            )

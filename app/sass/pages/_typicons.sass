@@ -1,64 +1,24 @@
 .page-typicons
   #icon-container
-    transform: scale(1) translate3d(0, 0, 0)
-    // display: none
+    text-align: center
+
+  .icon-grid
+    margin: 0 -8px
+    line-height: 32px
+
   .icon
-    width: 6.25%
-    max-width: 30px
-    position: relative
-    transform: translate3d(0, 0, 0)
+    padding: 4px
+    border-radius: 2px
+    transition: all 300ms
     font-size: 24px
+    height: 32px
+    line-height: inherit
 
-    &:before
-      content: ""
-      display: block
-      padding-bottom: 100%
-
-    .typcn
-      fill: #fff
-      pointer-events: none
-      position: absolute
-      top: 50%
-      left: 50%
-      width: 1em
-      height: 1em
-      margin: -0.5em
-      line-height: 1
-      display: block
-      transform: translate3d(-0.1px, 0.5px, 0)
-
-      &:before
-        vertical-align: bottom
-
-    .icon-expanded
-      display: none
-      fill: #fff
-
-    &.transition
-      .typcn
-        transition: all 300ms, background-color 800ms
-        background-color: $dark
-
-    &.expand-before
-      .typcn
-        position: absolute
-        font-size: 5em
-        padding: 0.1em
-        margin: -0.6em
-        transform: scale(0.2) translate3d(0, 0, 0)
-        pointer-events: none
-        border-radius: 8px
+    &.active
+      background: rgba(#fff, 0.2)
 
     &.inactive
-      pointer-events: none
-      opacity: 0.25
-
-    &.expand
-      z-index: 10
-
-      .typcn
-        opacity: 1
-        transform: scale(1) translate3d(0, 0, 0)
+      opacity: 0.2
 
   #icon-search-bar
     position: relative
@@ -68,15 +28,14 @@
 
     .typcn
       float: left
-      font-size: 1.25em
-      margin: -0.08em 0
-      vertical-align: middle
+      font-size: 24px
 
   #icon-details
     display: block
-    height: 32px
-    line-height: 30px
+    height: 40px
+    line-height: 40px
     padding: 0 0.5em
+    text-align: left
 
     .icon-img
       width: 1.5em
@@ -92,11 +51,16 @@
     .icon-code
       opacity: 0.8
 
+    .icon-class
+      color: inherit
+      background: rgba(#fff, 0.2)
+      line-height: 24px
+
   #icon-search
     font: inherit
     border: none
     width: 100px
-    height: 32px
+    height: 40px
     background: #fff
     border-radius: 2px 0 0 2px
     padding: 0 0.5em

@@ -65,6 +65,7 @@ class MainView extends Backbone.View
       sy = $target.get(0).offsetTop
       mx = $parent.get(0).scrollWidth  - $parent.get(0).offsetWidth
       my = $parent.get(0).scrollHeight - $parent.get(0).offsetHeight
+
       if my or mx
         $parent.stop().animate
           scrollLeft: Math.min(sx, mx)
@@ -164,6 +165,12 @@ class MainView extends Backbone.View
     $inbound.attr("id", "outbound")
     $outbound.attr("id", "inbound")
 
+    window.gtag "config", "UA-24285947-1",
+      page_path: location.pathname
+      page_title: document.title
+
+    window.ga("send", "pageview")
+
     for key, view of @views
       view.hide?($inbound, $outbound)
       delete @views[key]
@@ -180,7 +187,7 @@ class MainView extends Backbone.View
         try
           if el.dataset.view
             View = (require el.dataset.view)
-            opts = _.extend {el}, params
+            opts = _.extend {el}, $(el).data()
             @views[el.dataset.view] = new View(opts)
 
           if el.dataset.require

@@ -1,16 +1,15 @@
 extends ../../partials/project
 
 block prepend config
-  - var project = data.getOne("fonts",  "william");
+  - var project = data.getOne("fonts", "antipode");
 
 block append article
   .gallery.stretch(autocorrect="off" spellcheck="false")
     #item-1.gallery-item.pv-xxl.flex-evenly.bg-dk
-      .txt-center.txt-nowrap(style="text-shadow: 0 -4px 12px rgba(0,0,0,0.4);letter-spacing:-0.1em")
-        .t-5.f-g-900(style="line-height: 0.516; margin-left: -2em;").txt-hl william
-        .t-5.f-g-900(style="line-height: 0.516; margin-left: 1em;").txt-mt is a super
-        .t-5.f-g-900(style="line-height: 0.516; margin-left: 0.76em;") family
-
+      .txt-center.txt-nowrap(style="text-shadow: 0 -4px 40px rgba(0,0,0,0.8);letter-spacing:-0.1em")
+        .t-5.f-g-700(style="line-height: 0.512; margin-left: 0.96em;").txt-hl antipode
+        .t-5.f-g-700(style="line-height: 0.512; margin-left: -0.8em;").txt-mt is a super
+        .t-5.f-g-700(style="line-height: 0.512; margin-left: -1.08em;") family
 
     #item-2.gallery-item.pv-xxl.ph-lg.flex-evenly.bg-hl
       .t-6.num-tf.txt-center
@@ -29,7 +28,7 @@ block append article
           .f-g-600.txt-tu(contenteditable style="font-size: 0.77em") George and Argyle
           .f-g-700cond(contenteditable style="font-size: 1.06em") Clarence and Market
           .f-g-300condi.txt-tu(contenteditable style="font-size: 0.88em") Erskine and Hickson
-          .f-g-900(contenteditable style="font-size: 1.06em") 
+          .f-g-900(contenteditable style="font-size: 1.06em")
             span.txt-hl William
             |  &amp; Hunter
 
@@ -57,13 +56,13 @@ block append article
         nav.pv-sm
 
           .flex-grid
-            label.txt-tu 
+            label.txt-tu
               .fl-l Width
               input.fl-l(type="range" value="3" name="width" min=1 max=_.size(project.font.widths))
-            label.txt-tu 
+            label.txt-tu
               .fl-l Weight
               input.fl-l(type="range" value="3" name="weight" min=1 max=_.size(project.font.weights))
-            label.txt-tu 
+            label.txt-tu
               .fl-l Size
               input.fl-l(type="range" value="17" name="size" min=12 max=96)
             label.txt-tu
@@ -118,15 +117,15 @@ block append article
 
         .pv-sm.f-g-300i(contenteditable)
           :marked
-            Back in June we delivered oxygen<br>equipment of the same size. 
+            Back in June we delivered oxygen<br>equipment of the same size.
 
     #item-7.gallery-item.p-xxl.flex-evenly
       dl
         dt Font Details
-        dd 
-          | William is fuses geometric, grotesque and humanist characteristics
+        dd
+          | Antipode is fuses geometric, grotesque and humanist characteristics
           | into a sans-serif typeface with a narrow aperture.
-          | The font is designed with proportions that cater for long sections 
+          | The font is designed with proportions that cater for long sections
           | of text, without compromising it's impact at display weights. The
           | range of weights, widths and matching italics make it the go-to
           | choice for applications where flexibility is a must.
@@ -145,32 +144,32 @@ block append article
             dd.txt-sm  Matching Italics
 
         dt Language Support
-        dd.txt-sm 
-          | Afrikaans, Albanian, Asturian, Asu, Azerbaijani, Basque, Bemba, 
-          | Bena, Bosnian, Breton, Catalan, Chiga, Colognian, Cornish, 
-          | Croatian, Czech, Danish, Dutch, Embu, English, Esperanto, 
-          | Estonian, Faroese, Filipino, Finnish, French, Friulian, 
-          | Galician, Ganda, German, Greek, Gusii, Hawaiian, Hungarian, 
-          | Icelandic, Igbo, Inari Sami, Indonesian, Irish, Italian, 
-          | Jola-Fonyi, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda, 
-          | Latvian, Lithuanian, Low German, Lower Sorbian, Luo, 
-          | Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde, 
-          | Malagasy, Malay, Maltese, Manx, Meru, Morisyen, Nama, North 
-          | Ndebele, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk, 
-          | Nyankole, Oromo, Polish, Portuguese, Quechua, Romanian, Romansh, 
-          | Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena, 
-          | Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish, 
-          | Swahili, Swedish, Swiss German, Taita, Teso, Tongan, Turkish, 
-          | Turkmen, Upper Sorbian, Uzbek, Vunjo, Walser, Welsh, Western 
+        dd.txt-sm
+          | Afrikaans, Albanian, Asturian, Asu, Azerbaijani, Basque, Bemba,
+          | Bena, Bosnian, Breton, Catalan, Chiga, Colognian, Cornish,
+          | Croatian, Czech, Danish, Dutch, Embu, English, Esperanto,
+          | Estonian, Faroese, Filipino, Finnish, French, Friulian,
+          | Galician, Ganda, German, Greek, Gusii, Hawaiian, Hungarian,
+          | Icelandic, Igbo, Inari Sami, Indonesian, Irish, Italian,
+          | Jola-Fonyi, Kabuverdianu, Kalenjin, Kamba, Kikuyu, Kinyarwanda,
+          | Latvian, Lithuanian, Low German, Lower Sorbian, Luo,
+          | Luxembourgish, Luyia, Machame, Makhuwa-Meetto, Makonde,
+          | Malagasy, Malay, Maltese, Manx, Meru, Morisyen, Nama, North
+          | Ndebele, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk,
+          | Nyankole, Oromo, Polish, Portuguese, Quechua, Romanian, Romansh,
+          | Rombo, Rundi, Rwa, Samburu, Sango, Sangu, Scottish Gaelic, Sena,
+          | Shambala, Shona, Slovak, Slovenian, Soga, Somali, Spanish,
+          | Swahili, Swedish, Swiss German, Taita, Teso, Tongan, Turkish,
+          | Turkmen, Upper Sorbian, Uzbek, Vunjo, Walser, Welsh, Western
           | Frisian, Yoruba and Zulu
 
         dt OpenType Features
         dd.txt-sm
-          | Alternates, Capitals to Small Caps, Case Sensive Forms, Glyph 
-          | Composition &amp; Decomposition, Discretionary Ligatures, 
-          | Denominator, Fractions, Standard Ligatures, Lining Figures, 
-          | Localized Forms, Numerator, Oldstyle Figures, Ordinals, 
-          | Proportional Figures, Tabular Figures, Scientific Inferiors, 
+          | Alternates, Capitals to Small Caps, Case Sensive Forms, Glyph
+          | Composition &amp; Decomposition, Discretionary Ligatures,
+          | Denominator, Fractions, Standard Ligatures, Lining Figures,
+          | Localized Forms, Numerator, Oldstyle Figures, Ordinals,
+          | Proportional Figures, Tabular Figures, Scientific Inferiors,
           | Small Caps, Subscript and Superscript
 
 
@@ -188,7 +187,7 @@ block append article
         p
           margin-bottom: 8px
 
-      #font-tester-mask 
+      #font-tester-mask
         position: absolute
         top: -80px
         height: 960px
@@ -205,5 +204,5 @@ block append article
 //- liquored ex-army privates whinged about jazz funk
 //- ex-army privates with king of juicy liquid buzz
 
-//- Sexist fuzz drive quickly 
+//- Sexist fuzz drive quickly
 //- up major roads howling.

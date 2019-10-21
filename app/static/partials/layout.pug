@@ -1,3 +1,5 @@
+include ga
+
 block config
   - var page = {};
   - page.description  = "Hi, I’m Stephen Hutchings. ";
@@ -52,7 +54,7 @@ html.no-js(lang="en")
             as="font"
             crossorigin
             type=`font/${format}`
-            href=`/fonts/philippa/Philippa-${weight}.${format}`
+            href=`/fonts/antipode/Antipode-${weight}.${format}`
           )
 
       block css
@@ -70,7 +72,7 @@ html.no-js(lang="en")
                   include header
 
             article.stretch(
-              style=(_.map(page.style, function(v, k){ 
+              style=(_.map(page.style, function(v, k){
                 return v ? k + ":" + v : ""
               })).join(";")
             )
@@ -100,3 +102,5 @@ html.no-js(lang="en")
             "╰───────────────────────────────╯"
           ].join("\n"))
         }
+
+      +ga("UA-24285947-1")

@@ -7,12 +7,6 @@ desc: >
 metaTitle: Confidential - A Sans-Serif Font by Stephen Hutchings
 pageCount: 4
 
-colors:
-  dark: "#1f1f27"
-  muted: "#c3a1a9"
-  highlight: "#c52d41"
-  light: "#f3f5f6"
-
 font:
   name: Confidential
   path: /fonts/confidential/

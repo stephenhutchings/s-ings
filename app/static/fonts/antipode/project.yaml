@@ -1,20 +1,20 @@
-name: William
+name: Antipode
 date: 20 Jun 2015
 size: col-sm
 desc: >
-  William is a super family of 72 fonts, with four widths, nine weights and
+  Antipode is a super family of 72 fonts, with four widths, nine weights and
   matching italics. Neither strictly geometric nor grotesque in form,
   the typeface embodies all that is prototypical in modern type.
 
 colors:
   muted: "#b4c8dc"
 
-metaTitle: William - A Sans-Serif Super Family by Stephen Hutchings
+metaTitle: Antipode - A Sans-Serif Super Family by Stephen Hutchings
 pageCount: 7
 
 font:
-  name: William
-  path: /fonts/william/
+  name: Antipode
+  path: /fonts/antipode/
   widths:
     "Condensed": cond
     "SemiCondensed": semi
