@@ -15,7 +15,7 @@
           targetY = position,
           lastY = initialY,
           delta = targetY - initialY,
-          speed = Math.max(800, Math.min(1200, Math.abs(initialY-targetY))),
+          speed = Math.max(800, Math.min(1200, Math.abs(initialY - targetY))),
           start, t, y, timeout,
           cancelScroll = function(){ abort() },
           frame = window.requestAnimationFrame ||
@@ -50,7 +50,7 @@
         if (delta < 0 && y < targetY) y = targetY
         if (lastY != y) $this.scrollTop(y)
         lastY = y
-        if (y !== targetY) {
+        if (~~y !== ~~targetY) {
           frame(render)
           window.clearTimeout(timeout)
           timeout = window.setTimeout(abort, 100)
