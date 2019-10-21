@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="64" viewBox="0 0 128 64">
+  <defs>
+    <linearGradient id="a" x1="31.88" y1="48.24" x2="38.6" y2="35.06" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333" stop-opacity="0"/>
+      <stop offset="1" stop-color="#666"/>
+    </linearGradient>
+    <linearGradient id="b" x1="-432.64" y1="33.17" x2="-434.81" y2="28.92" gradientTransform="matrix(-1, 0, 0, 1, -387.74, 0)" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop offset="0.13" stop-color="#323232"/>
+      <stop offset="0.31" stop-color="#707070"/>
+      <stop offset="0.48" stop-color="#a3a3a3"/>
+      <stop offset="0.64" stop-color="#cbcbcb"/>
+      <stop offset="0.78" stop-color="#e7e7e7"/>
+      <stop offset="0.91" stop-color="#f9f9f9"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="c" x1="-232.12" y1="48.24" x2="-225.4" y2="35.06" gradientTransform="matrix(-1, 0, 0, 1, -136, 0)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333" stop-opacity="0"/>
+      <stop offset="1"/>
+    </linearGradient>
+    <linearGradient id="d" x1="-168.64" y1="33.17" x2="-170.81" y2="28.92" gradientTransform="translate(251.7)" xlink:href="#b"/>
+  </defs>
+  <title>tile-3</title>
+  <g>
+    <polygon points="41 12.5 39 11.5 19 21.5 21 22.5 41 12.5" fill="#fff"/>
+    <polygon points="87 12.5 89 11.5 109 21.5 107 22.5 87 12.5" fill="#fff"/>
+  </g>
+  <g>
+    <polygon points="80 8 64 16 48 8 16 24 64 48 112 24 80 8" fill="#fff"/>
+    <polygon points="64 64 64 48 16 24 0 32 64 64" fill="url(#a)"/>
+    <polygon points="20 22 64 44 72 40 28 18 20 22" opacity="0.08" fill="url(#b)"/>
+    <polygon points="88 12 64 24 64 20 84 10 88 12" fill="#b3b3b3"/>
+    <polygon points="40 12 64 24 64 20 44 10 40 12" fill="#ccc"/>
+    <polygon points="128 32 112 24 64 48 64 64 128 32" fill="url(#c)"/>
+    <polygon points="108 22 64 44 56 40 100 18 108 22" opacity="0.08" fill="url(#d)"/>
+  </g>
+</svg>
