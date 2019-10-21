@@ -104,8 +104,6 @@ class CrosswordView extends Backbone.View
     e.preventDefault()
 
   onKeyPress: (e) ->
-    e.preventDefault()
-    e.stopImmediatePropagation()
 
     key = keycode(e)
 
@@ -115,9 +113,9 @@ class CrosswordView extends Backbone.View
       when "DELETE"
         val = ""
         dir = "prev"
-      when "LEFT", "SHIFT_TAB"
+      when "LEFT"
         dir = "prev"
-      when "RIGHT", "TAB"
+      when "RIGHT"
         dir = "next"
       else
         if key.match("CHAR")
@@ -131,6 +129,9 @@ class CrosswordView extends Backbone.View
     # adjacent element
     if val?
       $prev.val(val).prev().html(val)
+
+      e.preventDefault()
+      e.stopImmediatePropagation()
 
     # Depending on which direction we're going, find the next
     # available input and focus that element
