@@ -13,10 +13,11 @@ draw = (done) ->
   parentContext = parentCanvas.getContext("2d")
   parentCanvas.width = parentCanvas.height = large
 
-  step = (color, size) ->
+  step = (color, size, shift) ->
     cvs  = document.createElement("canvas")
     ctx  = cvs.getContext("2d")
 
+    x = y = 0
     shapes    = _.random(50, 70)
     threshold = _.random(110, 150)
     offset    = (large - size) / 2
@@ -44,11 +45,18 @@ draw = (done) ->
     data = ctx.getImageData(0, 0, size, size)
     unmask data, color...
 
-    layer(parentContext, data, offset, offset)
+    if shift
+      t = Math.PI * 2 * Math.random()
+      x = Math.cos(t) * shift
+      y = Math.sin(t) * shift
+
+    layer(parentContext, data, offset + x, offset + y)
+
+    parentContext.restore()
 
   sequence [
     -> step([255, 255, 255], large, 0)
-    -> step([ _.random(220, 255), _.random(128, 158), 0 ], small * dpi)
+    -> step([ _.random(220, 255), _.random(128, 158), 0 ], small * dpi, _.random(0, small/2))
     ->
       img = new Image()
       img.onload = -> done(this)

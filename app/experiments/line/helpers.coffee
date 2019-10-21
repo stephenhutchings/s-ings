@@ -77,6 +77,11 @@ simplify = (points, tolerance = 1, highQuality) ->
 
 module.exports =
   simplify: simplify
+  distance: getSqDist
+
+  arrayify: (pts) -> ([x, y] for { x, y } in pts)
+
+  objectify: (pts) -> ({ x, y } for [x, y] in pts)
 
   # Find the intersection between two line segments
   intersection: (x1, y1, x2, y2, x3, y3, x4, y4) ->
@@ -142,12 +147,65 @@ module.exports =
 
     return spline
 
+  catmullRomBezier: (data, alpha) ->
+    if alpha is 0 or alpha is undefined
+      false
+    else
+      d = Math.round(data[0].x) + ',' + Math.round(data[0].y) + ' '
+      length = data.length
+      i = 0
+      while i < length - 1
+        p0 = if i is 0 then data[0] else data[i - 1]
+        p1 = data[i]
+        p2 = data[i + 1]
+        p3 = if i + 2 < length then data[i + 2] else p2
+
+        d1 = Math.sqrt(Math.pow(p0.x - p1.x, 2) + Math.pow(p0.y - p1.y, 2))
+        d2 = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
+        d3 = Math.sqrt(Math.pow(p2.x - p3.x, 2) + Math.pow(p2.y - p3.y, 2))
+
+        d3powA  = Math.pow d3, alpha
+        d3pow2A = Math.pow d3, (2 * alpha)
+        d2powA  = Math.pow d2, alpha
+        d2pow2A = Math.pow d2, (2 * alpha)
+        d1powA  = Math.pow d1, alpha
+        d1pow2A = Math.pow d1, (2 * alpha)
+
+        A = 2 * d1pow2A + 3 * d1powA * d2powA + d2pow2A
+        B = 2 * d3pow2A + 3 * d3powA * d2powA + d2pow2A
+        N = 3 * d1powA * (d1powA + d2powA)
+        M = 3 * d3powA * (d3powA + d2powA)
+
+        if N > 0
+          N = 1 / N
+
+        if M > 0
+          M = 1 / M
+
+        bp1 =
+          x: (-d2pow2A * p0.x + A * p1.x + d1pow2A * p2.x) * N
+          y: (-d2pow2A * p0.y + A * p1.y + d1pow2A * p2.y) * N
+
+        bp2 =
+          x: (d3pow2A * p1.x + B * p2.x - (d2pow2A * p3.x)) * M
+          y: (d3pow2A * p1.y + B * p2.y - (d2pow2A * p3.y)) * M
+
+        if bp1.x is 0 and bp1.y is 0
+          bp1 = p1
+
+        if bp2.x is 0 and bp2.y is 0
+          bp2 = p2
+
+        d += 'C' + bp1.x + ',' + bp1.y + ' ' + bp2.x + ',' + bp2.y + ' ' + p2.x + ',' + p2.y + ' '
+        i++
+      d
+
   # Sort all points by distance to a point
   nearest: (points, point) ->
-    _.sort(points, (a, b) ->
-      da = Math.abs(a.x - point.x) + Math.abs(a.y - point.y)
-      db = Math.abs(b.x - point.x) + Math.abs(b.y - point.y)
-      b - a
+    points.sort((a, b) ->
+      da = Math.sqrt Math.pow(a.x - point.x, 2) + Math.pow(a.y - point.y, 2)
+      db = Math.sqrt Math.pow(b.x - point.x, 2) + Math.pow(b.y - point.y, 2)
+      da - db
     )
 
   # Interpolate all the mid points between the points to an even distance

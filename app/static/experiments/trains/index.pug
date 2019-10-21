@@ -1,0 +1,16 @@
+extends ../../partials/experiment
+
+block append config
+  - page.title = page.experiment = "trains/view";
+
+block experiment
+  script(src="https://d3js.org/d3.v5.js")
+  script
+    | data = {};
+    | data.stations =
+    include stations.json
+    | data.lines =
+    != JSON.stringify(data.getOne("experiments", "trains").lines)
+
+  script
+    include:coffee view.coffee

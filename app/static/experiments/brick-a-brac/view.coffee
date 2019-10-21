@@ -9,12 +9,12 @@ wobble    = require("experiments/wobble")
 layer     = require("experiments/layer")
 frame     = require("experiments/frame")
 
-maybe       = require("experiments/brick-a-brac/maybe")
-drawWindow  = require("experiments/brick-a-brac/window")
-drawRoof    = require("experiments/brick-a-brac/roof")
-drawEscape  = require("experiments/brick-a-brac/escape")
-drawBalcony = require("experiments/brick-a-brac/balcony")
-drawGround  = require("experiments/brick-a-brac/ground")
+maybe       = require("experiments/brick-a-brac/utils/maybe")
+drawWindow  = require("experiments/brick-a-brac/utils/window")
+drawRoof    = require("experiments/brick-a-brac/utils/roof")
+drawEscape  = require("experiments/brick-a-brac/utils/escape")
+drawBalcony = require("experiments/brick-a-brac/utils/balcony")
+drawGround  = require("experiments/brick-a-brac/utils/ground")
 
 maybe = (chance = 0.5) -> Math.random() > (1 - chance)
 
@@ -39,7 +39,7 @@ module.exports =
   draw: (options, done) ->
     { canvas, ctx } = bigCanvas(options)
 
-    scale = options.scale or 2.5
+    scale = options.scale or 2#.5
 
     canvas.width  *= scale
     canvas.height *= scale
@@ -187,7 +187,12 @@ module.exports =
 
       ->
         fx = new CanvasEffects(canvas, {useWorker: false})
-        posterize(canvas, 2, "grayscale")
+        posterize(canvas, 2, [
+          [40, 40, 40]
+          [210, 210, 210]
+          [255, 255, 255]
+          [180,180,180]
+        ])
 
       ->
         data = drawGround(features, { w })
@@ -198,7 +203,12 @@ module.exports =
         { width, height, data } = badge margin / dpi, (c) ->
           fx = new CanvasEffects(c, {useWorker: false})
           fx.noise(12)
-          posterize(c, 1.25 * dpi * scale, "grayscale")
+          posterize(c, 1.25 * dpi * scale, [
+            [40, 40, 40]
+            [210, 210, 210]
+            [255, 255, 255]
+            [180,180,180]
+          ])
 
         ctx.putImageData(
           data
@@ -269,7 +279,7 @@ module.exports =
 
         ctx.stroke()
 
-    posterize(canvas, 8, "grayscale")
+    # posterize(canvas, 8, "grayscale")
 
     for group, i in [dark, light]
       ctx.fillStyle = ["#000", "#fff"][i]

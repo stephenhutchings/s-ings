@@ -1,65 +1,82 @@
+easie     = require("lib/easie")
+color     = require("experiments/color")
+
 palettes =
   default: [
     [244, 218, 190]
     [255, 255, 255]
-    [0, 24, 77]
+    [29, 37, 53]
   ]
 
   grayscale: [
     [40, 40, 40]
-    [255, 255, 255]
     [210, 210, 210]
+    [255, 255, 255]
   ]
 
+cache   = []
 colors  = palettes.default
 offsets = [0.299, 0.587, 0.114]
 
+# Ease time
+ramp = (t) ->
+  if (t *= 2) < 1
+    return .5 * Math.pow(t, 3)
+  else
+    return .5 * ((t -= 2) * Math.pow(t, 2) + 2)
+
+# Compute the distance between two colours
 distance = (c1, c2) ->
   (
-    Math.abs(c1[0] - c2[0]) * offsets[0] +
-    Math.abs(c1[1] - c2[1]) * offsets[1] +
-    Math.abs(c1[2] - c2[2]) * offsets[2]
-  ) / (255 * 3)
-
-cache = []
-
-do buildCache = ->
-  for r in [0..255]
-    cache[r] = []
-    for g in [0..255]
-      cache[r][g] = []
+    Math.abs(c1[0] - c2[0]) * offsets[0] / 255 +
+    Math.abs(c1[1] - c2[1]) * offsets[1] / 255 +
+    Math.abs(c1[2] - c2[2]) * offsets[2] / 255
+  )
 
 process = (r, g, b, a) ->
-  m = cache[r][g][b]
+  c = cache[r]?[g]?[b]
 
-  if not m
-    d = 1
-    j = [r, g, b]
+  unless c
+    order = colors.sort((c0, c1) ->
+      d0 = distance(c0, [r, g, b])
+      d1 = distance(c1, [r, g, b])
+      d0 - d1
+    )
 
-    for c in colors
-      if d >= dx = distance(c, j)
-        d = dx
-        m = [c...]
+    c0 = order[0]
+    c1 = order[1]
 
-    d = Math.pow(d, 3)
+    d0 = distance(c0, [r, g, b])
+    d1 = distance(c1, [r, g, b])
 
-    for k, i in j
-      diff = (k - m[i])
-      m[i] = Math.round(m[i] + diff * d)
+    dist = d0 + d1
+    time = ramp d0 / dist
+
+    cr = Math.floor c0[0] + (c1[0] - c0[0]) * time
+    cg = Math.floor c0[1] + (c1[1] - c0[1]) * time
+    cb = Math.floor c0[2] + (c1[2] - c0[2]) * time
+
+    c = [cr, cg, cb]
 
     cache[r]      ?= []
     cache[r][g]   ?= []
-    cache[r][g][b] = m
+    cache[r][g][b] = c
 
-  [m..., a]
+  return [c..., a]
 
-module.exports = (cvs, r, c) ->
-  fx = new CanvasEffects(cvs, {useWorker: false})
-  fx.noise(5)
-  StackBlur.canvasRGB(cvs, 0, 0, cvs.width, cvs.height, r)
-
-  if c?
+module.exports = f = (cvs, r, c) ->
+  if c? and c isnt colors
     colors = palettes[c] or c
-    buildCache()
+    cache = []
 
+  fx = new CanvasEffects(cvs, {useWorker: false})
+  fx.noise(3)
+
+  StackBlur.canvasRGB(cvs, 0, 0, cvs.width, cvs.height, r*1.5)
+  fx.process(process)
+
+  StackBlur.canvasRGB(cvs, 0, 0, cvs.width, cvs.height, r/2)
+  fx.process(process)
+
+  StackBlur.canvasRGB(cvs, 0, 0, cvs.width, cvs.height, 1)
   fx.process(process)

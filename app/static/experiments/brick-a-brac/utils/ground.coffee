@@ -1,6 +1,6 @@
 posterize = require("experiments/posterize")
 wobble = require("experiments/wobble")
-maybe = require("experiments/brick-a-brac/maybe")
+maybe = require("experiments/brick-a-brac/utils/maybe")
 
 module.exports = (features, dimensions) ->
   canvas = document.createElement("canvas")

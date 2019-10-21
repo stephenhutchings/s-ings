@@ -1,0 +1,306 @@
+- map = []
+- map[  0] = " "
+- map[  1] = ""
+- map[  2] = "i"
+- map[  3] = "t"
+- map[  4] = "_"
+- map[  5] = "="
+- map[  6] = "j"
+- map[  7] = "]"
+- map[  8] = "'"
+- map[  9] = "r"
+- map[ 10] = "\""
+- map[ 11] = "h"
+- map[ 12] = "l"
+- map[ 13] = "["
+- map[ 14] = "u"
+- map[ 15] = "o"
+- map[ 16] = "\\"
+- map[ 17] = "<"
+- map[ 18] = "y"
+- map[ 19] = ""
+- map[ 20] = ">"
+- map[ 21] = "s"
+- map[ 22] = ""
+- map[ 23] = ""
+- map[ 24] = ""
+- map[ 25] = "f"
+- map[ 26] = "n"
+- map[ 27] = "p"
+- map[ 28] = ""
+- map[ 29] = "g"
+- map[ 30] = "d"
+- map[ 31] = "$"
+- map[ 32] = "/"
+- map[ 33] = "7"
+- map[ 34] = "^"
+- map[ 35] = ""
+- map[ 36] = "c"
+- map[ 37] = "z"
+- map[ 38] = ""
+- map[ 39] = "a"
+- map[ 40] = "v"
+- map[ 41] = ""
+- map[ 42] = ""
+- map[ 43] = "q"
+- map[ 44] = "k"
+- map[ 45] = "e"
+- map[ 46] = "b"
+- map[ 47] = "0"
+- map[ 48] = "x"
+- map[ 49] = "9"
+- map[ 50] = "7"
+- map[ 51] = "2"
+- map[ 52] = "6"
+- map[ 53] = "8"
+- map[ 54] = "3"
+- map[ 55] = ")"
+- map[ 56] = "5"
+- map[ 57] = "1"
+- map[ 58] = ""
+- map[ 59] = "m"
+- map[ 60] = "4"
+- map[ 61] = "("
+- map[ 62] = "w"
+- map[ 63] = ""
+- map[ 64] = "."
+- map[ 65] = ":"
+- map[ 66] = "I"
+- map[ 67] = "T"
+- map[ 68] = ","
+- map[ 69] = ";"
+- map[ 70] = "J"
+- map[ 71] = "}"
+- map[ 72] = "!"
+- map[ 73] = "R"
+- map[ 74] = ""
+- map[ 75] = "H"
+- map[ 76] = "L"
+- map[ 77] = "{"
+- map[ 78] = "U"
+- map[ 79] = "O"
+- map[ 80] = "-"
+- map[ 81] = ""
+- map[ 82] = "Y"
+- map[ 83] = ""
+- map[ 84] = ""
+- map[ 85] = "S"
+- map[ 86] = ""
+- map[ 87] = ""
+- map[ 88] = "N"
+- map[ 89] = "F"
+- map[ 90] = "M"
+- map[ 91] = "P"
+- map[ 92] = ""
+- map[ 93] = "G"
+- map[ 94] = "D"
+- map[ 95] = ""
+- map[ 96] = "+"
+- map[ 97] = "?"
+- map[ 98] = ""
+- map[ 99] = ""
+- map[100] = "C"
+- map[101] = "Z"
+- map[102] = ""
+- map[103] = "A"
+- map[104] = "V"
+- map[105] = ""
+- map[106] = "W"
+- map[107] = "Q"
+- map[108] = "K"
+- map[109] = "E"
+- map[110] = "B"
+- map[111] = ""
+- map[112] = "X"
+- map[113] = ""
+- map[114] = ""
+- map[115] = ""
+- map[116] = ""
+- map[117] = "&"
+- map[118] = ""
+- map[119] = ""
+- map[120] = ""
+- map[121] = ""
+- map[122] = ""
+- map[123] = ""
+- map[124] = ""
+- map[125] = ""
+- map[126] = ""
+- map[127] = ""
+
+doctype html
+html.no-js(lang="en")
+  head
+    link(rel="shortcut icon" href="/img/favicon.png")
+    meta(name="robots" content="noindex, nofollow")
+
+  body
+    #inbound
+      div(
+        data-view="experiments/exponent/index.pug"
+        data-map=JSON.stringify(map)
+      )
+        - ln = 7
+        for n, i in new Array(Math.pow(2,ln))
+          - str  = i.toString(2).split("")
+          - while(str.length < ln) str.unshift(0)
+          - list = str.map(parseFloat).map(Boolean)
+          //- p map[#{"   ".slice(0, 3 - i.toString().length)}#{i}] =
+          svg(
+            data-list=str.join("")
+            data-index=i
+            width=64
+            height=64
+            viewBox="0 0 64 64"
+            class=map[i] ? "active" : "inactive"
+          )
+            g
+
+              text(x=62 y=8 text-anchor="end")= i
+              text(x=2 y=8)= map[i]
+              text(x=2 y=64)= list.map((e)=> e ? 1 : 0).join("")
+              //- circle(cx=16 cy=16 r=2)
+              //- circle(cx=16 cy=48 r=2)
+              //- circle(cx=48 cy=48 r=2)
+              //- circle(cx=48 cy=16 r=2)
+
+            //-
+              rect(
+                transform="translate(16,16) rotate(45)"
+                x=-2.8 y= -2.8 width=5.6 height=5.6
+              )
+              rect(
+                transform="translate(16,48) rotate(45)"
+                x=-2.8 y= -2.8 width=5.6 height=5.6
+              )
+              rect(
+                transform="translate(48,48) rotate(45)"
+                x=-2.8 y= -2.8 width=5.6 height=5.6
+              )
+              rect(
+                transform="translate(48,16) rotate(45)"
+                x=-2.8 y= -2.8 width=5.6 height=5.6
+              )
+              rect(
+                transform="translate(32,32) rotate(45)"
+                x=-2.8 y= -2.8 width=5.6 height=5.6
+              )
+            g
+              for active, k in list.reverse()
+                if active
+                  case k
+                    when 0
+                      line(x1=16 y1=16 x2=48 y2=16 stroke-width=5)
+                    when 1
+                      line(x1=48 y1=16 x2=48 y2=48 stroke-width=5)
+                      line(x1=43 y1=16 x2=43 y2=48 stroke-width=1)
+                    when 2
+                      line(x1=16 y1=48 x2=48 y2=48 stroke-width=5)
+                    when 3
+                      line(x1=16 y1=16 x2=16 y2=48 stroke-width=5)
+                      line(x1=21 y1=16 x2=21 y2=48 stroke-width=1)
+                    when 4
+                      line(x1=16 y1=16 x2=48 y2=48 stroke-width=5)
+                      //-
+                        line(x1=48 y1=48 x2=48 y2=40)
+                        line(x1=48 y1=40 x2=16 y2=24)
+                        line(x1=16 y1=16 x2=16 y2=24)
+                    when 5
+                      line(x1=16 y1=48 x2=48 y2=16 stroke-width=5)
+                      //-
+                        line(x1=16 y1=48 x2=16 y2=40)
+                        line(x1=16 y1=40 x2=48 y2=24)
+                        line(x1=48 y1=16 x2=48 y2=24)
+                    when 6
+                      //- line(x1=32 y1=16 x2=32 y2=48)
+                      circle(cx=32 cy=32 r=8)
+
+        p
+          for n, i in new Array(Math.pow(2,ln))
+            - c = String.fromCharCode(i)
+            - idx = map.indexOf(c)
+            span(class=idx > -1 ? "active" : "inactive")=c
+
+        #type
+
+    script(type="text/javascript" src=`/js/vendor.${version}.js`)
+    script(type="text/javascript" src=`/js/app.${version}.js`)
+
+    script
+      :coffee
+        class CustomView extends Backbone.View
+          initialize: (options) ->
+            document.addEventListener "keydown", (e) => @onKey(e.key)
+
+            str = "Points which represented a different character in previous versions (the 1963 version and/or the 1965 draft) are shown boxed. Points assigned since the 1963 version but otherwise unchanged are shown lightly shaded relative to their legend colours."
+
+            for char in str
+              @onKey(char)
+
+
+          onKey: (key) ->
+            map = @$el.data("map")
+            idx = map.indexOf(key)
+
+            if idx > -1
+              $el = $("svg").eq(idx)
+              $("#type").append($el.clone())
+            if key is "Backspace"
+              $("#type").children().last().remove()
+            if key is "Enter"
+              $("#type").append("<div class='break'>")
+
+
+        module.exports = CustomView
+
+    script.
+      require("app").initialize()
+
+
+    style
+      :sass
+        html, body
+          height: 100%
+          width: 100%
+          margin: 0
+          display: flex
+
+        #inbound
+          width: 16 * 64px
+          margin: auto
+
+
+        svg
+          display: block
+          float: left
+          font-family: sans-serif
+          font-size: 8px
+
+        line
+          stroke: currentColor
+          stroke-linecap: round
+
+        circle,
+        rect
+          fill: currentColor
+
+        text
+          fill: #ccc
+
+        .inactive
+          color: #ccc
+
+        .break
+          clear: left
+          min-height: 1px
+
+        #type svg
+          width: 32px
+          height: 32px
+          text, circle
+            display: none
+          + svg
+            margin-left: -8px
+
+          &[data-index="0"] rect
+            display: none

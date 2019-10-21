@@ -1,0 +1,338 @@
+hide: true
+lines:
+  -
+    name: T1
+    long: North Shore & Western Line
+    stations:
+      - Mount Kuring-gai
+      - Mount Colah
+      - Asquith
+      - Hornsby
+      - Waitara
+      - Wahroonga
+      - Warrawee
+      - Turramurra
+      - Pymble
+      - Gordon
+      - Killara
+      - Lindfield
+      - Roseville
+      - Chatswood
+      - Artarmon
+      - St Leonards
+      - Wollstonecraft
+      - Waverton
+      - North Sydney
+      - Milsons Point
+      - Wynyard
+      - Town Hall
+      - Central
+      - Redfern
+      -
+        -
+          - Macdonaldtown
+          - Newtown
+          - Stanmore
+          - Petersham
+          - Lewisham
+          - Summer Hill
+          - Ashfield
+          - Croydon
+      - Burwood
+      - Strathfield
+      - Lidcombe
+      - Auburn
+      - Clyde
+      - Granville
+      - Harris Park
+      - Parramatta
+      - Westmead
+      - Wentworthville
+      - Pendle Hill
+      - Toongabbie
+      - Seven Hills
+      - Blacktown
+      -
+        - # Blacktown - Emu Plains
+          - Doonside
+          - Rooty Hill
+          - Mount Druitt
+          - St Marys
+          - Werrington
+          - Kingswood
+          - Penrith
+          - Emu Plains
+        - # Blacktown - Richmond
+          - Marayong
+          - Quakers Hill
+          - Schofields
+          - Riverstone
+          - Vineyard
+          - Mulgrave
+          - Windsor
+          - Clarendon
+          - East Richmond
+          - Richmond
+  -
+    name: T2
+    long: Inner West & Leppington Line
+    stations:
+      - Museum
+      - St James
+      - Circular Quay
+      - Wynyard
+      - Town Hall
+      - Central
+      - Redfern
+      - Macdonaldtown
+      - Newtown
+      - Stanmore
+      - Petersham
+      - Lewisham
+      - Summer Hill
+      - Ashfield
+      - Croydon
+      - Burwood
+      - Strathfield
+      - Homebush
+      - Flemington
+      - Lidcombe
+      - Auburn
+      - Clyde # (weekdays only)
+      - Granville
+      -
+        - # Granville - Parramatta (weekdays only)
+          - Harris Park
+          - Parramatta
+        - # Granville - Leppington
+          - Merrylands
+          - Guildford
+          - Yennora
+          - Fairfield
+          - Canley Vale
+          - Cabramatta
+          - Warwick Farm
+          - Liverpool
+          - Casula
+          - Glenfield
+          - Edmondson Park
+          - Leppington
+  -
+    name: T3
+    long: Bankstown Line
+    stations:
+      - Town Hall
+      - Wynyard
+      - Circular Quay
+      - St James
+      - Museum
+      - Central
+      - Redfern
+      - Erskineville
+      - St Peters
+      - Sydenham
+      - Marrickville
+      - Dulwich Hill
+      - Hurlstone Park
+      - Canterbury
+      - Campsie
+      - Belmore
+      - Lakemba
+      - Wiley Park
+      - Punchbowl
+      - Bankstown
+      - Yagoona
+      - Birrong
+      -
+        - # Birrong - Lidcombe
+          - Regents Park
+          - Berala
+          - Lidcombe
+        - # Birrong - Liverpool
+          - Sefton
+          - Chester Hill
+          - Leightonfield
+          - Villawood
+          - Carramar
+          - Cabramatta
+          - Warwick Farm
+          - Liverpool
+
+  -
+    name: T4
+    long: Eastern Suburbs & Illawarra Line
+    stations:
+      - Bondi Junction
+      - Edgecliff
+      - Kings Cross
+      - Martin Place
+      - Town Hall
+      - Central #(underground)
+      - Redfern #(underground)
+      - Sydenham
+      - Tempe
+      - Wolli Creek
+      - Arncliffe
+      - Banksia
+      - Rockdale
+      - Kogarah
+      - Carlton
+      - Allawah
+      - Hurstville
+      - Penshurst
+      - Mortdale
+      - Oatley
+      - Como
+      - Jannali
+      - Sutherland
+      -
+        - # Sutherland - Waterfall
+          - Loftus
+          - Engadine
+          - Heathcote
+          - Waterfall
+        - # Sutherland - Cronulla
+          - Kirrawee
+          - Gymea
+          - Miranda
+          - Caringbah
+          - Woolooware
+          - Cronulla
+  -
+    name: T5
+    long: Cumberland Line
+    stations:
+      - Richmond
+      - East Richmond
+      - Clarendon
+      - Windsor
+      - Mulgrave
+      - Vineyard
+      - Riverstone
+      - Schofields
+      - Quakers Hill
+      - Marayong
+      - Blacktown
+      - Seven Hills
+      - Toongabbie
+      - Pendle Hill
+      - Wentworthville
+      - Westmead
+      - Parramatta
+      - Harris Park
+      - Merrylands
+      - Guildford
+      - Yennora
+      - Fairfield
+      - Canley Vale
+      - Cabramatta
+      - Warwick Farm
+      - Liverpool
+      - Casula
+      - Glenfield
+      - Edmondson Park
+      - Leppington
+
+  -
+    name: T6
+    long: Carlingford railway line
+    stations:
+      - Clyde
+      - Rosehill
+      - Camellia
+      - Rydalmere
+      - Dundas
+      - Telopea
+      - Carlingford
+
+  -
+    name: T7
+    long: Olympic Park railway line
+    stations:
+      - Olympic Park
+      - Lidcombe
+
+  -
+    name: T8
+    long: Airport & South Line
+    stations:
+      - Wynyard
+      - Circular Quay
+      - St James
+      - Museum
+      - Central
+      -
+        - # Via Sydenham (peak hours only)
+          - Redfern
+          - St Peters
+          - Sydenham
+        - # Via the airport
+          - Green Square
+          - Mascot
+          - Domestic Airport
+          - International Airport
+          - Wolli Creek
+      - Turrella
+      - Bardwell Park
+      - Bexley North
+      - Kingsgrove
+      - Beverly Hills
+      - Narwee
+      - Riverwood
+      - Padstow
+      - Revesby
+      - Panania
+      - East Hills
+      - Holsworthy
+      - Glenfield
+      - Macquarie Fields
+      - Ingleburn
+      - Minto
+      - Leumeah
+      - Campbelltown
+      - Macarthur
+
+  -
+    name: T9
+    long: Northern Line
+    stations:
+      - Killara
+      - Lindfield
+      - Roseville
+      - Chatswood
+      - Artarmon
+      - St Leonards
+      - Wollstonecraft
+      - Waverton
+      - North Sydney
+      - Milsons Point
+      - Wynyard
+      - Town Hall
+      - Central
+      - Redfern
+      -
+        -
+          - Macdonaldtown
+          - Newtown
+          - Stanmore
+          - Petersham
+          - Lewisham
+          - Summer Hill
+          - Ashfield
+          - Croydon
+      - Burwood
+      - Strathfield
+      - North Strathfield
+      - Concord West
+      - Rhodes
+      - Meadowbank
+      - West Ryde
+      - Denistone
+      - Eastwood
+      - Epping
+      - Cheltenham
+      - Beecroft
+      - Pennant Hills
+      - Thornleigh
+      - Normanhurst
+      - Hornsby

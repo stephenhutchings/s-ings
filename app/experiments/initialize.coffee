@@ -1,3 +1,23 @@
+# Required here to ensure inclusion in page-specific views
+require("experiments/badge")
+require("experiments/big-canvas")
+require("experiments/color")
+require("experiments/frame")
+require("experiments/layer")
+require("experiments/posterize")
+require("experiments/resample")
+require("experiments/sequence")
+require("experiments/shape")
+require("experiments/smooth")
+require("experiments/threshold-to-mask")
+require("experiments/wobble")
+require("experiments/pos-or-neg")
+
+require("experiments/line/dijkstra")
+require("experiments/line/helpers")
+require("experiments/line/levels")
+require("experiments/line/shortest-path")
+
 module.exports = (experiment) ->
   window.iostap.initialize()
 
@@ -18,7 +38,7 @@ module.exports = (experiment) ->
 
   ready = ->
     _.delay draw, 300
-    document.body.classList.add("show")
+    # document.body.classList.add("show")
 
   if false
     fontName = "sans"

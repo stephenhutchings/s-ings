@@ -14,7 +14,7 @@ body
   transform: translateX(-50%)
   background-color: transparent
 
-label
+#loader
   background: #202226
   background: rgba(#202226, 0.8)
   border-radius: 2px
@@ -30,6 +30,7 @@ label
   transition: opacity 300ms
   width: 200px
   z-index: 20
+  pointer-events: none
 
   .show &
     opacity: 1
@@ -73,3 +74,15 @@ canvas
 
 img
   display: inline-block
+
+
+#controls
+  position: absolute
+  right: 0
+  top: 0
+  padding: 8px
+  background-color: #fff
+  color: #000
+
+  label
+    display: block

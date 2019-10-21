@@ -1,0 +1,8 @@
+extends ../../partials/experiment
+
+block append config
+  - page.title = page.experiment = "maze/maze3";
+
+block experiment
+  script
+    include:coffee maze3.coffee

@@ -42,8 +42,15 @@ exports.config =
             indentedSyntax: true
           }).css.toString()
 
-        coffee: (data) ->
-          require("coffeescript").compile(data)
+        coffee: (data, { filename }) ->
+          js = require("coffeescript").compile(data, bare: true)
+          fn = filename.replace(".coffee", "").replace("app/static/", "")
+
+          return [
+            "require.register('#{fn}', function(exports, require, module){"
+            js
+            "});"
+          ].join("")
 
     sass:
       mode: "native"

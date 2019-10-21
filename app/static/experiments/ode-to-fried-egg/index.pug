@@ -2,4 +2,8 @@ extends ../../partials/experiment
 
 block append config
   - page.title = "Ode To Fried Egg"
-  - page.experiment = "ode-to-fried-egg"
+  - page.experiment = "ode-to-fried-egg/view"
+
+block experiment
+  script
+    include:coffee view.coffee

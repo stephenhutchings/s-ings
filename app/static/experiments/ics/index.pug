@@ -1,0 +1,73 @@
+extends /partials/layout
+
+block append css
+  <link href="https://fonts.googleapis.com/css?family=Chela+One|Fruktur|Kavoon|Mogra|Paprika|Pirata+One|Muli|Mirza|Neuton:300,800|Cormorant+Garamond:300|EB+Garamond:400&display=swap" rel="stylesheet">
+
+  - display = ["Neuton","Fruktur","Kavoon","Mogra","Paprika","Pirata One","Rakkas","Mirza"]
+
+  - pairs = []
+  - pairs.push({display: "Mirza", body: "Alegreya", caption: "Alegreya Sans"})
+  - pairs.push({display: "PT Serif", body: "PT Sans", caption: "PT Mono"})
+  - pairs.push({display: "Pirata One;font-weight:bold", body: "EB Garamond", caption: "Muli"})
+
+block page
+  .wrapper
+    for pair in pairs
+      hr
+      div(style=`font-family: ${pair.body}`)
+        h1(style=`font-family: ${pair.display}`)
+          | Welcome to the<br>Illawarra Choral Society
+
+        p We sing music in mixed four-part harmony
+
+        ul
+          li from Gregorian to Gershwin
+          li from Bach to Bernstein
+          li from Mozart to Les Miz
+          li from Strauss to Sondheim
+
+        p.
+          Of our three public performances each year, Christmas tends to feature
+          traditional music, and Easter sacred music, while the midwinter
+          concert is more light-hearted. Members also entertain in hospitals and
+          senior citizens' facilities and perform at public ceremonies.
+
+        p.
+          The Illawarra Choral Society also encourages and supports upcoming
+          musical talent among Illawarra soloists and instrumentalists, who
+          often feature in our public performances.
+
+        figure(style=`font-family: ${pair.caption};`)
+          figcaption ICS sings at Figtree Nursing Home, 2011
+
+block append scripts
+  style
+    :sass
+      html, body
+        height: 100%
+      body
+        display: flex
+        font-size: 21px
+        line-height: 1.4
+        background: #f1e3d4
+
+      .wrapper
+        margin: auto
+        max-width: 600px
+
+      h1
+        font-size: 48px
+
+      h1, h2, h3, p, ul
+        margin-bottom: 1.4rem
+
+      hr
+        border-bottom-style: double
+        border-bottom-width: 7px
+        width: 200px
+
+      figcaption
+        font-weight: 400
+        letter-spacing: 0.02em
+        font-size: 85%
+        color: #755e60
