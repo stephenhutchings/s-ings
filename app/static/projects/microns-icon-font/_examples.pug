@@ -39,12 +39,6 @@ section#examples
           a.txt-bare.txt-vb
             span.mu.mu-align-right.fl-l
 
-        //- .toolset
-          a.txt-bare.txt-vb
-            span.mu.mu-indent.fl-l
-          a.txt-bare.txt-vb
-            span.mu.mu-outdent.fl-l
-
         .toolset
           a.txt-bare.txt-vb
             span.mu.mu-undo.fl-l
@@ -147,16 +141,19 @@ section#examples
               .check-switch.mu.mu-box.txt-24.fl-l
               span Second
 
-          button.btn.bg-hl.txt-bold Confirm
+          button.btn.bg-hl.txt-bold
+            span.btn-icon.mu.mu-pass.txt-vb.txt-24
+            span.txt-vb Confirm
 
-          button.btn.bg-hl.txt-bold Continue&ensp;
-            span.mu.mu-i-right.txt-vb.txt-24
+          button.btn.bg-hl.txt-bold.hidden-xs
+            span.txt-vb Continue
+            span.btn-icon.mu.mu-i-right.txt-vb.txt-24
 
           button.btn.bg-dk.txt-bold
-            h4.di.txt-vb.tight Clear&emsp;
-            span.mu.mu-i-cross.txt-vb.txt-24
+            h4.di.txt-vb.tight Clear
+            span.btn-icon.mu.mu-i-cross.txt-vb.txt-24
           button.btn.bg-dk.txt-bold
-            span.mu.mu-mail.txt-vb.txt-24 &ensp;
+            span.btn-icon.mu.mu-mail.txt-vb.txt-24
             h4.di.txt-vb.tight Send
 
   .col-wrap
@@ -180,7 +177,7 @@ section#examples
               | Drink some coffee
             li
               span.mu.mu-i-cross.fl-l.txt-24 &ensp;
-              | Get down to work
+              | Get down to business
 
           .clearfix
             .txt-hl.fl-l.txt-24

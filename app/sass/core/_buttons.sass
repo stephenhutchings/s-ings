@@ -8,12 +8,12 @@
   @extend %transition-sm
   @extend %cursor-hand
 
-  // &:hover,
-  // &:focus,
-  // &.active,
-  // &.__active
-  //   background-color: #eee
-  //   background-color: rgba(#000, 0.12)
+  .btn-icon
+    &:first-child
+      margin-right: 0.4em
+
+    &:last-child
+      margin-left: 0.4em
 
   &.btn-no-bg
     background-color: transparent
@@ -39,7 +39,7 @@
 
   background-image: linear-gradient(to bottom, rgba(#fff, 0.3), rgba(#000, 0.3))
   background-size: 100% 300%
-  background-position: 0 -300%
+  background-position: 0 -295%
   &:hover,
   &:focus,
     background-position: 0 -250%

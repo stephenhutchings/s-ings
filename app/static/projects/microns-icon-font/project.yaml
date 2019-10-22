@@ -530,8 +530,6 @@ icons:
 ligatures:
   - sub box i-cross by box-cross;
   - sub box i-minus by box-minus;
-  - sub box i-minus by box-minus;
-  - sub box i-plus by box-plus;
   - sub box i-plus by box-plus;
   - sub box i-tick by box-tick;
   - sub box minus by box-minus;

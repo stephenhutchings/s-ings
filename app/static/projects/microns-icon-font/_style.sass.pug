@@ -152,40 +152,53 @@ for group in project.icons
     border-radius: 3px
     line-height: 1em
     width: max-content
+    max-width: 100%
+    overflow: hidden
 
     .mu
       font-size: 1em
 
-    .trackbar
-      width: 306px
-      float: left
-      height: 2px
-      margin: 9px 8px
-      border-radius: 1.5px
+  .trackbar
+    width: 306px
+    float: left
+    height: 2px
+    margin: 9px 8px
+    border-radius: 1.5px
 
-    .trackpos
-      position: absolute
-      left: 0
+    @media (max-width: 800px)
+      width: 120px
+      margin: 14px 8px
 
-    .mu-caret-down
-      margin: 0 -6px 0 -8px
-      min-width: 0
+  .trackpos
+    position: absolute
+    left: 0
 
-    .toolset
-      margin: 6px 0
-      padding: 3px
-      float: left
-      position: relative
-      border: 0 solid #cfdee6
+  .mu-caret-down
+    margin: 0 -6px 0 -8px
+    min-width: 0
 
-      + .toolset
-        border-left-width: 1px
+  .toolset
+    margin: 6px 0
+    padding: 3px
+    float: left
+    position: relative
+    border: 0 solid #cfdee6
+
+    + .toolset
+      border-left-width: 1px
 
     a
       padding: 4px
       float: left
       border-radius: 1px
       margin: -6px 1px
+
+    @media (max-width: 800px)
+      margin: 0 0 -1px
+      border: 0
+
+      a
+        margin: 0
 
   .toolbar-font
     display: inline-block
