@@ -9,11 +9,12 @@ desc: >
   Typicons are free-to-use vector icons embedded in a webfont for easy use in any&nbsp;UI, whether it be on the web&nbsp;or in a native app.
 urls:
   -
-    text: GitHub
-    link: https://github.com/stephenhutchings/typicons.font
-  -
     text: Download
     link: https://github.com/stephenhutchings/typicons.font/releases/latest
+  -
+    text: GitHub
+    link: https://github.com/stephenhutchings/typicons.font
+
 imgs:
   cover:  /img/projects/typicons/cover.png
   reveal: /img/projects/typicons/reveal.png

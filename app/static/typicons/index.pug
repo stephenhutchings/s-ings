@@ -20,19 +20,18 @@ block body
 
           != typogr.typogrify(marked(project.desc))
 
-          if project.urls
-            for action, i in project.urls
-              if i > 0
-                | &ensp;&middot;&ensp;
-              a.btn-ul(href=action.link)
-                h4= action.text
 
-          if project.version
-            | &ensp;&middot;&ensp;
+          ul.list-inline.txt-sm
+            if project.urls
+              for action, i in project.urls
+                li
+                  a.btn-ul(href=action.link)
+                    h4= action.text
 
-            strong.txt-sm v&thinsp;
-              span.txt-uppercase #{project.version}
-
+            if project.version
+              li
+                strong v&thinsp;
+                  span.txt-tu #{project.version}
         .col-md
           include /partials/typicons/carbon
 

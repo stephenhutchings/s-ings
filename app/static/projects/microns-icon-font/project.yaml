@@ -28,6 +28,17 @@ colors:
   highlight: "#23bdff"
   light: "#f9fafb"
 
+urls:
+  -
+    text: Download
+    link: https://github.com/stephenhutchings/microns/releases/latest
+
+  - text: GitHub
+    link: https://github.com/stephenhutchings/microns
+
+  - text: NPM
+    link: https://www.npmjs.com/package/microns
+
 icons:
   -
     type: "Arrows"

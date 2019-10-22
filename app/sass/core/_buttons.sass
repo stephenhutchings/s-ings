@@ -5,8 +5,13 @@
   position: relative
   font: inherit
   outline: none
-  @extend %transition-sm
   @extend %cursor-hand
+
+  &:hover,
+  &:focus,
+  &.active,
+  &.__active
+    @extend %transition-sm
 
   .btn-icon
     &:first-child
@@ -25,8 +30,6 @@
       color: #fff
 
 .btn.bg-dk
-  @extend %transition-sm
-
   &:hover,
   &:focus
     background: lighten($dark, 20)
@@ -35,8 +38,6 @@
     background: lighten($dark, 30)
 
 .btn.bg-hl
-  @extend %transition-sm
-
   background-image: linear-gradient(to bottom, rgba(#fff, 0.3), rgba(#000, 0.3))
   background-size: 100% 300%
   background-position: 0 -295%

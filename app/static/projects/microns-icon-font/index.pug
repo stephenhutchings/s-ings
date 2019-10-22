@@ -23,16 +23,14 @@ block body
 
           != typogr.typogrify(marked(project.desc))
 
-
-          ul.list-inline.txt-sm
+          ul.list-inline.txt-sm.tight
             if project.urls
               for action, i in project.urls
                 li
-                  if i > 0
-                    | &ensp;&middot;&ensp;
                   a.btn-ul(href=action.link)
                     h4= action.text
 
+          ul.list-inline.txt-sm.txt-muted
             li
               strong.txt-tu
                 = project.iconList.length
