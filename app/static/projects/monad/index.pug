@@ -3,26 +3,40 @@ extends ../../partials/project
 block prepend config
   - var project = data.getOne("projects",  "monad");
 
+block append config
+  - page.style = {padding: "0"}
+
 block article
-  .col-wrap
-    .col-md
-      p 
-        | Monad Sans is my first professional grade typeface. It’s
-        | inspired by traditional and modern grotesques. It is available in 
-        | eight weights and has a medium x-height and generous character width.
-      p
-        | Monad is currently a work in progress and not available for general 
-        | use, but get in touch if you are interested in using it in a project.
+  .p-xxl
+    .mx-lg
+      :marked
+        Monad Sans is a typeface that builds on traditional and modern
+        grotesques — aspiring to be a modern workhorse, rugged but not wooden,
+        geometric yet limber. Available in eight weights, it has a medium
+        x-height and generous character width.
 
-    .col-full 
-      p
-        :marked
-          ![Monad Sans](/img/projects/monad-sans/display-weights.png)
+        The font family inherits some of the forms of an italic face, with a
+        curl on the bottom right terminals of R, m, n, h and u. Otherwise sharp
+        letter forms have an open appearance, drawing focus from each character
+        through the text. The design is intended to work well in digital
+        environments, balancing the needs of smaller text and display sizes.
 
-    .col-md
-      p
-        img(src="/img/projects/monad-sans/sample-1.png")
-      p
-        img(src="/img/projects/monad-sans/sample-2.png")
-      p
-        img(src="/img/projects/monad-sans/sample-3.png")
+        Monad has an extensive glyph range, covering Western, Central and South
+        Eastern European Latin and basic Greek. For digital contexts, it is
+        packaged with common icons and pictograms mapped to valid Unicode
+        points.
+
+        OpenType font features such as discretionary ligatures, tabular and
+        old-style numerals, small caps and stylistic sets are also included.
+
+  .clearfix
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/a-family-of-typefaces-in-eight-weights-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/available-in-8-weights-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/body-text-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/eclipse-in-black-weight-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/extensive-language-support-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/icons-and-pictograms-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/monad-sans-medium.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/standard-and-discretionay-ligatures-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/stylistic-alternatives-monad-sans.jpg")
+    img.fl-l(width="50%" src="/img/projects/monad-sans/gallery/the-decay-of-capitalist-civilisation-monad-sans.jpg")

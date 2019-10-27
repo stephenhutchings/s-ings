@@ -2,12 +2,11 @@ name: Monad Sans
 date: 30 Nov 2015
 size: col-md
 desc: >
-  Monad Sans is a type family in 8 weights
+  Monad Sans is a family of typefaces in eight weights.
 urls:
   -
-    text: Specimen
-    link: /monad/
-    follow: true
+    text: Purchase
+    link: https://www.youworkforthem.com/font/T6230/monad-sans
 imgs:
   cover:  /img/projects/monad-sans/cover.png
   reveal: /img/projects/monad-sans/reveal.png

@@ -16,8 +16,6 @@ block article
     | Experiments, designs &amp; tools
     | made in the small hours.
 
-  hr
-
   .col-wrap
     .col-full(data-view="views/tiles")
       .projects.col-wrap
@@ -40,18 +38,3 @@ block article
 
                 .tile-open &rarr;
                 .tile-close &times;
-
-block append scripts
-  script(type="application/ld+json").
-    {
-      "@context": "http://s-ings.com",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https://s-ings.com/projects",
-          "name": "Projects"
-        }
-      }]
-    }

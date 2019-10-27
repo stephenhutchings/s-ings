@@ -8,12 +8,6 @@ desc: >
 metaTitle: Philippa - A Sans-Serif Font by Stephen Hutchings
 pageCount: 7
 
-colors:
-  dark: "#0c1c2a"
-  muted: "#5f6b6d"
-  highlight: "#456fff"
-  light: "#f3f5f6"
-
 font:
   name: Philippa
   path: /fonts/philippa/

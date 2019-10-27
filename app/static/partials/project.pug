@@ -8,14 +8,6 @@ block append config
   - page = _.extend(page, project)
 
 block append aside
-  if project.colors
-    style
-      | .txt-hl { color: #{project.colors.highlight}; }
-      | .txt-mt { color: #{project.colors.muted}; }
-      | .bg-lt  { background-color: #{project.colors.light}; }
-      | .bg-hl  { background-color: #{project.colors.highlight}; }
-      | .bg-dk  { background-color: #{project.colors.dark};  }
-
   if project.font
     style
       - n = 6; d = Math.pow(11.11, 1 / n);
@@ -61,28 +53,6 @@ block append aside
             li
               strong.txt-sm v&thinsp;
                 span.txt-uppercase #{project.version}
-
-block append scripts
-  script(type="application/ld+json").
-    {
-      "@context": "http://s-ings.com",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "http://s-ings.com/projects",
-          "name": "Projects"
-        }
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@id": `http://s-ings.com/projects/${projectPath}`,
-          "name": `${project.name}`
-        }
-      }]
-    }
 
 block prepend article
   if project.pageCount

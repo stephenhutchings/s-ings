@@ -9,12 +9,6 @@ desc: >
 metaTitle: Ed Sans - Corporate Typeface by Stephen Hutchings
 pageCount: 4
 
-# colors:
-#   highlight: "#46b4e9"
-#   muted: "#9aa5ad"
-#   dark: "#1b2d48"
-#   light: "#F5F8FA"
-
 font:
   name: "edsansneue"
   path: "/fonts/ed-sans/"

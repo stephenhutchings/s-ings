@@ -2,8 +2,8 @@ name: "Microns"
 date: 06 Jul 2014
 size: col-md
 slug: microns
-
-version: "1.0.2"
+hide: true
+version: "1.0.4"
 
 subtitle:  The universal icon set for user interfaces.
 
@@ -23,10 +23,6 @@ tags:
   - Design
   - Icons
   - Fonts
-
-colors:
-  highlight: "#23bdff"
-  light: "#f9fafb"
 
 urls:
   -
