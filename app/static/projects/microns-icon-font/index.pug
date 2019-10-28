@@ -2,7 +2,7 @@ extends /partials/project
 
 block prepend config
   - var project = data.getOne("projects",  "microns-icon-font");
-  - project.iconList = _.flatten(_.pluck(project.icons, "list"))
+  - project.iconList = _.flatten(_.map(project.icons, "list"))
 
 block append config
   - page.class += " page-microns";

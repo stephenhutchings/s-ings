@@ -32,10 +32,13 @@ getOne = (type, name) ->
 
   result or _.extend data,
     try
-      file = glob.sync("#{root}/#{path}*.yaml")?[0]
-      yaml.load fs.readFileSync(file, "UTF-8")
+      if file = glob.sync("#{root}/#{path}*.yaml")?[0]
+        yaml.load fs.readFileSync(file, "UTF-8")
+      else
+        console.log "No YAML data found for '#{root}/#{path}'"
+        { hide: true }
     catch err
-      console.error err
+      console.error type, name, err
       { hide: true }
 
 getFolders = (path) ->
