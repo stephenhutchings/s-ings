@@ -1,10 +1,15 @@
 name: Antipode
 date: 20 Jun 2015
 size: col-sm
-desc: >
+desc: |
   Antipode is a super family of 72 fonts, with four widths, nine weights and
   matching italics. Neither strictly geometric nor grotesque in form,
   the typeface embodies all that is prototypical in modern type.
+
+  <p class="txt-sm">
+  Antipode is available as a variable font.
+  <a data-view="views/send-email">Get in touch</a> to request early access.
+  </p class="txt-sm">
 
 metaTitle: Antipode - A Sans-Serif Super Family by Stephen Hutchings
 pageCount: 7
