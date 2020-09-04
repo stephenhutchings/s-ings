@@ -33,7 +33,7 @@
     "marked": "^0.7.0",
     "minimist": "^1.2.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "postcss-brunch": "^2.10.1",
     "pugjs-brunch": "^2.10.1",
     "sass-brunch": "2.10.5",
