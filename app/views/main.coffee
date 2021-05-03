@@ -165,11 +165,11 @@ class MainView extends Backbone.View
     $inbound.attr("id", "outbound")
     $outbound.attr("id", "inbound")
 
-    window.gtag "config", "UA-24285947-1",
+    window.gtag? "config", "UA-24285947-1",
       page_path: location.pathname
       page_title: document.title
 
-    window.ga("send", "pageview")
+    window.ga?("send", "pageview")
 
     for key, view of @views
       view.hide?($inbound, $outbound)
