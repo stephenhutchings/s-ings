@@ -1,7 +1,7 @@
 badge     = require("experiments/badge")
 layer     = require("experiments/layer")
 frame     = require("experiments/frame")
-maybe     = require("experiments/brick-a-brac/maybe")
+maybe     = require("experiments/maybe")
 smooth    = require("experiments/smooth")
 wobble    = require("experiments/wobble")
 resample  = require("experiments/resample")

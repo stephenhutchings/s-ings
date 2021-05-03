@@ -99,6 +99,7 @@ exports.config =
           "bower_components/jquery/dist/jquery.js"
           "bower_components/moment/moment.js"
           "bower_components/backbone/backbone.js"
+          "bower_components/iostap/build/iostap.js"
         ]
 
     stylesheets:

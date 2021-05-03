@@ -1,6 +1,6 @@
 posterize = require("experiments/posterize")
 wobble = require("experiments/wobble")
-maybe = require("experiments/brick-a-brac/utils/maybe")
+maybe = require("experiments/maybe")
 
 module.exports = (features, dimensions) ->
   canvas = document.createElement("canvas")
@@ -88,10 +88,6 @@ module.exports = (features, dimensions) ->
   ctx.stroke()
 
   posterize(canvas, wobble(4, 1))
-  # ctx.beginPath()
-  # ctx.rect(0, 0, canvas.width, canvas.height)
-  # ctx.fillStyle = "red"
-  # ctx.fill()
 
   mask = ctx.getImageData(0, 0, canvas.width, canvas.height)
   mask

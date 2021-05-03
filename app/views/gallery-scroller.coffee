@@ -16,7 +16,7 @@ class GalleryScrollerView extends Backbone.View
     $gallery.on "scroll", (e) => @onScroll(e)
 
   undelegateEvents: ->
-    @$el.siblings(".gallery").off("scroll")
+    @$el?.siblings(".gallery").off("scroll")
     super arguments...
 
   onScroll: (e) ->
