@@ -103,4 +103,5 @@ html.no-js(lang="en")
           ].join("\n"))
         }
 
-      +ga("UA-24285947-1")
+      if process.env.NODE_ENV == "production"
+        +ga("UA-24285947-1")
