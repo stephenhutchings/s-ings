@@ -20,7 +20,6 @@ block body
 
           != typogr.typogrify(marked(project.desc))
 
-
           ul.list-inline.txt-sm
             if project.urls
               for action, i in project.urls
@@ -41,6 +40,7 @@ block body
       = " "
       a.btn-ul(href="/projects/microns-icon-font/")
         strong Try microns.
+
   section.page-typicons(data-view="views/icon-search" data-classname="typcn")
     #icon-container.flex-between.ph-lg.pv-lg.bg-hl.bg-hl-dk
       .content-wrap
@@ -63,11 +63,9 @@ block body
       :marked
         ## Typicons. 336 pixel perfect, all-purpose vector icons.
 
-        <h3>
-          Typicons are free-to-use vector icons embedded in a webfont for use
-          in your user interfaces, whether it be on the web or in a native
-          application.
-        </h3>
+        Typicons are free-to-use vector icons embedded in a webfont for use
+        in your user interfaces, whether it be on the web or in a native
+        application.
 
         The set of icons are available on Github, with everything included
         from the source files in SVG format to the minifed CSS. You can even
