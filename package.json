@@ -27,7 +27,7 @@
     "js-yaml": "^3.14.1",
     "jstransformer-marked": "^1.0.3",
     "lodash": "^4.17.21",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "postcss-brunch": "^2.10.1",
