@@ -1,3 +1,5 @@
+_This repository no longer up-to-date._
+
 ### [s-ings.com](http://s-ings.com)
 
 The website of Stephen Hutchings.
@@ -10,6 +12,7 @@ Unless otherwise noted, all of the material on this web site is Copyright © 201
 
 No part of this web site may be modified or changed or exploited in any way used for derivative works, or offered for sale, or used to construct any kind of database or mirrored at any other location without the express written permission of the author.
 
+[Coffeescript]: https://coffeescript.org/
 [Backbone]: http://backbonejs.org/
 [Pug]: https://pugjs.org/
 [underscore]: http://underscorejs.org/
